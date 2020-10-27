@@ -1,0 +1,7 @@
+{
+	"stylelint.autoFixOnSave": true,
+	"eslint.alwaysShowStatus": true,
+	"eslint.format.enable": true,
+	"eslint.lintTask.enable": true,
+	"editor.formatOnSave": true
+}

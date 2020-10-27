@@ -1,0 +1,26 @@
+@use 'variables.scss';
+
+@mixin button {
+	--background: #{variables.$primary};
+	--text: #ffffff;
+
+	margin: 20px auto;
+	padding: 0.5em 1.5em;
+
+	border: 2px solid var(--background);
+	border-radius: 2em;
+	background: variables.$primary;
+	background: var(--background);
+	color: #ffffff;
+	color:var(--text);
+	font-family: variables.$font_headings;
+	text-transform: uppercase;
+	cursor: pointer;
+
+	&:hover, &:focus {
+		--background: #ffffff;
+		--text: #{variables.$primary};
+
+		border-color: var(--text);
+	}
+}

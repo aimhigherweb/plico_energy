@@ -3,6 +3,8 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import Logo from '../../../img/logo.svg';
 
+import './style.scss';
+
 const Footer = () => (
 	<StaticQuery
 		query={graphql`

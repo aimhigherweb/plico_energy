@@ -1,0 +1,39 @@
+@use 'variables.scss';
+@use 'extends.scss';
+
+body {
+	color: variables.$main;
+	font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+	color: variables.$primary;
+	font-family: variables.$font_headings;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+a {
+	color: variables.$primary;
+
+	&:hover, &:focus {
+		background: variables.$secondary;
+		text-decoration: none;
+	}
+}
+
+.btn {
+	@include extends.button;
+
+	&.secondary {
+		--background: #{variables.$secondary};
+		--text: #{variables.$primary};
+	}
+
+	&.tertiary {
+		--background: #ffffff;
+		--text: #{variables.$primary};
+	}
+}

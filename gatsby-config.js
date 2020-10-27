@@ -10,5 +10,12 @@ module.exports = {
 				include: `/${__dirname}/src/img/.*.svg$/`,
 			},
 		},
+		{
+			resolve: `gatsby-plugin-sass`,
+			options: {
+				// eslint-disable-next-line global-require
+				implementation: require(`sass`),
+			},
+		},
 	]
 };

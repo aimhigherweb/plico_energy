@@ -6,6 +6,8 @@ import Header from '../header';
 import Footer from '../footer';
 import Favicon from '../../../img/favicon.png';
 
+import '../../../styles/_global.scss';
+
 const Layout = ({ children, meta }) => (
 		<StaticQuery
 			query={graphql`

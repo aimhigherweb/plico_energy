@@ -1,0 +1,107 @@
+@use 'variables.scss';
+@use 'extends.scss';
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+label, legend {
+	display: block;
+	width: 100%;
+	margin: 1em 1em 0;
+	line-height: 2;
+
+	&[required] {
+		&:after {
+			content: '*';
+		}
+	}
+}
+
+input, textarea, select {
+	display: block;
+	width: 100%;
+	padding: 10px 1.5em;
+	border: 2px solid variables.$grey;
+	border-radius: 1.5em;
+	background: variables.$grey;
+	line-height: 1.2;
+
+	&::placeholder {
+		color: variables.$grey_dark;
+	}
+}
+
+fieldset {
+	display: block;
+	width: 100%;
+	padding: 0;
+	border: none;
+
+	> div {
+		display: flex;
+	}
+}
+
+input {
+	&[type='radio'], &[type='checkbox'] {
+		display: none;
+
+		+ label {
+			display: flex;
+			position: relative;
+			align-items: center;
+
+			&:before {
+				content: '';
+				display: block;
+				width: 1em;
+				height: 1em;
+				margin-right: 10px;
+				border: 2px solid currentColor;
+			}
+		}
+
+		&[checked] {
+			+ label {
+				&:after {
+					content: '';
+					position: absolute;
+					left: 4px;
+					width: calc(1em - 4px);
+					height: calc(1em - 4px);
+					color: variables.$primary;
+					font-weight: bold;
+					line-height: 1;
+				}
+			}
+		}
+	}
+
+	&[type='radio'] {
+		+ label {
+			&:before, &:after {
+				border-radius: 50%;
+			}
+
+			&:after {
+				background: currentColor;
+			}
+		}
+	}
+
+	&[type='checkbox'] {
+		&[checked] {
+			+ label {
+				&:after {
+					content: '✓';
+				}
+			}
+		}
+	}
+}
+
+button, input[type='submit'] {
+	@include extends.button;
+}

@@ -1,0 +1,22 @@
+@use 'variables.scss';
+@use 'typography.scss';
+@use 'form.scss';
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--primary: #{variables.$primary};
+	--secondary: #{variables.$secondary};
+}
+
+.logo {
+	.cls-1 {
+		fill: #ffffff;
+	}
+
+	.cls-2 {
+		fill: variables.$primary;
+	}
+}

@@ -1,20 +1,14 @@
 {
   "name": "plico_energy",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amykapernick/plico_energy.git"
+    "url": "git+https://github.com/aimhigher/plico_energy.git"
   },
   "keywords": [],
-  "author": "Amy Kapernick <amy@kapers.dev> (https://amyskapers.dev)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/amykapernick/plico_energy/issues"
-  },
-  "homepage": "https://github.com/amykapernick/plico_energy#readme"
+  "author": "Amy Kapernick <amy@aimhigherweb.design> (https://aimhigherweb.design)"
 }

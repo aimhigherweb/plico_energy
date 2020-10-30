@@ -1,5 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 
 import Layout from '../components/partials/layout';
 
@@ -10,7 +12,7 @@ const LandingPage = ({ data }) => {
 
 	return (
 		<Layout>
-				<h1>{name}</h1>
+			<h1>{name}</h1>
 		</Layout>
 	);
 };
@@ -21,6 +23,7 @@ export const pageQuery = graphql`
 	query LandingPage($slug: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
+			field_og_image_string
 		}
 	}
 `;

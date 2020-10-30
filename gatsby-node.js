@@ -16,6 +16,7 @@ exports.createPages = ({ actions, graphql }) => {
 				}
 			}
 		`)
+		// eslint-disable-next-line consistent-return
 		.then((result) => {
 			if (result.errors) {
 				// eslint-disable-next-line no-console
@@ -44,11 +45,11 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 exports.onCreateNode = async ({
-	node, actions, getNode, createContentDigest, loadNodeContent
+	node, actions
 }) => {
-	const { createNodeField, createNode } = actions;
+	const { createNodeField } = actions;
 
-	 if ([`StoryblokEntry`].includes(node.internal.type)) {
+	if ([`StoryblokEntry`].includes(node.internal.type)) {
 		createNodeField({
 			name: `content`,
 			node,

@@ -1,3 +1,5 @@
+require(`dotenv`).config();
+
 module.exports = {
 	siteMetadata: {
 		title: `Plico Energy`,
@@ -17,5 +19,15 @@ module.exports = {
 				implementation: require(`sass`),
 			},
 		},
+		{
+			resolve: `gatsby-source-storyblok`,
+			options: {
+				accessToken: process.env.STORYBLOK_TOKEN,
+				version: process.env.NODE_ENV === `production` ? `published` : `draft`,
+				resolveLinks: true,
+				includeLinks: true,
+				contentObject: true
+			}
+		}
 	]
 };

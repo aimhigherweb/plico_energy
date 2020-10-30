@@ -42,3 +42,17 @@ exports.createPages = ({ actions, graphql }) => {
 			});
 		});
 };
+
+exports.onCreateNode = async ({
+	node, actions, getNode, createContentDigest, loadNodeContent
+}) => {
+	const { createNodeField, createNode } = actions;
+
+	 if ([`StoryblokEntry`].includes(node.internal.type)) {
+		createNodeField({
+			name: `content`,
+			node,
+			value: JSON.parse(node.content),
+		});
+	}
+};

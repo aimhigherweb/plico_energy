@@ -2,3 +2,6 @@
   base = "."
   publish = "public/"
   command = "npm run build"
+
+[build.environment]
+  STORYBLOK_TOKEN = ""

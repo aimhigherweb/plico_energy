@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Menu from '../legal_menu';
+import Menu from '../../menus/legal';
 
 import './style.scss';
 

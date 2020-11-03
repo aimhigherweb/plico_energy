@@ -1,13 +1,25 @@
 import React from 'react';
-import Icon from '../../../img/search.svg';
+import algoliasearch from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 
-const Search = () => (
-	<div>
-		<button>
-			<Icon />
-			Search
-		</button>
-	</div>
-);
+import Results from './results';
+
+const Search = () => {
+	const searchClient = algoliasearch(
+		process.env.GATSBY_ALGOLIA_APP_ID,
+		process.env.GATSBY_ALGOLIA_SEARCH_KEY
+	);
+
+	return (
+		<div>
+			<div>
+				<InstantSearch searchClient={searchClient} indexName="pages">
+					<SearchBox />
+					<Results />
+				</InstantSearch>
+			</div>
+		</div>
+	);
+};
 
 export default Search;

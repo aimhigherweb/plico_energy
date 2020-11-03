@@ -4,8 +4,8 @@ import Img from 'gatsby-image';
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 import SVG from 'react-inlinesvg';
 
-import Copyright from '../copyright';
-import Menu from '../footer_menu';
+import Copyright from './copyright';
+import Menu from '../menus/footer';
 import Address from '../../parts/address';
 import Social from '../../parts/social';
 

@@ -1,22 +1,18 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import SVG from 'react-inlinesvg';
 
-import A from '../link';
+import A from '../../../parts/link';
 
-const Social = () => (
+const Menu = () => (
 	<StaticQuery
 		query={graphql`
 			query {
-				menu: storyblokEntry(full_slug: {eq: "menus/social"}) {
+				menu: storyblokEntry(full_slug: {eq: "menus/legal"}) {
 					fields {
 						content {
 							menu_items {
 								label
 								url
-								icon {
-									filename
-								}
 							}
 						}
 					}
@@ -28,10 +24,7 @@ const Social = () => (
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
 						<li key={JSON.stringify(link)}>
-							<A {...link}>
-								<SVG src={link.icon.filename} />
-								{link.label}
-							</A>
+							<A {...link}>{link.label}</A>
 						</li>
 					))}
 				</ul>
@@ -40,4 +33,4 @@ const Social = () => (
 	/>
 );
 
-export default Social;
+export default Menu;

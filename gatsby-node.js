@@ -14,6 +14,15 @@ exports.createPages = ({ actions, graphql }) => {
 						}
 					}
 				}
+				posts: allStoryblokEntry(filter: {field_component: {eq: "news"}}) {
+					edges {
+						node {
+							name
+							slug
+							full_slug
+						}
+					}
+				}
 			}
 		`)
 		// eslint-disable-next-line consistent-return
@@ -35,6 +44,18 @@ exports.createPages = ({ actions, graphql }) => {
 				createPage({
 					path: slug,
 					component: path.resolve(`src/templates/landingPage.js`),
+					context: {
+						id: page.node.id,
+						slug: page.node.full_slug
+					}
+				});
+			});
+
+			data.posts.edges.forEach((page) => {
+				const { slug } = page.node;
+				createPage({
+					path: `/news/${slug}`,
+					component: path.resolve(`src/templates/post.js`),
 					context: {
 						id: page.node.id,
 						slug: page.node.full_slug

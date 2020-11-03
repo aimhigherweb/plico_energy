@@ -1,8 +1,8 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import A from '../../parts/link';
-import Search from '../search';
+import A from '../../../parts/link';
+import Search from '../../search';
 
 import './style.scss';
 
@@ -36,7 +36,7 @@ const Menu = () => (
 			<nav>
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
-						<li>
+						<li key={JSON.stringify(link)}>
 							<A {...link}>{link.label}</A>
 						</li>
 					))}
@@ -44,7 +44,7 @@ const Menu = () => (
 						<Search />
 					</li>
 					{cta.fields.content.cta_buttons.map((link) => (
-						<li>
+						<li key={JSON.stringify(link)}>
 							<A className="cta" {...link}>{link.label}</A>
 						</li>
 					))}

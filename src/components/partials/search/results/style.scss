@@ -1,0 +1,6 @@
+.results {
+	position: absolute;
+	transition: opacity 1s steps(1, end) 5s;
+	opacity: 0;
+	pointer-events: none;
+}

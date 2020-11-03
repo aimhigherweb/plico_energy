@@ -1,0 +1,24 @@
+.search {
+	position: relative;
+
+	form {
+		display: none;
+		position: absolute;
+		bottom: -100%;
+	}
+
+	&[open] {
+		form {
+			display: block;
+		}
+
+		.ais-SearchBox {
+			&:focus-within {
+				& + .results {
+					opacity: 1;
+					pointer-events: normal;
+				}
+			}
+		}
+	}
+}

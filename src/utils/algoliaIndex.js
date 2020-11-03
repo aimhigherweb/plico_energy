@@ -3,7 +3,7 @@ const indexName = `pages`,
 		pages: allStoryblokEntry(
 			filter: {
 				field_component: {
-					in: ["news", "landing_page"]
+					in: ["news", "landing_page", "pages", "testimonials", "faqs"]
 				}
 			}
 		) {
@@ -12,6 +12,9 @@ const indexName = `pages`,
 					name
 					id
 					content
+					full_slug
+					slug
+					field_component
 				}
 			}
 		}
@@ -19,12 +22,34 @@ const indexName = `pages`,
 
 function pageToAlgoliaRecord({
 	node: {
-		name, id, content
+		name, id, content, slug, field_component
 	}
 }) {
+	let path;
+
+	switch (field_component) {
+		case `news`:
+			path = `/news/${slug}`;
+			break;
+		case `faqs`:
+			path = `/faq/\${slug}`;
+			break;
+		case `testimonials`:
+			path = `/testimonials`;
+			break;
+		default:
+			path = `/${slug}`;
+			break;
+	}
+
+	if (field_component === `landing_page` && slug === `home`) {
+		path = `/`;
+	}
+
 	return {
 		objectID: id,
 		name,
+		slug: path,
 		...JSON.parse(content)
 	};
 }

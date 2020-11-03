@@ -1,9 +1,11 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import A from '../components/link';
+import A from '../../parts/link';
 
-import Search from '../../img/search.svg';
+import Search from '../../../img/search.svg';
+
+import './style.scss';
 
 const Menu = () => (
 	<StaticQuery

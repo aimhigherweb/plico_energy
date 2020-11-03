@@ -1,0 +1,23 @@
+@use '../../../styles/variables.scss';
+
+.legal {
+	display: flex;
+	align-items: center;
+	background: variables.$primary;
+	color: #ffffff;
+
+	nav {
+		ul {
+			display: flex;
+		}
+
+		a {
+			color: currentColor;
+		}
+	}
+
+	.tagline {
+		font-family: variables.$font_headings;
+		text-transform: uppercase;
+	}
+}

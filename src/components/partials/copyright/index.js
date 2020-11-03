@@ -1,59 +1,31 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import A from '../components/link';
+import Menu from '../legal_menu';
 
-import Search from '../../img/search.svg';
+import './style.scss';
 
-const Menu = () => (
+const Copyright = () => (
 	<StaticQuery
 		query={graphql`
-			query {
-				menu: storyblokEntry(full_slug: {eq: "menus/main"}) {
+		query {
+			site: storyblokEntry(full_slug: {eq: "details"}) {
 					fields {
 						content {
-							menu_items {
-								label
-								url
-							}
+							site_title
 						}
 					}
 				}
-				cta: storyblokEntry(full_slug: {eq: "details"}) {
-					fields {
-						content {
-							cta_buttons {
-								label
-								url
-							}
-						}
-					}
-				}
-			}
-		`}
-		render={({ menu, cta }) => (
-			<nav>
-				<ul>
-					{menu.fields.content.menu_items.map((link) => (
-						<li>
-							<A {...link} />
-						</li>
-					))}
-					<li>
-						<button>
-							<Search />
-							Search
-						</button>
-					</li>
-					{cta.fields.content.cta_buttons.map((link) => (
-						<li>
-							<A className="cta" {...link} />
-						</li>
-					))}
-				</ul>
-			</nav>
+		}
+	`}
+		render={({ site }) => (
+			<div className="legal">
+				<p className="copyright">© {new Date().getFullYear()} {site.fields.content.site_title}. All rights reserved.</p>
+				<Menu />
+				<p className="tagline">Powering the Community</p>
+			</div>
 		)}
 	/>
 );
 
-export default Menu;
+export default Copyright;

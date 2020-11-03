@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 
-import Menu from '../../menu';
+import Menu from '../main_menu';
 
 const Header = () => (
 	<StaticQuery

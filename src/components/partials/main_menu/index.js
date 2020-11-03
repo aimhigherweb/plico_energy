@@ -38,7 +38,7 @@ const Menu = () => (
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
 						<li>
-							<A {...link} />
+							<A {...link}>{link.label}</A>
 						</li>
 					))}
 					<li>
@@ -49,7 +49,7 @@ const Menu = () => (
 					</li>
 					{cta.fields.content.cta_buttons.map((link) => (
 						<li>
-							<A className="cta" {...link} />
+							<A className="cta" {...link}>{link.label}</A>
 						</li>
 					))}
 				</ul>

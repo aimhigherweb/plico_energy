@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import SVG from 'react-inlinesvg';
 
 import A from '../link';
 
@@ -27,7 +28,10 @@ const Social = () => (
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
 						<li>
-							<A {...link} />
+							<A {...link}>
+								<SVG src={link.icon.filename} />
+								{link.label}
+							</A>
 						</li>
 					))}
 				</ul>

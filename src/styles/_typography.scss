@@ -9,7 +9,7 @@ body {
 
 h1, h2, h3, h4, h5 {
 	color: variables.$primary;
-	font-family: variables.$font_headings;
+	font-family: variables.$font_heading;
 }
 
 h1, h2, h3 {
@@ -21,10 +21,15 @@ h2 {
 }
 
 a {
-	color: variables.$primary;
+	--link_text: #{variables.$primary};
+	--link_background: transparent;
+
+	background: var(--link_background);
+	color: var(--link_text);
 
 	&:hover, &:focus {
-		background: variables.$secondary;
+		--link_background: #{variables.$secondary};
+
 		text-decoration: none;
 	}
 

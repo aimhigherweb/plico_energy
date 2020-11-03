@@ -3,6 +3,7 @@
 @mixin button {
 	--background: #{variables.$primary};
 	--text: #ffffff;
+	display: inline-block;
 
 	margin: 20px auto;
 	padding: 0.5em 1.5em;
@@ -13,7 +14,8 @@
 	background: var(--background);
 	color: #ffffff;
 	color:var(--text);
-	font-family: variables.$font_headings;
+	font-family: variables.$font_heading;
+	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
 

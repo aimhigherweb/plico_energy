@@ -24,7 +24,7 @@ const Menu = () => (
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
 						<li>
-							<A {...link} />
+							<A {...link}>{link.label}</A>
 						</li>
 					))}
 				</ul>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 import SVG from 'react-inlinesvg';
@@ -35,7 +35,7 @@ const Footer = () => (
 
 		render={({ site }) => (
 			<footer>
-				<SVG src={site.fields.content.logo.filename} />
+				<Link to="/"><SVG src={site.fields.content.logo.filename} /></Link>
 				<h2>More Plico Info</h2>
 				<Menu />
 				<h2>Contact Us</h2>

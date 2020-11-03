@@ -2,8 +2,7 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
 import A from '../../parts/link';
-
-import Search from '../../../img/search.svg';
+import Search from '../search';
 
 import './style.scss';
 
@@ -42,10 +41,7 @@ const Menu = () => (
 						</li>
 					))}
 					<li>
-						<button>
-							<Search />
-							Search
-						</button>
+						<Search />
 					</li>
 					{cta.fields.content.cta_buttons.map((link) => (
 						<li>

@@ -2,6 +2,3 @@
   base = "."
   publish = "public/"
   command = "npm run build"
-
-[build.environment]
-  STORYBLOK_TOKEN = "Enter your Storyblok API key"

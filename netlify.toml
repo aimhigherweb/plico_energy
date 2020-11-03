@@ -9,5 +9,5 @@
 [context.production.environment]
   STORYBLOK_TOKEN = "Enter your Storyblok API key here 1"
 
-[context.production]
-  environment = { STORYBLOK_TOKEN = "Enter your Storyblok API key here 2"}
+#[context.production]
+#  environment = { STORYBLOK_TOKEN = "Enter your Storyblok API key here 2"}

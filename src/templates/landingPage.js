@@ -45,6 +45,12 @@ export const pageQuery = graphql`
 						image {
 							filename
 						}
+						video {
+							video_url
+							video_overlay {
+								filename
+							}
+						}
 					}
 				}
 			}

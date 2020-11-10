@@ -1,13 +1,44 @@
+@use '../../../styles/variables.scss';
+
 .social {
+	ul {
+		display: flex;
+	}
+
 	a {
 		svg {
+			height: 2em;
+
 			.cls-1 {
-				fill: currentColor;
+				fill: variables.$primary;
 			}
 
 			.cls-2 {
 				fill: #ffffff;
 			}
 		}
+
+		span {
+			position: absolute;
+			right: -200vw;
+		}
+
+		&:hover, &:focus {
+			svg {
+				.cls-1 {
+					fill: #ffffff;
+				}
+
+				.cls-2 {
+					fill: variables.$primary;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.social {
+		margin-top: 10px;
 	}
 }

@@ -3,6 +3,8 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import A from '../../../parts/link';
 
+import './style.scss';
+
 const Menu = () => (
 	<StaticQuery
 		query={graphql`
@@ -20,7 +22,7 @@ const Menu = () => (
 			}
 		`}
 		render={({ menu }) => (
-			<nav>
+			<nav className="footer-nav">
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
 						<li key={JSON.stringify(link)}>

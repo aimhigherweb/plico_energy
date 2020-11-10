@@ -1,21 +1,31 @@
 @use '../../../styles/variables.scss';
+@use '../../../styles/extends.scss';
 
 footer {
+	padding-top: 50px;
+
 	.container {
+		display: flex;
 		position: relative;
+		padding: 20px;
+	}
+
+	section {
+		flex: 1 1 40%;
 	}
 
 	.logo {
+		display: none;
 		width: 200px;
 	}
 
 	.curve {
 		position: absolute;
 		z-index: -1;
-		top: 0;
+		bottom: 0;
 		width: auto;
-		height: 100%;
-		transform: translateX(-50%);
+		height: 150%;
+		transform: translateX(-49%);
 
 		path {
 			fill: variables.$secondary;
@@ -25,4 +35,136 @@ footer {
 			display: none;
 		}
 	}
+
+	a {
+		color: #ffffff;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			background: none;
+			color: variables.$primary;
+			text-decoration: underline;
+		}
+	}
+
+	address {
+		font-style: normal;
+
+		p {
+			margin: 0;
+			line-height: 1.5;
+		}
+	}
+
+	.contact {
+		@include extends.list_reset;
+		margin-left: 20px;
+
+		color: #ffffff;
+	}
+
+	.details {
+		display: flex;
+
+		a {
+			display: block;
+			padding: 10px;
+
+			span {
+				position: absolute;
+				right: -200vw;
+			}
+		}
+	}
 }
+
+@media(min-width: 40em) {
+	footer {
+		.container {
+			padding: 20px 40px;
+		}
+
+		.curve {
+			height: 180%;
+			transform: translateX(-50%);
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	footer {
+		.container {
+			align-items: flex-start;
+			padding: 20px 5vw;
+		}
+
+		.logo {
+			display: block;
+			align-self: center;
+			width: 20vw;
+			max-width: 200px;
+			height: auto;
+			margin: auto auto 30px 0;
+		}
+
+		section {
+			flex: 0 0 auto;
+		}
+
+		.contact {
+			margin-left: 50px;
+		}
+
+		.curve {
+			height: 150%;
+			transform: translateX(-15%);
+		}
+
+		.details {
+			display: block;
+
+			a {
+				padding: 5px 0;
+
+				span {
+					position: static;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	footer {
+		.curve {
+			height: 200%;
+			transform: translateX(-40%);
+		}
+
+		.contact {
+			margin-left: 100px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	footer {
+		.curve {
+			height: 190%;
+			transform: translateX(-40%);
+		}
+
+		.contact {
+			margin-left: 100px;
+		}
+	}
+}
+
+@media(min-width: 85em) {
+	footer {
+		.container {
+			padding: 20px calc(50vw - 600px);
+		}
+	}
+}
+

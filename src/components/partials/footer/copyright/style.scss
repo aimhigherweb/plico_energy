@@ -34,33 +34,3 @@
 	}
 }
 
-@media(min-width: 40em) {
-	.legal {
-		padding: 20px 40px;
-	}
-}
-
-@media(min-width: 50em) {
-	.legal {
-		padding: 20px 5vw;
-
-		.tagline {
-			font-size: 1.5em;
-		}
-	}
-}
-
-@media(min-width: 70em) {
-	.legal {
-		.tagline {
-			font-size: 2em;
-		}
-	}
-}
-
-@media(min-width: 85em) {
-	.legal {
-		padding: 20px calc(50vw - 600px);
-	}
-}
-

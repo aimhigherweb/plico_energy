@@ -30,3 +30,9 @@ html, body {
 }
 
 @import './custom/home.scss';
+
+main {
+	min-height: 30vh;
+	border: 2px solid purple;
+	background: rgba(pink, 0.4);
+}

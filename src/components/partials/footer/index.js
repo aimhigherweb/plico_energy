@@ -36,20 +36,29 @@ const Footer = () => (
 			<footer>
 				<div className="container">
 					<Curve className="curve" />
-					<Link to="/">
+					<Link to="/" className="logo">
 						<SVG className="logo" src={site.fields.content.logo.filename} />
 					</Link>
-					<h2>More Plico Info</h2>
-					<Menu />
-					<h2>Contact Us</h2>
-					<Address />
-					<p><a href={`tel:${site.fields.content.phone}`}>
-						<Phone />{site.fields.content.phone}
-					</a></p>
-					<p><a href={`mailto:${site.fields.content.email}`}>
-						<Mail />{site.fields.content.email}
-					</a></p>
-					<Social />
+					<section>
+						<h2>More Plico Info</h2>
+						<Menu />
+					</section>
+					<section className="contact">
+						<h2>Contact Us</h2>
+						<Address />
+						<ul className="details">
+							<li><a href={`tel:${site.fields.content.phone}`}>
+								<Phone />
+								<span>{site.fields.content.phone}</span>
+							</a></li>
+							<li><a href={`mailto:${site.fields.content.email}`}>
+								<Mail />
+								<span>{site.fields.content.email}</span>
+							</a></li>
+						</ul>
+
+						<Social />
+					</section>
 				</div>
 				<Copyright />
 			</footer>

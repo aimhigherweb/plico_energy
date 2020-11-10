@@ -32,7 +32,7 @@ const Social = () => (
 						<li key={JSON.stringify(link)}>
 							<A {...link}>
 								<SVG src={link.icon.filename} />
-								{link.label}
+								<span>{link.label}</span>
 							</A>
 						</li>
 					))}

@@ -7,11 +7,12 @@ import Layout from '../components/partials/layout';
 
 const LandingPage = ({ data }) => {
 	const {
-		name
+		name,
+		slug
 	} = data.storyblokEntry;
 
 	return (
-		<Layout>
+		<Layout {...{ classes: slug }}>
 			<h1>{name}</h1>
 		</Layout>
 	);
@@ -24,6 +25,7 @@ export const pageQuery = graphql`
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
 			field_og_image_string
+			slug
 		}
 	}
 `;

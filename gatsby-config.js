@@ -20,6 +20,16 @@ module.exports = {
 			},
 		},
 		{
+			resolve: `gatsby-plugin-google-fonts`,
+			options: {
+				fonts: [
+					`roboto slab:400,400i,700,700i`,
+					`barlow condensed:400,400i,600,600i,700,700i`
+				],
+				display: `swap`
+			}
+		},
+		{
 			resolve: `gatsby-source-storyblok`,
 			options: {
 				accessToken: process.env.STORYBLOK_TOKEN,
@@ -34,6 +44,7 @@ module.exports = {
 			options: {
 				appId: process.env.GATSBY_ALGOLIA_APP_ID,
 				apiKey: process.env.ALGOLIA_ADMIN_KEY,
+				// eslint-disable-next-line global-require
 				queries: require(`./src/utils/algoliaIndex`)
 			},
 		}

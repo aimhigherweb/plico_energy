@@ -4,6 +4,8 @@ import SVG from 'react-inlinesvg';
 
 import A from '../link';
 
+import './style.scss';
+
 const Social = () => (
 	<StaticQuery
 		query={graphql`
@@ -24,7 +26,7 @@ const Social = () => (
 			}
 		`}
 		render={({ menu }) => (
-			<nav>
+			<nav className="social">
 				<ul>
 					{menu.fields.content.menu_items.map((link) => (
 						<li key={JSON.stringify(link)}>

@@ -8,7 +8,7 @@ import Favicon from '../../../img/favicon.png';
 
 import '../../../styles/_global.scss';
 
-const Layout = ({ children, meta }) => (
+const Layout = ({ children, meta, classes }) => (
 		<StaticQuery
 			query={graphql`
 					query {
@@ -22,6 +22,11 @@ const Layout = ({ children, meta }) => (
 				`}
 			render={(data) => (
 				<Fragment>
+					<Helmet
+						bodyAttributes={{
+							class: classes
+						}}
+					/>
 					<Meta {...{ ...meta, ...data.site }} />
 					<Header />
 					<main>{children}</main>

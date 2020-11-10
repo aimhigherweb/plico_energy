@@ -1,7 +1,8 @@
 @use '../../../../styles/extends.scss';
 @use '../../../../styles/variables.scss';
 
-nav {
+.main {
+	position: relative;
 	font-family: variables.$font_heading;
 
 	svg {
@@ -12,7 +13,156 @@ nav {
 		}
 	}
 
+	.items {
+		display: none;
+		position: absolute;
+		right: 0;
+		width: 80vw;
+		max-width: 400px;
+	}
+
+	&[open] {
+		ul {
+			display: block;
+		}
+	}
+
 	.cta {
 		@include extends.button;
+		width: 100%;
+		margin: 0 auto;
+		border-radius: 0;
+	}
+
+	li {
+		background: #ffffff;
+
+		&:first-child {
+			border-radius: 10px 10px 0 0;
+		}
+
+		&:last-child {
+			border-radius: 0 0 10px 10px;
+
+			.cta {
+				border-radius: 0 0 10px 10px;
+			}
+		}
+	}
+
+	a {
+		display: block;
+		padding: 20px;
+		border-bottom: 1px solid rgba(variables.$secondary, 0.5);
+		color: currentColor;
+		font-size: 1.5em;
+		font-weight: 600;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.search {
+		display: none;
 	}
 }
+
+@media(min-width: 50em) {
+	.main {
+		flex-shrink: 0;
+		color: #ffffff;
+
+		.hamburger {
+			display: none;
+		}
+
+		.items {
+			display: flex;
+			position: static;
+			align-items: center;
+			width: auto;
+			max-width: unset;
+		}
+
+		a {
+			padding: 10px;
+			border-bottom: none;
+			font-size: 1em;
+
+			&:hover, &:focus {
+				text-decoration: underline;
+			}
+		}
+
+		.cta {
+			width: auto;
+			margin-left: 10px;
+			padding: 0.5em;
+			border-radius: 2em;
+		}
+
+		li {
+
+			flex: 0 0 auto;
+			border-radius: none;
+			background: transparent;
+
+			&:last-child {
+				.cta {
+					border-radius: 2em;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.main {
+		a {
+			padding: 10px 15px;
+			font-size: 1.1em;
+		}
+
+		.cta {
+			padding: 0.5em;
+			font-size: 1em;
+		}
+
+		.search {
+			display: block;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.main {
+		a {
+			font-size: 1.2em;
+		}
+
+		.cta {
+			padding: 1em;
+		}
+	}
+}
+
+@media(min-width: 75em) {
+	.main {
+		a {
+			font-size: 1.3em;
+		}
+
+		.cta {
+			padding: 10px 15px;
+			font-size: 1.2em;
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.main {
+		a {
+			font-size: 1.5em;
+		}
+	}
+}
+

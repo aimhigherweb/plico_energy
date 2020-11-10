@@ -4,6 +4,10 @@ import SVG from 'react-inlinesvg';
 
 import Menu from '../menus/main';
 
+import Curve from '../../../img/header.svg';
+
+import './style.scss';
+
 const Header = () => (
 	<StaticQuery
 		query={graphql`
@@ -24,7 +28,8 @@ const Header = () => (
 		`}
 		render={({ site }) => (
 			<header>
-				<Link to="/"><SVG src={site.fields.content.logo.filename} /></Link>
+				<Curve className="curve" />
+				<Link className="logo" to="/"><SVG src={site.fields.content.logo.filename} /></Link>
 				<Menu />
 			</header>
 		)}

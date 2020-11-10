@@ -23,10 +23,12 @@ const Search = () => {
 				<Icon />
 				<span>Toggle Search Form</span>
 			</button>
-			<InstantSearch searchClient={searchClient} indexName="pages">
-				<SearchBox />
-				<Results />
-			</InstantSearch>
+			<div className="search-modal">
+				<InstantSearch searchClient={searchClient} indexName="pages">
+					<SearchBox />
+					<Results />
+				</InstantSearch>
+			</div>
 		</div>
 	);
 };

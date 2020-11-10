@@ -2,22 +2,65 @@
 
 .legal {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
+	padding: 20px;
 	background: variables.$primary;
 	color: #ffffff;
 
 	nav {
 		ul {
 			display: flex;
+			flex-wrap: wrap;
 		}
 
 		a {
+			display: block;
+			padding: 5px 10px;
 			color: currentColor;
+			text-decoration: none;
+
+			&:hover, &:focus {
+				background: none;
+				text-decoration: underline;
+			}
 		}
 	}
 
 	.tagline {
+		margin-left: auto;
 		font-family: variables.$font_heading;
 		text-transform: uppercase;
 	}
 }
+
+@media(min-width: 40em) {
+	.legal {
+		padding: 20px 40px;
+	}
+}
+
+@media(min-width: 50em) {
+	.legal {
+		padding: 20px 5vw;
+
+		.tagline {
+			font-size: 1.5em;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.legal {
+		.tagline {
+			font-size: 2em;
+		}
+	}
+}
+
+@media(min-width: 85em) {
+	.legal {
+		padding: 20px calc(50vw - 600px);
+	}
+}
+

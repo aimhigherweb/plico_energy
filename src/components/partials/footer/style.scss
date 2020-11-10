@@ -1,9 +1,28 @@
 @use '../../../styles/variables.scss';
 
 footer {
-	background: variables.$secondary;
+	.container {
+		position: relative;
+	}
 
-	svg {
+	.logo {
 		width: 200px;
+	}
+
+	.curve {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		width: auto;
+		height: 100%;
+		transform: translateX(-50%);
+
+		path {
+			fill: variables.$secondary;
+		}
+
+		.home {
+			display: none;
+		}
 	}
 }

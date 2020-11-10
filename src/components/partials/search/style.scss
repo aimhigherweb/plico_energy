@@ -1,14 +1,47 @@
+@use '../../../styles/variables.scss';
+
+.search-modal {
+	display: none;
+	position: absolute;
+	top: 3em;
+	right: 0;
+	width: 300px;
+	padding: 15px;
+	border: 2px solid variables.$primary;
+	border-radius: 20px;
+	background: #ffffff;
+}
+
 .search {
 	position: relative;
 
+	button {
+		margin: 0;
+
+		svg {
+			height: 1.5em;
+			fill: currentColor;
+		}
+	}
+
 	form {
-		display: none;
-		position: absolute;
-		bottom: -100%;
+		width: 100%;
+
+		button {
+			position: absolute;
+			right: -200vw;
+		}
+	}
+
+	.results {
+		a {
+			color: currentColor;
+			text-align: left;
+		}
 	}
 
 	&[open] {
-		form {
+		.search-modal {
 			display: block;
 		}
 

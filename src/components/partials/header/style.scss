@@ -1,0 +1,97 @@
+@use '../../../styles/variables.scss';
+
+header {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+
+	.curve {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		width: auto;
+		height: 90%;
+		transform: translateX(-50%);
+
+		path {
+			fill: variables.$secondary;
+		}
+
+		.home {
+			display: none;
+		}
+	}
+
+	button {
+		--background: transparent;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 4em;
+		height: 4em;
+		padding: 0.5em;
+		border-radius: 10px;
+
+		span {
+			position: absolute;
+			right: -300vw;
+		}
+
+		&:hover, &:focus {
+			--background: #{variables.$primary};
+			--text: #ffffff;
+		}
+	}
+
+	.logo {
+		display: block;
+		height: 100px;
+	}
+}
+
+@media(min-width: 40em) {
+	header {
+		padding: 40px;
+	}
+}
+
+@media(min-width: 50em) {
+	header {
+		padding: 40px 5vw;
+
+		.logo {
+			flex-grow: 1;
+			flex-shrink: 1;
+			height: 50px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	header {
+		padding: 50px 5vw;
+
+		.logo {
+			height: 6vw;
+			max-height: 100px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	header {
+		.logo {
+			height: 10vw;
+		}
+	}
+}
+
+@media(min-width: 85em) {
+	header {
+		padding: 50px calc(50vw - 600px);
+	}
+}
+

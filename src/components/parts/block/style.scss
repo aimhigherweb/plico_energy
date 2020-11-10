@@ -1,0 +1,28 @@
+.block {
+	padding: 20px;
+}
+
+@media(min-width: 40em) {
+	.block {
+		padding: 40px;
+	}
+}
+
+@media(min-width: 50em) {
+	.block {
+		padding: 40px 5vw;
+	}
+}
+
+@media(min-width: 60em) {
+	.block {
+		padding: 50px 5vw;
+	}
+}
+
+@media(min-width: 85em) {
+	.block {
+		padding: 50px calc(50vw - 600px);
+	}
+}
+

@@ -7,7 +7,7 @@ import './style.scss';
 const Results = connectHits(({ hits }) => (
 		<ul className="results">
 			{hits.map((hit) => (
-				<Hit ley={hit.objectID} {...hit} />
+				<Hit key={hit.objectID} {...hit} />
 			))}
 		</ul>
 	)),

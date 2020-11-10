@@ -160,6 +160,14 @@ footer {
 	}
 }
 
+@media(min-width: 80em) {
+	footer {
+		.curve {
+			transform: translateX(-30%);
+		}
+	}
+}
+
 @media(min-width: 85em) {
 	footer {
 		.container {

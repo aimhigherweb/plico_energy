@@ -1,0 +1,77 @@
+@use '../../../styles/variables.scss';
+@use '../../../styles/extends.scss';
+
+.banner {
+	@include extends.list_reset;
+
+	blockquote {
+		margin: 0;
+	}
+
+	.main {
+		color: variables.$primary;
+		font-family: variables.$font_heading;
+		font-size: 1.5em;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+
+	.sub {
+		color: #ffffff;
+	}
+
+	.btn {
+		font-weight: 600;
+	}
+
+	.gatsby-image-wrapper {
+		max-width: 300px;
+		margin: 0 auto;
+	}
+}
+
+@media(min-width: 40em) {
+	.banner {
+		display: flex;
+		padding-top: 0;
+
+		.gatsby-image-wrapper {
+			flex-shrink: 0;
+			width: 40vw;
+			margin-left: 20px;
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.banner {
+		blockquote {
+			width: 40vw;
+			max-width: 300px;
+		}
+
+		.gatsby-image-wrapper {
+			width: 50vw;
+			max-width: 350px;
+			margin: 0 auto;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.banner {
+		justify-content: center;
+
+		.gatsby-image-wrapper {
+			margin: 0 0 0 50px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.banner {
+		.gatsby-image-wrapper {
+			max-width: 400px;
+		}
+	}
+}

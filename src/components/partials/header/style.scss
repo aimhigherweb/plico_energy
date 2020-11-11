@@ -52,9 +52,45 @@ header {
 	}
 }
 
+.home {
+	header {
+		.curve {
+			height: 105%;
+
+			.home {
+				display: block;
+			}
+
+			.default {
+				display: none;
+			}
+		}
+	}
+}
+
+@media(min-width: 30em) {
+	.home {
+		header {
+			.curve {
+				height: 100%;
+				transform: translateX(-45%);
+			}
+		}
+	}
+}
+
 @media(min-width: 40em) {
 	header {
 		padding: 40px;
+	}
+
+	.home {
+		header {
+			.curve {
+				height: 68%;
+				transform: translateX(-35%);
+			}
+		}
 	}
 }
 
@@ -68,6 +104,14 @@ header {
 			height: 50px;
 		}
 	}
+
+	.home {
+		header {
+			.curve {
+				height: 85%;
+			}
+		}
+	}
 }
 
 @media(min-width: 60em) {
@@ -79,12 +123,29 @@ header {
 			max-height: 100px;
 		}
 	}
+
+	.home {
+		header {
+			.curve {
+				height: 75%;
+			}
+		}
+	}
 }
 
 @media(min-width: 70em) {
 	header {
 		.logo {
 			height: 10vw;
+		}
+	}
+
+	.home {
+		header {
+			.curve {
+				height: 68%;
+				transform: translateX(-32%);
+			}
 		}
 	}
 }

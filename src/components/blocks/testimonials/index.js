@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-const Testimonials = () => (
-	
-)
+import Block from "../../parts/block";
+import Testimonials from '../../parts/testimonials';
 
-export default Testimonials;
+const TestimonialsBlock = ({
+	heading, content, testimonials
+}) => (
+	<Block>
+		<h2>{heading}</h2>
+		<div dangerouslySetInnerHTML={{ __html: content }} />
+		<Testimonials {...{ testimonials }} />
+	</Block>
+);
+
+export default TestimonialsBlock;

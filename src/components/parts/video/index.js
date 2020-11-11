@@ -24,9 +24,9 @@ const Video = ({
 			</button>
 			<iframe
 				src={`https://player.vimeo.com/video/${videoId}`}
-				frameborder="0"
+				frameBorder="0"
 				allow="autoplay; fullscreen"
-				allowfullscreen
+				allowFullScreen
 			>
 			</iframe>
 		</div>

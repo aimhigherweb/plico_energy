@@ -1,4 +1,13 @@
-const path = require(`path`);
+const path = require(`path`),
+	remark = require(`remark`),
+	remarkHtml = require(`remark-html`),
+	remarkLint = require(`remark-preset-lint-recommended`),
+	strip = require(`strip-markdown`);
+
+const processMarkdown = (markdown) => remark().use(remarkLint).use(remarkHtml).processSync(markdown)
+		.toString(),
+	createExcerpt = (markdown) => remark().use(strip).processSync(markdown).toString()
+		.substring(0, 250);
 
 exports.createPages = ({ actions, graphql }) => {
 	const { createPage } = actions;
@@ -71,10 +80,15 @@ exports.onCreateNode = async ({
 	const { createNodeField } = actions;
 
 	if ([`StoryblokEntry`].includes(node.internal.type)) {
+		const content = JSON.parse(node.content);
+
+		content.exerpt = createExcerpt(content.content);
+		content.content = processMarkdown(content.content);
+
 		createNodeField({
 			name: `content`,
 			node,
-			value: JSON.parse(node.content),
+			value: content,
 		});
 	}
 };

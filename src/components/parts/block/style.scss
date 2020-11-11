@@ -16,13 +16,13 @@
 
 @media(min-width: 60em) {
 	.block {
-		padding: 50px 5vw;
+		padding: 50px 10vw;
 	}
 }
 
 @media(min-width: 85em) {
 	.block {
-		padding: 50px calc(50vw - 600px);
+		padding: 50px calc(50vw - 500px);
 	}
 }
 

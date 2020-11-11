@@ -1,0 +1,66 @@
+.video-embed {
+	position: relative;
+	width: 90vw;
+	max-width: 800px;
+	height: 50vw;
+	max-height: 444px;
+	margin: 20px auto;
+
+	svg {
+		height: 50px;
+	}
+
+	button {
+		display: flex;
+		position: relative;
+		z-index: 5;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		border: none;
+		border-radius: 0;
+		background: none;
+		cursor: pointer;
+
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: 3;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		&.hidden {
+			visibility: hidden;
+			pointer-events: none;
+		}
+
+		svg {
+			position: absolute;
+			z-index: 5;
+			width: 50px;
+		}
+
+		.gatsby-image-wrapper {
+			flex-grow: 1;
+			width: 100%;
+		}
+	}
+
+	iframe {
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 3px;
+	}
+}

@@ -5,6 +5,7 @@ import Content from './content';
 import Video from './video';
 import LatestNews from './news';
 import Testimonials from './testimonials';
+import Form from './form';
 
 const Block = ({
 	component, data
@@ -20,6 +21,8 @@ const Block = ({
 			return <LatestNews {...data} />;
 		case `testimonials_block`:
 			return <Testimonials {...data} />;
+		case `request_a_call`:
+			return <Form {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

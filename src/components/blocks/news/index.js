@@ -5,6 +5,9 @@ import Img from 'gatsby-image';
 
 import Block from "../../parts/block";
 import News from '../../parts/news';
+import Curve from '../../../img/blob_clip.svg';
+
+import './style.scss';
 
 const LatestNews = ({
 	heading
@@ -26,7 +29,7 @@ const LatestNews = ({
 									feature_image {
 										filename
 									}
-									exerpt
+									excerpt
 								}
 							}
 						}
@@ -36,7 +39,8 @@ const LatestNews = ({
 
 		`}
 		render={({ news }) => (
-			<Block>
+			<Block className="news">
+				<Curve className="curve" />
 				<h2>{heading}</h2>
 				{news.edges.map(({ node }) => (
 					<News key={node.name} {...{ ...node, ...node.fields.content }} />

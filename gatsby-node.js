@@ -88,7 +88,7 @@ exports.onCreateNode = async ({
 		// 	});
 		// }
 
-		content.exerpt = createExcerpt(content.content);
+		content.excerpt = createExcerpt(content.content);
 		content.content = processMarkdown(content.content);
 
 		createNodeField({

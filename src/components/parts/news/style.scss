@@ -1,0 +1,87 @@
+@use '../../../styles/variables.scss';
+
+.article {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 300px;
+	margin: 0 auto 20px;
+
+	.content {
+		width: 100%;
+		margin-bottom: 10px;
+		padding: 15px;
+		border-radius: 20px 20px 0 0;
+		background: #ffffff;
+	}
+
+	h3, .excerpt {
+		color: inherit;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.5em;
+		text-transform: uppercase;
+	}
+
+	.gatsby-image-wrapper {
+		width: 100%;
+	}
+
+	&:nth-child(2n - 1) {
+		.content {
+			background: variables.$primary;
+			color: #ffffff;
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.article {
+		flex-wrap: nowrap;
+		max-width: 800px;
+		text-align: left;
+
+		.content {
+			width: 100%;
+			margin: 0 20px 0 0;
+			border-radius: 20px 0 0 20px;
+		}
+
+		.gatsby-image-wrapper {
+			width: 100%;
+		}
+
+		&:nth-child(2n - 1) {
+			.gatsby-image-wrapper {
+				order: -1;
+			}
+
+			.content {
+				margin: 0 0 0 20px;
+				border-radius: 0 20px 20px 0;
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.article {
+		.gatsby-image-wrapper {
+			width: 40vw;
+			max-width: 300px;
+		}
+
+		.content {
+			padding: 50px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.article {
+		.content {
+			padding: 50px 80px;
+		}
+	}
+}

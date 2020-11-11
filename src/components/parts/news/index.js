@@ -1,12 +1,16 @@
 import React from 'react';
-import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
+import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
+import './style.scss';
+
 const News = ({ name, excerpt, feature_image }) => (
-	<article>
-		<h3>{name}</h3>
-		<div dangerouslySetInnerHTML={{ __html: excerpt }} />
-		<Img fixed={getFixedGatsbyImage(feature_image.filename, { width: 300 })} />
+	<article className="article">
+		<div className="content">
+			<h3>{name}</h3>
+			<p>{excerpt}</p>
+		</div>
+		<Img fluid={getFluidGatsbyImage(feature_image.filename, { maxWidth: 300 })} />
 	</article>
 );
 

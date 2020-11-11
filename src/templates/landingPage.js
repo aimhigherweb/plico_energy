@@ -41,6 +41,9 @@ export const pageQuery = graphql`
 						cta_button {
 							cta_link
 							cta_text
+							cta_colour {
+								colour
+							}
 						}
 						image {
 							filename

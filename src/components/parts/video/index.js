@@ -7,9 +7,6 @@ import Play from '../../../img/play.svg';
 const Video = ({
 	video_url, video_overlay, index
 }) => {
-	console.log({
-		video_url, video_overlay, index
-	});
 	const videoId = video_url.match(/(?:http:|https:|)\/\/(?:player.|www.)?vimeo\.com\/(?:video\/|embed\/|watch\?\S*v=|v\/)?(\d*)/i)[1],
 		playVideo = (id, e) => {
 			e.currentTarget.parentNode.querySelector(`iframe.video-${id}`).setAttribute(`src`, `https://www.youtube.com/embed/${id}?&autoplay=1&rel=0`);

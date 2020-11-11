@@ -3,6 +3,7 @@
 
 .banner {
 	@include extends.list_reset;
+	margin-bottom: 40px;
 
 	blockquote {
 		margin: 0;
@@ -33,6 +34,7 @@
 @media(min-width: 40em) {
 	.banner {
 		display: flex;
+		margin-bottom: 100px;
 		padding-top: 0;
 
 		.gatsby-image-wrapper {

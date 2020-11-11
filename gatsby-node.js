@@ -82,6 +82,12 @@ exports.onCreateNode = async ({
 	if ([`StoryblokEntry`].includes(node.internal.type)) {
 		const content = JSON.parse(node.content);
 
+		// if (node.name == `Home`) {
+		// 	content.body.forEach((sec) => {
+		// 		console.log(sec.cta_button);
+		// 	});
+		// }
+
 		content.exerpt = createExcerpt(content.content);
 		content.content = processMarkdown(content.content);
 

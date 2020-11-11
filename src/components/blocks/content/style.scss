@@ -1,0 +1,55 @@
+@use '../../../styles/variables.scss';
+@use '../../../styles/extends.scss';
+
+.content_block {
+	@include extends.list_reset;
+
+	.image {
+		width: 90vw;
+		max-width: 400px;
+		margin: 0 auto;
+		color: variables.$secondary;
+	}
+}
+
+@media(min-width: 50em) {
+	.content_block {
+		display: flex;
+		align-items: center;
+
+		.image {
+			flex-shrink: 0;
+			order: -1;
+			width: 40vw;
+			margin: 0 30px 0 0;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.content_block {
+		.image {
+			width: 50vw;
+			max-width: 500px;
+			margin-right: 50px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.content_block {
+		justify-content: center;
+
+		.content {
+			max-width: 400px;
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.content_block {
+		.content {
+			max-width: 500px;
+		}
+	}
+}

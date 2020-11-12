@@ -1,0 +1,39 @@
+@import url('https://use.typekit.net/mzr7ygj.css');
+
+@font-face {
+	font-family:'Core Mellow';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/CoreMellow45Regular.woff2') format('woff2'),
+		url('../fonts/CoreMellow45Regular.woff') format('woff');
+	font-display: auto;
+}
+
+@font-face {
+	font-family:'Core Mellow';
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/CoreMellow45Regular-Italic.woff2') format('woff2'),
+		url('../fonts/CoreMellow45Regular-Italic.woff') format('woff');
+	font-display: auto;
+}
+
+
+@font-face {
+	font-family:'Core Mellow';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/CoreMellow65Bold.woff2') format('woff2'),
+		url('../fonts/CoreMellow65Bold.woff') format('woff');
+	font-display: auto;
+}
+
+
+@font-face {
+	font-family:'Core Mellow';
+	font-style: italic;
+	font-weight: 700;
+	src: url('../fonts/CoreMellow65Bold-Italic.woff2') format('woff2'),
+		url('../fonts/CoreMellow65Bold-Italic.woff') format('woff');
+	font-display: auto;
+}

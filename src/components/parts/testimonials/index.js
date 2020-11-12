@@ -3,6 +3,13 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
+import Sun from '../../../img/sun.svg';
+import QuoteOpen from '../../../img/quote_open.svg';
+import QuoteClose from '../../../img/quote_close.svg';
+import Curve from '../../../img/blob_video.svg';
+
+import './style.scss';
+
 const Testimonials = ({ testimonials }) => (
 	<StaticQuery
 		query={graphql`
@@ -34,11 +41,13 @@ const Testimonials = ({ testimonials }) => (
 		render={(data) => {
 			const quotes = data.testimonials.edges;
 			return (
-				<div style={{ '--testimonials': testimonials.length }}>
+				<div className="testimonials" style={{ '--testimonials': testimonials.length }}>
+					<Curve className="curve" />
 					{quotes.map((testimonial, index) => {
 						const {
 							name, quote, location, image
 						} = testimonial.node.fields.content;
+
 						return (
 							<Fragment key={testimonial.node.name}>
 								<input type="radio" id={`quote-${index}`} name="testimonials" defaultChecked={index === 0} />
@@ -46,10 +55,18 @@ const Testimonials = ({ testimonials }) => (
 									<span>{name} Testimonial</span>
 								</label>
 								<blockquote>
-									{/* <Img fixed={getFixedGatsbyImage(image.filename, { width: 200 })} /> */}
-									<div dangerouslySetInnerHTML={{ __html: quote }}/>
+									<figure>
+										<Sun className="sun" />
+										<Img fixed={getFixedGatsbyImage(image.filename, { width: 200 })} />
+									</figure>
+
+									<div className="quote">
+										<QuoteOpen className="before" />
+										{quote}
+										<QuoteClose className="after" />
+									</div>
 									<cite>
-										<p>{name}</p>
+										<p className="name">{name}</p>
 										<p>{location}</p>
 									</cite>
 								</blockquote>

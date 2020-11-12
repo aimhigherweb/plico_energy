@@ -28,7 +28,7 @@
 		width: 100%;
 	}
 
-	&:nth-child(2n - 1) {
+	&:nth-child(2n) {
 		.content {
 			background: variables.$primary;
 			color: #ffffff;
@@ -52,7 +52,7 @@
 			width: 100%;
 		}
 
-		&:nth-child(2n - 1) {
+		&:nth-child(2n) {
 			.gatsby-image-wrapper {
 				order: -1;
 			}

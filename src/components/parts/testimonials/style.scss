@@ -4,8 +4,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-top: 100px;
-	margin-bottom: 100px;
+	margin-top: 150px;
+	margin-bottom: 150px;
 	color: #ffffff;
 
 	blockquote {
@@ -55,6 +55,8 @@
 		&:checked {
 			+ label {
 				&:after {
+					// content: '';
+					// z-index: 10;
 					background: #ffffff;
 				}
 
@@ -88,6 +90,7 @@
 	cite {
 		display: block;
 		margin-top: 30px;
+		color: inherit;
 		font-size: 0.8em;
 		font-style: normal;
 
@@ -104,8 +107,9 @@
 
 	.curve {
 		position: absolute;
-		height: 90%;
-		transform: translateX(20%) translateY(-12%);
+		z-index: -1;
+		height: 800px;
+		transform: translateX(20%) translateY(-15%);
 		fill: variables.$primary;
 	}
 }
@@ -124,7 +128,7 @@
 	.testimonials {
 		align-content: center;
 		align-items: center;
-		margin-top: 150px;
+		margin-top: 180px;
 
 		figure {
 			float: left;
@@ -140,7 +144,7 @@
 		}
 
 		.curve {
-			height: 70%;
+			height: 600px;
 			transform: translateX(0%) translateY(-0%);
 			fill: variables.$primary;
 		}

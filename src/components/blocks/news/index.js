@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 
 import Block from "../../parts/block";
 import News from '../../parts/news';
-import Curve from '../../../img/blob_clip.svg';
+import Curve from '../../../img/blob_lightbulb.svg';
 
 import './style.scss';
 

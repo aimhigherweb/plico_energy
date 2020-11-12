@@ -64,7 +64,7 @@ input {
 			}
 		}
 
-		&[checked] {
+		&:checked {
 			+ label {
 				&:after {
 					content: '';

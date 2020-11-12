@@ -1,13 +1,15 @@
 import React from 'react';
 
+import './style.scss';
+
 const Form = () => (
-	<form>
+	<form className="request-call">
 		<fieldset>
 			<div>
 				<legend data-required>Name</legend>
-				<label htmlFor="first_name">First Name</label>
+				<label htmlFor="first_name" className="hidden">First Name</label>
 				<input type="text" name="first_name" id="first_name" placeholder="First Name" required />
-				<label htmlFor="last_name">Last Name</label>
+				<label htmlFor="last_name" className="hidden">Last Name</label>
 				<input type="text" id="last_name" name="last_name" placeholder="Last Name" required />
 			</div>
 		</fieldset>

@@ -45,8 +45,11 @@ export const pageQuery = graphql`
 								colour
 							}
 						}
-						image {
-							filename
+						feature {
+							graphic {
+								filename
+							}
+							component
 						}
 						video {
 							video_url

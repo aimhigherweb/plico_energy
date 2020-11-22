@@ -17,7 +17,7 @@ const Content = ({
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 			<CTA {...{ cta_button }} />
 		</div>
-		<ImageBlob {...{ ...image, width: 500 }} />
+		{/* <ImageBlob {...{ ...image, width: 500 }} /> */}
 	</Block>
 );
 

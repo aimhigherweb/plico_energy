@@ -25,9 +25,13 @@
 		font-weight: 600;
 	}
 
-	.gatsby-image-wrapper {
+	.feature {
 		max-width: 300px;
 		margin: 0 auto;
+
+		svg {
+			@include extends.glow;
+		}
 	}
 }
 
@@ -37,7 +41,7 @@
 		margin-bottom: 100px;
 		padding-top: 0;
 
-		.gatsby-image-wrapper {
+		.feature {
 			flex-shrink: 0;
 			width: 40vw;
 			margin-left: 20px;
@@ -52,7 +56,7 @@
 			max-width: 300px;
 		}
 
-		.gatsby-image-wrapper {
+		.feature {
 			width: 50vw;
 			max-width: 350px;
 			margin: 0 auto;
@@ -64,7 +68,7 @@
 	.banner {
 		justify-content: center;
 
-		.gatsby-image-wrapper {
+		.feature {
 			margin: 0 0 0 50px;
 		}
 	}
@@ -72,7 +76,7 @@
 
 @media(min-width: 70em) {
 	.banner {
-		.gatsby-image-wrapper {
+		.feature {
 			max-width: 400px;
 		}
 	}

@@ -1,14 +1,13 @@
 import React from 'react';
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
-import Img from 'gatsby-image';
 
 import Block from "../../parts/block";
 import CTA from '../../parts/cta';
+import FeatureImage from '../../parts/feature_image';
 
 import './style.scss';
 
 const Banner = ({
-	main_quote, sub_quote, cta_button, image
+	main_quote, sub_quote, cta_button, feature
 }) => (
 	<Block className="banner">
 		<blockquote>
@@ -16,7 +15,9 @@ const Banner = ({
 			<p className="sub">{sub_quote}</p>
 			<CTA {...{ cta_button }} />
 		</blockquote>
-		<Img fluid={getFluidGatsbyImage(image.filename, { maxWidth: 500 })} />
+		<div className="feature">
+			<FeatureImage {...feature[0]} />
+		</div>
 	</Block>
 );
 

@@ -23,6 +23,7 @@ h2 {
 a {
 	--link_text: #{variables.$primary};
 	--link_background: transparent;
+	transition: all 0.3s ease-in-out;
 
 	background: var(--link_background);
 	color: var(--link_text);

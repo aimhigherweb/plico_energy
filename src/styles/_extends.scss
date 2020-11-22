@@ -7,6 +7,7 @@
 
 	margin: 20px auto;
 	padding: 0.5em 1.5em;
+	transition: all 0.3s ease-in-out;
 
 	border: 2px solid var(--background);
 	border-radius: 2em;
@@ -18,6 +19,7 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
+
 
 	&:hover, &:focus {
 		--background: #ffffff;
@@ -32,5 +34,24 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+	}
+}
+
+$glow_yellow: #ffcc00;
+$glow_orange: #ff7e00;
+$glow_outline: rgba(#ffffff, .4);
+$glow_shadow: rgba($glow_yellow, .5);
+
+@mixin glow {
+	path, line, ellipse, rect {
+		transition: filter 2s ease-in-out 3s;
+		filter:
+			drop-shadow(-1px -1px 0 $glow_outline)
+			drop-shadow(1px -1px 0 $glow_outline)
+			drop-shadow(-1px 1px 0 $glow_outline)
+			drop-shadow(1px 1px 0 $glow_outline)
+			drop-shadow(0 0 3px $glow_orange)
+			drop-shadow(0 0 12px $glow_yellow)
+			drop-shadow(0 0 2px $glow_orange);
 	}
 }

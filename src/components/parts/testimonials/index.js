@@ -3,7 +3,9 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
-import Sun from '../../../img/sun.svg';
+import Animated from '../animated_svg';
+
+import Sun from '../../../img/animations/sun.svg';
 import QuoteOpen from '../../../img/quote_open.svg';
 import QuoteClose from '../../../img/quote_close.svg';
 import Curve from '../../../img/blob_video.svg';
@@ -56,7 +58,10 @@ const Testimonials = ({ testimonials }) => (
 								</label>
 								<blockquote>
 									<figure>
-										<Sun className="sun" />
+
+										<Animated className="sun">
+											<Sun />
+										</Animated>
 										<Img fixed={getFixedGatsbyImage(image.filename, { width: 200 })} />
 									</figure>
 

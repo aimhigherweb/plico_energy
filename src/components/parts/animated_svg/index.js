@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import LazyLinePainter from 'lazy-line-painter';
 import { Waypoint } from 'react-waypoint';
 import uniqueId from '../../../utils/uniqueId';
 
@@ -9,6 +8,7 @@ const Animated = ({ children, className }) => {
 	const id = `animated${uniqueId()}`,
 		runAnimation = () => {
 			if (typeof window !== `undefined`) {
+				const LazyLinePainter = require(`lazy-line-painter`);
 				const el = document.querySelector(`#${id}`);
 
 				if (!el.classList.contains(`visible`) && window.matchMedia(`(prefers-reduced-motion: no-preference)`).matches) {

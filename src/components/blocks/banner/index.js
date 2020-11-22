@@ -16,7 +16,7 @@ const Banner = ({
 			<CTA {...{ cta_button }} />
 		</blockquote>
 		<div className="feature">
-			<FeatureImage {...media[0]} />
+			{media && <FeatureImage {...media[0]} />}
 		</div>
 	</Block>
 );

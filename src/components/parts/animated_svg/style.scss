@@ -1,0 +1,23 @@
+@use '../../../styles/variables.scss';
+
+svg.animated {
+	overflow: visible;
+	fill: none;
+
+	path, ellipse {
+		stroke-width: 10px;
+		stroke-linecap: round;
+		stroke: variables.$primary;
+		stroke-opacity: 0;
+
+		@media(prefers-reduced-motion: reduce) {
+			stroke-opacity: 1;
+		}
+	}
+
+	&.plug_footer {
+		path, ellipse {
+			stroke-linecap: butt;
+		}
+	}
+}

@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 1553 1379" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-222.05,-308.03)">
-        <path d="M1044.31,1657.83C783.49,1590.66 601.27,1470.4 565.05,1376.39C390.07,922.29 511.07,587.18 915.13,493.55" style="fill-rule:nonzero;"/>
-        <ellipse cx="1029.67" cy="997.49" rx="578.96" ry="556.25"/>
-        <path d="M980.77,418.78L973.02,308.03" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M1187.36,1578.32L1218.79,1686.56" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M550.5,590.03L342.09,392.74" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M1774.42,1246.78L1645.8,1183.17" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M1471.23,1431.43L1598.35,1551.77" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M385.02,1015.84L222.05,1034.2" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M495.91,1283.33L264.89,1379.92" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M1612.65,687.44L1746.53,631.47" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M716.27,1564.82L664.93,1646.71" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M1374.25,474.2L1444.64,333.23" style="fill:none;fill-rule:nonzero;"/>
-        <path d="M913.78,1567.57C1739.62,1692.71 1762.46,814.35 1471.16,647.7C1179.86,481.05 897.77,337.29 616.03,641.83C334.29,946.37 454.1,1058.82 454.1,1058.82" style="fill-rule:nonzero;"/>
-    </g>
+	<g transform="matrix(1,0,0,1,-222.05,-308.03)">
+		<path d="M1044.31,1657.83C783.49,1590.66 601.27,1470.4 565.05,1376.39C390.07,922.29 511.07,587.18 915.13,493.55" style="fill-rule:nonzero;" />
+		<ellipse cx="1029.67" cy="997.49" rx="578.96" ry="556.25" />
+		<path d="M980.77,418.78L973.02,308.03" style="fill:none;fill-rule:nonzero;" />
+		<path d="M1187.36,1578.32L1218.79,1686.56" style="fill:none;fill-rule:nonzero;" />
+		<path d="M550.5,590.03L342.09,392.74" style="fill:none;fill-rule:nonzero;" />
+		<path d="M1774.42,1246.78L1645.8,1183.17" style="fill:none;fill-rule:nonzero;" />
+		<path d="M1471.23,1431.43L1598.35,1551.77" style="fill:none;fill-rule:nonzero;" />
+		<path d="M385.02,1015.84L222.05,1034.2" style="fill:none;fill-rule:nonzero;" />
+		<path d="M495.91,1283.33L264.89,1379.92" style="fill:none;fill-rule:nonzero;" />
+		<path d="M1612.65,687.44L1746.53,631.47" style="fill:none;fill-rule:nonzero;" />
+		<path d="M716.27,1564.82L664.93,1646.71" style="fill:none;fill-rule:nonzero;" />
+		<path d="M1374.25,474.2L1444.64,333.23" style="fill:none;fill-rule:nonzero;" />
+		<path d="M913.78,1567.57C1739.62,1692.71 1762.46,814.35 1471.16,647.7C1179.86,481.05 897.77,337.29 616.03,641.83C334.29,946.37 454.1,1058.82 454.1,1058.82" style="fill-rule:nonzero;" />
+	</g>
 </svg>

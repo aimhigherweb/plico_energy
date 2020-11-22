@@ -45,19 +45,18 @@ export const pageQuery = graphql`
 								colour
 							}
 						}
-						feature {
-							graphic {
-								filename
-							}
+						media {
 							component
-						}
-						video {
-							video_url
-							video_overlay {
+							image {
 								filename
 							}
+							video_url
 						}
 						testimonials
+						illustration {
+							component
+						}
+						background
 					}
 				}
 			}

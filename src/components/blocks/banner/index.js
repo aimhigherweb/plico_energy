@@ -7,7 +7,7 @@ import FeatureImage from '../../parts/feature_image';
 import './style.scss';
 
 const Banner = ({
-	main_quote, sub_quote, cta_button, feature
+	main_quote, sub_quote, cta_button, media
 }) => (
 	<Block className="banner">
 		<blockquote>
@@ -16,7 +16,7 @@ const Banner = ({
 			<CTA {...{ cta_button }} />
 		</blockquote>
 		<div className="feature">
-			<FeatureImage {...feature[0]} />
+			<FeatureImage {...media[0]} />
 		</div>
 	</Block>
 );

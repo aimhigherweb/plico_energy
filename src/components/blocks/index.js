@@ -2,7 +2,6 @@ import React from 'react';
 
 import Banner from './banner';
 import Content from './content';
-import Video from './video';
 import LatestNews from './news';
 import Testimonials from './testimonials';
 import Form from './form';
@@ -15,8 +14,6 @@ const Block = ({
 			return <Banner {...data} />;
 		case `content_block`:
 			return <Content {...data} />;
-		case `video_block`:
-			return <Video {...data} />;
 		case `latest_news`:
 			return <LatestNews {...data} />;
 		case `testimonials_block`:

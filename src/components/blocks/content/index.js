@@ -12,7 +12,7 @@ import './style.scss';
 const Content = ({
 	heading, content, cta_button, media, illustration, background
 }) => {
-	const classes = `content_block ${media[0].component} ${illustration.length && illustration[0].component} ${background && `background`}`;
+	const classes = `content_block ${media && media[0].component} ${illustration.length && illustration[0].component} ${background && `background`}`;
 	return (
 		<Block className={classes}>
 			<div className="content">

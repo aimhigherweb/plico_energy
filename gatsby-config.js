@@ -39,14 +39,14 @@ module.exports = {
 				contentObject: true
 			}
 		},
-		{
-			resolve: `gatsby-plugin-algolia`,
-			options: {
-				appId: process.env.GATSBY_ALGOLIA_APP_ID,
-				apiKey: process.env.ALGOLIA_ADMIN_KEY,
-				// eslint-disable-next-line global-require
-				queries: require(`./src/utils/algoliaIndex`)
-			},
-		}
+		// {
+		// 	resolve: `gatsby-plugin-algolia`,
+		// 	options: {
+		// 		appId: process.env.GATSBY_ALGOLIA_APP_ID,
+		// 		apiKey: process.env.ALGOLIA_ADMIN_KEY,
+		// 		// eslint-disable-next-line global-require
+		// 		queries: require(`./src/utils/algoliaIndex`)
+		// 	},
+		// }
 	]
 };

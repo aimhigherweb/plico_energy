@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Banner from './banner';
 import Content from './content';
 import LatestNews from './news';
 import Testimonials from './testimonials';
@@ -10,8 +9,6 @@ const Block = ({
 	component, data
 }) => {
 	switch (component) {
-		case `banner`:
-			return <Banner {...data} />;
 		case `content_block`:
 			return <Content {...data} />;
 		case `latest_news`:

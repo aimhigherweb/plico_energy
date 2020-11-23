@@ -16,6 +16,7 @@
 	.items {
 		display: none;
 		position: absolute;
+		z-index: 100;
 		right: 0;
 		width: 80vw;
 		max-width: 400px;
@@ -84,9 +85,9 @@
 		}
 
 		a {
-			padding: 10px;
+			padding: 10px 5px;
 			border-bottom: none;
-			font-size: 1em;
+			font-size: 0.9em;
 
 			&:hover, &:focus {
 				text-decoration: underline;
@@ -118,13 +119,11 @@
 @media(min-width: 60em) {
 	.main {
 		a {
-			padding: 10px 15px;
-			font-size: 1.1em;
+			font-size: 1em;
 		}
 
 		.cta {
 			padding: 0.5em;
-			font-size: 1em;
 		}
 
 		.search {
@@ -140,28 +139,15 @@
 		}
 
 		.cta {
-			padding: 1em;
-		}
-	}
-}
-
-@media(min-width: 75em) {
-	.main {
-		a {
-			font-size: 1.3em;
-		}
-
-		.cta {
-			padding: 10px 15px;
-			font-size: 1.2em;
+			font-size: 0.9em;
 		}
 	}
 }
 
 @media(min-width: 80em) {
 	.main {
-		a {
-			font-size: 1.5em;
+		.cta {
+			padding: 10px 15px;
 		}
 	}
 }

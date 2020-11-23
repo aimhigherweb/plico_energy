@@ -16,11 +16,12 @@ header {
 		transform: translateX(-50%);
 
 		path {
+			display: none;
 			fill: variables.$secondary;
 		}
 
-		.home {
-			display: none;
+		.default {
+			display: block;
 		}
 	}
 
@@ -52,28 +53,74 @@ header {
 	}
 }
 
-.home {
-	header {
-		.curve {
-			height: 105%;
+body[class*='header_'] {
+	&.header_graphic {
+		header {
+			.curve {
+				height: 105%;
 
-			.home {
-				display: block;
+				.graphic {
+					display: block;
+				}
+
+				.default {
+					display: none;
+				}
 			}
+		}
+	}
 
-			.default {
-				display: none;
+	&.header_video {
+		header {
+			.curve {
+				.video {
+					display: block;
+				}
+
+				.default {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&.header_image {
+		header {
+			.curve {
+				.image {
+					display: block;
+				}
+
+				.default {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&.header_image_blob {
+		header {
+			.curve {
+				.image_blob {
+					display: block;
+				}
+
+				.default {
+					display: none;
+				}
 			}
 		}
 	}
 }
 
 @media(min-width: 30em) {
-	.home {
-		header {
-			.curve {
-				height: 100%;
-				transform: translateX(-45%);
+	body[class*='header_'] {
+		&.header_graphic {
+			header {
+				.curve {
+					height: 100%;
+					transform: translateX(-45%);
+				}
 			}
 		}
 	}
@@ -84,11 +131,13 @@ header {
 		padding: 40px;
 	}
 
-	.home {
-		header {
-			.curve {
-				height: 68%;
-				transform: translateX(-35%);
+	body[class*='header_'] {
+		&.header_graphic {
+			header {
+				.curve {
+					height: 68%;
+					transform: translateX(-35%);
+				}
 			}
 		}
 	}
@@ -99,16 +148,17 @@ header {
 		padding: 40px 5vw;
 
 		.logo {
-			flex-grow: 1;
-			flex-shrink: 1;
-			height: 50px;
+			flex: 0 1 100px;
+			height: 100%;
 		}
 	}
 
-	.home {
-		header {
-			.curve {
-				height: 85%;
+	body[class*='header_'] {
+		&.header_graphic {
+			header {
+				.curve {
+					height: 85%;
+				}
 			}
 		}
 	}
@@ -119,15 +169,19 @@ header {
 		padding: 50px 5vw;
 
 		.logo {
-			height: 6vw;
-			max-height: 100px;
+			flex-basis: 150px;
+			min-width: 100px;
+			max-width: 180px;
+			margin-right: 15px;
 		}
 	}
 
-	.home {
-		header {
-			.curve {
-				height: 75%;
+	body[class*='header_'] {
+		&.header_graphic {
+			header {
+				.curve {
+					height: 75%;
+				}
 			}
 		}
 	}
@@ -136,16 +190,26 @@ header {
 @media(min-width: 70em) {
 	header {
 		.logo {
-			height: 10vw;
+			// height: 10vw;
 		}
 	}
 
-	.home {
-		header {
-			.curve {
-				height: 68%;
-				transform: translateX(-32%);
+	body[class*='header_'] {
+		&.header_graphic {
+			header {
+				.curve {
+					height: 68%;
+					transform: translateX(-32%);
+				}
 			}
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	header {
+		.logo {
+			width: 180px;
 		}
 	}
 }

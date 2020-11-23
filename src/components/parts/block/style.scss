@@ -1,28 +1,31 @@
 .block {
-	padding: 20px;
+	margin: 20px 0;
+	padding: 0 20px;
 }
 
 @media(min-width: 40em) {
 	.block {
-		padding: 40px;
+		margin: 40px 0;
+		padding: 0 40px;
 	}
 }
 
 @media(min-width: 50em) {
 	.block {
-		padding: 40px 5vw;
+		padding: 0 5vw;
 	}
 }
 
 @media(min-width: 60em) {
 	.block {
-		padding: 50px 10vw;
+		margin: 50px 0;
+		padding: 0 10vw;
 	}
 }
 
 @media(min-width: 85em) {
 	.block {
-		padding: 50px calc(50vw - 500px);
+		padding: 0 calc(50vw - 500px);
 	}
 }
 

@@ -4,6 +4,7 @@ import Img from 'gatsby-image';
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 
 import Block from '../components/blocks';
+import Banner from '../components/blocks/banner';
 
 import Layout from '../components/partials/layout';
 
@@ -13,11 +14,18 @@ const LandingPage = ({ data }) => {
 			slug,
 			fields
 		} = data.storyblokEntry,
-		blocks = fields.content.body;
+		{ body, banner } = fields.content,
+		headerType = banner[0].media[0].component;
 
 	return (
-		<Layout {...{ classes: slug }}>
-			{blocks.map((block) => <Block key={JSON.stringify(block)} {...{ component: block.component, data: block }} />)}
+		<Layout {...{ classes: `${slug} header_${headerType}` }}>
+			<Banner {...banner[0]} />
+			{body.map((block) => (
+				<Block
+					key={JSON.stringify(block)}
+					{...{ component: block.component, data: block }}
+				/>
+			))}
 		</Layout>
 	);
 };
@@ -32,10 +40,25 @@ export const pageQuery = graphql`
 			slug
 			fields {
 				content {
-					body {
-						component
+					banner {
 						main_quote
 						sub_quote
+						media {
+							component
+							image {
+								filename
+							}
+						}
+						cta_button {
+							cta_link
+							cta_text
+							cta_colour {
+								colour
+							}
+						}
+					}
+					body {
+						component
 						heading
 						content
 						cta_button {

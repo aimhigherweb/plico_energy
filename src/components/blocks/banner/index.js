@@ -13,7 +13,7 @@ const Banner = ({
 		<blockquote>
 			<p className="main">{main_quote}</p>
 			<p className="sub">{sub_quote}</p>
-			<CTA {...{ cta_button }} />
+			{cta_button && <CTA {...{ cta_button }} />}
 		</blockquote>
 		<div className="feature">
 			{media && <FeatureImage {...media[0]} />}

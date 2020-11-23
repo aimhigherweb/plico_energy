@@ -1,24 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Waypoint } from 'react-waypoint';
 import uniqueId from '../../../utils/uniqueId';
 
 import './style.scss';
 
 const Animated = ({ children, className }) => {
-	const id = `animated${uniqueId()}`,
+	const ref = useRef(null),
 		runAnimation = () => {
 			console.log(`running animation`);
 			if (typeof window !== `undefined`) {
-				console.log(`window defined and running`);
 				const LazyLinePainter = require(`lazy-line-painter`);
-				console.log(`import package`);
-				const el = document.querySelector(`#${id}`);
+				const el = ref.current;
 				console.log(`found element`);
-				console.log(id);
+				console.log(ref);
 				console.log(el);
-
-				console.log(e.classList);
-				console.log(window.matchMedia(`(prefers-reduced-motion: no-preference)`));
 
 				if (!el.classList.contains(`visible`) && window.matchMedia(`(prefers-reduced-motion: no-preference)`).matches) {
 					console.log(`animation is good to go`);
@@ -36,7 +31,7 @@ const Animated = ({ children, className }) => {
 		};
 
 	return (
-		<div id={id} className={className}>
+		<div ref={ref} className={className}>
 			{children}
 			<Waypoint
 				onEnter={runAnimation}

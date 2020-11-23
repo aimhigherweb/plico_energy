@@ -1,47 +1,74 @@
 import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+
+import Field from '../form_field';
 
 import './style.scss';
 
-const Form = () => (
-	<form className="request-call">
-		<fieldset>
-			<div>
-				<legend data-required>Name</legend>
-				<label htmlFor="first_name" className="hidden">First Name</label>
-				<input type="text" name="first_name" id="first_name" placeholder="First Name" required />
-				<label htmlFor="last_name" className="hidden">Last Name</label>
-				<input type="text" id="last_name" name="last_name" placeholder="Last Name" required />
-			</div>
-		</fieldset>
-		<label data-required>Email</label>
-		<input placeholder="hello@domain.com" />
-		<fieldset>
-			<div>
-				<label>Phone</label>
-				<input type="text" />
-				<label>Suburb or Postcode</label>
-				<input type="text" />
-			</div>
-		</fieldset>
-		<fieldset>
-			<div>
-				<label>I'd like to know more about</label>
-				<select>
-					<option disabled>Please Select</option>
-					<option>Batteries</option>
-				</select>
-				<label>Do you have existing solar?</label>
-				<select>
-					<option disabled>Please Select</option>
-					<option>Yes</option>
-					<option>No</option>
-				</select>
-			</div>
-		</fieldset>
-		<label>Message</label>
-		<textarea></textarea>
-		<button type="submit">Submit</button>
-	</form>
+const Form = ({ form }) => (
+	<StaticQuery
+		query={graphql`
+			{
+				forms: allStoryblokEntry(
+					filter: {
+						field_component: {eq: "form"}
+					}
+				) {
+					edges {
+						node {
+							name
+							slug
+							uuid
+							fields {
+								content {
+									submit
+									fields {
+										component
+										fields {
+											component
+											label
+											type
+											_uid
+										}
+										label
+										type
+										_uid
+										options {
+											component
+											label
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+		`}
+		render={({ forms }) => {
+			const selectedForm = forms.edges.find(({ node }) => node.uuid === form),
+				formData = selectedForm.node;
+			return (
+				<form
+					className="custom"
+					name={formData.slug}
+					method="post"
+					action="/thanks/"
+					data-netlify="true"
+					data-netlify-honeypot="bot-field"
+				>
+					{formData.fields.content.fields.map((field) => (
+						<Field
+							key={field._uid}
+							{...{ component: field.component, data: field }}
+						/>
+					))}
+					<button type="submit">{formData.fields.content.submit}</button>
+				</form>
+			);
+		}}
+	/>
 );
 
 export default Form;

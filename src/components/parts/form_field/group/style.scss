@@ -1,0 +1,25 @@
+form.custom {
+	fieldset {
+		div {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+
+			label, legend {
+				order: -1;
+			}
+
+			label, input, select {
+				width: calc(50% - 2px);
+			}
+
+			input, select {
+				border-radius: 2em 0 0 2em;
+
+				&:nth-of-type(2n) {
+					border-radius: 0 2em 2em 0;
+				}
+			}
+		}
+	}
+}

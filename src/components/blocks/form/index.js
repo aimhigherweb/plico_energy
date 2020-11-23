@@ -6,12 +6,12 @@ import Form from '../../parts/form';
 import './style.scss';
 
 const FormBlock = ({
-	heading, content
+	heading, content, illustration, form
 }) => (
 	<Block className="form_block">
 		<h2>{heading}</h2>
 		<div dangerouslySetInnerHTML={{ __html: content }} />
-		<Form />
+		<Form {...{ form }} />
 	</Block>
 );
 

@@ -15,7 +15,7 @@ const Block = ({
 			return <LatestNews {...data} />;
 		case `testimonials_block`:
 			return <Testimonials {...data} />;
-		case `request_a_call`:
+		case `form_block`:
 			return <Form {...data} />;
 		default:
 			return <h2>{component}</h2>;

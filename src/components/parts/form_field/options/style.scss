@@ -1,0 +1,11 @@
+form.custom {
+	.options {
+		flex-wrap: wrap;
+		justify-content: flex-start;
+
+		label {
+			width: auto;
+			margin-right: 20px;
+		}
+	}
+}

@@ -44,7 +44,7 @@ $glow_shadow: rgba($glow_yellow, .5);
 
 @mixin glow {
 	path, line, ellipse, rect {
-		transition: filter 2s ease-in-out 3s;
+		transition: filter 5s ease-in-out 5s;
 		filter:
 			drop-shadow(-1px -1px 0 $glow_outline)
 			drop-shadow(1px -1px 0 $glow_outline)

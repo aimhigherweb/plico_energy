@@ -58,7 +58,6 @@ const Testimonials = ({ testimonials }) => (
 								</label>
 								<blockquote>
 									<figure>
-
 										<Animated className="sun">
 											<Sun />
 										</Animated>

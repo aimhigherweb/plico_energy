@@ -48,6 +48,7 @@ export const pageQuery = graphql`
 							image {
 								filename
 							}
+							video_url
 						}
 						cta_button {
 							cta_link

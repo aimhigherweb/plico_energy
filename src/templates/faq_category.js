@@ -5,7 +5,7 @@ import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 
 import Layout from '../components/partials/layout';
 
-const Post = ({ data }) => {
+const FAQCategory = ({ data }) => {
 	const {
 		name
 	} = data.storyblokEntry;
@@ -17,10 +17,10 @@ const Post = ({ data }) => {
 	);
 };
 
-export default Post;
+export default FAQCategory;
 
 export const pageQuery = graphql`
-	query postBySlug($slug: String!) {
+	query faqCategoryBySlug($slug: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
 		}

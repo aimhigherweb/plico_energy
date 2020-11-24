@@ -23,7 +23,34 @@ exports.createPages = ({ actions, graphql }) => {
 						}
 					}
 				}
-				posts: allStoryblokEntry(filter: {field_component: {eq: "news"}}) {
+				news: allStoryblokEntry(filter: {field_component: {eq: "news"}}) {
+					edges {
+						node {
+							name
+							slug
+							full_slug
+						}
+					}
+				}
+				faqs: allStoryblokEntry(filter: {field_component: {eq: "faq"}}) {
+					edges {
+						node {
+							name
+							slug
+							full_slug
+						}
+					}
+				}
+				faq_categories: allStoryblokEntry(filter: {field_component: {eq: "categories"}}) {
+					edges {
+						node {
+							name
+							slug
+							full_slug
+						}
+					}
+				}
+				pages: allStoryblokEntry(filter: {field_component: {eq: "page"}}) {
 					edges {
 						node {
 							name
@@ -60,11 +87,47 @@ exports.createPages = ({ actions, graphql }) => {
 				});
 			});
 
-			data.posts.edges.forEach((page) => {
+			data.news.edges.forEach((page) => {
 				const { slug } = page.node;
 				createPage({
 					path: `/news/${slug}`,
 					component: path.resolve(`src/templates/post.js`),
+					context: {
+						id: page.node.id,
+						slug: page.node.full_slug
+					}
+				});
+			});
+
+			data.faqs.edges.forEach((page) => {
+				const { slug } = page.node;
+				createPage({
+					path: `/faqs/${slug}`,
+					component: path.resolve(`src/templates/faq.js`),
+					context: {
+						id: page.node.id,
+						slug: page.node.full_slug
+					}
+				});
+			});
+
+			data.faq_categories.edges.forEach((page) => {
+				const { slug } = page.node;
+				createPage({
+					path: `/faqs/${slug}`,
+					component: path.resolve(`src/templates/faq_category.js`),
+					context: {
+						id: page.node.id,
+						slug: page.node.full_slug
+					}
+				});
+			});
+
+			data.pages.edges.forEach((page) => {
+				const { slug } = page.node;
+				createPage({
+					path: `/${slug}`,
+					component: path.resolve(`src/templates/page.js`),
 					context: {
 						id: page.node.id,
 						slug: page.node.full_slug

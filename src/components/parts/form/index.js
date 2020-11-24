@@ -53,7 +53,6 @@ const Form = ({ form }) => (
 				<form
 					className="custom"
 					name={formData.slug}
-					method="post"
 					action="/thanks/"
 					data-netlify="true"
 					data-netlify-honeypot="bot-field"

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import Text from './text';
 import Options from './options';
 import Custom from './custom';
+// eslint-disable-next-line import/no-cycle
 import Group from './group';
 
 import './style.scss';
@@ -10,19 +11,31 @@ import './style.scss';
 const Field = ({
 	component, data
 }) => {
+	let Component,
+		conditional = false;
+
 	switch (component) {
 		case `text`:
-			return <Text {...data} />;
+			Component = Text;
+			break;
 		case `custom`:
-			return `Custom`;
+			Component = Custom;
+			break;
 		case `field_group`:
-			return <Group {...data} />;
+			Component = Group;
+			break;
 		case `options`:
-			return <Options {...data} />;
+			Component = Options;
+			break;
 		default:
-			console.log(component, data);
-			return <h2>{component}</h2>;
+			Component = <h2>{component}</h2>;
+			break;
 	}
+
+	if (data.conditional && data.conditional.field !== ``) {
+		conditional = true;
+	}
+	return <Component {...{ ...data, conditional }} />;
 };
 
 export default Field;

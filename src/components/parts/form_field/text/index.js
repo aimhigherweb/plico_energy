@@ -18,7 +18,7 @@ const Text = ({
 const TextArea = ({
 	_uid, placeholder
 }) => (
-	<textarea id={_uid}>{placeholder}</textarea>
+	<textarea id={_uid}></textarea>
 );
 
 const TextInput = ({
@@ -37,7 +37,7 @@ const TextInput = ({
 
 	return (
 		<Fragment>
-			<label htmlFor={_uid} className={hidden_label && `hidden`}>{label}</label>
+			<label htmlFor={_uid} className={hidden_label && `invisible`}>{label}</label>
 			<Field {...{
 				type, _uid, name: generateSlug(label), placeholder
 			}} />

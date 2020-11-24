@@ -3,7 +3,9 @@
 
 .banner {
 	@include extends.list_reset;
-	margin-bottom: 40px;
+	margin-top: 40px;
+	margin-bottom: 100px;
+	background: rgba(pink, 0.5);
 
 	blockquote {
 		margin: 0;
@@ -38,8 +40,8 @@
 @media(min-width: 40em) {
 	.banner {
 		display: flex;
-		margin-bottom: 100px;
-		padding-top: 0;
+		margin-top: 0;
+		margin-bottom: 250px;
 
 		.feature {
 			flex-shrink: 0;
@@ -76,6 +78,8 @@
 
 @media(min-width: 70em) {
 	.banner {
+		margin-bottom: 300px;
+
 		.feature {
 			max-width: 400px;
 		}

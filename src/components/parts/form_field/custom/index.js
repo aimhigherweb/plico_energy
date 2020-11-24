@@ -1,7 +1,19 @@
 import React from 'react';
 
-const Custom = () => (
-	<h2>Custom</h2>
-);
+import TimeRange from './call_between_time';
+
+const Custom = ({
+	type, _uid, label
+}) => {
+	let Component = () => <h2>Custom - {type}</h2>;
+
+	if (type === `call_between_time`) {
+		Component = TimeRange;
+	}
+
+	return (
+		<Component {...{ _uid, label }} />
+	);
+};
 
 export default Custom;

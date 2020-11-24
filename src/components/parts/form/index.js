@@ -29,6 +29,10 @@ const Form = ({ form }) => (
 											label
 											type
 											_uid
+											options {
+												component
+												label
+											}
 										}
 										label
 										type
@@ -36,6 +40,9 @@ const Form = ({ form }) => (
 										options {
 											component
 											label
+											dependent_field {
+												field
+											}
 										}
 									}
 								}

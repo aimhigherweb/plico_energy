@@ -24,6 +24,7 @@ const Testimonials = ({ testimonials }) => (
 					edges {
 						node {
 							name
+							uuid
 							fields {
 								content {
 									location
@@ -41,7 +42,7 @@ const Testimonials = ({ testimonials }) => (
 
 		`}
 		render={(data) => {
-			const quotes = data.testimonials.edges;
+			const quotes = data.testimonials.edges.filter(({ node }) => testimonials.includes(node.uuid));
 			return (
 				<div className="testimonials" style={{ '--testimonials': testimonials.length }}>
 					<Curve className="curve" />

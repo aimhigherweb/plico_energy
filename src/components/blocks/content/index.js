@@ -6,6 +6,7 @@ import Block from "../../parts/block";
 import CTA from '../../parts/cta';
 import ImageBlob from '../../parts/image_blob';
 import FeatureImage from '../../parts/feature_image';
+import Background from '../../../img/blob_video.svg';
 
 import './style.scss';
 
@@ -16,6 +17,7 @@ const Content = ({
 
 	return (
 		<Block className={classes}>
+			{background && <Background />}
 			<div className="content">
 				<h2>{heading}</h2>
 				<div dangerouslySetInnerHTML={{ __html: content }} />

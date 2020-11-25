@@ -2,7 +2,7 @@
 @use '../../../styles/extends.scss';
 
 footer {
-	padding-top: 50px;
+	margin-top: 50px;
 
 	.container {
 		display: flex;
@@ -80,6 +80,8 @@ footer {
 
 @media(min-width: 40em) {
 	footer {
+		margin-top: 100px;
+
 		.container {
 			padding: 20px 40px;
 		}
@@ -93,6 +95,8 @@ footer {
 
 @media(min-width: 50em) {
 	footer {
+		margin-top: 150px;
+
 		.container {
 			align-items: flex-start;
 			padding: 20px 5vw;
@@ -162,6 +166,8 @@ footer {
 
 @media(min-width: 80em) {
 	footer {
+		margin-top: 250px;
+
 		.curve {
 			transform: translateX(-30%);
 		}

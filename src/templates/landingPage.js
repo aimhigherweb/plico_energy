@@ -16,7 +16,7 @@ const LandingPage = ({ data }) => {
 		{ body, banner } = fields.content,
 		headerType = banner[0].media[0].component,
 
-		 block = body[1];
+		 block = body[2];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>

@@ -9,6 +9,12 @@
 		margin-bottom: 10px;
 	}
 
+	.subtitle {
+		margin: 0 0 10px;
+		font-family: variables.$font_heading;
+		text-transform: uppercase;
+	}
+
 	.image {
 		width: 90vw;
 		max-width: 400px;
@@ -46,6 +52,10 @@
 	}
 
 	&.background {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		min-height: 650px;
 		margin-top: 150px;
 		margin-bottom: 150px;
 		color: #ffffff;
@@ -63,6 +73,7 @@
 @media(min-width: 50em) {
 	.content_block {
 		display: flex;
+		flex-wrap: nowrap;
 		align-items: center;
 
 		.image {
@@ -70,6 +81,11 @@
 			order: -1;
 			width: 40vw;
 			margin: 0 30px 0 0;
+
+			&.align_right {
+				order: 0;
+				margin: 0 0 0 30px;
+			}
 		}
 
 		.cta {
@@ -103,9 +119,13 @@
 @media(min-width: 60em) {
 	.content_block {
 		.image {
-			width: 50vw;
+			width: 40vw;
 			max-width: 500px;
 			margin-right: 50px;
+
+			&.align-right {
+				margin-left: 50px;
+			}
 		}
 
 		.illustration {
@@ -125,19 +145,20 @@
 
 		.curve {
 			height: 920px;
-			transform: translateX(-35%) translateY(-240px);
+			transform: translateX(0%) translateY(-240px);
 		}
 
 		.illustration {
 			bottom: -250px;
-			transform: scaleX(-1) rotate(-14deg) translateX(350px);
+			transform: scaleX(-1) rotate(-14deg) translateX(0);
 		}
 
 		&.background {
+			align-items: flex-start;
 			margin-top: 300px;
 		}
 
-		&.video {
+		&.video, &.full_width {
 			.content {
 				max-width: unset;
 			}

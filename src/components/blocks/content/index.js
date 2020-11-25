@@ -12,15 +12,34 @@ import Illustration from '../../parts/illustration';
 import './style.scss';
 
 const Content = ({
-	heading, content, cta_button, media, illustration, background
+	heading, content, cta_button, media, illustration, background, sub_heading
 }) => {
-	const classes = `content_block ${media.length && media[0].component} ${illustration.length ? illustration[0].component : ``} ${background ? `background` : ``}`;
+	let classes = `content_block`;
+
+	if (media.length) {
+		classes = `${classes} ${media[0].component}`;
+
+		if (media[0].position) {
+			classes = `${classes} media_${media[0].position}`;
+		}
+	} else {
+		classes = `${classes} full_width`;
+	}
+
+	if (illustration.length) {
+		classes = `${classes} ${illustration[0].component}`;
+	}
+
+	if (background) {
+		classes = `${classes} background`;
+	}
 
 	return (
 		<Block className={classes}>
 			{background && <Background className="curve" />}
 			{illustration && <Illustration {...illustration[0]} />}
 			<div className="content">
+				{sub_heading && <p className="subtitle">{sub_heading}</p>}
 				<h2>{heading}</h2>
 				<div dangerouslySetInnerHTML={{ __html: content }} />
 				<CTA {...{ cta_button }} />

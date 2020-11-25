@@ -72,6 +72,7 @@ export const pageQuery = graphql`
 					body {
 						component
 						heading
+						sub_heading
 						content
 						cta_button {
 							cta_link
@@ -86,6 +87,7 @@ export const pageQuery = graphql`
 								filename
 							}
 							video_url
+							position
 						}
 						testimonials
 						faqs

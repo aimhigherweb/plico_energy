@@ -43,10 +43,13 @@ const Testimonials = ({ testimonials }) => (
 		`}
 		render={(data) => {
 			const quotes = data.testimonials.edges.filter(({ node }) => testimonials.includes(node.uuid));
+
+			console.log(quotes);
 			return (
 				<div className="testimonials" style={{ '--testimonials': testimonials.length }}>
 					<Curve className="curve" />
 					{quotes.map((testimonial, index) => {
+						console.log(index);
 						const {
 							name, quote, location, image
 						} = testimonial.node.fields.content;

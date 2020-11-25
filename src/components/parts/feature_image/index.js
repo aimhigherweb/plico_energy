@@ -6,7 +6,9 @@ import SVG from 'react-inlinesvg';
 import ImageBlob from '../image_blob';
 import Video from '../video';
 
-const FeatureImage = ({ image, video_url, component }) => {
+const FeatureImage = ({
+	image, video_url, component, position
+}) => {
 	let Image = null;
 
 	if (component === `video`) {
@@ -16,7 +18,7 @@ const FeatureImage = ({ image, video_url, component }) => {
 	} else if (component === `image_blob`) {
 		Image = <ImageBlob {...{ ...image, width: 500 }} />;
 	} else if (component === `image`) {
-		Image = <Img fluid={getFluidGatsbyImage(image.filename, { maxWidth: 500 })} />;
+		Image = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: 500 })} />;
 	}
 
 	return Image;

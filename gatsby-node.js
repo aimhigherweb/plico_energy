@@ -157,10 +157,10 @@ exports.onCreateNode = async ({
 						...block,
 						content: processMarkdown(block.content)
 					});
+				} else {
+					blocks.push(block);
 				}
 			});
-
-			console.log(blocks);
 
 			content.body = blocks;
 		}

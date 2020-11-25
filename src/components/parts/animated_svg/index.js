@@ -3,7 +3,7 @@ import { Waypoint } from 'react-waypoint';
 
 import './style.scss';
 
-const Animated = ({ children, className }) => {
+const Animated = ({ children, className, position }) => {
 	const ref = useRef(null),
 		runAnimation = () => {
 			if (typeof window !== `undefined`) {
@@ -26,10 +26,13 @@ const Animated = ({ children, className }) => {
 
 	return (
 		<div ref={ref} className={className}>
-			{children}
-			<Waypoint
+			{position === `top` && <Waypoint
 				onEnter={runAnimation}
-			/>
+			/>}
+			{children}
+			{position !== `top` && <Waypoint
+				onEnter={runAnimation}
+			/>}
 		</div>
 	);
 };

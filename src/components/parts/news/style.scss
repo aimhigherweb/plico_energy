@@ -2,6 +2,7 @@
 
 .article {
 	display: flex;
+	position: relative;
 	flex-wrap: wrap;
 	max-width: 300px;
 	margin: 0 auto 20px;
@@ -32,6 +33,20 @@
 		.content {
 			background: variables.$primary;
 			color: #ffffff;
+		}
+	}
+
+	&:hover {
+		.content {
+			background: variables.$primary;
+			color: #ffffff;
+		}
+
+		&:nth-child(2n) {
+			.content {
+				background: #ffffff;
+				color: variables.$primary;
+			}
 		}
 	}
 }

@@ -4,6 +4,7 @@ import Content from './content';
 import LatestNews from './news';
 import Testimonials from './testimonials';
 import Form from './form';
+import FAQs from './faqs';
 
 const Block = ({
 	component, data
@@ -17,6 +18,8 @@ const Block = ({
 			return <Testimonials {...data} />;
 		case `form_block`:
 			return <Form {...data} />;
+		case `featured_faqs`:
+			return <FAQs {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

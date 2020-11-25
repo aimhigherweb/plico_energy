@@ -1,0 +1,113 @@
+@use '../../../styles/variables.scss';
+
+.faq_block {
+	position: relative;
+	margin: 100px auto;
+	text-align: center;
+
+	.curve {
+		height: 2850px;
+		transform: translateX(-55%) translateY(-2%);
+		fill: none;
+
+		.blob {
+			fill: variables.$secondary;
+		}
+	}
+
+	.lightbulb {
+		display: none;
+	}
+}
+
+@media(min-width: 40em) {
+	.faq_block {
+		margin-top: 350px;
+		margin-bottom: 200px;
+
+		.curve {
+			bottom: -180px;
+			height: 2000px;
+			transform: translateX(-55%) translateY(-0%);
+		}
+	}
+}
+
+
+@media(min-width: 50em) {
+	.faq_block {
+		margin-top: 400px;
+		margin-bottom: 300px;
+
+
+		h2 {
+			margin-bottom: 50px;
+		}
+
+		.curve {
+			top: -400px;
+			bottom: auto;
+			height: 2300px;
+			transform: translateX(-54%);
+		}
+
+		.lightbulb {
+			display: block;
+			position: absolute;
+			top: -300px;
+			width: 2500px;
+			transform: translateX(-37%);
+
+			path {
+				stroke-width: 5px;
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.faq_block {
+		.curve {
+			left: 50%;
+			transform: translateX(-54%);
+		}
+
+		.lightbulb {
+			top: -320px;
+			left: 50%;
+			transform: translateX(-55%);
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.faq_block {
+		margin-bottom: 250px;
+
+		.curve {
+			height: 2350px;
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.faq_block {
+		.curve {
+			height: 2400px;
+			transform: translateX(-53%);
+		}
+	}
+}
+
+@media(min-width: 90em) {
+	.faq_block {
+		margin-top: 500px;
+		margin-bottom: 300px;
+
+		.curve {
+			top: -500px;
+			height: 2600px;
+			transform: translateX(-55%);
+		}
+	}
+}

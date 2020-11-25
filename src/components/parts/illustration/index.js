@@ -6,7 +6,7 @@ import Plug from '../../../img/animations/plug.svg';
 import './style.scss';
 
 const Illustration = ({ component }) => {
-	let Component;
+	let Component = () => <span></span>;
 
 	switch (component) {
 		case `illustration_side`:

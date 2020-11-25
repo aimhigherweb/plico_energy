@@ -3,6 +3,7 @@
 svg.animated {
 	overflow: visible;
 	fill: none;
+	pointer-events: none;
 
 	path, ellipse {
 		stroke-width: 10px;

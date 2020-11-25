@@ -21,7 +21,7 @@ const LandingPage = ({ data }) => {
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>
 			<Banner {...banner[0]} />
-			<div style={{
+			{/* <div style={{
 				borderTop: `5px solid rebeccapurple`,
 				borderBottom: `5px solid rebeccapurple`,
 				padding: `1px 0`,
@@ -29,14 +29,14 @@ const LandingPage = ({ data }) => {
 				<Block
 					{...{ component: block.component, data: block }}
 				/>
-			</div>
+			</div> */}
 
-			{/* {body.map((block) => (
+			{body.map((block) => (
 				<Block
 					key={JSON.stringify(block)}
 					{...{ component: block.component, data: block }}
 				/>
-			))} */}
+			))}
 		</Layout>
 	);
 };

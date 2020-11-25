@@ -3,6 +3,7 @@
 .search-modal {
 	display: none;
 	position: absolute;
+	z-index: 100;
 	top: 3em;
 	right: 0;
 	width: 300px;
@@ -37,6 +38,8 @@
 	}
 
 	.results {
+		display: none;
+
 		a {
 			color: currentColor;
 			text-align: left;

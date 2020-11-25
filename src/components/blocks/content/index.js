@@ -19,13 +19,14 @@ const Content = ({
 	return (
 		<Block className={classes}>
 			{background && <Background className="curve" />}
+			{illustration && <Illustration {...illustration[0]} />}
 			<div className="content">
 				<h2>{heading}</h2>
 				<div dangerouslySetInnerHTML={{ __html: content }} />
 				<CTA {...{ cta_button }} />
 			</div>
 			{media && <FeatureImage {...media[0]} />}
-			{illustration && <Illustration {...illustration[0]} />}
+
 		</Block>
 	);
 };

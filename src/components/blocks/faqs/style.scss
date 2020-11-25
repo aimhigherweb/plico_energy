@@ -2,7 +2,7 @@
 
 .faq_block {
 	position: relative;
-	margin: 100px auto;
+	margin: 150px auto;
 	text-align: center;
 
 	.curve {
@@ -23,7 +23,7 @@
 @media(min-width: 40em) {
 	.faq_block {
 		margin-top: 350px;
-		margin-bottom: 200px;
+		margin-bottom: 250px;
 
 		.curve {
 			bottom: -180px;
@@ -36,8 +36,8 @@
 
 @media(min-width: 50em) {
 	.faq_block {
-		margin-top: 400px;
-		margin-bottom: 300px;
+		margin-top: 500px;
+		margin-bottom: 350px;
 
 
 		h2 {
@@ -82,7 +82,7 @@
 
 @media(min-width: 70em) {
 	.faq_block {
-		margin-bottom: 250px;
+		margin-bottom: 300px;
 
 		.curve {
 			height: 2350px;
@@ -101,8 +101,8 @@
 
 @media(min-width: 90em) {
 	.faq_block {
-		margin-top: 500px;
-		margin-bottom: 300px;
+		margin-top: 600px;
+		margin-bottom: 400px;
 
 		.curve {
 			top: -500px;

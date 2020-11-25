@@ -1,6 +1,6 @@
 .block {
 	position: relative;
-	margin: 20px 0;
+	margin: 40px 0;
 	padding: 0 20px;
 
 	.curve {
@@ -11,7 +11,7 @@
 
 @media(min-width: 40em) {
 	.block {
-		margin: 40px 0;
+		margin: 50px 0;
 		padding: 0 40px;
 	}
 }

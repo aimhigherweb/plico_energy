@@ -41,9 +41,13 @@
 		}
 	}
 
+	.video-embed {
+		margin-top: 30px;
+	}
+
 	&.background {
-		margin-top: 100px;
-		margin-bottom: 50px;
+		margin-top: 150px;
+		margin-bottom: 150px;
 		color: #ffffff;
 
 		h2 {
@@ -82,7 +86,7 @@
 		}
 
 		&.background {
-			margin-top: 100px;
+			margin-top: 200px;
 		}
 
 		&.video {
@@ -130,7 +134,7 @@
 		}
 
 		&.background {
-			margin-top: 250px;
+			margin-top: 300px;
 		}
 
 		&.video {

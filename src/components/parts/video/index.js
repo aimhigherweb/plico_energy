@@ -23,6 +23,7 @@ const Video = ({
 				<Img fixed={getFixedGatsbyImage(image.filename, { width: 800 })} />
 			</button>
 			<iframe
+				rel="preload"
 				ref={ref}
 				src={`https://player.vimeo.com/video/${videoId}`}
 				frameBorder="0"

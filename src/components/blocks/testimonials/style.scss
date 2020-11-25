@@ -1,3 +1,9 @@
 .testimonial_block {
 	margin-bottom: 150px;
 }
+
+@media(min-width: 50em) {
+	.testimonial_block {
+		margin-bottom: 200px;
+	}
+}

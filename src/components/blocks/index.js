@@ -21,7 +21,7 @@ const Block = ({
 		case `featured_faqs`:
 			return <FAQs {...data} />;
 		default:
-			return <h2>{component}</h2>;
+			return <h2></h2>;
 	}
 };
 

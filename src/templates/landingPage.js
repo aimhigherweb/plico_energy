@@ -10,22 +10,24 @@ import Layout from '../components/partials/layout';
 
 const LandingPage = ({ data }) => {
 	const {
-			name,
 			slug,
 			fields
 		} = data.storyblokEntry,
 		{ body, banner } = fields.content,
-		headerType = banner[0].media[0].component;
+		headerType = banner[0].media[0].component,
+
+		 block = body[1];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>
 			<Banner {...banner[0]} />
 			<div style={{
-				background: `lemonchiffon`,
+				borderTop: `5px solid rebeccapurple`,
+				borderBottom: `5px solid rebeccapurple`,
 				padding: `1px 0`,
 			}}>
 				<Block
-					{...{ component: body[0].component, data: body[0] }}
+					{...{ component: block.component, data: block }}
 				/>
 			</div>
 

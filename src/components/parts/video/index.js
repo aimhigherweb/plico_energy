@@ -20,7 +20,7 @@ const Video = ({
 		<div className="video-embed">
 			<button onClick={(e) => { playVideo(videoId, e); }}>
 				<Play/>
-				<Img fixed={getFixedGatsbyImage(image.filename, { width: 500 })} />
+				<Img fixed={getFixedGatsbyImage(image.filename, { width: 800 })} />
 			</button>
 			<iframe
 				ref={ref}

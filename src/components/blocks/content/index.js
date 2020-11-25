@@ -17,7 +17,7 @@ const Content = ({
 
 	return (
 		<Block className={classes}>
-			{background && <Background />}
+			{background && <Background className="curve" />}
 			<div className="content">
 				<h2>{heading}</h2>
 				<div dangerouslySetInnerHTML={{ __html: content }} />

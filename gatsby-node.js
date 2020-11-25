@@ -148,6 +148,23 @@ exports.onCreateNode = async ({
 		content.excerpt = createExcerpt(content.content);
 		content.content = processMarkdown(content.content);
 
+		if (node.field_component === `landing_page`) {
+			const blocks = [];
+
+			content.body.forEach((block) => {
+				if (block.content) {
+					blocks.push({
+						...block,
+						content: processMarkdown(block.content)
+					});
+				}
+			});
+
+			console.log(blocks);
+
+			content.body = blocks;
+		}
+
 		createNodeField({
 			name: `content`,
 			node,

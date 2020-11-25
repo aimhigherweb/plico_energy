@@ -5,9 +5,9 @@
 	@include extends.list_reset;
 	background: rgba(pink, 0.5);
 
-
 	h2 {
 		margin-top: 0;
+		margin-bottom: 10px;
 	}
 
 	.image {
@@ -15,6 +15,30 @@
 		max-width: 400px;
 		margin: 0 auto;
 		color: variables.$secondary;
+	}
+
+	.content {
+		line-height: 1.5;
+	}
+
+	.curve {
+		top: 0;
+		height: 110%;
+		transform: translateX(-35%) translateY(-10%);
+		fill: variables.$primary;
+	}
+
+	&.background {
+		margin-top: 60px;
+		color: #ffffff;
+
+		h2 {
+			color: variables.$secondary;
+		}
+
+		.cta {
+			color: variables.$primary;
+		}
 	}
 }
 
@@ -32,6 +56,23 @@
 
 		.cta {
 			margin-bottom: 0;
+		}
+
+		.curve {
+			transform: translateX(-35%) translateY(-15%);
+		}
+
+		&.background {
+			margin-top: 100px;
+		}
+
+		&.video {
+			display: block;
+
+			.cta {
+				margin-top: 20px;
+				margin-bottom: 50px;
+			}
 		}
 	}
 }
@@ -52,6 +93,21 @@
 
 		.content {
 			max-width: 400px;
+		}
+
+		.curve {
+			height: 920px;
+			transform: translateX(-35%) translateY(-240px);
+		}
+
+		&.background {
+			margin-top: 250px;
+		}
+
+		&.video {
+			.content {
+				max-width: unset;
+			}
 		}
 	}
 }

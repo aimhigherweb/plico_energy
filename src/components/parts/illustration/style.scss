@@ -1,0 +1,11 @@
+.illustration {
+	position: absolute;
+
+	svg {
+		fill: none;
+
+		path, ellipse {
+			stroke: currentColor;
+		}
+	}
+}

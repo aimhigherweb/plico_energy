@@ -7,6 +7,7 @@ import CTA from '../../parts/cta';
 import ImageBlob from '../../parts/image_blob';
 import FeatureImage from '../../parts/feature_image';
 import Background from '../../../img/blob_video.svg';
+import Illustration from '../../parts/illustration';
 
 import './style.scss';
 
@@ -24,6 +25,7 @@ const Content = ({
 				<CTA {...{ cta_button }} />
 			</div>
 			{media && <FeatureImage {...media[0]} />}
+			{illustration && <Illustration {...illustration[0]} />}
 		</Block>
 	);
 };

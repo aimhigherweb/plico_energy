@@ -5,7 +5,7 @@ import Plug from '../../../img/animations/plug.svg';
 
 import './style.scss';
 
-const Illustration = ({ component }) => {
+const Illustration = ({ component, position }) => {
 	let Component = () => <span></span>;
 
 	switch (component) {
@@ -15,7 +15,7 @@ const Illustration = ({ component }) => {
 	}
 
 	return (
-		<Animated className={`illustration ${component}`}>
+		<Animated position={position} className={`illustration ${component}`}>
 			<Component />
 		</Animated>
 	);

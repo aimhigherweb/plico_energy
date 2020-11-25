@@ -1,6 +1,23 @@
+@use '../../../styles/variables.scss';
+
+.form_block {
+	.illustration {
+		display: none;
+		transform: scaleX(-1) rotate(40deg);
+
+		svg {
+			color: variables.$secondary;
+		}
+	}
+}
+
 @media(min-width: 50em) {
 	.form_block {
 		margin-bottom: 100px;
+
+		.illustration {
+
+		}
 	}
 }
 
@@ -10,5 +27,22 @@
 		max-width: 800px;
 		margin: 0 auto 20px;
 		padding: 50px;
+
+		.illustration {
+			display: block;
+
+			bottom: 80%;
+			left: 650px;
+			width: 1400px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.form_block {
+		.illustration {
+			left: 600px;
+			width: 2000px;
+		}
 	}
 }

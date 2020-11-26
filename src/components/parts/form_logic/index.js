@@ -22,7 +22,7 @@ const FormLogic = ({ form }) => {
 				method: `POST`,
 				headers: { "Content-Type": `application/x-www-form-urlencoded` },
 				body: encode({
-					"form-name": form.slug,
+					"form-name": `custom_${form.slug}`,
 					...values
 				})
 			})
@@ -106,10 +106,11 @@ const FormLogic = ({ form }) => {
 			{(formik) => (
 				<Form
 					className="custom"
-					name={form.slug}
+					name={`custom_${form.slug}`}
 					method="POST"
 					action={`${form.fields.content.success_page}/`}
 				>
+					<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
 					{totalSteps > 1
 						&& <div className="progress">
 							<label

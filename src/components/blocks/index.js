@@ -18,12 +18,12 @@ const Block = ({
 		case `testimonials_block`:
 			return <Testimonials {...data} />;
 		case `form_block`:
-			console.log(data);
 			return <Form {...data} />;
 		case `featured_faqs`:
 			return <FAQs {...data} />;
-		case 'savings_calculator':
-			return <SavingsCalculator {...data} />
+		case `savings_calculator`:
+			console.log(data);
+			return <SavingsCalculator {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

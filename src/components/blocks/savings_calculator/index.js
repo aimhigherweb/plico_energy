@@ -29,6 +29,9 @@ const Results = ({ savings, results_text }) => {
 				setBill(e);
 				setSavings(calculateSavings(e));
 			};
+
+		console.log(results_cta);
+
 		return (
 			<Block className={`form_block`}>
 				<h2>{heading}</h2>
@@ -47,7 +50,7 @@ const Results = ({ savings, results_text }) => {
 				</form>
 				<div>
 					<Results {...{ savings, results_text }} />
-					<CTA {...{ cta_button: results_cta }} />
+					{results_cta && <CTA {...{ cta_button: results_cta }} />}
 				</div>
 			</Block>
 		);

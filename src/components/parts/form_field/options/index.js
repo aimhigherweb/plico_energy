@@ -1,7 +1,7 @@
 /* eslint-disable one-var */
 
-import React, { Fragment, useEffect } from 'react';
-import { Field } from 'formik';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Field, useFormikContext } from 'formik';
 
 import generateSlug from '../../../../utils/generateSlug';
 
@@ -77,7 +77,7 @@ const Options = ({
 				placeholder,
 				options,
 				parent,
-				onChange
+				onChange,
 			}} />
 		</Fragment>
 	);

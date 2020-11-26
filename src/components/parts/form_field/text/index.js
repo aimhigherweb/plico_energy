@@ -1,12 +1,12 @@
 /* eslint-disable one-var */
 
 import React, { Fragment } from 'react';
-import { Field } from 'formik';
+import { Field, useFormikContext } from 'formik';
 
 import generateSlug from '../../../../utils/generateSlug';
 
 const TextInput = ({
-	label, type, _uid, hidden_label, parent = ``
+	label, type, _uid, hidden_label, parent = ``, onChange
 }) => {
 	let field = `input`,
 		placeholder = ``;
@@ -23,6 +23,8 @@ const TextInput = ({
 		placeholder = `hello@domain.com`;
 	}
 
+	const value = useFormikContext().values[`${parent}${generateSlug(label)}`];
+
 	return (
 		<Fragment>
 			<label
@@ -37,6 +39,8 @@ const TextInput = ({
 				name={`${parent}${generateSlug(label)}`}
 				id={_uid}
 				placeholder={placeholder}
+				// onChange={(e) => onChange(e)}
+				onBlur={(e) => onChange(e)}
 			/>
 		</Fragment>
 	);

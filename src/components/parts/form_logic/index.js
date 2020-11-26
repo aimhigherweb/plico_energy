@@ -39,7 +39,8 @@ const FormLogic = ({ form }) => {
 		step = steps[stepNumber],
 		totalSteps = steps.length,
 		isLastStep = stepNumber === totalSteps - 1,
-		next = () => {
+		next = (values) => {
+			console.log({ formValues, values });
 			let nextStep = false,
 				nextStepNumber = stepNumber + 1;
 
@@ -63,7 +64,8 @@ const FormLogic = ({ form }) => {
 				}
 			}
 		},
-		previous = () => {
+		previous = (values) => {
+			console.log({ formValues, values });
 			let prevStep = false,
 				prevStepNumber = stepNumber - 1;
 
@@ -99,6 +101,7 @@ const FormLogic = ({ form }) => {
 		<Formik
 			initialValues={snapshot}
 			onSubmit={handleSubmit}
+			handleChange={(e) => { handleChange(e); }}
 			validateOnChange={false}
 			validateOnBlur={false}
 			enableReinitialize={true}
@@ -162,7 +165,7 @@ const FormLogic = ({ form }) => {
 					{(stepNumber > 0)
 						&& <button
 							type="button"
-							onClick={() => previous(formValues)}
+							onClick={() => previous(formik.values)}
 						>
 							Back
 						</button>}

@@ -5,15 +5,15 @@ import Plug from '../../../img/animations/plug.svg';
 
 import './style.scss';
 
-const Illustration = ({ component, position }) => {
+const Illustration = ({ component, illustration, position }) => {
 	let Component = () => <span></span>;
 
-	console.log(component);
-
-	switch (component) {
-		case `illustration_side`:
+	if (component === `illustration_side`) {
+		Component = Plug;
+	} else if (component === `illustration_top`) {
+		if (illustration === `plug`) {
 			Component = Plug;
-			break;
+		}
 	}
 
 	return (

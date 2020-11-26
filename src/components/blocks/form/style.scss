@@ -3,10 +3,28 @@
 .form_block {
 	.illustration {
 		display: none;
+		position: absolute;
 		transform: scaleX(-1) rotate(40deg);
 
 		svg {
-			color: variables.$secondary;
+			path {
+				stroke-width: 5px;
+				stroke: variables.$secondary;
+			}
+		}
+	}
+
+	&.illustration_top {
+		margin-top: 100px;
+
+		.illustration  {
+			display: block;
+			top: -300px;
+
+			svg {
+				width: 1200px;
+				transform: scaleX(1) rotate(120deg);
+			}
 		}
 	}
 }
@@ -31,6 +49,17 @@
 			left: 650px;
 			width: 1400px;
 		}
+
+		&.illustration_top {
+			margin-top: 50px;
+			padding-top: 0;
+
+			.illustration  {
+				top: -160px;
+				right: -120px;
+				left: auto;
+			}
+		}
 	}
 }
 
@@ -39,6 +68,21 @@
 		.illustration {
 			left: 600px;
 			width: 2000px;
+		}
+
+		&.illustration_top {
+			margin-top: 50px;
+			padding-top: 0;
+
+			.illustration  {
+				top: -450px;
+				right: -250px;
+				left: auto;
+
+				svg {
+					width: 2000px;
+				}
+			}
 		}
 	}
 }

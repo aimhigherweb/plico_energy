@@ -92,6 +92,7 @@ export const pageQuery = graphql`
 						testimonials
 						faqs
 						illustration {
+							illustration
 							component
 						}
 						background

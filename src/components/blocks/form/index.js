@@ -9,7 +9,7 @@ import './style.scss';
 const FormBlock = ({
 	heading, content, illustration, form
 }) => (
-	<Block className="form_block">
+	<Block className={`form_block ${illustration && illustration[0].component}`}>
 		<h2>{heading}</h2>
 		<div dangerouslySetInnerHTML={{ __html: content }} />
 		<Form {...{ form }} />

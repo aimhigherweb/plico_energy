@@ -26,13 +26,14 @@ const Animated = ({ children, className, position }) => {
 
 	return (
 		<div ref={ref} className={className}>
-			{position === `top` && <Waypoint
-				onEnter={runAnimation}
-			/>}
+			{position === `top`
+				&& <span className="animated-offset">
+					<Waypoint onEnter={runAnimation}/>
+				</span>}
 			{children}
-			{position !== `top` && <Waypoint
-				onEnter={runAnimation}
-			/>}
+			{position !== `top`
+				&& <Waypoint onEnter={runAnimation}/>
+			}
 		</div>
 	);
 };

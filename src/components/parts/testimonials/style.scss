@@ -2,6 +2,7 @@
 
 .testimonials {
 	display: flex;
+	position: relative;
 	flex-wrap: wrap;
 	justify-content: center;
 	margin-top: 150px;
@@ -162,7 +163,7 @@
 	.testimonials {
 		align-content: center;
 		align-items: center;
-		margin-top: 180px;
+		margin-top: 100px;
 
 		figure {
 			float: left;
@@ -178,7 +179,8 @@
 		}
 
 		.curve {
-			height: 140%;
+			left: 50%;
+			height: 150%;
 			transform: scaleX(-1) translateX(50%) translateY(2%);
 			fill: variables.$primary;
 		}
@@ -250,18 +252,15 @@
 		cite {
 			padding-left: 60px;
 		}
-
-		.curve {
-			transform: scaleX(-1) translateX(10%) translateY(-2%);
-		}
 	}
 }
 
 @media(min-width: 60em) {
 	.testimonials {
+		margin-top: 150px;
+
 		.curve {
 			height: 160%;
-			transform: scaleX(-1) translateX(10%) translateY(-2%);
 		}
 	}
 }

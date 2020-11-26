@@ -6,7 +6,9 @@ import Copyright from './copyright';
 import Menu from '../menus/footer';
 import Address from '../../parts/address';
 import Social from '../../parts/social';
+import Animated from '../../parts/animated_svg';
 
+import Plug from '../../../img/animations/plug_footer.svg';
 import Phone from '../../../img/phone.svg';
 import Mail from '../../../img/mail.svg';
 import Curve from '../../../img/footer.svg';
@@ -39,6 +41,9 @@ const Footer = () => (
 					<Link to="/" className="logo">
 						<SVG className="logo" src={site.fields.content.logo.filename} />
 					</Link>
+					<Animated className="plug">
+						<Plug />
+					</Animated>
 					<section>
 						<h2>More Plico Info</h2>
 						<Menu />

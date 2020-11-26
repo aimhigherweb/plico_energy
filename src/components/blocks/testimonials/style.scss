@@ -2,6 +2,12 @@
 	margin-bottom: 150px;
 }
 
+@media(min-width: 40em) {
+	.testimonial_block {
+		margin-top: 200px;
+	}
+}
+
 @media(min-width: 50em) {
 	.testimonial_block {
 		margin-bottom: 200px;

@@ -101,6 +101,10 @@
 			transform: scaleX(-1) rotate(-10deg) translateX(20%);
 		}
 
+		.video-embed {
+			margin-top: 80px;
+		}
+
 		&.background {
 			margin-top: 200px;
 		}
@@ -144,13 +148,15 @@
 		}
 
 		.curve {
+			left: 50%;
 			height: 920px;
-			transform: translateX(0%) translateY(-240px);
+			transform: translateX(-50%) translateY(-240px);
 		}
 
 		.illustration {
 			bottom: -250px;
-			transform: scaleX(-1) rotate(-14deg) translateX(0);
+			left: 50%;
+			transform: scaleX(-1) rotate(-14deg) translateX(35%) translateY(0);
 		}
 
 		&.background {
@@ -173,7 +179,7 @@
 		}
 
 		.illustration {
-			transform: scaleX(-1) rotate(-14deg) translateX(400px);
+			transform: scaleX(-1) rotate(-14deg) translateX(40%);
 		}
 	}
 }

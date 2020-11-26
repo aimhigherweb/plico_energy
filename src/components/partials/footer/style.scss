@@ -22,7 +22,7 @@ footer {
 	.curve {
 		position: absolute;
 		z-index: -1;
-		bottom: 0;
+		bottom: -2px;
 		width: auto;
 		height: 150%;
 		transform: translateX(-49%);
@@ -33,6 +33,17 @@ footer {
 
 		.home {
 			display: none;
+		}
+	}
+
+	.plug {
+		display: none;
+
+		svg {
+			path {
+				stroke-width: 7px;
+				stroke: #ffffff;
+			}
 		}
 	}
 
@@ -161,6 +172,14 @@ footer {
 		.contact {
 			margin-left: 100px;
 		}
+
+		.plug {
+			display: block;
+			position: absolute;
+			bottom: -100px;
+			left: 280px;
+			width: 400px;
+		}
 	}
 }
 
@@ -171,6 +190,12 @@ footer {
 		.curve {
 			transform: translateX(-30%);
 		}
+
+		.plug {
+			bottom: -130px;
+			left: 300px;
+			width: 500px;
+		}
 	}
 }
 
@@ -178,6 +203,10 @@ footer {
 	footer {
 		.container {
 			padding: 20px calc(50vw - 600px);
+		}
+
+		.plug {
+			left: calc(50vw - 300px);
 		}
 	}
 }

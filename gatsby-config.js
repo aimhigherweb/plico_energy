@@ -53,6 +53,17 @@ module.exports = {
 				// eslint-disable-next-line global-require
 				queries: require(`./src/utils/algoliaIndex`)
 			},
-		}
+		},
+		{
+			resolve: `gatsby-plugin-netlify`,
+			options: {
+				headers: {
+					"/join": [
+						`Access-Control-Allow-Origin: *`,
+					],
+				},
+				mergeSecurityHeaders: true, // boolean to turn off the default security headers
+			},
+		},
 	]
 };

@@ -2,6 +2,7 @@ import React from 'react';
 
 import TimeRange from './call_between_time';
 import Address from './address';
+import SystemConfiguration from './system_configuration';
 
 const Custom = ({
 	type, _uid, label, parent
@@ -14,6 +15,10 @@ const Custom = ({
 
 	if (type === `address`) {
 		Component = Address;
+	}
+
+	if (type === `system_configuration`) {
+		Component = SystemConfiguration;
 	}
 
 	return (

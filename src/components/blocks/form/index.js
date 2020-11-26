@@ -13,7 +13,7 @@ const FormBlock = ({
 		<h2>{heading}</h2>
 		<div dangerouslySetInnerHTML={{ __html: content }} />
 		<Form {...{ form }} />
-		{illustration && <Illustration {...{ ...illustration[0], position: top }} />}
+		{illustration && <Illustration {...{ ...illustration[0], position: `top` }} />}
 	</Block>
 );
 

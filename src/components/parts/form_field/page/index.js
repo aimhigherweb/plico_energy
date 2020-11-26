@@ -18,9 +18,6 @@ const FormPage = ({
 		parent = `${parent}${generateSlug(label)}_`;
 	}
 
-	console.log(label);
-	console.log(fields);
-
 	return (
 		<div id={`page_${_uid}`}>
 			{label && <h2>{label}</h2>}

@@ -5,15 +5,17 @@ header {
 	position: relative;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 100px;
 	padding: 20px;
 
 	.curve {
 		position: absolute;
 		z-index: -1;
 		top: 0;
+		left: 50%;
 		width: auto;
 		height: 90%;
-		transform: translateX(-50%);
+		transform: translateX(-45%);
 
 		path {
 			display: none;
@@ -56,8 +58,11 @@ header {
 body[class*='header_'] {
 	&.header_graphic {
 		header {
+			margin-bottom: 0;
+
 			.curve {
 				height: 105%;
+				transform: translateX(-55%);
 
 				.graphic {
 					display: block;
@@ -72,8 +77,10 @@ body[class*='header_'] {
 
 	&.header_video {
 		header {
+			margin-bottom: 45px;
+
 			.curve {
-				left: 20%;
+				transform: translateX(-45%);
 
 				.video {
 					display: block;
@@ -88,6 +95,8 @@ body[class*='header_'] {
 
 	&.header_image {
 		header {
+			margin-bottom: 0;
+
 			.curve {
 				left: 80%;
 
@@ -123,7 +132,7 @@ body[class*='header_'] {
 			header {
 				.curve {
 					height: 100%;
-					transform: translateX(-48%);
+					transform: translateX(-55%);
 				}
 			}
 		}
@@ -132,7 +141,13 @@ body[class*='header_'] {
 
 @media(min-width: 40em) {
 	header {
+		margin-bottom: 150px;
 		padding: 40px;
+
+		.curve {
+			left: 0;
+			transform: translateX(-35%);
+		}
 	}
 
 	body[class*='header_'] {
@@ -140,15 +155,17 @@ body[class*='header_'] {
 			header {
 				.curve {
 					height: 68%;
-					transform: translateX(-40%);
+					transform: translateX(-38%);
 				}
 			}
 		}
 
 		&.header_video {
 			header {
+				margin-bottom: 0;
+
 				.curve {
-					left: 10%;
+					transform: translateX(-50%);
 				}
 			}
 		}
@@ -163,6 +180,11 @@ body[class*='header_'] {
 			flex: 0 1 100px;
 			height: 100%;
 		}
+
+		.curve {
+			left: 50%;
+			transform: translateX(-50%);
+		}
 	}
 
 	body[class*='header_'] {
@@ -170,7 +192,7 @@ body[class*='header_'] {
 			header {
 				.curve {
 					height: 120px;
-					transform: translateX(-37%);
+					transform: translateX(-50%);
 				}
 			}
 		}
@@ -186,7 +208,7 @@ body[class*='header_'] {
 		&.header_video {
 			header {
 				.curve {
-					left: 45%;
+					transform: translateX(-51%);
 				}
 			}
 		}
@@ -227,8 +249,7 @@ body[class*='header_'] {
 		&.header_graphic {
 			header {
 				.curve {
-					// height: 150px;
-					transform: translateX(-34%);
+					transform: translateX(-48%);
 				}
 			}
 		}
@@ -251,6 +272,14 @@ body[class*='header_'] {
 	}
 
 	body[class*='header_'] {
+		&.header_graphic {
+			header {
+				.curve {
+					transform: translateX(-50%);
+				}
+			}
+		}
+
 		&.header_video {
 			header {
 				.curve {

@@ -5,6 +5,7 @@ import LatestNews from './news';
 import Testimonials from './testimonials';
 import Form from './form';
 import FAQs from './faqs';
+import SavingsCalculator from './savings_calculator';
 
 const Block = ({
 	component, data
@@ -21,6 +22,8 @@ const Block = ({
 			return <Form {...data} />;
 		case `featured_faqs`:
 			return <FAQs {...data} />;
+		case 'savings_calculator':
+			return <SavingsCalculator {...data} />
 		default:
 			return <h2>{component}</h2>;
 	}

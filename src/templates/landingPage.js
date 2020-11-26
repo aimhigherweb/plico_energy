@@ -100,6 +100,16 @@ export const pageQuery = graphql`
 							colour
 						}
 						form
+						slider_heading
+						slider_disclaimer
+						results_text
+						results_cta {
+							cta_link
+							cta_text
+							cta_colour {
+								colour
+							}
+						}
 					}
 				}
 			}

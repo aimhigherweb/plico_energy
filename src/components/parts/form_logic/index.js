@@ -19,8 +19,6 @@ const FormLogic = ({ form }) => {
 			const { name, value } = e.target;
 
 			setFormValues({ ...formValues, [name]: value });
-
-			console.log({ formValues, value: formValues[`property-details_property-ownership`] });
 		},
 		onSubmit = async (values) => {
 			sleep(300).then(() => console.log(`Wizard submit`, values));
@@ -44,7 +42,7 @@ const FormLogic = ({ form }) => {
 				if (
 					steps[nextStepNumber].conditional
 					&& steps[nextStepNumber].conditional.field !== ``
-					&& formValues[steps[nextStepNumber].conditional.field] !== steps[nextStepNumber].conditional.value
+					&& !steps[nextStepNumber].conditional.value.split(`,`).includes(formValues[steps[nextStepNumber].conditional.field])
 				) {
 					nextStepNumber++;
 				} else {
@@ -68,7 +66,7 @@ const FormLogic = ({ form }) => {
 				if (
 					steps[prevStepNumber].conditional
 					&& steps[prevStepNumber].conditional.field !== ``
-					&& formValues[steps[prevStepNumber].conditional.field] !== steps[prevStepNumber].conditional.value
+					&& !steps[prevStepNumber].conditional.value.split(`,`).includes(formValues[steps[prevStepNumber].conditional.field])
 				) {
 					prevStepNumber--;
 				} else {
@@ -85,8 +83,6 @@ const FormLogic = ({ form }) => {
 			bag.setTouched({});
 			next(values);
 		};
-
-	console.log(steps);
 
 	return (
 		<Formik
@@ -106,7 +102,19 @@ const FormLogic = ({ form }) => {
 					data-netlify-honeypot="bot-field"
 				>
 					{totalSteps > 1
-						&& <p>Form progress {Math.round(((stepNumber + 1) / totalSteps) * 100)}%</p>
+						&& <div className="progress">
+							<label
+								htmlFor="form_progress"
+							>
+								Form Progress
+							</label>
+							<progress
+								max="100"
+								value={Math.round(((stepNumber + 1) / totalSteps) * 100)}
+							>
+								{`${Math.round(((stepNumber + 1) / totalSteps) * 100)}%`}
+							</progress>
+						</div>
 					}
 					<input type="hidden" name="bot-field" />
 					<input type="hidden" name="form-name" value={form.slug} />

@@ -48,6 +48,11 @@ const Form = ({ form }) => (
 					value
 					field
 				}
+				options {
+					component
+					label
+					value
+				}
 			}
 			{
 				forms: allStoryblokEntry(

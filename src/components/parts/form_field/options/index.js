@@ -29,10 +29,10 @@ const Radio = ({
 );
 
 const Select = ({
-	_uid, name, options, parent, onChange
+	_uid, name, options, parent, onChange, type
 }) => (
 	<Field
-		as="select"
+		as={type}
 		id={_uid}
 		name={`${parent}${name}`}
 		onChange={(e) => onChange(e)}
@@ -50,7 +50,7 @@ const Options = ({
 	let Component = Select,
 		placeholder = ``;
 
-	if (type !== `select`) {
+	if (![`select`, `datalist`].includes(type)) {
 		Component = Radio;
 	}
 
@@ -61,10 +61,18 @@ const Options = ({
 	return (
 		<Fragment>
 			<label htmlFor={_uid} className={hidden_label && `invisible`}>{label}</label>
+			{type === `datalist`
+				&& <input
+					list={`list_${_uid}`}
+					id={_uid}
+					name={`${parent}${generateSlug(label)}`}
+					onChange={(e) => onChange(e)}
+				/>
+			}
 			<Component {...{
 				label,
 				type,
-				_uid,
+				_uid: type === `datalist` ? `list_${_uid}` : _uid,
 				name: generateSlug(label),
 				placeholder,
 				options,

@@ -40,7 +40,7 @@ const Field = ({
 		conditional = false;
 	}
 
-	if (!conditional || values[conditional.field] === conditional.value) {
+	if (!conditional || conditional.value.split(`,`).includes(values[conditional.field])) {
 		return <Component {...{ ...data, values }} />;
 	}
 

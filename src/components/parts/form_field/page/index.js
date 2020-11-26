@@ -10,8 +10,6 @@ import generateSlug from '../../../../utils/generateSlug';
 const FormPage = ({
 	fields, label, _uid, parent = ``, onChange, values
 }) => {
-	const hidden_label = label && true;
-
 	if (label === ``) {
 		label = false;
 	}
@@ -19,6 +17,9 @@ const FormPage = ({
 	if (label) {
 		parent = `${parent}${generateSlug(label)}_`;
 	}
+
+	console.log(label);
+	console.log(fields);
 
 	return (
 		<div id={`page_${_uid}`}>
@@ -30,7 +31,6 @@ const FormPage = ({
 						component: field.component,
 						data: {
 							...field,
-							hidden_label,
 							parent,
 							onChange
 						},

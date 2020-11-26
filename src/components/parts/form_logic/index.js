@@ -14,8 +14,25 @@ const FormLogic = ({ form }) => {
 
 			setFormValues({ ...formValues, [name]: value });
 		},
-		onSubmit = async (values) => {
-			sleep(300).then(() => console.log(`Wizard submit`, values));
+		encode = (data) => Object.keys(data)
+			  .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+			  .join(`&`),
+		onSubmit = (values) => {
+			fetch(form.fields.content.success_page, {
+				method: `POST`,
+				headers: { "Content-Type": `application/x-www-form-urlencoded` },
+				body: encode({
+					"form-name": form.slug,
+					...values
+				})
+			})
+				.then(() => {
+					console.log(`success, form has been submitted`);
+					window.location.replace(form.fields.content.success_page);
+				})
+				.catch((err) => {
+					console.error(err);
+				});
 		},
 		fieldData = form.fields.content.fields,
 		steps = form.fields.content.multi_page ? fieldData : [fieldData],
@@ -91,7 +108,7 @@ const FormLogic = ({ form }) => {
 					className="custom"
 					name={form.slug}
 					method="POST"
-					action="/thanks/"
+					action={form.fields.content.success_page}
 					data-netlify="true"
 					data-netlify-honeypot="bot-field"
 				>

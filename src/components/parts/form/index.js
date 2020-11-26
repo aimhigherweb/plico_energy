@@ -69,6 +69,7 @@ const Form = ({ form }) => (
 								content {
 									multi_page
 									submit
+									success_page
 									fields {
 										...formFields
 										fields {

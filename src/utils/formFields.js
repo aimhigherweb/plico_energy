@@ -18,8 +18,6 @@ const formFields = (formFields) => {
 		})
 	});
 
-	console.log(fields);
-
 	return fields;
 };
 

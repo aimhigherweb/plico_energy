@@ -1,5 +1,9 @@
 @use '../../../styles/variables.scss';
 
+.lazy-line-painter {
+	pointer-events: none;
+}
+
 svg.animated {
 	overflow: visible;
 	fill: none;

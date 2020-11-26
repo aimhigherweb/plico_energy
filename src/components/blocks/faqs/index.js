@@ -2,9 +2,9 @@ import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 
 import Block from "../../parts/block";
-import Curve from '../../../img/blob_lightbulb.svg';
+import Curve from '../../../img/blob_video.svg';
 import News from '../../parts/news';
-import Lightbulb from '../../../img/animations/lightbulb_squiggle.svg';
+import Plug from '../../../img/animations/plug.svg';
 import Animated from '../../parts/animated_svg';
 
 import './style.scss';
@@ -45,8 +45,8 @@ const FAQsBlock = ({
 			return (
 				<Block className="faq_block">
 					<Curve className="curve" />
-					<Animated className="lightbulb" position="top">
-						<Lightbulb />
+					<Animated className="plug" position="top">
+						<Plug />
 					</Animated>
 					<h2>{heading}</h2>
 					<div dangerouslySetInnerHTML={{ __html: content }} />

@@ -8,6 +8,8 @@ import './style.scss';
 const Illustration = ({ component, position }) => {
 	let Component = () => <span></span>;
 
+	console.log(component);
+
 	switch (component) {
 		case `illustration_side`:
 			Component = Plug;

@@ -7,7 +7,7 @@ import ImageBlob from '../image_blob';
 import Video from '../video';
 
 const FeatureImage = ({
-	image, video_url, component, position
+	image, video_url, component, position, width = 500
 }) => {
 	let Image = null;
 
@@ -16,9 +16,9 @@ const FeatureImage = ({
 	} else if (component === `graphic`) {
 		Image = <SVG src={image.filename} />;
 	} else if (component === `image_blob`) {
-		Image = <ImageBlob {...{ ...image, width: 500 }} />;
+		Image = <ImageBlob {...{ ...image, width }} />;
 	} else if (component === `image`) {
-		Image = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: 500 })} />;
+		Image = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width })} />;
 	}
 
 	return Image;

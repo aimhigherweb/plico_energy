@@ -87,6 +87,8 @@ body[class*='header_'] {
 	&.header_image {
 		header {
 			.curve {
+				left: 80%;
+
 				.image {
 					display: block;
 				}
@@ -159,6 +161,14 @@ body[class*='header_'] {
 				.curve {
 					height: 120px;
 					transform: translateX(-37%);
+				}
+			}
+		}
+
+		&.header_image {
+			header {
+				.curve {
+					left: 50%;
 				}
 			}
 		}

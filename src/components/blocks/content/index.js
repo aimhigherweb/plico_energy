@@ -12,7 +12,7 @@ import Illustration from '../../parts/illustration';
 import './style.scss';
 
 const Content = ({
-	heading, content, cta_button, media, illustration, background, sub_heading
+	heading, content, cta_button, media, illustration, background, sub_heading, background_colour
 }) => {
 	let classes = `content_block`;
 
@@ -35,7 +35,13 @@ const Content = ({
 	}
 
 	return (
-		<Block className={classes}>
+		<Block
+			className={classes}
+			styles={{
+				"--backgroundFill": background_colour?.colour || `#18304c`,
+				"--headingColour": background_colour?.colour === `#18304c` ? `#00bbd4` : `#18304c`
+			}}
+		>
 			{background && <Background className="curve" />}
 			{illustration && <Illustration {...illustration[0]} />}
 			<div className="content">

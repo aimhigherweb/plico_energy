@@ -32,13 +32,13 @@ export const StaticForm = ({fields}) => (
 				const f3_slug = f2_slug !== '' ? `${f2_slug}_${generateSlug(f3.label)}` : generateSlug(f3.label)
 
 				return (
-					<input type="text" name={f3_slug} />
+					<input key={f3_slug} type="text" name={f3_slug} />
 				)
 			})
 
 			return (
 				<Fragment>
-					<input type="text" name={f2_slug} />
+					<input type="text" name={f2_slug} key={f2_slug} />
 					{f3_fields}
 				</Fragment>
 			)
@@ -46,7 +46,7 @@ export const StaticForm = ({fields}) => (
 
 		return (
 			<Fragment>
-				<input type="text" name={f1_slug} />
+				<input type="text" name={f1_slug} key={f1_slug} />
 				{f2_fields}
 			</Fragment>
 		)

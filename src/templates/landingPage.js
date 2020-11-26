@@ -95,6 +95,9 @@ export const pageQuery = graphql`
 							component
 						}
 						background
+						background_colour {
+							colour
+						}
 						form
 					}
 				}

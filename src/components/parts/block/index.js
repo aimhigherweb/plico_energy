@@ -2,8 +2,8 @@ import React from 'react';
 
 import './style.scss';
 
-const Block = ({ children, className }) => (
-	<section className={`${className} block`}>
+const Block = ({ children, className, styles }) => (
+	<section className={`${className} block`} style={styles}>
 		{children}
 	</section>
 );

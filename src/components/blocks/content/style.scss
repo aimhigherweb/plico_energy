@@ -35,6 +35,7 @@
 		height: auto;
 		transform: translateX(-35%) translateY(-10%);
 		fill: variables.$primary;
+		fill: var(--backgroundFill);
 	}
 
 	.illustration {
@@ -61,7 +62,7 @@
 		color: #ffffff;
 
 		h2 {
-			color: variables.$secondary;
+			color: var(--headingColour);
 		}
 	}
 }

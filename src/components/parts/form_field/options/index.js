@@ -45,7 +45,7 @@ const Select = ({
 );
 
 const Options = ({
-	label, type, _uid, hidden_label, options, conditional, parent = ``, onChange
+	label, type, _uid, hidden_label, options, parent = ``, onChange
 }) => {
 	let Component = Select,
 		placeholder = ``;

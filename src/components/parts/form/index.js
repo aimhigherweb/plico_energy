@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Formik, Form as FormikForm } from 'formik';
 
-import Field from '../form_field';
+import FormLogic from '../form_logic';
 
 import './style.scss';
 
@@ -17,6 +17,7 @@ const Form = ({ form }) => (
 				options {
 					component
 					label
+					value
 				}
 				conditional {
 					value
@@ -31,6 +32,7 @@ const Form = ({ form }) => (
 				options {
 					component
 					label
+					value
 				}
 				conditional {
 					value
@@ -60,6 +62,7 @@ const Form = ({ form }) => (
 							uuid
 							fields {
 								content {
+									multi_page
 									submit
 									fields {
 										...formFields
@@ -80,59 +83,10 @@ const Form = ({ form }) => (
 		`}
 		render={({ forms }) => {
 			const selectedForm = forms.edges.find(({ node }) => node.uuid === form),
-				formData = selectedForm.node,
-				initialValues = {
-					name: ``,
-					email: ``,
-					message: ``,
-					'do-you-have-existing-solar': ``,
-					'electricity-bill_average-bill-cost': ``
-				},
-				[formValues, setFormValues] = useState(initialValues),
-				handleChange = (e) => {
-					const { name, value } = e.target;
-					setFormValues({ ...formValues, [name]: value });
-				};
+				formData = selectedForm.node;
 
 			return (
-				<Formik
-					initialValues={initialValues}
-					onSubmit={(values, actions) => {
-						alert(JSON.stringify(values, null, 2));
-						actions.setSubmitting(false);
-					}}
-					validateOnChange={false}
-					validateOnBlur={false}
-					enableReinitialize={true}
-				>
-					<FormikForm
-						className="custom"
-						name={formData.slug}
-						method="POST"
-						action="/thanks/"
-						data-netlify="true"
-						data-netlify-honeypot="bot-field"
-					>
-						<input type="hidden" name="bot-field" />
-						<input type="hidden" name="form-name" value={formData.slug} />
-						{formData.fields.content.fields.map((field) => (
-							<Field
-								key={field._uid}
-								{...{
-									component: field.component,
-									data: {
-										...field,
-										onChange: handleChange,
-
-									},
-									values: formValues,
-									conditional: field.conditional
-								}}
-							/>
-						))}
-						<button type="submit">{formData.fields.content.submit}</button>
-					</FormikForm>
-				</Formik>
+				<FormLogic form={formData} />
 			);
 		}}
 	/>

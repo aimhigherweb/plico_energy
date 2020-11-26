@@ -5,6 +5,8 @@ import Options from './options';
 import Custom from './custom';
 // eslint-disable-next-line import/no-cycle
 import Group from './group';
+// eslint-disable-next-line import/no-cycle
+import Page from './page';
 
 import './style.scss';
 
@@ -25,6 +27,9 @@ const Field = ({
 			break;
 		case `options`:
 			Component = Options;
+			break;
+		case `form_page`:
+			Component = Page;
 			break;
 		default:
 			Component = <h2>{component}</h2>;

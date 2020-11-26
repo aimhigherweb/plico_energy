@@ -95,7 +95,8 @@ const Form = ({ form }) => (
 
 			return (
 				<Fragment>
-					<form name={`custom_${form.slug}`} netlify netlify-honeypot="bot-field" hidden>
+					<form name={`custom_${formData.slug}`} netlify netlify-honeypot="bot-field" hidden>
+						<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
 						<input type="hidden" name="bot-field" />
 						<StaticForm {...formData.fields.content} />
 					</form>

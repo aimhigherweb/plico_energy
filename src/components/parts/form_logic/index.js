@@ -111,6 +111,7 @@ const FormLogic = ({ form }) => {
 					action={`${form.fields.content.success_page}/`}
 				>
 					<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
+					<input type="hidden" name="bot-field" />
 					{totalSteps > 1
 						&& <div className="progress">
 							<label

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Formik, Form as FormikForm } from 'formik';
 
 import FormLogic from '../form_logic';
+
+import { StaticForm } from '../../../utils/formFields';
 
 import './style.scss';
 
@@ -92,7 +94,14 @@ const Form = ({ form }) => (
 				formData = selectedForm.node;
 
 			return (
-				<FormLogic form={formData} />
+				<Fragment>
+					<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+						<input type="hidden" name="bot-field" />
+						<input type="hidden" name="form-name" value={formData.slug} />
+						<StaticForm {...formData.fields.content} />
+					</form>
+					<FormLogic form={formData} />
+				</Fragment>
 			);
 		}}
 	/>

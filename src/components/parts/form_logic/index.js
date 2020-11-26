@@ -15,8 +15,8 @@ const FormLogic = ({ form }) => {
 			setFormValues({ ...formValues, [name]: value });
 		},
 		encode = (data) => Object.keys(data)
-			  .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-			  .join(`&`),
+			.map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+			.join(`&`),
 		onSubmit = (values) => {
 			fetch(`${form.fields.content.success_page}/`, {
 				method: `POST`,
@@ -28,7 +28,7 @@ const FormLogic = ({ form }) => {
 			})
 				.then(() => {
 					console.log(`success, form has been submitted`);
-					window.location.replace(`${form.fields.content.success_page}/`);
+					navigate(`${form.fields.content.success_page}/`);
 				})
 				.catch((err) => {
 					console.error(err);
@@ -109,8 +109,6 @@ const FormLogic = ({ form }) => {
 					name={form.slug}
 					method="POST"
 					action={`${form.fields.content.success_page}/`}
-					data-netlify="true"
-					data-netlify-honeypot="bot-field"
 				>
 					{totalSteps > 1
 						&& <div className="progress">
@@ -127,8 +125,6 @@ const FormLogic = ({ form }) => {
 							</progress>
 						</div>
 					}
-					<input type="hidden" name="bot-field" />
-					<input type="hidden" name="form-name" value={form.slug} />
 					{totalSteps > 1
 						&& <Field
 							key={step._uid}

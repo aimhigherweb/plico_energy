@@ -14,13 +14,13 @@ const LandingPage = ({ data }) => {
 			fields
 		} = data.storyblokEntry,
 		{ body, banner } = fields.content,
-		headerType = banner[0].media[0].component,
+		headerType = banner[0]?.media[0].component || `default`,
 
 		 block = body[2];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>
-			<Banner {...banner[0]} />
+			{banner[0] && <Banner {...banner[0]} />}
 			{/* <div style={{
 				borderTop: `5px solid rebeccapurple`,
 				borderBottom: `5px solid rebeccapurple`,

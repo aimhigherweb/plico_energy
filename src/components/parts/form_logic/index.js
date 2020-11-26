@@ -28,7 +28,7 @@ const FormLogic = ({ form }) => {
 			})
 				.then(() => {
 					console.log(`success, form has been submitted`);
-					navigate(`${form.fields.content.success_page}/`);
+					window.location.replace(`${form.fields.content.success_page}/`);
 				})
 				.catch((err) => {
 					console.error(err);

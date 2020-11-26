@@ -7,6 +7,7 @@ import Footer from '../footer';
 import Favicon from '../../../img/favicon.png';
 
 import '../../../styles/_global.scss';
+import './style.scss';
 
 const Layout = ({ children, meta, classes }) => (
 		<StaticQuery

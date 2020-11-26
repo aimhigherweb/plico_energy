@@ -1,0 +1,37 @@
+body {
+	&.page {
+		main {
+			padding: 20px;
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	body {
+		&.page {
+			main {
+				padding: 20px 40px;
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	body {
+		&.page {
+			main {
+				padding: 50px 5vw 20px;
+			}
+		}
+	}
+}
+
+@media(min-width: 85em) {
+	body {
+		&.page {
+			main {
+				padding: 20px calc(50vw - 600px);
+			}
+		}
+	}
+}

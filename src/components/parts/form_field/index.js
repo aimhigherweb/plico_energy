@@ -9,10 +9,9 @@ import Group from './group';
 import './style.scss';
 
 const Field = ({
-	component, data
+	component, data, conditional, values
 }) => {
-	let Component,
-		conditional = false;
+	let Component;
 
 	switch (component) {
 		case `text`:
@@ -32,10 +31,15 @@ const Field = ({
 			break;
 	}
 
-	if (data.conditional && data.conditional.field !== ``) {
-		conditional = true;
+	if (!conditional || conditional.field === ``) {
+		conditional = false;
 	}
-	return <Component {...{ ...data, conditional }} />;
+
+	if (!conditional || values[conditional.field] === conditional.value) {
+		return <Component {...{ ...data, values }} />;
+	}
+
+	return null;
 };
 
 export default Field;

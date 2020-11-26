@@ -4,6 +4,8 @@
 form {
 	display: flex;
 	flex-wrap: wrap;
+	max-width: 700px;
+	margin: 0 auto;
 }
 
 label, legend {
@@ -64,7 +66,7 @@ input {
 			}
 		}
 
-		&:checked {
+		&:checked, &[checked] {
 			+ label {
 				&:after {
 					content: '';
@@ -93,7 +95,7 @@ input {
 	}
 
 	&[type='checkbox'] {
-		&:checked {
+		&:checked, &[checked] {
 			+ label {
 				&:after {
 					content: '✓';

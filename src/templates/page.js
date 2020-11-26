@@ -16,7 +16,7 @@ const Page = ({ data }) => {
 		<Layout {...{ classes: `page` }}>
 			<h1>{name}</h1>
 			<div dangerouslySetInnerHTML={{ __html: content }} />
-			<Form form={form} />
+			{form && <Form form={form} />}
 		</Layout>
 	);
 };

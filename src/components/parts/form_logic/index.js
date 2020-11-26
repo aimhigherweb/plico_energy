@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, useFormikContext } from 'formik';
 
+import formFields from '../../../utils/formFields';
+
 import Field from '../form_field';
 
 const FormLogic = ({ form }) => {
-	const initialValues = {
-			name: ``,
-			email: ``,
-			message: ``,
-			'do-you-have-existing-solar': ``,
-			'electricity-bill_average-bill-cost': ``,
-			'property-details_property-ownership': ``
-		},
-		[formValues, setFormValues] = useState(initialValues),
+	const [formValues, setFormValues] = useState(formFields(form.fields.content.fields)),
 		[stepNumber, setStepNumber] = useState(0),
-		[snapshot, setSnapshot] = useState(initialValues),
+		[snapshot, setSnapshot] = useState(formFields(form.fields.content.fields)),
 		handleChange = (e) => {
 			const { name, value } = e.target;
 

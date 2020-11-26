@@ -59,7 +59,7 @@ module.exports = {
 			options: {
 				headers: {
 					"/join": [
-						`Access-Control-Allow-Origin: *`,
+						`Access-Control-Allow-Origin: https://sepricecatalog.azurewebsites.net`,
 					],
 				},
 				mergeSecurityHeaders: true, // boolean to turn off the default security headers

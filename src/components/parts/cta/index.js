@@ -10,7 +10,10 @@ const CTA = ({ cta_button }) => (
 			<li key={cta.cta_link}>
 				<A
 					className="btn cta"
-					style={{ "--background": cta.cta_colour.colour }}
+					style={{
+						"--cta_background": cta.cta_colour.colour,
+						"--cta_text": cta.cta_colour.colour === `#18304c` ? `#ffffff` : `#18304c`
+					}}
 					url={cta.cta_link}
 				>
 					{cta.cta_text}

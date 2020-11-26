@@ -17,7 +17,12 @@ const News = ({
 		{feature_image
 			&& <Img
 				fluid={getFluidGatsbyImage(
-					feature_image.filename, { maxWidth: 300 }
+					feature_image.filename,
+					{
+						maxWidth: 300,
+						useBase64: true,
+						base64: true
+					}
 				)}
 			/>
 		}

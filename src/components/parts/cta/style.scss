@@ -1,6 +1,14 @@
 @use '../../../styles/variables.scss';
 
 .cta {
-	background: var(--background);
+	border-color: var(--cta_background);
+	background: var(--cta_background);
+	color: var(--cta_text);
 	font-weight: 600;
+
+	&:hover, &:focus {
+		border-color: var(--cta_background);
+		background: var(--cta_text);
+		color: var(--cta_background);
+	}
 }

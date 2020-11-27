@@ -1,6 +1,8 @@
 @use '../../../styles/variables.scss';
 
 .content_sections {
+	z-index: 5;
+
 	h3 {
 		text-transform: uppercase;
 	}
@@ -95,6 +97,9 @@
 
 @media(min-width: 40em) {
 	.content_sections {
+		margin-top: 100px;
+		margin-bottom: 100px;
+
 		.illustration {
 			display: block;
 			bottom: 0;
@@ -149,6 +154,8 @@
 
 @media(min-width: 50em) {
 	.content_sections {
+		margin-bottom: 150px;
+
 		.illustration {
 			bottom: -50px;
 			left: -650px;
@@ -193,6 +200,8 @@
 
 @media(min-width: 70em) {
 	.content_sections {
+		margin-top: 150px;
+
 		h2 {
 			font-size: 2.5em;
 		}
@@ -235,7 +244,12 @@
 
 				&:nth-child(2n) {
 					margin-left: -50px;
-					padding: 50px 100px 50px 150px;
+					padding: 80px 100px 80px 150px;
+
+					.background {
+						min-width: 100%;
+						min-height: 100%;
+					}
 				}
 			}
 		}
@@ -247,6 +261,12 @@
 		.illustration {
 			left: 50%;
 			transform: translateX(-60%);
+		}
+
+		&.image {
+			.gatsby-image-wrapper {
+				margin-left: -100px;
+			}
 		}
 	}
 }

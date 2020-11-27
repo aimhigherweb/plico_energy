@@ -5,7 +5,7 @@ import A from '../link';
 import './style.scss';
 
 const CTA = ({ cta_button }) => (
-	<ul>
+	<ul className="cta_buttons">
 		{cta_button.map((cta) => (
 			<li key={cta.cta_link}>
 				<A

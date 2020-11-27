@@ -1,4 +1,11 @@
 @use '../../../styles/variables.scss';
+@use '../../../styles/extends.scss';
+
+.cta_buttons {
+	@include extends.list_reset;
+	margin: 0;
+	padding: 0;
+}
 
 .cta {
 	border-color: var(--cta_background);

@@ -1,0 +1,232 @@
+@use '../../../styles/extends.scss';
+@use '../../../styles/variables.scss';
+
+.calculator {
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+
+	input[type='range'] {
+		width: 100%;
+		margin-top: 20px;
+		padding: 0;
+		background: transparent;
+		-webkit-appearance: none;
+
+		&:focus {
+			&::-webkit-slider-thumb {
+				border-color: variables.$secondary;
+				background: variables.$primary
+			}
+
+			&::-moz-range-thumb {
+				border-color: variables.$secondary;
+				background: variables.$primary
+			}
+
+			&::-ms-thumb {
+				border-color: variables.$secondary;
+				background: variables.$primary
+			}
+		}
+
+		&::-webkit-slider-thumb {
+			@include extends.range-thumb;
+		}
+
+		&::-moz-range-thumb {
+			@include extends.range-thumb;
+		}
+
+		&::-ms-thumb {
+			@include extends.range-thumb;
+		}
+
+		&::-ms-track {
+			@include extends.range-track;
+		}
+
+		&::-webkit-slider-runnable-track {
+			@include extends.range-track;
+		}
+
+		&::-moz-range-track {
+			@include extends.range-track;
+		}
+
+		&::-ms-fill-lower {
+			@include extends.range-track;
+			background: variables.$secondary;
+		}
+
+		&::-ms-fill-upper {
+			@include extends.range-track;
+		}
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	form {
+		display: block;
+	}
+
+	label {
+		margin: 20px 0 40px;
+		color: variables.$secondary;
+		font-family: variables.$font_heading;
+		font-size: 1.5em;
+		font-weight: 600;
+		text-align: center;
+
+		mark {
+			background: none;
+			color: inherit;
+			text-transform: uppercase;
+		}
+	}
+
+	.bill {
+		margin-top: 50px;
+		color: variables.$primary;
+		font-family: variables.$font_heading;
+		font-size: 2em;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.disclaimer {
+		width: 80%;
+		margin: 20px auto;
+		color: variables.$grey_dark;
+		text-align: center;
+	}
+
+	.results {
+		padding: 40px 20px;
+		border: 5px solid variables.$grey;
+		line-height: 1.5;
+		text-align: center;
+
+		.savings {
+			color: variables.$primary;
+			font-size: 1.5em;
+		}
+
+		.feature {
+			color: variables.$secondary;
+			font-family: variables.$font_heading;
+			font-size: 1.5em;
+			font-weight: bold;
+			line-height: 1.2;
+
+			.savings {
+				font-size: 2em;
+
+				&:before {
+					content: '';
+					display: block;
+				}
+			}
+		}
+	}
+
+	.cta {
+		margin-bottom: 0;
+	}
+
+	.plug {
+
+		display: none;
+		position: absolute;
+
+		svg {
+			height: 600px;
+			transform: scaleX(-1) rotate(40deg);
+
+			path {
+				stroke-width: 6px;
+				stroke: variables.$primary;
+			}
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.calculator {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		max-width: unset;
+
+		h2 {
+			width: 100%;
+		}
+
+		form, .results {
+			flex: 1 1 40%;
+		}
+
+		form {
+			margin-right: 20px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.calculator {
+		width: 90vw;
+
+		form {
+			margin-right: 50px;
+		}
+
+		.plug {
+			display: block;
+			right: -700px;
+			bottom: 320px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.calculator {
+		width: 80vw;
+		max-width: 1200px;
+
+		.bill {
+			font-size: 2.5em;
+		}
+
+		label {
+			font-size: 2em;
+		}
+
+		.plug {
+			right: -720px;
+			bottom: 300px;
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.calculator {
+		form {
+			margin-right: 70px;
+		}
+
+		.results {
+			padding: 40px;
+		}
+
+		.feature {
+			font-size: 2em;
+		}
+
+		.plug {
+			right: -750px;
+			bottom: 250px;
+		}
+	}
+}

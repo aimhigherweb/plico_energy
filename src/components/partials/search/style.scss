@@ -37,7 +37,7 @@
 		}
 	}
 
-	.results {
+	.search_results {
 		display: none;
 
 		a {
@@ -53,7 +53,7 @@
 
 		.ais-SearchBox {
 			&:focus-within {
-				& + .results {
+				& + .search_results {
 					opacity: 1;
 					pointer-events: normal;
 				}

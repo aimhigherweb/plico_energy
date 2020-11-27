@@ -55,3 +55,28 @@ $glow_shadow: rgba($glow_yellow, .5);
 			drop-shadow(0 0 2px $glow_orange);
 	}
 }
+
+@mixin range-thumb {
+	width: 35px;
+	height: 35px;
+	margin-top: 0;
+	border: 7px solid variables.$primary;
+	border-radius: 50%;
+	background: variables.$secondary;
+	box-shadow: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+@mixin range-track {
+	width: 100%;
+	height: 30px;
+	padding: 0;
+	border: none;
+	border-radius: 15px;
+	background: variables.$grey;
+	background: linear-gradient(to right, variables.$secondary var(--percentage), variables.$grey var(--percentage));
+	box-shadow: none;
+	color: transparent;
+	cursor: pointer
+}

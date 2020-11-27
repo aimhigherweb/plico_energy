@@ -5,7 +5,7 @@ import { connectHits } from 'react-instantsearch-dom';
 import './style.scss';
 
 const Results = connectHits(({ hits }) => (
-		<ul className="results">
+		<ul className="search_results">
 			{hits.map((hit) => (
 				<Hit key={hit.objectID} {...hit} />
 			))}

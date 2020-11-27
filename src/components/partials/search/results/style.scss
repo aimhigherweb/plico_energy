@@ -1,6 +1,6 @@
 @use '../../../../styles/variables.scss';
 
-.results {
+.search_results {
 	transition: opacity 1s steps(1, end) 5s;
 	opacity: 0;
 	color: variables.$main;

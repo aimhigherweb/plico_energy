@@ -113,7 +113,11 @@ body[class*='header_'] {
 
 	&.header_image_blob {
 		header {
+			margin-bottom: 0;
+
 			.curve {
+				transform: translateX(-50%);
+
 				.image_blob {
 					display: block;
 				}
@@ -169,6 +173,15 @@ body[class*='header_'] {
 				}
 			}
 		}
+
+		&.header_image_blob {
+			header {
+				.curve {
+					height: 70%;
+					transform: translateX(-40%);
+				}
+			}
+		}
 	}
 }
 
@@ -209,6 +222,15 @@ body[class*='header_'] {
 			header {
 				.curve {
 					transform: translateX(-51%);
+				}
+			}
+		}
+
+		&.header_image_blob {
+			header {
+				.curve {
+					height: 90%;
+					transform: translateX(-50%);
 				}
 			}
 		}

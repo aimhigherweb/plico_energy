@@ -6,6 +6,7 @@ import formFields from '../../../utils/formFields';
 import Field from '../form_field';
 
 const FormLogic = ({ form }) => {
+	console.log(JSON.stringify(form.fields.content.fields));
 	const [formValues, setFormValues] = useState(formFields(form.fields.content.fields)),
 		[stepNumber, setStepNumber] = useState(0),
 		[snapshot, setSnapshot] = useState(formFields(form.fields.content.fields)),

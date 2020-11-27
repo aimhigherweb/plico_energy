@@ -25,6 +25,7 @@ const Block = ({
 		case `savings_calculator`:
 			return <SavingsCalculator {...data} />;
 		case `content_sections`:
+			console.log(data);
 			return <ContentSections {...data} />;
 		default:
 			return <h2>{component}</h2>;

@@ -40,6 +40,7 @@ const TextInput = ({
 				id={_uid}
 				placeholder={placeholder}
 				// onChange={(e) => onChange(e)}
+				// value={value}
 				onBlur={(e) => onChange(e)}
 			/>
 		</Fragment>

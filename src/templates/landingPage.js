@@ -95,6 +95,7 @@ export const pageQuery = graphql`
 							illustration
 							component
 						}
+						illustration_selection
 						background
 						background_colour {
 							colour

@@ -66,7 +66,7 @@ const Options = ({
 					list={`list_${_uid}`}
 					id={_uid}
 					name={`${parent}${generateSlug(label)}`}
-					onChange={(e) => onChange(e)}
+					// onChange={(e) => onChange(e)}
 				/>
 			}
 			<Component {...{

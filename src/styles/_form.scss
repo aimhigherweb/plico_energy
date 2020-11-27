@@ -53,7 +53,7 @@ fieldset {
 
 input {
 	&[type='radio'], &[type='checkbox'] {
-		display: none;
+		// display: none;
 
 		+ label {
 			display: flex;
@@ -70,7 +70,7 @@ input {
 			}
 		}
 
-		&:checked, &[checked] {
+		&:checked {
 			+ label {
 				&:after {
 					content: '';

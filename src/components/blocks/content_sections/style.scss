@@ -1,0 +1,90 @@
+@use '../../../styles/variables.scss';
+
+.content_sections {
+	h3 {
+		text-transform: uppercase;
+	}
+
+	&.image {
+		display: flex;
+		flex-wrap: wrap;
+
+		.gatsby-image-wrapper {
+			order: 1;
+			width: 100%;
+		}
+
+		.section {
+			max-width: 350px;
+			margin-top: 50px;
+			margin-right: auto;
+			margin-bottom: 50px;
+			padding: 40px;
+			color: #ffffff;
+
+			h3 {
+				width: 100%;
+				margin-top: 0;
+				color: variables.$secondary;
+			}
+
+			&:nth-child(2n) {
+				margin-right: 0;
+				margin-left: auto;
+			}
+
+			.background {
+				display: block;
+			}
+
+			&.secondary {
+				h3 {
+					color: variables.$primary;
+				}
+			}
+
+			&:nth-child(n+5) {
+				order: 1;
+			}
+
+			&:nth-child(3n) {
+				padding-top: 70px;
+
+				.background {
+					margin-top: -20px;
+					transform: scaleX(-1);
+				}
+			}
+
+			&:nth-child(3n - 2) {
+				margin-top: 70px;
+				padding-top: 10px;
+				padding-bottom: 20px;
+				padding-left: 60px;
+
+				.background {
+					min-height: calc(120% + 60px);
+					margin-left: -30px;
+					transform: scaleX(-1) rotate(90deg);
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.content_sections {
+		.main {
+			flex: 0 1 40%;
+		}
+
+		.section {
+			flex: 1 1 50%;
+			margin-left: auto;
+
+			&:nth-child(2n) {
+				margin-right: auto;
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+@use '../../../styles/variables.scss';
+
+.section {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	.background		{
+		display: none;
+		position: absolute;
+		z-index: -1;
+		min-width: 100%;
+		min-height: calc(100% + 60px);
+		fill: variables.$primary;
+		object-fit: cover;
+	}
+
+	&.secondary {
+		.background {
+			fill: variables.$secondary;
+		}
+	}
+}

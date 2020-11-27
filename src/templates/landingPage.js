@@ -16,12 +16,12 @@ const LandingPage = ({ data }) => {
 		{ body, banner } = fields.content,
 		headerType = banner[0]?.media[0].component || `default`,
 
-		 block = body[2];
+		 block = body[0];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>
-			{banner[0] && <Banner {...banner[0]} />}
-			{/* <div style={{
+			{/* {banner[0] && <Banner {...banner[0]} />} */}
+			<div style={{
 				borderTop: `5px solid rebeccapurple`,
 				borderBottom: `5px solid rebeccapurple`,
 				padding: `1px 0`,
@@ -29,14 +29,14 @@ const LandingPage = ({ data }) => {
 				<Block
 					{...{ component: block.component, data: block }}
 				/>
-			</div> */}
+			</div>
 
-			{body.map((block) => (
+			{/* {body.map((block) => (
 				<Block
 					key={JSON.stringify(block)}
 					{...{ component: block.component, data: block }}
 				/>
-			))}
+			))} */}
 		</Layout>
 	);
 };
@@ -109,6 +109,11 @@ export const pageQuery = graphql`
 							cta_colour {
 								colour
 							}
+						}
+						sections {
+							content
+							heading
+							component
 						}
 					}
 				}

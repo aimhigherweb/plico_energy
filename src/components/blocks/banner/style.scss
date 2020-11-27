@@ -20,6 +20,10 @@
 
 	.sub {
 		color: #ffffff;
+
+		li {
+			list-style: disc;
+		}
 	}
 
 	.btn {
@@ -304,7 +308,7 @@
 			}
 
 			.banner_squiggle {
-				display: block;
+				// display: block;
 
 				svg {
 					width: 1000px;
@@ -318,7 +322,7 @@
 				margin: 0;
 
 				.border {
-					display: none;
+					// display: none;
 				}
 			}
 		}

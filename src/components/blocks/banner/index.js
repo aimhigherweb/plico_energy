@@ -15,7 +15,7 @@ const Banner = ({
 		<Block className={`banner ${media[0].component}`}>
 			<blockquote>
 				<p className="main">{main_quote}</p>
-				<p className="sub">{sub_quote}</p>
+				<div className="sub" dangerouslySetInnerHTML={{ __html: sub_quote }} />
 				{cta_button && <CTA {...{ cta_button }} />}
 			</blockquote>
 			<div className="feature">

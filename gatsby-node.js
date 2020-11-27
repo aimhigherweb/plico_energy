@@ -149,7 +149,19 @@ exports.onCreateNode = async ({
 		content.content = processMarkdown(content.content);
 
 		if (node.field_component === `landing_page`) {
-			const blocks = [];
+			const blocks = [],
+				banners = [];
+
+			content.banner.forEach((block) => {
+				if (block.sub_quote) {
+					banners.push({
+						...block,
+						sub_quote: processMarkdown(block.sub_quote)
+					});
+				} else {
+					banners.push(block);
+				}
+			});
 
 			content.body.forEach((block) => {
 				if (block.content) {
@@ -163,6 +175,7 @@ exports.onCreateNode = async ({
 			});
 
 			content.body = blocks;
+			content.banner = banners;
 		}
 
 		createNodeField({

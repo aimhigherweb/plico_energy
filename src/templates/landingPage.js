@@ -114,9 +114,20 @@ export const pageQuery = graphql`
 							}
 						}
 						sections {
+							_uid
 							content
 							heading
 							component
+							cta {
+								cta_link
+								cta_text
+								cta_colour {
+									colour
+								}
+							}
+							image {
+								filename
+							}
 						}
 					}
 				}

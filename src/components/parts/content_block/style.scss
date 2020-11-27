@@ -1,0 +1,76 @@
+@use '../../../styles/variables.scss';
+
+.repeatable_content {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	max-width: 300px;
+	margin: 0 auto 20px;
+	background: #ffffff;
+
+	.content {
+		width: 100%;
+		padding: 15px;
+		border: 5px solid variables.$grey;
+	}
+
+	h3, .excerpt {
+		color: inherit;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.5em;
+		text-transform: uppercase;
+	}
+
+	.gatsby-image-wrapper {
+		width: 100%;
+		border: 1px solid rgba(0, 0, 0, 0.3);
+	}
+}
+
+@media(min-width: 40em) {
+	.repeatable_content {
+		flex-wrap: nowrap;
+		max-width: 800px;
+		margin-top: 30px;
+		text-align: left;
+
+		.content {
+			width: 100%;
+		}
+
+		.gatsby-image-wrapper {
+			width: 100%;
+		}
+
+		&:nth-child(2n) {
+			.gatsby-image-wrapper {
+				order: -1;
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.repeatable_content {
+		.gatsby-image-wrapper {
+			flex-shrink: 0;
+			width: 40vw;
+			max-width: 400px;
+		}
+
+		.content {
+			padding: 50px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.repeatable_content {
+		.content {
+			padding: 50px 80px;
+		}
+	}
+}

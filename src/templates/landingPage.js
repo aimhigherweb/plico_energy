@@ -88,6 +88,8 @@ export const pageQuery = graphql`
 							}
 							video_url
 							position
+							content
+							illustration
 						}
 						testimonials
 						faqs

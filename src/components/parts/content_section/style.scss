@@ -6,6 +6,11 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	line-height: 1.5;
+
+	h3 {
+		line-height: 1.2;
+	}
 
 	.background		{
 		display: none;

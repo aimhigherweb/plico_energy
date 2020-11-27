@@ -4,6 +4,7 @@ import Block from "../../parts/block";
 import FeatureImage from '../../parts/feature_image';
 import Section from '../../parts/content_section';
 import Lightning from '../../../img/animations/lightning_hand_squiggle.svg';
+import Globe from '../../../img/animations/planet_hand_squiggle.svg';
 import Animated from '../../parts/animated_svg';
 
 import './style.scss';
@@ -24,6 +25,10 @@ const ContentSections = ({
 
 	if (illustration_selection === `lightning`) {
 		Illustration = Lightning;
+	}
+
+	if (illustration_selection === `globe`) {
+		Illustration = Globe;
 	}
 
 	return (

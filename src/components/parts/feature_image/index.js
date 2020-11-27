@@ -5,23 +5,26 @@ import SVG from 'react-inlinesvg';
 
 import ImageBlob from '../image_blob';
 import Video from '../video';
+import Quote from '../quote';
 
 const FeatureImage = ({
-	image, video_url, component, position, width = 500
+	image, video_url, component, position, illustration, content, width = 500
 }) => {
-	let Image = null;
+	let Media = null;
 
 	if (component === `video`) {
-		Image = <Video {...{ video_url, image }} />;
+		Media = <Video {...{ video_url, image }} />;
 	} else if (component === `graphic`) {
-		Image = <SVG src={image.filename} />;
+		Media = <SVG src={image.filename} />;
 	} else if (component === `image_blob`) {
-		Image = <ImageBlob {...{ ...image, width }} />;
+		Media = <ImageBlob {...{ ...image, width }} />;
 	} else if (component === `image`) {
-		Image = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width })} />;
+		Media = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width })} />;
+	} else if (component === `quote`) {
+		Media = <Quote {...{ illustration, content }} />;
 	}
 
-	return Image;
+	return Media;
 };
 
 export default FeatureImage;

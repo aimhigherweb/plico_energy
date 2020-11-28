@@ -546,6 +546,11 @@
 		}
 
 		&.image_blob {
+			blockquote {
+				margin-right: -50px;
+				margin-left: 50px;
+			}
+
 			.feature {
 				transform: translateY(80px) translateX(0);
 			}

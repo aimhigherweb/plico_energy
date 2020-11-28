@@ -164,14 +164,17 @@ exports.onCreateNode = async ({
 			});
 
 			content.body.forEach((block) => {
+				const blockContent = block;
 				if (block.content) {
-					blocks.push({
-						...block,
-						content: processMarkdown(block.content)
-					});
-				} else {
-					blocks.push(block);
+					blockContent.content = processMarkdown(block.content);
 				}
+				if (block.plans) {
+					blockContent.plans.forEach((plan, index) => {
+						plan.features = processMarkdown(plan.features);
+					});
+				}
+
+				blocks.push(blockContent);
 			});
 
 			content.body = blocks;

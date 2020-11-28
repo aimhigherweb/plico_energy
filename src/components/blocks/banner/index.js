@@ -19,7 +19,7 @@ const Banner = ({
 				{cta_button && <CTA {...{ cta_button }} />}
 			</blockquote>
 			<div className="feature">
-				{media && <FeatureImage {...{ ...media[0], width: 3000, border: false }} />}
+				{media && <FeatureImage {...{ ...media[0], width: 3000, banner: true }} />}
 			</div>
 			<Illustration component={media[0].component} />
 		</Block>
@@ -34,13 +34,13 @@ const Banner = ({
 			);
 		}
 
-		if (component === `image_blob`) {
-			return (
-				<Animated className="banner_squiggle">
-					<BannerSquiggle />
-				</Animated>
-			);
-		}
+		// if (component === `image_blob`) {
+		// 	return (
+		// 		<Animated className="banner_squiggle">
+		// 			<BannerSquiggle />
+		// 		</Animated>
+		// 	);
+		// }
 
 		return null;
 	};

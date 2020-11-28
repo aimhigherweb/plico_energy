@@ -1,0 +1,59 @@
+.image_blob_banner {
+	position: relative;
+	width: 100%;
+
+	image {
+		width: 100%;
+		height: 100%;
+		clip-path: url(#clip_image_banner);
+	}
+
+	.squiggle {
+		position: absolute;
+		right: -2%;
+		bottom: 125%;
+		left: -30%;
+		transform: rotate(-5deg);
+
+		svg {
+			width: auto;
+			height: 440px;
+		}
+
+		path {
+			stroke-width:5px;
+			stroke: currentColor;
+			stroke-opacity: 1;
+		}
+	}
+}
+
+@media(min-width: 870px) {
+	.image_blob_banner {
+		.squiggle {
+			svg {
+				height: 490px;
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.image_blob_banner {
+		.squiggle {
+			svg {
+				height: 620px;
+			}
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.image_blob_banner {
+		.squiggle {
+			svg {
+				height: 860px;
+			}
+		}
+	}
+}

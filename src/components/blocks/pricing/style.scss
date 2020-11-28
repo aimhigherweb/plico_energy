@@ -1,0 +1,33 @@
+.pricing_block {
+	line-height: 1.5;
+
+	.plans {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 auto;
+		padding: 0;
+	}
+
+	.disclaimer {
+		margin-bottom: 50px;
+		text-align: center;
+	}
+}
+
+@media(min-width: 40em) {
+	.pricing_block {
+		.plans {
+			justify-content: center;
+		}
+
+		.plan {
+			margin: 15px;
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.pricing_block {
+		padding: 0 calc(50vw - 600px)
+	}
+}

@@ -129,6 +129,20 @@ export const pageQuery = graphql`
 								filename
 							}
 						}
+						disclaimer
+						plans {
+							cta {
+								cta_text
+								cta_link
+								cta_colour {
+									colour
+								}
+							}
+							description
+							features
+							name
+							price
+						}
 					}
 				}
 			}

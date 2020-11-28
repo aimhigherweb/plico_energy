@@ -1,0 +1,93 @@
+@use '../../../styles/variables.scss';
+
+.plan {
+	display: flex;
+	flex: 1 1 300px;
+	flex-direction: column;
+	flex-wrap: wrap;
+	max-width: 400px;
+	margin: 30px auto;
+	padding: 0 0 20px;
+	background: variables.$grey;
+	list-style: none;
+	text-align: center;
+
+	h3 {
+		width: 100%;
+		margin: 0;
+		padding: 0.6em;
+		background: variables.$primary;
+		color: #ffffff;
+		font-size: 1.5em;
+		text-transform: uppercase;
+	}
+
+	.description {
+		width: 100%;
+		margin: 0;
+		padding: 5px;
+		background: variables.$secondary;
+		color: #ffffff;
+		line-height: 1.5;
+		text-transform: lowercase;
+	}
+
+	.price {
+		width: 100%;
+		margin-top: 0.8em;
+		margin-bottom: 0;
+		color: variables.$primary;
+		font-family: variables.$font_heading;
+		font-size: 3em;
+		font-weight: bold;
+		line-height: 1;
+
+		small {
+			font-size: 0.5em;
+			font-weight: normal;
+		}
+	}
+
+	.frequency {
+		display: block;
+		margin: 0 0 50px;
+		font-size: 1em;
+	}
+
+	.features {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0 20px;
+		list-style: none;
+
+		li {
+			margin: 20px 0;
+		}
+	}
+
+	.cta_buttons {
+		align-self: flex-end;
+		width: 100%;
+		margin-top: auto;
+	}
+}
+
+@media(min-width: 50em) {
+	.plan {
+		h3 {
+			font-size: 2em;
+		}
+
+		.price {
+			font-size: 5em;
+			font-weight: 600;
+		}
+	}
+}

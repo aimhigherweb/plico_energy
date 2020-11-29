@@ -74,22 +74,26 @@ const FormLogic = ({ form }) => {
 			// netlify
 			// netlify-honeypot="bot-field"
 			onSubmit={(e) => {
-				fetch(`/`, {
-					method: `POST`,
-					headers: {
-						'Content-Type': `application/x-www-form-urlencoded`
-					},
-					body: encode({
-						'form-name': `custom_${form.slug}`,
-						...values
-					})
-				})
-					.then(() => console.log(`success`))
-					.catch((error) => console.log(error));
-
 				e.preventDefault();
 
-				window.location.replace(`${form.fields.content.success_page}/`);
+				if (step + 1 < totalSteps) {
+					nextStep();
+				} else {
+					fetch(`/`, {
+						method: `POST`,
+						headers: {
+							'Content-Type': `application/x-www-form-urlencoded`
+						},
+						body: encode({
+							'form-name': `custom_${form.slug}`,
+							...values
+						})
+					})
+						.then(() => console.log(`success`))
+						.catch((error) => console.log(error));
+
+					window.location.replace(`${form.fields.content.success_page}/`);
+				}
 			}}
 		>
 			<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
@@ -139,8 +143,8 @@ const FormLogic = ({ form }) => {
 				)}
 				{step < totalSteps && (
 					<button
-						type={step + 1 < totalSteps ? `button` : `submit`}
-						onClick={() => nextStep()}
+						className={step + 1 < totalSteps ? `` : `submit`}
+						type="submit"
 					>
 						{step + 1 < totalSteps ? `Save and Continue` : form.fields.content.submit}
 					</button>

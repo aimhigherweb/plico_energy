@@ -72,16 +72,12 @@ export const StaticForm = ({fields}) => (
 )
 
 
-export const checkConditions = (values, parents = [], label, conditional) => {
-	// let name = parents.length ? `${parents.map(parent => (generateSlug(parent))).join('_')}_${generateSlug(label)}` : generateSlug(label)
-
+export const checkConditions = (values, conditional) => {
 	if(!conditional || conditional.field == '') {
 		return true
 	}
 
-	// console.log(values)
-
-	if(values[conditional.field] == conditional.value) {
+	if(conditional.value.split(',').includes(values[conditional.field])) {
 		return true
 	}
 

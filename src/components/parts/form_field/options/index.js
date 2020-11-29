@@ -84,7 +84,7 @@ const Options = ({
 				&& <select
 					name={`${parent}${generateSlug(label)}`}
 					id={_uid}
-					onChange={(e) => (fieldChanged(`list_${_uid}`, e.target.value))}
+					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}`, e.target.value))}
 					// value={value}
 				>
 					<Component {...{

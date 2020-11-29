@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
-import formFields from '../../../utils/formFields';
+import formFields, { checkConditions } from '../../../utils/formFields';
 import generateSlug from '../../../utils/generateSlug';
 
 import Field from '../form_field';
@@ -12,6 +12,7 @@ const FormLogic = ({ form }) => {
 		[currentStepData, setCurrentStepData] = useState(formData[step]),
 		[values, setValues] = useState({}),
 		fieldChanged = (fieldId, value) => {
+			console.log({ fieldId, value });
 			setValues((currentValues) => {
 				currentValues[fieldId] = value;
 
@@ -26,31 +27,10 @@ const FormLogic = ({ form }) => {
 		},
 		checkStep = (direction) => {
 			const findNextStep = (step) => {
-				const upcomingStepData = formData[step];
-				if (
-					upcomingStepData.conditional
-					&& upcomingStepData.conditional.field
-				) {
-					const segments = upcomingStepData.conditional.field.split(`_`),
-						matchedStepName = segments[0],
-						conditionalStep = formData.filter((d) => {
-							d.label.toLowerCase().replace(` `, `-`) === matchedStepName;
-						})[0];
+				const data = formData[step];
 
-					if (conditionalStep) {
-						const fieldNameToMatch = segments[segments.length - 1],
-							fieldToMatch = conditionalStep.field.filter((d) => (
-								d.label.toLowerCase().replace(` `, `-`) === fieldNameToMatch
-							))[0];
-
-						if (fieldToMatch) {
-							const fieldToMatchValue = values[fieldToMatch._uid];
-
-							if (fieldToMatchValue !== upcomingStepData.conditional.value) {
-								return findNextStep(step + direction);
-							}
-						}
-					}
+				if (!checkConditions(values, data.conditional)) {
+					return findNextStep(step + direction);
 				}
 
 				return step;
@@ -66,7 +46,6 @@ const FormLogic = ({ form }) => {
 		};
 
 	useEffect(() => {
-		console.log(`useeffect runnign`);
 		const upcomingStepData = formData[step];
 
 		setCurrentStepData(upcomingStepData);
@@ -124,20 +103,21 @@ const FormLogic = ({ form }) => {
 						</Fragment>
 
 				}
-				{step < totalSteps && (
-					<button
-						type="button"
-						onClick={() => nextStep()}
-					>
-								Save and Continue
-					</button>
-				)}
+
 				{step > 0 && (
 					<button
 						type="button"
 						onClick={() => prevStep()}
 					>
 								Back
+					</button>
+				)}
+				{step < totalSteps && (
+					<button
+						type={step + 1 < totalSteps ? `button` : `submit`}
+						onClick={() => nextStep()}
+					>
+						{step + 1 < totalSteps ? `Save and Continue` : form.fields.content.submit}
 					</button>
 				)}
 			</Fragment>

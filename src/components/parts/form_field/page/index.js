@@ -7,7 +7,7 @@ import generateSlug from '../../../../utils/generateSlug';
 // import './style.scss';
 
 const FormPage = ({
-	fields, label, _uid, parent = ``, parents = [], onChange, values
+	fields, label, _uid, parent = ``, parents = [], values, fieldChanged
 }) => {
 	if (label === ``) {
 		label = false;
@@ -30,9 +30,9 @@ const FormPage = ({
 							...field,
 							parent,
 							parents,
-							onChange
+							fieldChanged,
+							values
 						},
-						conditional: field.conditional,
 						values
 					}}
 				/>

@@ -38,7 +38,7 @@ const Field = ({
 			break;
 	}
 
-	if (checkConditions(values, data.parents, data.label, data.conditional)) {
+	if (checkConditions(values, data.conditional)) {
 		return <Component {...{ ...data, values }} />;
 	}
 

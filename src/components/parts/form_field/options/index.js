@@ -7,22 +7,26 @@ import generateSlug from '../../../../utils/generateSlug';
 import './style.scss';
 
 const Radio = ({
-	name, options, type, parent, fieldChanged
+	name, options, type, parent, fieldChanged, value
 }) => (
 	<fieldset>
 		<div className="options">
-			{options.map((opt) => (
-				<Fragment key={opt.label}>
-					<input
-						type={type}
-						onChange={(e) => (fieldChanged(name, e.target.value))}
-						id={generateSlug(opt.label)}
-						name={`${parent}${name}`}
-						value={opt.value || generateSlug(opt.label)}
-					/>
-					<label htmlFor={generateSlug(opt.label)}>{opt.label}</label>
-				</Fragment>
-			))}
+			{options.map((opt) => {
+				const currentValue = opt.value || generateSlug(opt.label);
+				return (
+					<Fragment key={opt.label}>
+						<input
+							type={type}
+							onChange={(e) => (fieldChanged(name, e.target.value))}
+							id={generateSlug(opt.label)}
+							name={`${parent}${name}`}
+							value={currentValue}
+							defaultChecked={value === currentValue}
+						/>
+						<label htmlFor={generateSlug(opt.label)}>{opt.label}</label>
+					</Fragment>
+				);
+			})}
 		</div>
 	</fieldset>
 );
@@ -44,7 +48,7 @@ const Select = ({
 );
 
 const Options = ({
-	label, type, _uid, hidden_label, options, parent = ``, fieldChanged
+	label, type, _uid, hidden_label, options, parent = ``, fieldChanged, values
 }) => {
 	let Component = Select,
 		placeholder = ``;
@@ -66,17 +70,18 @@ const Options = ({
 						list={`list_${_uid}`}
 						id={_uid}
 						name={`${parent}${generateSlug(label)}`}
-						onChange={(e) => fieldChanged(e)}
+						defaultValue={values[`${parent}${generateSlug(label)}`]}
+						onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}`, e.target.value))}
+						value={values[`${parent}${generateSlug(label)}`]}
 					/>
 					<datalist
 						name={`list_${_uid}`}
 						id={`list_${_uid}`}
-						onChange={(e) => (fieldChanged(`list_${_uid}`, e.target.value))}
-						// value={value}
+
 					>
-						<Component {...{
-							options,
-						}} />
+						{options.map((opt) => (
+							<option key={opt.label} value={opt.label} />
+						))}
 					</datalist>
 				</Fragment>
 			}
@@ -85,7 +90,7 @@ const Options = ({
 					name={`${parent}${generateSlug(label)}`}
 					id={_uid}
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}`, e.target.value))}
-					// value={value}
+					value={values[`${parent}${generateSlug(label)}`]}
 				>
 					<Component {...{
 						options,
@@ -102,6 +107,7 @@ const Options = ({
 				options,
 				parent,
 				fieldChanged,
+				value: values[`${parent}${generateSlug(label)}`]
 			}} />
 			}
 		</Fragment>

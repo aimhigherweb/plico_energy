@@ -15,6 +15,7 @@ const TimeRange = ({
 			id={`street_address_1${_uid}`}
 			type="text"
 			onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_street-address-1`, e.target.value))}
+			value={values[`${parent}${generateSlug(label)}_street-address-1`]}
 		/>
 		<label htmlFor={`street_address_2${_uid}`}>Street Address 2</label>
 		<input
@@ -22,6 +23,7 @@ const TimeRange = ({
 			id={`street_address_2${_uid}`}
 			type="text"
 			onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_street-address-2`, e.target.value))}
+			value={values[`${parent}${generateSlug(label)}_street-address-2`]}
 		/>
 		<fieldset>
 			<div>
@@ -31,12 +33,14 @@ const TimeRange = ({
 					id={`suburb${_uid}`}
 					type="text"
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_suburb`, e.target.value))}
+					value={values[`${parent}${generateSlug(label)}_suburb`]}
 				/>
 				<label htmlFor={`state${_uid}`}>State</label>
 				<select
 					name={`${parent}${generateSlug(label)}_state`}
 					id={`state${_uid}`}
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_state`, e.target.value))}
+					value={values[`${parent}${generateSlug(label)}_state`]}
 				>
 					<option>Please select</option>
 					<option value="act">ACT</option>
@@ -57,6 +61,7 @@ const TimeRange = ({
 					id={`postcode${_uid}`}
 					type="text"
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_postcode`, e.target.value))}
+					value={values[`${parent}${generateSlug(label)}_postcode`]}
 				/>
 				<label htmlFor={`country${_uid}`}>Country</label>
 				<input
@@ -66,6 +71,7 @@ const TimeRange = ({
 					type="text"
 					defaultValue="Australia"
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_country`, e.target.value))}
+					value={values[`${parent}${generateSlug(label)}_country`]}
 				/>
 				<Countries id={`list${_uid}`} />
 			</div>

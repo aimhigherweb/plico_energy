@@ -95,7 +95,7 @@ const Form = ({ form }) => (
 
 			return (
 				<Fragment>
-					<form name={`custom_${formData.slug}`} netlify netlify-honeypot="bot-field" data-netlify="true" hidden>
+					<form name={`custom_${formData.slug}`} netlify="true" netlify-honeypot="bot-field" data-netlify="true" hidden>
 						{/* <input type="hidden" name="form-name" value={`custom_${formData.slug}`} /> */}
 						{/* <input type="hidden" name="bot-field" /> */}
 						{Object.keys(formFields(form_fields)).map((field) => (

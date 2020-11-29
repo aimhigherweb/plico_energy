@@ -77,6 +77,10 @@
 		}
 	}
 
+	&.fact {
+		margin-bottom: 100px;
+	}
+
 	&.illustration_top {
 		margin-top: 300px;
 
@@ -87,11 +91,18 @@
 			width: auto;
 			width: 800px;
 			transform: translateX(0);
+
+			svg {
+				color: var(--headingColour);
+			}
+
+			&.lightning {
+				top: -250px;
+				left: 50%;
+				width: 2000px;
+				transform: translateX(-60%);
+			}
 		}
-	}
-
-	&.fact {
-
 	}
 }
 
@@ -101,12 +112,12 @@
 			margin-top: 250px;
 
 			.illustration_top {
-				// top: 0;
 				top: -250px;
-				// bottom: auto;
-				// width: auto;
-				// width: 800px;
-				// transform: translateX(0);
+
+				&.lightning {
+					top: -200px;
+					transform: translateX(-55%);
+				}
 			}
 		}
 	}
@@ -276,6 +287,11 @@
 				left: 40px;
 				width: 1500px;
 				transform: translateX(0);
+
+				&.lightning {
+					top: -250px;
+					transform: translateX(-45%);
+				}
 			}
 		}
 	}
@@ -300,6 +316,12 @@
 
 				path {
 					stroke-width: 5px;
+				}
+
+				&.lightning {
+					top: -320px;
+					width: 3000px;
+					transform: translateX(-50%);
 				}
 			}
 		}

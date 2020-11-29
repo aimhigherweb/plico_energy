@@ -133,7 +133,7 @@ export const checkConditions = (values, conditional) => {
 		return true
 	}
 
-	if(conditional.value.toLowerCase().split(',').includes(values[conditional.field].toLowerCase())) {
+	if(conditional.value?.toLowerCase().split(',').includes(values[conditional.field]?.toLowerCase())) {
 		return true
 	}
 

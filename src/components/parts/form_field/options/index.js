@@ -7,9 +7,9 @@ import generateSlug from '../../../../utils/generateSlug';
 import './style.scss';
 
 const Radio = ({
-	name, options, type, parent, fieldChanged, value
+	name, options, type, parent, fieldChanged, value, classes
 }) => (
-	<fieldset>
+	<fieldset className={classes}>
 		<div className="options">
 			{options.map((opt) => {
 				const currentValue = opt.value || generateSlug(opt.label);
@@ -48,7 +48,7 @@ const Select = ({
 );
 
 const Options = ({
-	label, type, _uid, hidden_label, options, parent = ``, fieldChanged, values
+	label, type, _uid, hidden_label, options, parent = ``, fieldChanged, values, description, classes
 }) => {
 	let Component = Select,
 		placeholder = ``;
@@ -64,9 +64,11 @@ const Options = ({
 	return (
 		<Fragment>
 			<label htmlFor={_uid} className={hidden_label && `invisible`}>{label}</label>
+			{description && <div className="description" dangerouslySetInnerHTML={{ __html: description }} />}
 			{type === `datalist`
 				&& <Fragment>
 					<input
+						className={classes}
 						list={`list_${_uid}`}
 						id={_uid}
 						name={`${parent}${generateSlug(label)}`}
@@ -87,6 +89,7 @@ const Options = ({
 			}
 			{type === `select`
 				&& <select
+					className={classes}
 					name={`${parent}${generateSlug(label)}`}
 					id={_uid}
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}`, e.target.value))}
@@ -106,6 +109,7 @@ const Options = ({
 				placeholder,
 				options,
 				parent,
+				classes,
 				fieldChanged,
 				value: values[`${parent}${generateSlug(label)}`]
 			}} />

@@ -6,7 +6,15 @@ form.custom {
 			justify-content: space-between;
 
 			label, legend {
+				order: -2;
+			}
+
+			.description {
 				order: -1;
+			}
+
+			> div:first-of-type:last-of-type {
+				width: 100%;
 			}
 
 			label, input, select {
@@ -16,7 +24,7 @@ form.custom {
 			input, select {
 				border-radius: 2em 0 0 2em;
 
-				&:nth-child(4n) {
+				&.second {
 					border-radius: 0 2em 2em 0;
 				}
 			}

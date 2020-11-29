@@ -5,15 +5,16 @@ import React, { Fragment } from 'react';
 import generateSlug from '../../../../utils/generateSlug';
 
 const Text = ({
-	type, name, id, placeholder, fieldChanged, value
+	type, name, id, placeholder, fieldChanged, value, classes
 }) => (
-	<input type={type} name={name} id={id} placeholder={placeholder} onChange={(e) => (fieldChanged(name, e.target.value))} value={value} />
+	<input className={classes} type={type} name={name} id={id} placeholder={placeholder} onChange={(e) => (fieldChanged(name, e.target.value))} value={value} />
 );
 
 const TextArea = ({
-	name, id, fieldChanged, value
+	name, id, fieldChanged, value, classes
 }) => (
 	<textarea
+		className={classes}
 		name={name}
 		id={id}
 		onChange={(e) => (fieldChanged(name, e.target.value))}
@@ -23,7 +24,7 @@ const TextArea = ({
 );
 
 const TextInput = ({
-	label, type, _uid, hidden_label, parent = ``, fieldChanged, values
+	label, type, _uid, hidden_label, parent = ``, fieldChanged, values, description, classes
 }) => {
 	let placeholder = ``,
 		Component = Text;
@@ -50,6 +51,7 @@ const TextInput = ({
 			>
 				{label}
 			</label>
+			{description && <div className="description" dangerouslySetInnerHTML={{ __html: description }} />}
 			<Component
 				{...{
 					type,
@@ -57,7 +59,8 @@ const TextInput = ({
 					_uid,
 					placeholder,
 					fieldChanged,
-					value
+					value,
+					classes
 				}}
 			/>
 		</Fragment>

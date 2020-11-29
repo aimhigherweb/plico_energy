@@ -7,7 +7,7 @@ import generateSlug from '../../../../utils/generateSlug';
 // import './style.scss';
 
 const FormPage = ({
-	fields, label, _uid, parent = ``, parents = [], values, fieldChanged
+	fields, label, _uid, parent = ``, parents = [], values, fieldChanged, content, description
 }) => {
 	if (label === ``) {
 		label = false;
@@ -21,6 +21,8 @@ const FormPage = ({
 	return (
 		<div id={`page_${_uid}`} className="page">
 			{label && <h2>{label}</h2>}
+			{content && <div className="description" dangerouslySetInnerHTML={{ __html: content }} />}
+			{description && <div className="description" dangerouslySetInnerHTML={{ __html: description }} />}
 			{fields.map((field) => (
 				<Field
 					key={JSON.stringify(field)}

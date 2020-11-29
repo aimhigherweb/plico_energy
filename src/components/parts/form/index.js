@@ -15,6 +15,8 @@ const Form = ({ form }) => (
 				label
 				type
 				_uid
+				content
+				description
 				options {
 					component
 					label
@@ -30,6 +32,7 @@ const Form = ({ form }) => (
 				label
 				type
 				_uid
+				description
 				options {
 					component
 					label
@@ -45,6 +48,7 @@ const Form = ({ form }) => (
 				label
 				type
 				_uid
+				description
 				conditional {
 					value
 					field

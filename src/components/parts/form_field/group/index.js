@@ -24,7 +24,7 @@ const FieldGroup = ({
 		<fieldset id={`field_${_uid}`}>
 			{label && <legend>{label}</legend>}
 			<div>
-				{fields.map((field) => (
+				{fields.map((field, index) => (
 					<Field
 						key={JSON.stringify(field)}
 						{...{
@@ -34,7 +34,8 @@ const FieldGroup = ({
 								hidden_label,
 								parent,
 								parents,
-								fieldChanged
+								fieldChanged,
+								classes: index % 2 !== 0 ? `second` : ``
 							},
 							conditional: field.conditional,
 							values

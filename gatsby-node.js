@@ -152,7 +152,7 @@ exports.onCreateNode = async ({
 			const blocks = [],
 				banners = [];
 
-			content.banner.forEach((block) => {
+			content.banner?.forEach((block) => {
 				if (block.sub_quote) {
 					banners.push({
 						...block,
@@ -163,7 +163,7 @@ exports.onCreateNode = async ({
 				}
 			});
 
-			content.body.forEach((block) => {
+			content.body?.forEach((block) => {
 				const blockContent = block;
 				if (block.content) {
 					blockContent.content = processMarkdown(block.content);
@@ -179,6 +179,65 @@ exports.onCreateNode = async ({
 
 			content.body = blocks;
 			content.banner = banners;
+		}
+
+		if (node.field_component === `form`) {
+			const fields = [];
+
+			content.fields?.forEach((field) => {
+				const fieldContent = field;
+
+				if (field.content) {
+					fieldContent.content = processMarkdown(field.content);
+				}
+
+				if (field.description) {
+					fieldContent.description = processMarkdown(field.description);
+				}
+
+				if (field.fields) {
+					const f2_fields = [];
+
+					field.fields.forEach((f2) => {
+						const f2_content = f2;
+
+						if (f2.content) {
+							f2_content.content = processMarkdown(f2.content);
+						}
+
+						if (f2.description) {
+							f2_content.description = processMarkdown(f2.description);
+						}
+
+						if (f2.fields) {
+							const f3_fields = [];
+
+							f2.fields.forEach((f3) => {
+								const f3_content = f3;
+
+								if (f3.content) {
+									f3_content.content = processMarkdown(f3.content);
+								}
+
+								if (f3.description) {
+									f3_content.description = processMarkdown(f3.description);
+								}
+
+								f3_fields.push(f3_content);
+							});
+
+							f2_content.fields = f3_fields;
+						}
+
+						f2_fields.push(f2_content);
+					});
+
+					fieldContent.fields = f2_fields;
+				}
+
+				fields.push(fieldContent);
+			});
+			content.fields = fields;
 		}
 
 		createNodeField({

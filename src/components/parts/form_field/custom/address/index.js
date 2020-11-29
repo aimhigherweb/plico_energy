@@ -41,6 +41,7 @@ const TimeRange = ({
 					id={`state${_uid}`}
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_state`, e.target.value))}
 					value={values[`${parent}${generateSlug(label)}_state`]}
+					className='second'
 				>
 					<option>Please select</option>
 					<option value="act">ACT</option>
@@ -72,6 +73,7 @@ const TimeRange = ({
 					defaultValue="Australia"
 					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_country`, e.target.value))}
 					value={values[`${parent}${generateSlug(label)}_country`]}
+					className='second'
 				/>
 				<Countries id={`list${_uid}`} />
 			</div>

@@ -152,7 +152,7 @@ exports.onCreateNode = async ({
 			const blocks = [],
 				banners = [];
 
-			content.banner?.forEach((block) => {
+			content.banner.forEach((block) => {
 				if (block.sub_quote) {
 					banners.push({
 						...block,
@@ -163,7 +163,7 @@ exports.onCreateNode = async ({
 				}
 			});
 
-			content.body?.forEach((block) => {
+			content.body.forEach((block) => {
 				const blockContent = block;
 				if (block.content) {
 					blockContent.content = processMarkdown(block.content);
@@ -184,7 +184,7 @@ exports.onCreateNode = async ({
 		if (node.field_component === `form`) {
 			const fields = [];
 
-			content.fields?.forEach((field) => {
+			content.fields.forEach((field) => {
 				const fieldContent = field;
 
 				if (field.content) {

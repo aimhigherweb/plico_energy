@@ -1,0 +1,44 @@
+.faq {
+	.featured_sections {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -15px;
+		margin-top: 0;
+
+		.repeatable_content {
+			flex: 1 1 300px;
+			max-width: 570px;
+			margin: 15px;
+			text-align: left;
+
+			.content {
+				@supports(grid-template-areas: '.') {
+					display: grid;
+					grid-template-rows: auto auto 1fr;
+
+					.cta_buttons {
+						margin-top: auto;
+					}
+				}
+			}
+
+			.cta {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.faq {
+		.featured_sections {
+			.repeatable_content {
+				flex-basis: 400px;
+
+				.content {
+					padding: 30px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,168 @@
+@use '../variables.scss';
+
+.news_page {
+	position: relative;
+
+	.banner {
+		blockquote {
+			margin-right: auto;
+			margin-left: 0;
+		}
+
+		.plug {
+			display: none;
+		}
+	}
+
+	.lightbulb {
+		position: absolute;
+		top: 470px;
+		left: 50%;
+
+		svg {
+			height: 500px;
+			transform: translateX(-55%);
+		}
+	}
+}
+
+.news_feed {
+	margin-top: 200px;
+	padding: 0 20px;
+
+	.article {
+		.content {
+			background: variables.$secondary;
+			color: variables.$primary;
+		}
+
+		&:nth-child(2n) {
+			--cta_background: #{variables.$secondary};
+
+			.content {
+				background: variables.$primary;
+				color: variables.$secondary;
+			}
+		}
+
+		a {
+			width: auto;
+			height: auto;
+		}
+
+		.cta_buttons {
+			margin-top: auto;
+		}
+
+		.excerpt {
+			display: none;
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin: 50px 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0;
+
+		&:last-child {
+			button {
+				border-right: none;
+			}
+		}
+	}
+
+	button {
+		padding: 0 10px;
+		border: none;
+		border-right: 2px solid variables.$primary;
+		border-radius: 0;
+		background: none;
+		color: variables.$primary;
+		font-size: 2em;
+		line-height: 0.8;
+
+		span {
+			position: absolute;
+			right: -200vw;
+		}
+
+		&.active {
+			color: variables.$secondary;
+			font-weight: 600;
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.news_page {
+		.lightbulb {
+			top: 530px;
+
+			svg {
+				height: 900px;
+
+				path {
+					stroke-width: 6px;
+				}
+			}
+		}
+	}
+
+	.news_feed {
+		margin-top: 300px;
+	}
+}
+
+@media(min-width: 50em) {
+	.news_page {
+		.lightbulb {
+			top: 600px;
+
+			svg {
+				transform: translateX(-53%);
+			}
+		}
+	}
+
+	.news_feed {
+		margin-top: 350px;
+	}
+
+	.pagination {
+		margin-bottom: 200px;
+	}
+}
+
+@media(min-width: 60em) {
+	.news_page {
+		.lightbulb {
+			top: 750px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.news_page {
+		.lightbulb {
+			top: 850px;
+
+			svg {
+				height: 1000px;
+			}
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.news_page {
+		.lightbulb {
+			top: 900px;
+		}
+	}
+}

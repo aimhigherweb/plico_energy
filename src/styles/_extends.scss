@@ -1,31 +1,29 @@
 @use 'variables.scss';
 
 @mixin button {
-	--background: #{variables.$primary};
-	--text: #ffffff;
+
 	display: inline-block;
 
 	margin: 20px auto;
 	padding: 0.5em 1.5em;
 	transition: all 0.3s ease-in-out;
 
-	border: 2px solid var(--background);
+	border: 2px solid var(--cta_background);
 	border-radius: 2em;
 	background: variables.$primary;
-	background: var(--background);
+	background: var(--cta_background);
 	color: #ffffff;
-	color:var(--text);
+	color:var(--cta_text);
 	font-family: variables.$font_heading;
 	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
 
-
 	&:hover, &:focus {
-		--background: #ffffff;
-		--text: #{variables.$primary};
+		--cta_background: #ffffff;
+		--cta_text: #{variables.$primary};
 
-		border-color: var(--text);
+		border-color: var(--cta_text);
 	}
 }
 

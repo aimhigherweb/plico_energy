@@ -13,7 +13,7 @@ const ContentBlock = ({
 	<article className="repeatable_content">
 		<div className="content">
 			<h3>{heading}</h3>
-			<p>{content}</p>
+			<div dangerouslySetInnerHTML={{ __html: content }} />
 			{cta && <CTA {...{ cta_button: cta }} />}
 		</div>
 

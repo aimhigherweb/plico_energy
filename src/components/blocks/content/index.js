@@ -39,7 +39,7 @@ const Content = ({
 			className={classes}
 			styles={{
 				"--backgroundFill": background_colour?.colour || `#18304c`,
-				"--headingColour": background_colour?.colour === `#18304c` ? `#00bbd4` : `#18304c`
+				"--headingColour": background_colour?.colour === `#00bbd4` ? `#18304c` : `#00bbd4`
 			}}
 		>
 			{background && <Background className="curve" />}
@@ -47,7 +47,7 @@ const Content = ({
 			<div className="content">
 				{sub_heading && <p className="subtitle">{sub_heading}</p>}
 				<h2>{heading}</h2>
-				<div dangerouslySetInnerHTML={{ __html: content }} />
+				<div className="block_content" dangerouslySetInnerHTML={{ __html: content }} />
 				<CTA {...{ cta_button }} />
 			</div>
 			{media && <FeatureImage {...media[0]} />}

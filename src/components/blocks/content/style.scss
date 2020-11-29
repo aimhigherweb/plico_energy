@@ -26,6 +26,16 @@
 		line-height: 1.5;
 	}
 
+	.block_content {
+		ul {
+			margin-left: 20px;
+		}
+
+		li {
+			list-style: disc;
+		}
+	}
+
 	.curve, .illustration {
 		width: 2400px;
 	}
@@ -62,21 +72,41 @@
 		color: #ffffff;
 
 		h2 {
+			color: variables.$secondary;
 			color: var(--headingColour);
 		}
 	}
 
 	&.illustration_top {
+		margin-top: 300px;
+
 		.illustration_top {
 			top: 0;
+			top: -280px;
 			bottom: auto;
+			width: auto;
+			width: 800px;
+			transform: translateX(0);
+		}
+	}
 
-			svg {
-				width: 400px;
+	&.fact {
 
-				path {
-					stroke-opacity: 1;
-				}
+	}
+}
+
+@media(min-width: 40em) {
+	.content_block {
+		&.illustration_top {
+			margin-top: 250px;
+
+			.illustration_top {
+				// top: 0;
+				top: -250px;
+				// bottom: auto;
+				// width: auto;
+				// width: 800px;
+				// transform: translateX(0);
 			}
 		}
 	}
@@ -129,6 +159,36 @@
 				margin-bottom: 50px;
 			}
 		}
+
+		&.illustration_top {
+			flex-wrap: nowrap;
+			min-height: 500px;
+			margin-top: 400px;
+			margin-bottom: 200px;
+
+			.curve {
+				width: 2000px;
+			}
+
+			.image {
+				order: 1;
+				margin: 0 0 0 20px;
+			}
+
+			.illustration_top {
+				top: -450px;
+				width: 1500px;
+			}
+		}
+
+		&.fact {
+			flex-wrap: nowrap;
+			align-items: center;
+
+			.fact_block {
+				order: -1;
+			}
+		}
 	}
 }
 
@@ -147,6 +207,28 @@
 		.illustration {
 			bottom: -300px;
 			transform: scaleX(-1) rotate(-10deg) translateX(18%);
+		}
+
+		&.illustration_top {
+			// margin-top: 400px;
+			// margin-bottom: 200px;
+
+			.curve {
+				// width: 2000px;
+			}
+
+			.image {
+				margin-left: 40px;
+			}
+
+			.illustration_top {
+				// top: 0;
+				top: -450px;
+				// bottom: auto;
+				// width: auto;
+				width: 1500px;
+				// transform: translateX(0);
+			}
 		}
 	}
 }
@@ -181,6 +263,21 @@
 				max-width: unset;
 			}
 		}
+
+		&.illustration_top {
+			margin-top: 500px;
+
+			.image {
+				margin-left: 60px;
+			}
+
+			.illustration_top {
+				top: -500px;
+				left: 40px;
+				width: 1500px;
+				transform: translateX(0);
+			}
+		}
 	}
 }
 
@@ -192,6 +289,19 @@
 
 		.illustration {
 			transform: scaleX(-1) rotate(-14deg) translateX(40%);
+		}
+
+		&.illustration_top {
+			margin-top: 700px;
+
+			.illustration_top {
+				top: -750px;
+				width: 2500px;
+
+				path {
+					stroke-width: 5px;
+				}
+			}
 		}
 	}
 }

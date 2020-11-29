@@ -90,6 +90,7 @@ export const pageQuery = graphql`
 							position
 							content
 							illustration
+							heading
 						}
 						testimonials
 						faqs

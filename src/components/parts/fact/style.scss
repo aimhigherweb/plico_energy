@@ -1,0 +1,54 @@
+@use '../../../styles/variables.scss';
+
+.fact_block {
+	position: relative;
+	max-width: 400px;
+	max-width: 340px;
+	margin: 50px auto 100px;
+	padding: 50px 20px;
+	color: #ffffff;
+	font-family: variables.$font_heading;
+	font-size: 1.3em;
+	text-align: center;
+
+	.question {
+		width: 80px;
+		margin: 0 auto;
+		color: variables.$primary;
+	}
+
+	.background {
+		position: absolute;
+		z-index: -1;
+		top: -80px;
+		left: 50%;
+		min-width: 120%;
+		height: 150%;
+		min-height: 100%;
+		transform: translateX(-50%) rotate(200deg);
+		color: variables.$secondary;
+	}
+}
+
+
+@media(min-width: 50em) {
+	.fact_block {
+
+		margin: 0 50px 0 0;
+
+		.background {
+			height: 160%;
+			// transform: translateX(-40%) rotate(-0deg);
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.fact_block {
+		font-size: 1.2em;
+
+		.background {
+			top: -100px;
+		}
+	}
+}

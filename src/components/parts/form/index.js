@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import FormLogic from '../form_logic';
 
-import formFields, { StaticForm } from '../../../utils/formFields';
+import formFields from '../../../utils/formFields';
 
 import './style.scss';
 

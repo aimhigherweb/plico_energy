@@ -1,3 +1,5 @@
+@use '../../../styles/variables';
+
 form.custom {
 	label, legend {
 		display: block;
@@ -8,5 +10,11 @@ form.custom {
 			position: absolute;
 			right: -200vw;
 		}
+	}
+
+	.description {
+		margin: 5px 0 5px 15px;
+		opacity: 0.7;
+		font-size: 0.8em;
 	}
 }

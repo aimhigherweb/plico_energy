@@ -13,7 +13,7 @@ import generateSlug from '../utils/generateSlug';
 
 import '../styles/custom/news.scss';
 
-const NewsPage = ({ data }) => {
+const NewsPage = ({ data, pageContext }) => {
 	const { pageInfo, articles, tags } = data,
 		{
 			slug,
@@ -33,8 +33,7 @@ const NewsPage = ({ data }) => {
 			return chunks;
 		},
 		posts = setChunks(news, 6),
-
-	 [page, setPage] = useState(1),
+		[page, setPage] = useState(1),
 		[pageData, setPageData] = useState(posts[page - 1]),
 		changePage = (index) => {
 			setPage(index + 1);
@@ -47,8 +46,7 @@ const NewsPage = ({ data }) => {
 			<Banner {...fields.content.banner[0]} />
 			<div className="intro">
 				<div>
-					<h2>{fields.content.heading}</h2>
-					<div dangerouslySetInnerHTML={{ __html: fields.content.content }} />
+					<h2>{pageContext.tag}</h2>
 				</div>
 				<div className="news_filter">
 					<h2>Browse by Category...</h2>

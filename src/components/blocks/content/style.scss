@@ -65,6 +65,21 @@
 			color: var(--headingColour);
 		}
 	}
+
+	&.illustration_top {
+		.illustration_top {
+			top: 0;
+			bottom: auto;
+
+			svg {
+				width: 400px;
+
+				path {
+					stroke-opacity: 1;
+				}
+			}
+		}
+	}
 }
 
 @media(min-width: 50em) {

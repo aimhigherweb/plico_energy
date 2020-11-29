@@ -8,16 +8,20 @@ import Field from '../form_field';
 const FormLogic = ({ form }) => {
 	const formData = form.fields.content.multi_page ? form.fields.content.fields : [form.fields.content.fields],
 		totalSteps = formData.length,
+		existingData = typeof window !== `undefined` ? JSON.parse(window.localStorage.getItem(`formData_${form.slug}`)) : {},
 		[step, setStep] = useState(0),
 		[currentStepData, setCurrentStepData] = useState(formData[step]),
-		[values, setValues] = useState({}),
+		[values, setValues] = useState(existingData),
 		fieldChanged = (fieldId, value) => {
-			console.log({ fieldId, value });
 			setValues((currentValues) => {
 				currentValues[fieldId] = value;
 
 				return currentValues;
 			});
+
+			if (typeof window !== `undefined`) {
+				window.localStorage.setItem(`formData_${form.slug}`, JSON.stringify(values));
+			}
 
 			if (currentStepData.fields) {
 				setCurrentStepData((currentStepData) => ({ ...currentStepData }));

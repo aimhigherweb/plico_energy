@@ -10,8 +10,10 @@ import Page from './page';
 
 import './style.scss';
 
+import { checkConditions } from '../../../utils/formFields';
+
 const Field = ({
-	component, data, conditional, values
+	component, data, values
 }) => {
 	let Component;
 
@@ -36,11 +38,7 @@ const Field = ({
 			break;
 	}
 
-	if (!conditional || conditional.field === ``) {
-		conditional = false;
-	}
-
-	if (!conditional || conditional.value.split(`,`).includes(values[conditional.field])) {
+	if (checkConditions(values, data.parents, data.label, data.conditional)) {
 		return <Component {...{ ...data, values }} />;
 	}
 

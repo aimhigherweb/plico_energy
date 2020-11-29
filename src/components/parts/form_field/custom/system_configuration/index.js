@@ -1,7 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
-import { Field } from 'formik';
-
 import generateSlug from '../../../../../utils/generateSlug';
 import systemConfig from '../../../../../utils/systemConfig';
 
@@ -42,8 +40,7 @@ const SystemConfiguration = ({
 					<h3>Inverter Selection</h3>
 					<label htmlFor={`inverters${_uid}`}>Inverter option</label>
 					{inverters.length
-					&& <Field
-						as='select'
+					&& <select
 						id={`inverters${_uid}`}
 						name={`${parent}${generateSlug(label)}_inverters`}
 						onChange={(e) => selectInverter(e)}
@@ -52,7 +49,7 @@ const SystemConfiguration = ({
 						{inverters.map((opt) => (
 							<option key={opt.id} value={opt.id}>{opt.name}</option>
 						))}
-					</Field>
+					</select>
 					}
 				</Fragment>
 			}
@@ -62,8 +59,7 @@ const SystemConfiguration = ({
 				<h3>Battery Selection</h3>
 				<p>Plico is able to install an extra battery per system to increase storage capacity. The standard option is 3 batteries per system with 7.2kW storage capacity, this can be upgraded to 4 batteries with 9.6kW storage capacity for $3.50 extra per week.</p>
 				<label htmlFor={`batteries${_uid}`}>Battery storage option</label>
-				<Field
-					as='select'
+				<select
 					id={`batteries${_uid}`}
 					name={`${parent}${generateSlug(label)}_batteries`}
 					onChange={(e) => selectBattery(e)}
@@ -73,7 +69,7 @@ const SystemConfiguration = ({
 
 						<option key={opt.productId} value={opt.productId}>{opt.batteryComboName}</option>
 					))}
-				</Field>
+				</select>
 			</Fragment>
 			}
 			{systems
@@ -81,8 +77,7 @@ const SystemConfiguration = ({
 				<h3>Number of Systems</h3>
 				<p>If you have above average energy requirements, you may also consider installing more than one system at your property.</p>
 				<label htmlFor={`number-systems${_uid}`}>Number of Systems required</label>
-				<Field
-					as='select'
+				<select
 					id={`number-systems${_uid}`}
 					name={`${parent}${generateSlug(label)}_number-systems`}
 					onChange={(e) => selectSystems(e)}
@@ -91,13 +86,13 @@ const SystemConfiguration = ({
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
-				</Field>
+				</select>
 			</Fragment>
 			}
 			{cost
 			&& <Fragment>
 				<label htmlFor={`weekly-cost${_uid}`}>Total Weekly Cost</label>
-				<Field
+				<input
 					type='text'
 					id={`weekly-cost${_uid}`}
 					name={`${parent}${generateSlug(label)}_weekly-cost`}
@@ -108,7 +103,7 @@ const SystemConfiguration = ({
 			}
 			{cost
 			&& <Fragment>
-				<Field
+				<input
 					type='checkbox'
 					id={`agreement${_uid}`}
 					name={`${parent}${generateSlug(label)}_agreement`}

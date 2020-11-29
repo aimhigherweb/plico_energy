@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { Formik, Form as FormikForm } from 'formik';
 
 import FormLogic from '../form_logic';
 
@@ -95,11 +94,11 @@ const Form = ({ form }) => (
 
 			return (
 				<Fragment>
-					<form name={`custom_${formData.slug}`} netlify netlify-honeypot="bot-field" hidden>
+					{/* <form name={`custom_${formData.slug}`} netlify netlify-honeypot="bot-field" hidden>
 						<input type="hidden" name="form-name" value={`custom_${formData.slug}`} />
 						<input type="hidden" name="bot-field" />
 						<StaticForm {...formData.fields.content} />
-					</form>
+					</form> */}
 					<FormLogic form={formData} />
 				</Fragment>
 			);

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useFormikContext } from 'formik';
 
 // eslint-disable-next-line import/no-cycle
 import Field from "..";
@@ -8,7 +7,7 @@ import generateSlug from '../../../../utils/generateSlug';
 import './style.scss';
 
 const FieldGroup = ({
-	fields, label, _uid, parent = ``, onChange, values
+	fields, label, _uid, parent = ``, parents = [], onChange, values
 }) => {
 	const hidden_label = label && true;
 
@@ -18,6 +17,7 @@ const FieldGroup = ({
 
 	if (label) {
 		parent = `${parent}${generateSlug(label)}_`;
+		parents.push(label);
 	}
 
 	return (
@@ -33,6 +33,7 @@ const FieldGroup = ({
 								...field,
 								hidden_label,
 								parent,
+								parents,
 								onChange
 							},
 							conditional: field.conditional,

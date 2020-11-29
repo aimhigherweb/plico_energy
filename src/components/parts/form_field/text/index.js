@@ -1,18 +1,35 @@
 /* eslint-disable one-var */
 
 import React, { Fragment } from 'react';
-import { Field, useFormikContext } from 'formik';
 
 import generateSlug from '../../../../utils/generateSlug';
 
-const TextInput = ({
-	label, type, _uid, hidden_label, parent = ``, onChange
-}) => {
-	let field = `input`,
-		placeholder = ``;
+const Text = ({
+	type, name, id, placeholder, onChange, value
+}) => (
+	<input type={type} name={name} id={id} placeholder={placeholder} onChange={(e) => (onChange(name, e.target.value))} value={value} />
+);
 
-	if (type === `textarea`) {
-		field = `textarea`;
+const TextArea = ({
+	name, id, onChange, value
+}) => (
+	<textarea
+		name={name}
+		id={id}
+		onChange={(e) => (onChange(name, e.target.value))}
+		value={value}
+		rows="6"
+	></textarea>
+);
+
+const TextInput = ({
+	label, type, _uid, hidden_label, parent = ``, fieldChanged, values
+}) => {
+	let placeholder = ``,
+		Component = Text;
+
+	if (type == `textarea`) {
+		Component = TextArea;
 	}
 
 	if (hidden_label) {
@@ -23,7 +40,7 @@ const TextInput = ({
 		placeholder = `hello@domain.com`;
 	}
 
-	const value = useFormikContext().values[`${parent}${generateSlug(label)}`];
+	const value = values[`${parent}${generateSlug(label)}`];
 
 	return (
 		<Fragment>
@@ -33,15 +50,13 @@ const TextInput = ({
 			>
 				{label}
 			</label>
-			<Field
-				as={field}
+			<Component
 				type={type}
 				name={`${parent}${generateSlug(label)}`}
 				id={_uid}
 				placeholder={placeholder}
-				// onChange={(e) => onChange(e)}
-				// value={value}
-				onBlur={(e) => onChange(e)}
+				onChange={(e) => fieldChanged(_uid, e.target.value)}
+				value={value}
 			/>
 		</Fragment>
 	);

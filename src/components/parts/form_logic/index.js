@@ -1,180 +1,147 @@
-import React, { useState, useEffect } from 'react';
-import { Formik, Form, useFormikContext } from 'formik';
+import React, { useState, useEffect, Fragment } from 'react';
 
 import formFields from '../../../utils/formFields';
+import generateSlug from '../../../utils/generateSlug';
 
 import Field from '../form_field';
 
 const FormLogic = ({ form }) => {
-	const [formValues, setFormValues] = useState(formFields(form.fields.content.fields)),
-		[stepNumber, setStepNumber] = useState(0),
-		[snapshot, setSnapshot] = useState(formFields(form.fields.content.fields)),
-		handleChange = (e) => {
-			const { name, value } = e.target;
+	const formData = form.fields.content.multi_page ? form.fields.content.fields : [form.fields.content.fields],
+		totalSteps = formData.length,
+		[step, setStep] = useState(0),
+		[currentStepData, setCurrentStepData] = useState(formData[step]),
+		[values, setValues] = useState({}),
+		fieldChanged = (fieldId, value) => {
+			setValues((currentValues) => {
+				currentValues[fieldId] = value;
 
-			setFormValues({ ...formValues, [name]: value });
+				return currentValues;
+			});
+
+			if (currentStepData.fields) {
+				setCurrentStepData((currentStepData) => ({ ...currentStepData }));
+			} else {
+				setCurrentStepData((currentStepData) => ([...currentStepData]));
+			}
 		},
-		encode = (data) => Object.keys(data)
-			.map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-			.join(`&`),
-		onSubmit = (values) => {
-			fetch(`${form.fields.content.success_page}/`, {
-				method: `POST`,
-				headers: { "Content-Type": `application/x-www-form-urlencoded` },
-				body: encode({
-					"form-name": `custom_${form.slug}`,
-					...values
-				})
-			})
-				.then(() => {
-					console.log(`success, form has been submitted`);
-					window.location.replace(`${form.fields.content.success_page}/`);
-				})
-				.catch((err) => {
-					console.error(err);
-				});
-		},
-		fieldData = form.fields.content.fields,
-		steps = form.fields.content.multi_page ? fieldData : [fieldData],
-		step = steps[stepNumber],
-		totalSteps = steps.length,
-		isLastStep = stepNumber === totalSteps - 1,
-		next = (values) => {
-			console.log({ formValues, values });
-			let nextStep = false,
-				nextStepNumber = stepNumber + 1;
-
-			while (!nextStep) {
-				if (nextStepNumber === totalSteps - 1) {
-					nextStep = true;
-					setSnapshot(formValues);
-					setStepNumber(nextStepNumber);
-				}
-
+		checkStep = (direction) => {
+			const findNextStep = (step) => {
+				const upcomingStepData = formData[step];
 				if (
-					steps[nextStepNumber].conditional
-					&& steps[nextStepNumber].conditional.field !== ``
-					&& !steps[nextStepNumber].conditional.value.split(`,`).includes(formValues[steps[nextStepNumber].conditional.field])
+					upcomingStepData.conditional
+					&& upcomingStepData.conditional.field
 				) {
-					nextStepNumber++;
-				} else {
-					nextStep = true;
-					setSnapshot(formValues);
-					setStepNumber(nextStepNumber);
-				}
-			}
-		},
-		previous = (values) => {
-			console.log({ formValues, values });
-			let prevStep = false,
-				prevStepNumber = stepNumber - 1;
+					const segments = upcomingStepData.conditional.field.split(`_`),
+						matchedStepName = segments[0],
+						conditionalStep = formData.filter((d) => {
+							d.label.toLowerCase().replace(` `, `-`) === matchedStepName;
+						})[0];
 
-			while (!prevStep) {
-				if (prevStepNumber === 0) {
-					prevStep = true;
-					setSnapshot(formValues);
-					setStepNumber(prevStepNumber);
+					if (conditionalStep) {
+						const fieldNameToMatch = segments[segments.length - 1],
+							fieldToMatch = conditionalStep.field.filter((d) => (
+								d.label.toLowerCase().replace(` `, `-`) === fieldNameToMatch
+							))[0];
+
+						if (fieldToMatch) {
+							const fieldToMatchValue = values[fieldToMatch._uid];
+
+							if (fieldToMatchValue !== upcomingStepData.conditional.value) {
+								return findNextStep(step + direction);
+							}
+						}
+					}
 				}
 
-				if (
-					steps[prevStepNumber].conditional
-					&& steps[prevStepNumber].conditional.field !== ``
-					&& !steps[prevStepNumber].conditional.value.split(`,`).includes(formValues[steps[prevStepNumber].conditional.field])
-				) {
-					prevStepNumber--;
-				} else {
-					prevStep = true;
-					setSnapshot(formValues);
-					setStepNumber(prevStepNumber);
-				}
-			}
+				return step;
+			};
+
+			setStep(findNextStep(step + direction));
 		},
-		handleSubmit = async (values, bag) => {
-			if (isLastStep) {
-				return onSubmit(values, bag);
-			}
-			bag.setTouched({});
-			next(values);
+		nextStep = () => {
+			checkStep(1);
+		},
+		prevStep = () => {
+			checkStep(-1);
 		};
 
+	useEffect(() => {
+		console.log(`useeffect runnign`);
+		const upcomingStepData = formData[step];
+
+		setCurrentStepData(upcomingStepData);
+
+		setValues((currentValues) => {
+			const newValues = formFields(formData);
+
+			return { ...newValues, ...currentValues };
+		});
+	}, [step]);
+
 	return (
-		<Formik
-			initialValues={snapshot}
-			onSubmit={handleSubmit}
-			handleChange={(e) => { handleChange(e); }}
-			validateOnChange={false}
-			validateOnBlur={false}
-			enableReinitialize={true}
+		<form
+			// onSubmit={(e) => e.preventDefault()}
+			className="custom"
+			name={`custom_${form.slug}`}
+			method="POST"
+			action={`${form.fields.content.success_page}/`}
+			netlify
+			netlify-honeypot="bot-field"
 		>
-			{(formik) => (
-				<Form
-					className="custom"
-					name={`custom_${form.slug}`}
-					method="POST"
-					action={`${form.fields.content.success_page}/`}
-					netlify
-					netlify-honeypot="bot-field"
-				>
-					<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
-					<input type="hidden" name="bot-field" />
-					{totalSteps > 1
-						&& <div className="progress">
-							<label
-								htmlFor="form_progress"
-							>
-								Form Progress
-							</label>
-							<progress
-								max="100"
-								value={Math.round(((stepNumber + 1) / totalSteps) * 100)}
-							>
-								{`${Math.round(((stepNumber + 1) / totalSteps) * 100)}%`}
-							</progress>
-						</div>
-					}
-					{totalSteps > 1
-						&& <Field
-							key={step._uid}
-							{...{
-								component: step.component,
-								data: {
-									...step,
-									onChange: handleChange,
+			<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
+			<input type="hidden" name="bot-field" />
+			<Fragment>
+				{totalSteps > 1
+					&& <Field
+						{...{
+							component: currentStepData.component,
+							data: {
+								...currentStepData,
+								fieldChanged,
+								values
+							},
+							values,
+						}}
+					/>
+				}
+				{totalSteps <= 1
+					&& currentStepData.length
+						&& <Fragment>
+							{currentStepData.map((field) => (
+								<Field
+									key={field._uid}
+									{...{
+										component: field.component,
+										data: {
+											...field,
+											fieldChanged,
+											values
+										},
+										values,
+									}}
+								/>
+							))}
+						</Fragment>
 
-								},
-								values: formValues,
-								conditional: step.conditional
-							}}
-						/>}
-
-					{totalSteps <= 1 && step.map((field) => (
-						<Field
-							key={field._uid}
-							{...{
-								component: field.component,
-								data: {
-									...field,
-									onChange: handleChange,
-
-								},
-								values: formValues,
-								conditional: field.conditional
-							}}
-						/>
-					))}
-					{(stepNumber > 0)
-						&& <button
-							type="button"
-							onClick={() => previous(formik.values)}
-						>
-							Back
-						</button>}
-					<button type="submit">
-						{isLastStep ? form.fields.content.submit : `Save and Continue`}
+				}
+				{step < totalSteps && (
+					<button
+						type="button"
+						onClick={() => nextStep()}
+					>
+								Save and Continue
 					</button>
-				</Form>
-			)}
-		</Formik>
+				)}
+				{step > 0 && (
+					<button
+						type="button"
+						onClick={() => prevStep()}
+					>
+								Back
+					</button>
+				)}
+			</Fragment>
+		</form>
 	);
 };
 

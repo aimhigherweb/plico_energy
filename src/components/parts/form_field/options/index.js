@@ -1,22 +1,21 @@
 /* eslint-disable one-var */
 
 import React, { Fragment, useEffect, useState } from 'react';
-import { Field, useFormikContext } from 'formik';
 
 import generateSlug from '../../../../utils/generateSlug';
 
 import './style.scss';
 
 const Radio = ({
-	name, options, type, parent, onChange
+	name, options, type, parent, fieldChanged
 }) => (
 	<fieldset>
 		<div className="options">
 			{options.map((opt) => (
 				<Fragment key={opt.label}>
-					<Field
+					<input
 						type={type}
-						onChange={(e) => onChange(e)}
+						onChange={(e) => (fieldChanged(name, e.target.value))}
 						id={generateSlug(opt.label)}
 						name={`${parent}${name}`}
 						value={opt.value || generateSlug(opt.label)}
@@ -29,23 +28,23 @@ const Radio = ({
 );
 
 const Select = ({
-	_uid, name, options, parent, onChange, type
+	options
 }) => (
-	<Field
-		as={type}
-		id={_uid}
-		name={`${parent}${name}`}
-		onChange={(e) => onChange(e)}
-	>
+	<Fragment>
 		<option>Please select</option>
 		{options.map((opt) => (
-			<option key={opt.label} value={opt.value || generateSlug(opt.label)}>{opt.label}</option>
+			<option
+				key={opt.label}
+				value={opt.value || generateSlug(opt.label)}
+			>
+				{opt.label}
+			</option>
 		))}
-	</Field>
+	</Fragment>
 );
 
 const Options = ({
-	label, type, _uid, hidden_label, options, parent = ``, onChange
+	label, type, _uid, hidden_label, options, parent = ``, fieldChanged
 }) => {
 	let Component = Select,
 		placeholder = ``;
@@ -62,23 +61,49 @@ const Options = ({
 		<Fragment>
 			<label htmlFor={_uid} className={hidden_label && `invisible`}>{label}</label>
 			{type === `datalist`
-				&& <input
-					list={`list_${_uid}`}
-					id={_uid}
-					name={`${parent}${generateSlug(label)}`}
-					// onChange={(e) => onChange(e)}
-				/>
+				&& <Fragment>
+					<input
+						list={`list_${_uid}`}
+						id={_uid}
+						name={`${parent}${generateSlug(label)}`}
+						onChange={(e) => fieldChanged(e)}
+					/>
+					<datalist
+						name={`list_${_uid}`}
+						id={`list_${_uid}`}
+						onChange={(e) => (fieldChanged(`list_${_uid}`, e.target.value))}
+						// value={value}
+					>
+						<Component {...{
+							options,
+						}} />
+					</datalist>
+				</Fragment>
 			}
-			<Component {...{
+			{type === `select`
+				&& <select
+					name={`${parent}${generateSlug(label)}`}
+					id={_uid}
+					onChange={(e) => (fieldChanged(`list_${_uid}`, e.target.value))}
+					// value={value}
+				>
+					<Component {...{
+						options,
+					}} />
+				</select>
+			}
+			{![`select`, `datalist`].includes(type)
+			&& <Component {...{
 				label,
 				type,
 				_uid: type === `datalist` ? `list_${_uid}` : _uid,
-				name: generateSlug(label),
+				name: `${parent}${generateSlug(label)}`,
 				placeholder,
 				options,
 				parent,
-				onChange,
+				fieldChanged,
 			}} />
+			}
 		</Fragment>
 	);
 };

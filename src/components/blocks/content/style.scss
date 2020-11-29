@@ -67,13 +67,21 @@
 		flex-wrap: wrap;
 		align-items: center;
 		min-height: 650px;
-		margin-top: 150px;
+		margin-top: 200px;
 		margin-bottom: 150px;
 		color: #ffffff;
 
 		h2 {
 			color: variables.$secondary;
 			color: var(--headingColour);
+		}
+	}
+
+	&.image_blob {
+		margin-bottom: 100px;
+
+		.image {
+			margin-top: 40px;
 		}
 	}
 
@@ -102,6 +110,13 @@
 				width: 2000px;
 				transform: translateX(-60%);
 			}
+		}
+	}
+
+	&.illustration_bottom {
+		.illustration {
+			bottom: -450px;
+			transform: scaleX(-1) rotate(-10deg) translateX(20%);
 		}
 	}
 
@@ -210,6 +225,8 @@
 				width: 1500px;
 			}
 		}
+
+
 
 		&.fact {
 			flex-wrap: nowrap;

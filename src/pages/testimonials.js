@@ -12,7 +12,7 @@ import FormBlock from '../components/blocks/form';
 
 import Layout from '../components/partials/layout';
 
-import '../styles/custom/faq.scss';
+import '../styles/custom/testimonials.scss';
 
 const TestimonialsPage = ({ data }) => {
 	const {
@@ -25,7 +25,7 @@ const TestimonialsPage = ({ data }) => {
 		} = fields.content;
 
 	return (
-		<Layout {...{ classes: `page testimonials_page` }}>
+		<Layout {...{ classes: `testimonials_page` }}>
 			<ContentBlock {...intro[0]} />
 			<TestimonialsBlock {...testimonials[0]} />
 			<ContentBlock {...featured_video[0]} />
@@ -72,6 +72,15 @@ export const pageQuery = graphql`
 					featured_video {
 						component
 						heading
+						content
+						illustration {
+							illustration
+							component
+						}
+						background
+						background_colour {
+							colour
+						}
 						media {
 							component
 							image {

@@ -20,6 +20,10 @@ const Illustration = ({ component, illustration, position }) => {
 		} else if (illustration === `lightning`) {
 			Component = Lightning;
 		}
+	} else if (component === `illustration_bottom`) {
+		if (illustration === `lightning`) {
+			Component = Lightning;
+		}
 	}
 
 	return (

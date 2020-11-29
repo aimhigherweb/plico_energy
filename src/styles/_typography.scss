@@ -22,6 +22,13 @@ h1, h2, h3 {
 	font-weight: 600;
 }
 
+h1 {
+	&.hidden {
+		position: absolute;
+		right: -200vw;
+	}
+}
+
 h2 {
 	text-transform: uppercase;
 }

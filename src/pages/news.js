@@ -32,9 +32,9 @@ const NewsPage = ({ data }) => {
 
 			return chunks;
 		},
-		[posts, setPosts] = useState(setChunks(news, 6)),
+		posts = setChunks(news, 6),
 		[page, setPage] = useState(1),
-		[pageData, setPageData] = useState(posts[page]),
+		[pageData, setPageData] = useState(posts[page - 1]),
 		changePage = (index) => {
 			setPage(index + 1);
 			setPageData(posts[index]);

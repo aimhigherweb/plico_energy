@@ -11,7 +11,7 @@ const TimeRange = ({
 		<div>
 			<label htmlFor={`start_time${_uid}`} className="hidden">Call after</label>
 			<input
-				name={`${parent}${generateSlug(label)}-start_time`}
+				name={`${parent}${generateSlug(label)}_start-time`}
 				id={`start_time${_uid}`}
 				type="time"
 				min="09:00"
@@ -21,7 +21,7 @@ const TimeRange = ({
 			/>
 			<label htmlFor={`end_time${_uid}`} className="hidden">Call before</label>
 			<input
-				name={`${parent}${generateSlug(label)}-end_time`}
+				name={`${parent}${generateSlug(label)}_end-time`}
 				id={`end_time${_uid}`}
 				type="time"
 				min="10:00"

@@ -2,16 +2,16 @@ form.custom {
 	button {
 		font-size: 1.2em;
 
-		&:last-child, & + button[type='submit'] {
+		&:last-child {
 			margin-right: 0;
+		}
+
+		&:not(.multistep) {
+			margin: 20px auto;
 		}
 
 		&:not(:last-child) {
 			margin-left: 0;
-		}
-
-		&[type='submit'] {
-			margin: 20px auto;
 		}
 	}
 

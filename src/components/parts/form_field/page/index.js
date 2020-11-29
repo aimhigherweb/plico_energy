@@ -19,7 +19,7 @@ const FormPage = ({
 	}
 
 	return (
-		<div id={`page_${_uid}`}>
+		<div id={`page_${_uid}`} className="page">
 			{label && <h2>{label}</h2>}
 			{fields.map((field) => (
 				<Field

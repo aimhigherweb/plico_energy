@@ -1,9 +1,25 @@
 form.custom {
 	button {
 		font-size: 1.2em;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:not(:last-child) {
+			margin-left: 0;
+		}
+
+		&[type='submit'] {
+			margin: 0 auto;
+		}
 	}
 
 	.hidden {
 		display: none;
+	}
+
+	.page {
+		width: 100%;
 	}
 }

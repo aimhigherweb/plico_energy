@@ -11,13 +11,13 @@ const TimeRange = ({
 		<legend>{label}</legend>
 		<label htmlFor={`street_address_1${_uid}`}>Street Address 1</label>
 		<input
-			name={`${parent}${generateSlug(label)}-street_address_1`}
+			name={`${parent}${generateSlug(label)}_street-address-1`}
 			id={`street_address_1${_uid}`}
 			type="text"
 		/>
 		<label htmlFor={`street_address_2${_uid}`}>Street Address 2</label>
 		<input
-			name={`${parent}${generateSlug(label)}-street_address_2`}
+			name={`${parent}${generateSlug(label)}_street-address-2`}
 			id={`street_address_2${_uid}`}
 			type="text"
 		/>
@@ -25,13 +25,13 @@ const TimeRange = ({
 			<div>
 				<label htmlFor={`suburb${_uid}`}>Suburb/City</label>
 				<input
-					name={`${parent}${generateSlug(label)}-suburb`}
+					name={`${parent}${generateSlug(label)}_suburb`}
 					id={`suburb${_uid}`}
 					type="text"
 				/>
 				<label htmlFor={`state${_uid}`}>State</label>
 				<select
-					name={`${parent}${generateSlug(label)}-state`}
+					name={`${parent}${generateSlug(label)}_state`}
 					id={`state${_uid}`}
 				>
 					<option>Please select</option>
@@ -49,13 +49,13 @@ const TimeRange = ({
 			<div>
 				<label htmlFor={`postcode${_uid}`}>Post Code</label>
 				<input
-					name={`${parent}${generateSlug(label)}-postcode`}
+					name={`${parent}${generateSlug(label)}_postcode`}
 					id={`postcode${_uid}`}
 					type="text"
 				/>
 				<label htmlFor={`country${_uid}`}>Country</label>
 				<input
-					name={`${parent}${generateSlug(label)}-country`}
+					name={`${parent}${generateSlug(label)}_country`}
 					id={`country${_uid}`}
 					list={`list${_uid}`}
 					type="text"

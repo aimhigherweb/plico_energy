@@ -15,7 +15,7 @@ import '../styles/custom/news.scss';
 
 const NewsPage = ({ data }) => {
 	const { pageInfo, articles, tags } = data,
-	 {
+		{
 			slug,
 			fields,
 			name
@@ -32,9 +32,10 @@ const NewsPage = ({ data }) => {
 
 			return chunks;
 		},
-		[posts, setPosts] = useState(setChunks(news, 6)),
-		[page, setPage] = useState(1),
-		[pageData, setPageData] = useState(posts[page]),
+		posts = setChunks(news, 6),
+
+	 [page, setPage] = useState(1),
+		[pageData, setPageData] = useState(posts[page - 1]),
 		changePage = (index) => {
 			setPage(index + 1);
 			setPageData(posts[index]);
@@ -100,7 +101,7 @@ const NewsPage = ({ data }) => {
 export default NewsPage;
 
 export const pageQuery = graphql`
-	query {
+	query newsQuery($tagFilter: String!) {
 		pageInfo: storyblokEntry(full_slug: {eq: "custom-pages/news"}) {
 			name
 			field_og_image_string
@@ -131,7 +132,10 @@ export const pageQuery = graphql`
 			}
 		}
 		articles: allStoryblokEntry(
-			filter: {field_component: {eq: "news"}}
+			filter: {
+				field_component: {eq: "news"}
+				tag_list: {regex: $tagFilter}
+			}
 			limit: 100
 			sort: {fields: first_published_at, order: DESC}
 		) {

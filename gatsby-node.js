@@ -2,7 +2,8 @@ const path = require(`path`),
 	remark = require(`remark`),
 	remarkHtml = require(`remark-html`),
 	remarkLint = require(`remark-preset-lint-recommended`),
-	strip = require(`strip-markdown`);
+	strip = require(`strip-markdown`),
+	generateSlug = require(`./src/utils/generateSlug`);
 
 const processMarkdown = (markdown) => remark().use(remarkLint).use(remarkHtml).processSync(markdown)
 		.toString(),
@@ -56,6 +57,13 @@ exports.createPages = ({ actions, graphql }) => {
 							name
 							slug
 							full_slug
+						}
+					}
+				}
+				tags: allStoryblokTag {
+					edges {
+						node {
+							name
 						}
 					}
 				}
@@ -131,6 +139,17 @@ exports.createPages = ({ actions, graphql }) => {
 					context: {
 						id: page.node.id,
 						slug: page.node.full_slug
+					}
+				});
+			});
+
+			data.tags.edges.forEach((page) => {
+				createPage({
+					path: `/news/${generateSlug(page.node.name)}`,
+					component: path.resolve(`src/templates/news_category.js`),
+					context: {
+						tag: page.node.name,
+						tagFilter: `/${page.node.name}/g`
 					}
 				});
 			});

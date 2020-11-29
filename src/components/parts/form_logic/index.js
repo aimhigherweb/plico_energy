@@ -87,7 +87,9 @@ const FormLogic = ({ form }) => {
 					.then(() => console.log(`success`))
 					.catch((error) => console.log(error));
 
-				// e.preventDefault();
+				e.preventDefault();
+
+				window.location.replace(`${form.fields.content.success_page}/`);
 			}}
 		>
 			<input type="hidden" name="form-name" value={`custom_${form.slug}`} />

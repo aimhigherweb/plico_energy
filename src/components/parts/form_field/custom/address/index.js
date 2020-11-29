@@ -5,7 +5,7 @@ import Countries from './countries_list';
 import generateSlug from '../../../../../utils/generateSlug';
 
 const TimeRange = ({
-	_uid, label, parent
+	_uid, label, parent, values, fieldChanged
 }) => (
 	<fieldset id={`field_${_uid}`}>
 		<legend>{label}</legend>
@@ -14,12 +14,14 @@ const TimeRange = ({
 			name={`${parent}${generateSlug(label)}_street-address-1`}
 			id={`street_address_1${_uid}`}
 			type="text"
+			onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_street-address-1`, e.target.value))}
 		/>
 		<label htmlFor={`street_address_2${_uid}`}>Street Address 2</label>
 		<input
 			name={`${parent}${generateSlug(label)}_street-address-2`}
 			id={`street_address_2${_uid}`}
 			type="text"
+			onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_street-address-2`, e.target.value))}
 		/>
 		<fieldset>
 			<div>
@@ -28,11 +30,13 @@ const TimeRange = ({
 					name={`${parent}${generateSlug(label)}_suburb`}
 					id={`suburb${_uid}`}
 					type="text"
+					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_suburb`, e.target.value))}
 				/>
 				<label htmlFor={`state${_uid}`}>State</label>
 				<select
 					name={`${parent}${generateSlug(label)}_state`}
 					id={`state${_uid}`}
+					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_state`, e.target.value))}
 				>
 					<option>Please select</option>
 					<option value="act">ACT</option>
@@ -52,6 +56,7 @@ const TimeRange = ({
 					name={`${parent}${generateSlug(label)}_postcode`}
 					id={`postcode${_uid}`}
 					type="text"
+					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_postcode`, e.target.value))}
 				/>
 				<label htmlFor={`country${_uid}`}>Country</label>
 				<input
@@ -60,6 +65,7 @@ const TimeRange = ({
 					list={`list${_uid}`}
 					type="text"
 					defaultValue="Australia"
+					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_country`, e.target.value))}
 				/>
 				<Countries id={`list${_uid}`} />
 			</div>

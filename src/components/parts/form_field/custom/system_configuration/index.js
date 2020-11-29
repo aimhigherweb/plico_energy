@@ -4,7 +4,7 @@ import generateSlug from '../../../../../utils/generateSlug';
 import systemConfig from '../../../../../utils/systemConfig';
 
 const SystemConfiguration = ({
-	_uid, label, parent
+	_uid, label, parent, fieldChanged, values
 }) => {
 	const [inverters, setInverters] = useState([]),
 		[batteries, setBatteries] = useState([]),
@@ -17,15 +17,18 @@ const SystemConfiguration = ({
 			setPrice({});
 			setCost(false);
 			systemConfig(`relatedbatterykeys?InverterId=${e.target.value}`, setBatteries);
+			fieldChanged(`${parent}${generateSlug(label)}_inverters`, e.target.value);
 		},
 		selectBattery = (e) => {
 			setCost(false);
 			setPrice({});
 			setSystems(true);
 			systemConfig(`products/${e.target.value}?includepricing`, setPrice);
+			fieldChanged(`${parent}${generateSlug(label)}_batteries`, e.target.value);
 		},
 		selectSystems = (e) => {
 			setCost(pricing.weeklyFee * e.target.value);
+			fieldChanged(`${parent}${generateSlug(label)}_number-systems`, e.target.value);
 		};
 
 	useEffect(() => {
@@ -107,6 +110,7 @@ const SystemConfiguration = ({
 					type='checkbox'
 					id={`agreement${_uid}`}
 					name={`${parent}${generateSlug(label)}_agreement`}
+					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_agreement`, e.target.value))}
 				/>
 				<label htmlFor={`agreement${_uid}`}>I understand & accept the <b>total weekly cost</b> listed above for the system configuration I have selected.</label>
 			</Fragment>

@@ -5,7 +5,7 @@ import Address from './address';
 import SystemConfiguration from './system_configuration';
 
 const Custom = ({
-	type, _uid, label, parent = ``
+	type, _uid, label, parent = ``, fieldChanged, values
 }) => {
 	let Component = () => <h2>Custom - {type}</h2>;
 
@@ -22,7 +22,9 @@ const Custom = ({
 	}
 
 	return (
-		<Component {...{ _uid, label, parent }} />
+		<Component {...{
+			_uid, label, parent, fieldChanged, values
+		}} />
 	);
 };
 

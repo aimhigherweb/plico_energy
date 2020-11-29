@@ -2,7 +2,7 @@ form.custom {
 	button {
 		font-size: 1.2em;
 
-		&:last-child {
+		&:last-child, & + button[type='submit'] {
 			margin-right: 0;
 		}
 
@@ -11,7 +11,7 @@ form.custom {
 		}
 
 		&[type='submit'] {
-			margin: 0 auto;
+			margin: 20px auto;
 		}
 	}
 

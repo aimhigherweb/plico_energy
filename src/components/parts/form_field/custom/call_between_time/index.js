@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import generateSlug from '../../../../../utils/generateSlug';
 
 const TimeRange = ({
-	_uid, label, parent
+	_uid, label, parent, values, fieldChanged
 }) => (
 	<fieldset id={`field_${_uid}`}>
 		<legend>{label}</legend>
@@ -17,6 +17,7 @@ const TimeRange = ({
 				min="09:00"
 				max="17:00"
 				step="60"
+				onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}-start_time`, e.target.value))}
 			/>
 			<label htmlFor={`end_time${_uid}`} className="hidden">Call before</label>
 			<input
@@ -26,6 +27,7 @@ const TimeRange = ({
 				min="10:00"
 				max="18:00"
 				step="60"
+				onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}-end_time`, e.target.value))}
 			/>
 		</div>
 	</fieldset>

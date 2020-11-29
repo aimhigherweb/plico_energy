@@ -5,18 +5,18 @@ import React, { Fragment } from 'react';
 import generateSlug from '../../../../utils/generateSlug';
 
 const Text = ({
-	type, name, id, placeholder, onChange, value
+	type, name, id, placeholder, fieldChanged, value
 }) => (
-	<input type={type} name={name} id={id} placeholder={placeholder} onChange={(e) => (onChange(name, e.target.value))} value={value} />
+	<input type={type} name={name} id={id} placeholder={placeholder} onChange={(e) => (fieldChanged(name, e.target.value))} value={value} />
 );
 
 const TextArea = ({
-	name, id, onChange, value
+	name, id, fieldChanged, value
 }) => (
 	<textarea
 		name={name}
 		id={id}
-		onChange={(e) => (onChange(name, e.target.value))}
+		onChange={(e) => (fieldChanged(name, e.target.value))}
 		value={value}
 		rows="6"
 	></textarea>
@@ -51,12 +51,14 @@ const TextInput = ({
 				{label}
 			</label>
 			<Component
-				type={type}
-				name={`${parent}${generateSlug(label)}`}
-				id={_uid}
-				placeholder={placeholder}
-				onChange={(e) => fieldChanged(_uid, e.target.value)}
-				value={value}
+				{...{
+					type,
+					name: `${parent}${generateSlug(label)}`,
+					_uid,
+					placeholder,
+					fieldChanged,
+					value
+				}}
 			/>
 		</Fragment>
 	);

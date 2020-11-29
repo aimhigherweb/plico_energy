@@ -62,13 +62,13 @@ const FormLogic = ({ form }) => {
 			// onSubmit={(e) => e.preventDefault()}
 			className="custom"
 			name={`custom_${form.slug}`}
-			method="POST"
-			action={`${form.fields.content.success_page}/`}
-			netlify
-			netlify-honeypot="bot-field"
+			method="post"
+			// action={`${form.fields.content.success_page}/`}
+			// netlify
+			// netlify-honeypot="bot-field"
 		>
 			<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
-			<input type="hidden" name="bot-field" />
+			{/* <input type="hidden" name="bot-field" /> */}
 			<Fragment>
 				{totalSteps > 1
 					&& <Field

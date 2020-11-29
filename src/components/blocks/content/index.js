@@ -26,7 +26,7 @@ const Content = ({
 		classes = `${classes} full_width`;
 	}
 
-	if (illustration.length) {
+	if (illustration && illustration.length) {
 		classes = `${classes} ${illustration[0].component}`;
 	}
 
@@ -48,7 +48,7 @@ const Content = ({
 				{sub_heading && <p className="subtitle">{sub_heading}</p>}
 				<h2>{heading}</h2>
 				<div className="block_content" dangerouslySetInnerHTML={{ __html: content }} />
-				<CTA {...{ cta_button }} />
+				{cta_button && <CTA {...{ cta_button }} />}
 			</div>
 			{media && <FeatureImage {...media[0]} />}
 

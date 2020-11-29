@@ -14,9 +14,7 @@ const LandingPage = ({ data }) => {
 			fields
 		} = data.storyblokEntry,
 		{ body, banner } = fields.content,
-		headerType = banner[0]?.media[0].component || `default`,
-
-		 block = body[0];
+		headerType = banner[0]?.media[0].component || `default`;
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>
@@ -27,16 +25,6 @@ const LandingPage = ({ data }) => {
 					{...{ component: block.component, data: block }}
 				/>
 			))}
-
-			{/* <div style={{
-				borderTop: `5px solid rebeccapurple`,
-				borderBottom: `5px solid rebeccapurple`,
-				padding: `1px 0`,
-			}}>
-				<Block
-					{...{ component: block.component, data: block }}
-				/>
-			</div> */}
 		</Layout>
 	);
 };

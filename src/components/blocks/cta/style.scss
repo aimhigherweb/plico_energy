@@ -1,0 +1,16 @@
+.cta_block {
+	margin-top: 100px;
+	margin-bottom: 100px;
+
+	ul {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media(min-width: 50em) {
+	.cta_block {
+		margin-top: 100px;
+		margin-bottom: 200px;
+	}
+}

@@ -10,6 +10,7 @@ import ContentSections from './content_sections';
 import FeaturedSections from './featured_section';
 import PricingBlock from './pricing';
 import ContentBox from './content_box';
+import CTABlock from './cta';
 
 const Block = ({
 	component, data
@@ -35,6 +36,8 @@ const Block = ({
 			return <PricingBlock {...data} />;
 		case `content_box`:
 			return <ContentBox {...data} />;
+		case `cta_button`:
+			return <CTABlock {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

@@ -69,6 +69,11 @@ export const pageQuery = graphql`
 								colour
 							}
 						}
+						cta_link
+						cta_text
+						cta_colour {
+							colour
+						}
 						media {
 							component
 							image {

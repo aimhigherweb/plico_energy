@@ -43,7 +43,10 @@ const FormLogic = ({ form }) => {
 		},
 		prevStep = () => {
 			checkStep(-1);
-		};
+		},
+		encode = (data) => Object.keys(data)
+			.map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+			.join(`&`);
 
 	useEffect(() => {
 		const upcomingStepData = formData[step];
@@ -66,6 +69,22 @@ const FormLogic = ({ form }) => {
 			// action={`${form.fields.content.success_page}/`}
 			// netlify
 			// netlify-honeypot="bot-field"
+			onSubmit={(e) => {
+				fetch(`/`, {
+					method: `POST`,
+					headers: {
+						'Content-Type': `application/x-www-form-urlencoded`
+					},
+					body: encode({
+						'form-name': `custom_${form.slug}`,
+						...values
+					})
+				})
+					.then(() => console.log(`success`))
+					.catch((error) => console.log(error));
+
+				e.preventDefault();
+			}}
 		>
 			<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
 			{/* <input type="hidden" name="bot-field" /> */}

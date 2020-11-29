@@ -104,6 +104,14 @@
 			}
 		}
 	}
+
+	&.media_bottom {
+		margin-bottom: 200px;
+
+		.image {
+			margin-top: 50px;
+		}
+	}
 }
 
 @media(min-width: 40em) {
@@ -118,6 +126,17 @@
 					top: -200px;
 					transform: translateX(-55%);
 				}
+			}
+		}
+
+		&.media_bottom {
+			min-height: unset;
+
+			.image {
+				width: 80vw;
+				max-width: 800px;
+				margin-top: 50px;
+				margin-left: 0;
 			}
 		}
 	}
@@ -200,6 +219,22 @@
 				order: -1;
 			}
 		}
+
+		&.media_bottom {
+			flex-wrap: wrap;
+			min-height: unset;
+
+			.content {
+				margin-top: 20px;
+			}
+
+			.image {
+				width: 80vw;
+				max-width: 800px;
+				margin-top: 50px;
+				margin-left: 0;
+			}
+		}
 	}
 }
 
@@ -239,6 +274,17 @@
 				// width: auto;
 				width: 1500px;
 				// transform: translateX(0);
+			}
+		}
+
+		&.media_bottom {
+			.content {
+				margin-top: 50px;
+			}
+
+			.image {
+				margin-bottom: 100px;
+				margin-left: 0;
 			}
 		}
 	}
@@ -323,6 +369,12 @@
 					width: 3000px;
 					transform: translateX(-50%);
 				}
+			}
+		}
+
+		&.media_bottom {
+			.content {
+				max-width: 700px;
 			}
 		}
 	}

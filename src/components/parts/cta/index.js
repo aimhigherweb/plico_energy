@@ -12,9 +12,11 @@ const CTA = ({ cta_button }) => (
 			if (cta.cta_colour) {
 				styles = {
 					"--cta_background": cta.cta_colour.colour,
-					"--cta_text": cta.cta_colour.colour === `#18304c` ? `#ffffff` : `#18304c`
+					"--cta_text": cta.cta_colour.colour === `#ffffff` ? `#18304c` : `#ffffff`
 				};
 			}
+
+			console.log(cta.cta_colour.colour !== `#18304c` ? `#18304c` : `#ffffff`);
 
 			return (
 				<li key={cta.cta_link}>

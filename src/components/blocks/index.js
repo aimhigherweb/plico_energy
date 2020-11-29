@@ -9,6 +9,7 @@ import SavingsCalculator from './savings_calculator';
 import ContentSections from './content_sections';
 import FeaturedSections from './featured_section';
 import PricingBlock from './pricing';
+import ContentBox from './content_box';
 
 const Block = ({
 	component, data
@@ -32,6 +33,8 @@ const Block = ({
 			return <FeaturedSections {...data} />;
 		case `pricing`:
 			return <PricingBlock {...data} />;
+		case `content_box`:
+			return <ContentBox {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

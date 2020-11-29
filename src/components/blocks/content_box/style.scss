@@ -1,0 +1,10 @@
+.content_box_block {
+	.repeatable_content {
+		max-width: unset;
+
+		.gatsby-image-wrapper {
+			order: -1;
+			width: 30vw;
+		}
+	}
+}

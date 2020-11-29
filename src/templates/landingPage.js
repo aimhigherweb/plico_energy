@@ -92,6 +92,9 @@ export const pageQuery = graphql`
 							illustration
 							heading
 						}
+						image {
+							filename
+						}
 						testimonials
 						faqs
 						illustration {

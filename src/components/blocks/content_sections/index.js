@@ -13,7 +13,7 @@ import './style.scss';
 const ContentSections = ({
 	heading, content, media, illustration_selection, background, sections
 }) => {
-	let classes = `content_sections`,
+	let classes = `content_sections sections_${sections.length}`,
 		Illustration = null;
 
 	if (media.length) {
@@ -22,6 +22,10 @@ const ContentSections = ({
 
 	if (background) {
 		classes = `${classes} background`;
+	}
+
+	if (illustration_selection) {
+		classes = `${classes} illustration_${illustration_selection}`;
 	}
 
 	if (illustration_selection === `lightning`) {

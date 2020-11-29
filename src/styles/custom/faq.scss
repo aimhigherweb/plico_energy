@@ -1,3 +1,5 @@
+@use '../variables.scss';
+
 .faq {
 	.featured_sections {
 		display: flex;
@@ -27,6 +29,62 @@
 			}
 		}
 	}
+
+	&.category {
+		.article {
+			max-width: unset;
+
+			&:nth-child(2n) {
+				.content {
+					background: #ffffff;
+					color: variables.$main;
+				}
+			}
+
+			&:hover, &:focus {
+				.content {
+					background: #ffffff;
+					color: variables.$main;
+				}
+			}
+
+			.btn {
+				&:hover {
+					border-color: var(--cta_background);
+				}
+			}
+		}
+	}
+
+	.faq_content {
+		max-width: 800px;
+		margin: 20px auto;
+		line-height: 1.5;
+	}
+
+	.title {
+		text-align: center;
+	}
+
+	h2 {
+		margin-top: 50px;
+	}
+
+	.categories {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		.btn {
+			margin: 10px;
+		}
+
+		li {
+			&:nth-child(2n) {
+				--cta_background: #{variables.$secondary};
+			}
+		}
+	}
 }
 
 @media(min-width: 50em) {
@@ -38,6 +96,41 @@
 				.content {
 					padding: 30px;
 				}
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.faq {
+		h2 {
+			margin-top: 100px;
+		}
+
+		.faq_content {
+			margin-top: 50px;
+			font-size: 1.2em;
+		}
+	}
+}
+
+@media(min-width: 85em) {
+	.faq {
+		.faq_block  {
+			padding: 0;
+		}
+	}
+}
+
+@media(min-width: 90em) {
+	.faq {
+		.faq_block  {
+			.curve {
+				left: -400px;
+			}
+
+			.plug {
+				right: 25vw;
 			}
 		}
 	}

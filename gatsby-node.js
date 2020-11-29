@@ -46,6 +46,7 @@ exports.createPages = ({ actions, graphql }) => {
 					edges {
 						node {
 							name
+							uuid
 							slug
 							full_slug
 						}
@@ -126,7 +127,9 @@ exports.createPages = ({ actions, graphql }) => {
 					component: path.resolve(`src/templates/faq_category.js`),
 					context: {
 						id: page.node.id,
-						slug: page.node.full_slug
+						slug: page.node.full_slug,
+						category: page.node.name,
+						categoryFilter: `/${page.node.uuid}/g`
 					}
 				});
 			});

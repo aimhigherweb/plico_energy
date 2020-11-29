@@ -148,7 +148,7 @@
 @media(min-width: 40em) {
 	.content_sections {
 		margin-top: 100px;
-		margin-bottom: 100px;
+		margin-bottom: 150px;
 
 		.illustration {
 			display: block;
@@ -223,7 +223,7 @@
 
 @media(min-width: 50em) {
 	.content_sections {
-		margin-bottom: 150px;
+		margin-bottom: 350px;
 
 		.illustration {
 			bottom: -50px;
@@ -289,6 +289,17 @@
 				}
 			}
 		}
+
+		.section {
+			// opacity: 0.3;
+		}
+
+		&.illustration_pig {
+			.illustration {
+				bottom: -350px;
+				left: 50%;
+			}
+		}
 	}
 }
 
@@ -304,6 +315,15 @@
 			&:before {
 				top: 0;
 				bottom: 20%;
+			}
+		}
+
+		&.illustration_pig {
+			margin-bottom: 500px;
+
+			.illustration {
+				bottom: -400px;
+				left: 50%;
 			}
 		}
 	}

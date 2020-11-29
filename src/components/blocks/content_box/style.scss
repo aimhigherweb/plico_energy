@@ -1,10 +1,29 @@
 .content_box_block {
 	.repeatable_content {
 		max-width: unset;
+	}
+}
 
-		.gatsby-image-wrapper {
-			order: -1;
-			width: 30vw;
+@media(min-width: 40em) {
+	.content_box_block {
+		.repeatable_content {
+			.gatsby-image-wrapper {
+				order: -1;
+				width: 40vw;
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.content_box_block {
+		margin-bottom: 200px;
+
+		.repeatable_content {
+			.gatsby-image-wrapper {
+				order: -1;
+				width: 30vw;
+			}
 		}
 	}
 }

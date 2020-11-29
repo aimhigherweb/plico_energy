@@ -14,8 +14,6 @@ const FeatureImage = ({
 }) => {
 	let Media = null;
 
-	console.log(position);
-
 	if (component === `video`) {
 		Media = <Video {...{ video_url, image }} />;
 	} else if (component === `graphic`) {

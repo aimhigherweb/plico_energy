@@ -16,8 +16,6 @@ const CTA = ({ cta_button }) => (
 				};
 			}
 
-			console.log(cta.cta_colour.colour !== `#18304c` ? `#18304c` : `#ffffff`);
-
 			return (
 				<li key={cta.cta_link}>
 					<A

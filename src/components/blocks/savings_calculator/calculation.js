@@ -11,8 +11,6 @@ const calculateSavings = (value) => {
 			return bDiff < aDiff ? b : a;
 		});
 
-	// console.log(closest);
-
 	let saving_amount = 112;
 
 	switch (closest) {

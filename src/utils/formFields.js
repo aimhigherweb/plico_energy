@@ -8,7 +8,6 @@ const formFields = (formData) => {
 	formData.forEach((f1) => {
 		if(!f1.label) {
 			f1.forEach(page => {
-				console.log(page)
 				const page_slug = page.label && generateSlug(page.label)
 
 				if(!['field_group', 'form_page', 'custom'].includes(page.component)) {

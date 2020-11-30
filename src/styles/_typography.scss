@@ -75,13 +75,13 @@ a {
 	@include extends.button;
 
 	&.secondary {
-		--background: #{variables.$secondary};
-		--text: #{variables.$primary};
+		--cta_background: #{variables.$secondary};
+		--cta_text: #{variables.$primary};
 	}
 
 	&.tertiary {
-		--background: #ffffff;
-		--text: #{variables.$primary};
+		--cta_background: #ffffff;
+		--cta_text: #{variables.$primary};
 	}
 }
 

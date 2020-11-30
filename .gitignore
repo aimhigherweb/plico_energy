@@ -121,3 +121,5 @@ dist
 public
 backstop_data
 backstop.json
+# Local Netlify folder
+.netlify

@@ -13,17 +13,16 @@
 	background: variables.$primary;
 	background: var(--cta_background);
 	color: #ffffff;
-	color:var(--cta_text);
+	color: var(--cta_text);
 	font-family: variables.$font_heading;
 	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
 
 	&:hover, &:focus {
-		--cta_background: #ffffff;
-		--cta_text: #{variables.$primary};
-
-		border-color: var(--cta_text);
+		border-color: var(--cta_background);
+		background: var(--cta_text);
+		color: var(--cta_background);
 	}
 }
 

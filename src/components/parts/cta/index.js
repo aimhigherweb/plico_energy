@@ -12,7 +12,7 @@ const CTA = ({ cta_button }) => (
 			if (cta.cta_colour) {
 				styles = {
 					"--cta_background": cta.cta_colour.colour,
-					"--cta_text": cta.cta_colour.colour === `#ffffff` ? `#18304c` : `#ffffff`
+					"--cta_text": cta.cta_colour.colour.match(/#ffffff/i) ? `#18304c` : `#ffffff`
 				};
 			}
 

@@ -1,4 +1,4 @@
-const systemConfig = (path, setFunction) => {
+const systemConfig = (path, setFunction, setMessage) => {
 	console.log(`fetching data`);
 	return fetch(`https://sepricecatalog.azurewebsites.net/api/${path}`, {
 		method: `GET`,
@@ -8,7 +8,19 @@ const systemConfig = (path, setFunction) => {
 			'Content-Type': `application/json`,
 			'x-functions-key': process.env.GATSBY_FUNCTIONS_KEY,
 		}
-	}).then((res) => res.json()).then((data) => setFunction(data)).catch((err) => console.error(err));
+	}).then((res) => res.json())
+		.then((data) => {
+			if (setMessage) {
+				setMessage(null);
+			}
+			setFunction(data);
+		})
+		.catch((err) => {
+			if (setMessage) {
+				setMessage(`Something went wrong fetching our system details, please try again later`);
+			}
+			console.error(err);
+		});
 };
 
 export default systemConfig;

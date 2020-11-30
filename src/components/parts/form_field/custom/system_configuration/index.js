@@ -11,6 +11,7 @@ const SystemConfiguration = ({
 		[systems, setSystems] = useState(false),
 		[pricing, setPrice] = useState({}),
 		[cost, setCost] = useState(false),
+		[message, setMessage] = useState(`Loading Options`),
 		selectInverter = (e) => {
 			setBatteries([]);
 			setSystems(false);
@@ -32,12 +33,12 @@ const SystemConfiguration = ({
 		};
 
 	useEffect(() => {
-		systemConfig(`inverters`, setInverters);
+		systemConfig(`inverters`, setInverters, setMessage);
 	}, []);
 
 	return (
 		<Fragment>
-			{!inverters.length && <p>Loading options</p>}
+			{message && <p>{message}</p>}
 			{inverters.length > 0
 				&& <Fragment>
 					<h3>Inverter Selection</h3>
@@ -67,7 +68,7 @@ const SystemConfiguration = ({
 					name={`${parent}${generateSlug(label)}_batteries`}
 					onChange={(e) => selectBattery(e)}
 				>
-					<option>Please select</option>
+					<option default>Please call me to discuss</option>
 					{batteries.map((opt) => (
 
 						<option key={opt.productId} value={opt.productId}>{opt.batteryComboName}</option>
@@ -105,15 +106,27 @@ const SystemConfiguration = ({
 			</Fragment>
 			}
 			{cost
-			&& <Fragment>
-				<input
-					type='checkbox'
-					id={`agreement${_uid}`}
-					name={`${parent}${generateSlug(label)}_agreement`}
-					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_agreement`, e.target.value))}
-				/>
-				<label htmlFor={`agreement${_uid}`}>I understand & accept the <b>total weekly cost</b> listed above for the system configuration I have selected.</label>
-			</Fragment>
+			&& 	<fieldset>
+				<legend>The information I have provided is true and correct to the best of my/our knowledge.</legend>
+				<div class="options">
+					<input
+						type="radio"
+						id={`agreement${_uid}_yes`}
+						name={`${parent}${generateSlug(label)}_agreement`}
+						value="yes"
+						onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_agreement`, e.target.value))}
+					/>
+					<label htmlFor={`agreement${_uid}_yes`} >Yes</label>
+					<input
+						type="radio"
+						id={`agreement${_uid}_no`}
+						name={`${parent}${generateSlug(label)}_agreement`}
+						value="no"
+						onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_agreement`, e.target.value))}
+					/>
+					<label htmlFor={`agreement${_uid}_no`} >No</label>
+				</div>
+			</fieldset>
 			}
 		</Fragment>
 	);

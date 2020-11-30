@@ -4,6 +4,7 @@
 	@media(min-width: 50em) {
 		.content_sections.block {
 			display: grid;
+			margin-bottom: 150px;
 
 			&.image {
 				grid-template-areas:
@@ -13,8 +14,9 @@
 					'b2	b2 b2 b2 img img img .'
 					'. . . b3 b3 b3 b3 b3'
 					'. . . b3 b3 b3 b3 b3';
-				grid-template-columns: repeat(8, 1fr);
+				grid-template-columns: repeat(8, auto);
 				grid-template-rows: repeat(6, auto);
+				align-content: center;
 			}
 
 			.main {
@@ -23,26 +25,126 @@
 
 			.image {
 				grid-area: img;
+				width: 300px;
+				justify-self: end;
+				margin: 0;
 			}
 
 			.section {
 				.background {
-					width: 100%;
-					height: 100%;
+					display: none;
+				}
+
+				h3 {
+					margin: 0 0 10px;
+				}
+
+				div {
+					p {
+						&:first-child {
+							margin-top: 0;
+						}
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+					}
+				}
+
+				&[class*='s_'] {
+					max-width: unset;
+					margin: 0;
+					padding: 100px;
+					background-image: url('/img/blob_background_primary_1.png');
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: 100% 100%;
+				}
+
+				&.secondary {
+					background-image: url('/img/blob_background_secondary_2.png');
 				}
 
 				&.s_1 {
 					grid-area: b1;
+					padding-right: 50px;
+					padding-left: 70px;
 				}
 
 				&.s_2 {
 					grid-area: b2;
+					grid-column: 1 / span 5;
+					grid-row: 2 / span 4;
+					margin: 0;
+					margin-bottom: 50px;
+					padding-top: 110px;
+					padding-right: 70px;
+					padding-bottom: 90px;
+					padding-left: 70px;
 				}
 
 				&.s_3 {
 					grid-area: b3;
+					margin-top: 50px;
+					padding-top: 85px;
+					padding-right: 54px;
+					padding-bottom: 67px;
+					background-image: url('/img/blob_background_primary_3.png');
 				}
 			}
+		}
+	}
+
+	@media(min-width: 70em) {
+		.content_sections.block {
+			.image {
+				width: 400px;
+			}
+
+			.section {
+				&[class*='s_'] {
+					padding: 150px;
+				}
+
+				&.s_2 {
+					margin-bottom: 200px;
+				}
+			}
+
+			.illustration {
+				left: calc(-900px + 10vw);
+			}
+		}
+	}
+
+	@media(min-width: 80em) {
+		.content_sections.block {
+			.image {
+				grid-column-end: -1;
+				width: 500px;
+				margin-right: 40px;
+			}
+
+			.section {
+				&[class*='s_'] {
+					max-width: 800px;
+				}
+
+				&.s_2 {
+					padding-right: 100px;
+					padding-left: 100px;
+				}
+			}
+
+			.illustration {
+				left: 50%;
+			}
+		}
+	}
+
+	@media(min-width: 85em) {
+		.content_sections.block {
+			padding: 0 calc(50vw - 600px);
 		}
 	}
 }

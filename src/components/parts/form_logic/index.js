@@ -92,6 +92,7 @@ const FormLogic = ({ form }) => {
 							console.log(`success`);
 							// e.preventDefault();
 							// window.location.replace(`${form.fields.content.success_page}/`);
+							window.navigate(`${form.fields.content.success_page}/`);
 						})
 						.catch((error) => {
 							console.error(error);

@@ -1,0 +1,48 @@
+@use '../../../styles/variables.scss';
+
+@supports(grid-template-areas: '.') {
+	@media(min-width: 50em) {
+		.content_sections.block {
+			display: grid;
+
+			&.image {
+				grid-template-areas:
+					'. main main main b1 b1 b1 b1'
+					'b2 b2 b2 b2 b1 b1 b1 b1'
+					'b2	b2 b2 b2 img img img .'
+					'b2	b2 b2 b2 img img img .'
+					'. . . b3 b3 b3 b3 b3'
+					'. . . b3 b3 b3 b3 b3';
+				grid-template-columns: repeat(8, 1fr);
+				grid-template-rows: repeat(6, auto);
+			}
+
+			.main {
+				grid-area: main;
+			}
+
+			.image {
+				grid-area: img;
+			}
+
+			.section {
+				.background {
+					width: 100%;
+					height: 100%;
+				}
+
+				&.s_1 {
+					grid-area: b1;
+				}
+
+				&.s_2 {
+					grid-area: b2;
+				}
+
+				&.s_3 {
+					grid-area: b3;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,446 @@
+@use '../../../styles/variables.scss';
+
+.content_sections {
+	z-index: 5;
+
+	h3 {
+		text-transform: uppercase;
+	}
+
+	.main {
+		position: static;
+		font-family: variables.$font_regular;
+	}
+
+	.illustration {
+		display: none;
+		position: absolute;
+		z-index: -1;
+
+		svg {
+			height: 500px;
+
+			path {
+				stroke: variables.$secondary;
+				fill: none;
+			}
+		}
+	}
+
+	&.image {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		.gatsby-image-wrapper {
+			order: 1;
+			width: 100%;
+		}
+
+		.section {
+			max-width: 350px;
+			margin-top: 50px;
+			margin-right: auto;
+			margin-bottom: 50px;
+			padding: 40px;
+			color: #ffffff;
+
+			h3 {
+				width: 100%;
+				margin-top: 0;
+				color: variables.$secondary;
+			}
+
+			a {
+				color: variables.$secondary;
+			}
+
+			&:nth-child(2n) {
+				margin-right: 0;
+				margin-left: auto;
+			}
+
+			.background {
+				display: block;
+			}
+
+			&.secondary {
+				h3 {
+					color: variables.$primary;
+				}
+
+				a {
+					color: variables.$primary;
+				}
+			}
+
+			&:nth-child(n+5) {
+				order: 1;
+			}
+
+			&:nth-child(3n) {
+				padding-top: 70px;
+
+				.background {
+					margin-top: -20px;
+					transform: scaleX(-1);
+				}
+			}
+
+			&:nth-child(3n - 2) {
+				margin-top: 70px;
+				padding-top: 10px;
+				padding-bottom: 20px;
+				padding-left: 60px;
+
+				.background {
+					min-height: calc(120% + 60px);
+					margin-left: -30px;
+					transform: scaleX(-1) rotate(90deg);
+				}
+			}
+		}
+	}
+
+	&.quote {
+		position: relative;
+		max-width: unset;
+		margin-top: 100px;
+		margin-bottom: 150px;
+		color: variables.$main;
+		font-family: variables.$font_regular;
+
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 200px;
+			bottom: 200px;
+			left: 0;
+			width: 100vw;
+			background: variables.$grey_light;
+		}
+
+		.section {
+			.background {
+				fill: variables.$secondary;
+			}
+
+			&:not(:last-child):not(:nth-last-child(2)) {
+				margin-bottom: 50px;
+				padding-bottom: 50px;
+				border-bottom: 1px solid variables.$main;
+			}
+
+			&:last-child {
+				max-width: 400px;
+				margin-top: 100px;
+				margin-left: auto;
+				padding: 40px 20px;
+				color: #ffffff;
+
+				.background{
+					display: block;
+					top: -80px;
+					left: 50%;
+					min-width: 100%;
+					height: 140%;
+					min-height: 100%;
+					transform: translateX(-50%);
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.content_sections {
+		margin-top: 100px;
+		margin-bottom: 150px;
+
+		.illustration {
+			display: block;
+			bottom: 0;
+			left: -600px;
+		}
+
+		&.image {
+			justify-content: flex-end;
+
+			.main {
+				margin-right: auto;
+			}
+
+			> * {
+				flex: 0 1 40%;
+			}
+
+			.gatsby-image-wrapper {
+				align-self: center;
+			}
+
+			.section {
+				flex: 1 1 50%;
+				margin-left: 20px;
+				padding: 50px 40px;
+
+				.background {
+					min-width: 110%;
+					min-height: calc(110% + 40px);
+				}
+
+				&:nth-child(2n) {
+					margin-right: auto;
+				}
+
+				&:nth-child(2n - 1) {
+					margin-right: -20px;
+					margin-left: 40px;
+
+					.background {
+						margin-left: 70px
+					}
+				}
+			}
+		}
+
+		&.quote {
+			margin-top: 150px;
+
+			.illustration {
+				display: none;
+			}
+
+			.section {
+				width: 50%;
+
+				&:last-child {
+					width: 100%;
+					margin-top: 150px;
+					margin-right: 20px;
+					padding-bottom: 60px;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.content_sections {
+		margin-bottom: 350px;
+
+		.illustration {
+			bottom: -50px;
+			left: -650px;
+		}
+
+		&.image {
+			justify-content: space-between;
+
+			.main {
+				color: variables.$main;
+			}
+
+			.gatsby-image-wrapper {
+				flex: 0 1 auto;
+				width: 400px;
+				margin-right: auto;
+				margin-left: -30px;
+			}
+
+			.section {
+				margin-top: 0;
+				margin-bottom: 0;
+				padding: 50px;
+
+				.background {
+					margin: 0;
+				}
+
+				&:nth-child(2n - 1) {
+					margin-right: 0;
+					margin-left: auto;
+					padding-top: 100px;
+
+					.background {
+						margin-left: 0
+					}
+				}
+			}
+		}
+
+		&.quote {
+			.illustration {
+				display: block;
+
+				svg {
+					path {
+						stroke: variables.$primary;
+					}
+				}
+			}
+
+			.section {
+				width: 40%;
+
+				&:last-child {
+					margin-top: 50px;
+					padding-left: 60px;
+
+					.background {
+						transform: translateX(-45%) rotate(-5deg);
+					}
+				}
+			}
+		}
+
+		&.illustration_pig {
+			.illustration {
+				bottom: -350px;
+				left: 50%;
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.content_sections {
+		&.quote {
+			margin-top: 200px;
+
+			.section {
+				width: 33%;
+			}
+
+			&:before {
+				top: -50px;
+				bottom: 20%;
+			}
+		}
+
+		&.illustration_pig {
+			margin-bottom: 500px;
+
+			.illustration {
+				bottom: -400px;
+				left: 50%;
+			}
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.content_sections {
+		margin-top: 150px;
+
+
+		h2 {
+			font-size: 2.5em;
+		}
+
+		h3 {
+			font-size: 2em;
+		}
+
+		.illustration {
+			bottom: -50px;
+			left: calc(-850px + 10vw);
+
+			svg {
+				height: 700px;
+
+				path {
+					stroke-width: 7px;
+				}
+			}
+		}
+
+		&.image {
+			.main {
+				max-width: 300px;
+			}
+
+			.gatsby-image-wrapper {
+				width: 500px;
+				margin-left: -20px;
+			}
+
+			.section {
+				max-width: 600px;
+				margin-bottom: 100px;
+				padding: 80px;
+
+				&:nth-child(2n - 1) {
+					margin-right: -80px;
+				}
+
+				&:nth-child(2n) {
+					margin-left: -50px;
+					padding: 80px 100px 80px 150px;
+
+					.background {
+						min-width: 100%;
+						min-height: 100%;
+					}
+				}
+			}
+		}
+
+		&.quote {
+			margin-bottom: 300px;
+
+			.illustration {
+				left: calc(-950px + 10vw);
+			}
+
+			.section {
+				width: 430px;
+
+				&:last-child {
+					max-width: 700px;
+					margin-right: -100px;
+					padding: 40px 80px 60px 160px;
+
+					.background {
+						margin-top: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.content_sections {
+		.illustration {
+			left: 50%;
+			transform: translateX(-60%);
+		}
+
+		&.image {
+			.gatsby-image-wrapper {
+				margin-left: -100px;
+			}
+		}
+
+		&.quote {
+			.illustration {
+				left: 50%;
+				transform: translateX(-60%);
+			}
+
+			.section {
+				&:last-child {
+					max-width: 800px;
+					margin-right: -100px;
+					padding: 100px 120px 100px 160px;
+
+					.background {
+						margin-top: 0;
+						margin-left: -50px;
+					}
+				}
+			}
+		}
+	}
+}

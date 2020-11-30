@@ -24,7 +24,7 @@ const Content = ({
 	}
 
 	if (illustration && illustration.length) {
-		classes = `${classes} ${illustration[0].component}`;
+		classes = `${classes} ${illustration[0].component} ${illustration[0].illustration}`;
 	}
 
 	if (background) {

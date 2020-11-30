@@ -1,9 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 
-import FAQsBlock from '../components/blocks/faqs';
 import TestimonialsBlock from '../components/blocks/testimonials';
 import ContentBlock from '../components/blocks/content';
 import Video from '../components/parts/video';

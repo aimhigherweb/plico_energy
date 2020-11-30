@@ -14,13 +14,14 @@ const Video = ({
 		playVideo = (id, e) => {
 			ref.current.setAttribute(`src`, `https://player.vimeo.com/video/${videoId}?autoplay=1&autopause=0`);
 			e.currentTarget.classList.add(`hidden`);
-		};
+		},
+		video_maxWidth = 1000;
 
 	return (
 		<div className="video-embed">
 			<button onClick={(e) => { playVideo(videoId, e); }}>
 				<Play/>
-				<Img fixed={getFixedGatsbyImage(image.filename, { width: 1000 })} />
+				<Img fixed={getFixedGatsbyImage(image.filename, { width: video_maxWidth, height: video_maxWidth * 0.5625 })} />
 			</button>
 			<iframe
 				rel="preload"

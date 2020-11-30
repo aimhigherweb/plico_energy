@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
@@ -23,6 +22,7 @@ const ContentBlock = ({
 					image.filename,
 					{
 						maxWidth: 300,
+						maxHeight: 300 * 0.8
 					}
 				)}
 			/>

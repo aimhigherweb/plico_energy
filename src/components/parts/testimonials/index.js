@@ -64,7 +64,7 @@ const Testimonials = ({ testimonials }) => (
 											<Sun />
 										</Animated>
 										<Img
-											fixed={getFixedGatsbyImage(image.filename, { width: 200 })}
+											fixed={getFixedGatsbyImage(image.filename, { width: 200, height: 200 })}
 											style={{
 												width: `200px`,
 												height: `200px`

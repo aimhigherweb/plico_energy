@@ -32,8 +32,7 @@ const News = ({
 					image,
 					{
 						maxWidth: 300,
-						useBase64: true,
-						base64: true
+						maxHeight: 300 * 0.8
 					}
 				)}
 			/>

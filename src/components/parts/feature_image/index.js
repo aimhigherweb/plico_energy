@@ -25,7 +25,7 @@ const FeatureImage = ({
 			Media = <ImageBlob {...{ ...image, width }} />;
 		}
 	} else if (component === `image`) {
-		Media = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width })} />;
+		Media = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width, maxHeight: width * 0.49 })} />;
 	} else if (component === `quote`) {
 		Media = <Quote {...{ illustration, content }} />;
 	} else if (component === `fact`) {

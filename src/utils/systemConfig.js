@@ -4,7 +4,6 @@ const systemConfig = (path, setFunction, setMessage) => {
 		method: `GET`,
 		mode: `cors`,
 		headers: {
-			'Access-Control-Allow-Origin': `https://sepricecatalog.azurewebsites.net`,
 			'Content-Type': `application/json`,
 			'x-functions-key': process.env.GATSBY_FUNCTIONS_KEY,
 		}

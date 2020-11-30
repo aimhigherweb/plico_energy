@@ -1,6 +1,4 @@
 import React from 'react';
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
-import Img from 'gatsby-image';
 
 import Block from "../../parts/block";
 import CTA from '../../parts/cta';

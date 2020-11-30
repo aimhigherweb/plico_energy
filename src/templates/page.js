@@ -1,7 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 
 import Layout from '../components/partials/layout';
 import Form from '../components/parts/form';

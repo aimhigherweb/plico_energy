@@ -1,5 +1,6 @@
 .video-embed {
 	position: relative;
+	z-index: 10;
 	width: 90vw;
 	max-width: 800px;
 	height: 90vw * (9/16);
@@ -62,5 +63,16 @@
 		width: 100%;
 		height: 100%;
 		padding: 3px;
+	}
+}
+
+@media(min-width: 50em) {
+	.video-embed {
+		button {
+			svg {
+				width: 80px;
+				height: 80px;
+			}
+		}
 	}
 }

@@ -70,8 +70,6 @@ const FormLogic = ({ form }) => {
 			name={`custom_${form.slug}`}
 			method="post"
 			onSubmit={(e) => {
-				e.preventDefault();
-
 				console.log(`click next button`);
 
 				if (step + 1 < totalSteps) {
@@ -97,6 +95,8 @@ const FormLogic = ({ form }) => {
 						});
 
 					console.log(`fetch finished, redirecting`);
+
+					// e.preventDefault();
 
 					window.location.replace(`${form.fields.content.success_page}/`);
 				}

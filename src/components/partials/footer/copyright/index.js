@@ -22,7 +22,7 @@ const Copyright = () => (
 			<div className="legal">
 				<p className="copyright">© {new Date().getFullYear()} {site.fields.content.site_title}. All rights reserved.</p>
 				<Menu />
-				<p className="tagline">Powering the Community</p>
+				<p className="tagline">The Future of WA Solar</p>
 			</div>
 		)}
 	/>

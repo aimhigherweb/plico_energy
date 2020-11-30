@@ -18,12 +18,12 @@ const Radio = ({
 						<input
 							type={type}
 							onChange={(e) => (fieldChanged(name, e.target.value))}
-							id={generateSlug(opt.label)}
+							id={`${parent}${name}${generateSlug(opt.label)}`}
 							name={`${parent}${name}`}
 							value={currentValue}
 							defaultChecked={value === currentValue}
 						/>
-						<label htmlFor={generateSlug(opt.label)}>{opt.label}</label>
+						<label htmlFor={`${parent}${name}${generateSlug(opt.label)}`}>{opt.label}</label>
 					</Fragment>
 				);
 			})}

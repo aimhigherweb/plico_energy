@@ -21,6 +21,7 @@ const TimeRange = ({
 			/>
 			<label htmlFor={`end_time${_uid}`} className="hidden">Call before</label>
 			<input
+				className="second"
 				name={`${parent}${generateSlug(label)}_end-time`}
 				id={`end_time${_uid}`}
 				type="time"

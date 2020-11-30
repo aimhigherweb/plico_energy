@@ -10,11 +10,12 @@ import Animated from '../../parts/animated_svg';
 import './style.scss';
 
 const Banner = ({
-		main_quote, sub_quote, cta_button, media
+		main_quote, sub_quote, cta_button, media, additional_quote
 	}) => (
 		<Block className={`banner ${media[0].component}`}>
 			<blockquote>
 				<p className="main">{main_quote}</p>
+				{additional_quote && <p className="additional">{additional_quote}</p>}
 				<div className="sub" dangerouslySetInnerHTML={{ __html: sub_quote }} />
 				{cta_button && <CTA {...{ cta_button }} />}
 			</blockquote>

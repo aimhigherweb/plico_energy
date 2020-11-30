@@ -22,8 +22,20 @@
 		color: #ffffff;
 
 		li {
-			list-style: disc;
+			margin-bottom: 10px;
+			margin-left: 10px;
+			list-style-type: circle;
+
+			&::marker {
+				font-size: 9px;
+			}
 		}
+	}
+
+	.additional {
+		font-family: variables.$font_heading;
+		font-size: 1.2em;
+		text-transform: uppercase;
 	}
 
 	.btn {
@@ -36,6 +48,25 @@
 
 		svg {
 			@include extends.glow;
+		}
+	}
+
+	&.graphic {
+		.main {
+			display: inline-block;
+			width: auto;
+			padding: 5px 1.5em;
+			border-radius: 2em;
+			background: variables.$primary;
+			color: #ffffff;
+		}
+
+		.sub {
+			margin-left: 5px;
+		}
+
+		.cta_buttons {
+			margin-left: 5px;
 		}
 	}
 
@@ -248,6 +279,39 @@
 				margin-left: -50px;
 			}
 		}
+
+		&.graphic {
+			.main {
+				position: relative;
+				margin: 20px 0 0;
+				padding-left: 15px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					z-index: -1;
+					top: 0;
+					right: 2em;
+					bottom: 0;
+					width: 50vw;
+					background: variables.$primary;
+				}
+			}
+
+			.additional {
+				max-width: 290px;
+				margin: 0;
+				margin-bottom: 20px;
+				padding: 20px 10px;
+				border-bottom: 3px solid currentColor;
+				border-left: 3px solid currentColor;
+				font-size: 1.5em;
+			}
+
+			.sub, .cta_buttons {
+				margin-left: 15px;
+			}
+		}
 	}
 }
 
@@ -345,6 +409,12 @@
 					max-width: 400px;
 					transform: translateY(120px) translateX(0);
 				}
+			}
+		}
+
+		&.graphic {
+			blockquote {
+				margin-top: 30px;
 			}
 		}
 	}
@@ -472,6 +542,32 @@
 				transform: translateY(150px) translateX(-20px);
 			}
 		}
+
+		&.graphic {
+			justify-content: center;
+
+			blockquote {
+				max-width: 400px;
+				margin-top: 0;
+			}
+
+			.main {
+				margin: 0;
+				padding-left: 15px;
+				font-size: 2em;
+			}
+
+			.additional {
+				max-width: 380px;
+				margin-bottom: 40px;
+				padding: 30px;
+				font-size: 1.8em;
+			}
+
+			.feature {
+				width: 450px;
+			}
+		}
 	}
 }
 
@@ -480,10 +576,14 @@
 		margin-bottom: 300px;
 
 		&.graphic {
-			margin-bottom: 200px;
+			margin-bottom: 300px;
+
+			blockquote {
+				margin-top: 50px;
+			}
 
 			.feature {
-				width: 600px;
+				width: 500px;
 				margin-top: -60px;
 				margin-left: 100px;
 			}

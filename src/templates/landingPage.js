@@ -40,6 +40,7 @@ export const pageQuery = graphql`
 					banner {
 						main_quote
 						sub_quote
+						additional_quote
 						media {
 							component
 							image {

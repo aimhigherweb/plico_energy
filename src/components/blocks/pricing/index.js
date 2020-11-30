@@ -19,6 +19,7 @@ const PricingBlock = ({
 		className="pricing_block"
 	>
 		<h2>{heading}</h2>
+		<p>Choose a plan to request a tailored quote for your property.</p>
 		<ul className="plans">
 			{plans.map((plan) => (
 				<Plan {...plan} />

@@ -90,7 +90,7 @@ const FormLogic = ({ form }) => {
 					})
 						.then(() => {
 							console.log(`success`);
-							e.preventDefault();
+							// e.preventDefault();
 							window.location.replace(`${form.fields.content.success_page}/`);
 						})
 						.catch((error) => {

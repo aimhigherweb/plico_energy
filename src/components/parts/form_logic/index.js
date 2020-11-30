@@ -67,6 +67,7 @@ const FormLogic = ({ form }) => {
 	return (
 		<form
 			className="custom"
+			id={`${form.slug}`}
 			name={`custom_${form.slug}`}
 			method="post"
 			onSubmit={(e) => {

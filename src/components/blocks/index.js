@@ -11,6 +11,7 @@ import FeaturedSections from './featured_section';
 import PricingBlock from './pricing';
 import ContentBox from './content_box';
 import CTABlock from './cta';
+import TableBlock from './table';
 
 const Block = ({
 	component, data
@@ -38,6 +39,8 @@ const Block = ({
 			return <ContentBox {...data} />;
 		case `cta_button`:
 			return <CTABlock {...data} />;
+		case `table`:
+			return <TableBlock {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

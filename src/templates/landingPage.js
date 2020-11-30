@@ -139,6 +139,16 @@ export const pageQuery = graphql`
 							name
 							price
 						}
+						table {
+							thead {
+								value
+							}
+							tbody {
+								body {
+									value
+								}
+							}
+						}
 					}
 				}
 			}

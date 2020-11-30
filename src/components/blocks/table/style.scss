@@ -1,0 +1,48 @@
+@use '../../../styles/variables.scss';
+
+.table {
+	overflow-x: scroll;
+}
+
+table {
+	border-collapse: collapse;
+
+	thead {
+		background: rgba(variables.$secondary, 0.1);
+		font-weight: bold;
+	}
+
+	th {
+		padding: 0.5em 1.5em;
+		color: variables.$primary;
+		font-size: 1.3em;
+		white-space: nowrap;
+	}
+
+	th, td {
+		text-align: center;
+		vertical-align: center;
+	}
+
+	td {
+		padding: 10px;
+	}
+
+	tbody {
+		tr {
+			&:nth-child(2n) {
+				border-top: 1px solid variables.$grey_dark;
+				border-bottom: 1px solid variables.$grey_dark;
+				background: rgba(variables.$primary, 0.1);
+			}
+		}
+
+		td {
+			&:first-child {
+				font-size: 1.1em;
+				font-weight: bold;
+				text-align: left;
+			}
+		}
+	}
+}

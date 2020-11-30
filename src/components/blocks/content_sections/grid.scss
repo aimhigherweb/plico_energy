@@ -10,8 +10,8 @@
 				grid-template-areas:
 					'. main main main b1 b1 b1 b1'
 					'b2 b2 b2 b2 b1 b1 b1 b1'
-					'b2	b2 b2 b2 img img img .'
-					'b2	b2 b2 b2 img img img .'
+					'b2 b2 b2 b2 img img img .'
+					'b2 b2 b2 b2 img img img .'
 					'. . . b3 b3 b3 b3 b3'
 					'. . . b3 b3 b3 b3 b3';
 				grid-template-columns: repeat(8, auto);
@@ -42,6 +42,10 @@
 						padding-right: 54px;
 						padding-bottom: 67px;
 						background-image: url('/img/blob_background_primary_3.png');
+					}
+
+					&.secondary {
+						background-image: url('/img/blob_background_secondary_2.png');
 					}
 				}
 			}
@@ -80,9 +84,7 @@
 					padding: 100px;
 				}
 
-				&.secondary {
-					background-image: url('/img/blob_background_secondary_2.png');
-				}
+
 
 				&.s_1 {
 					grid-area: b1;

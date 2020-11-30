@@ -9,9 +9,9 @@ import './style.scss';
 const Quote = ({ content, illustration }) => {
 	const Illustration = Sun;
 	return (
-		<blockquote className="quote_block">
-			{content}
-			{illustration
+		<blockquote className={`quote_block ${illustration !== `null` && `illustration_${illustration}`}`}>
+			<div dangerouslySetInnerHTML={{ __html: content }} />
+			{illustration !== `null`
 				&& <Animated className="quote_illustration">
 					<Illustration />
 				</Animated>

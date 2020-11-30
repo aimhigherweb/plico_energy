@@ -2,7 +2,7 @@
 
 .quote_block {
 	position: relative;
-	max-width: 400px;
+	max-width: 340px;
 	margin: 0 auto 100px;
 	padding: 50px 20px;
 	color: #ffffff;
@@ -43,7 +43,7 @@
 		margin: 0 0 0 auto;
 
 		.background {
-			top: -200px;
+			// top: -200px;
 			height: 160%;
 			transform: translateX(-50%) rotate(-40deg);
 		}
@@ -53,12 +53,15 @@
 @media(min-width: 50em) {
 	.quote_block {
 		margin-bottom: -250px;
-		font-size: 2em;
+		// font-size: 2em;
 
 		.background {
-			top: -200px;
-			height: 160%;
-			transform: translateX(-40%) rotate(-0deg);
+			top: -150px;
+			// top: -200px;
+			// height: 160%;
+			height: 180%;
+			// transform: translateX(-40%) rotate(-0deg);
+			transform: translateX(-50%) rotate(-0deg);
 		}
 	}
 }
@@ -70,7 +73,8 @@
 
 		.background {
 			top: -200px;
-			transform: translateX(-45%) rotate(-0deg);
+			// transform: translateX(-45%) rotate(-0deg);
+			transform: translateX(-50%) rotate(-0deg);
 		}
 	}
 }

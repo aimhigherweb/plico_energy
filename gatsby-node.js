@@ -195,6 +195,14 @@ exports.onCreateNode = async ({
 						plan.features = processMarkdown(plan.features);
 					});
 				}
+				if (block.media && block.media[0] && block.media[0].content) {
+					blockContent.media[0].content = processMarkdown(block.media[0].content);
+				}
+				if (block.sections) {
+					block.sections.forEach((section) => {
+						section.content = processMarkdown(section.content);
+					});
+				}
 
 				blocks.push(blockContent);
 			});

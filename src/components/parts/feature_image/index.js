@@ -10,7 +10,7 @@ import Quote from '../quote';
 import Fact from '../fact';
 
 const FeatureImage = ({
-	image, video_url, component, position, illustration, heading, content, width = 500, banner
+	image, video_url, component, position, illustration, heading, content, width = 500, heightRatio = 0.49, banner
 }) => {
 	let Media = null;
 
@@ -25,7 +25,7 @@ const FeatureImage = ({
 			Media = <ImageBlob {...{ ...image, width }} />;
 		}
 	} else if (component === `image`) {
-		Media = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width, maxHeight: width * 0.49 })} />;
+		Media = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width, maxHeight: heightRatio * width })} />;
 	} else if (component === `quote`) {
 		Media = <Quote {...{ illustration, content }} />;
 	} else if (component === `fact`) {

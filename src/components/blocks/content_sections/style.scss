@@ -51,6 +51,10 @@
 				color: variables.$secondary;
 			}
 
+			a {
+				color: variables.$secondary;
+			}
+
 			&:nth-child(2n) {
 				margin-right: 0;
 				margin-left: auto;
@@ -62,6 +66,10 @@
 
 			&.secondary {
 				h3 {
+					color: variables.$primary;
+				}
+
+				a {
 					color: variables.$primary;
 				}
 			}
@@ -305,7 +313,7 @@
 			}
 
 			&:before {
-				top: 0;
+				top: -50px;
 				bottom: 20%;
 			}
 		}
@@ -324,6 +332,7 @@
 @media(min-width: 70em) {
 	.content_sections {
 		margin-top: 150px;
+
 
 		h2 {
 			font-size: 2.5em;
@@ -378,6 +387,8 @@
 		}
 
 		&.quote {
+			margin-bottom: 300px;
+
 			.illustration {
 				left: calc(-950px + 10vw);
 			}

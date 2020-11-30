@@ -77,6 +77,7 @@ const FormLogic = ({ form }) => {
 					e.preventDefault();
 					nextStep();
 				} else {
+					console.log({ values });
 					fetch(`/`, {
 						method: `POST`,
 						headers: {

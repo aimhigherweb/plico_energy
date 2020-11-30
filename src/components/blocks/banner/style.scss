@@ -44,9 +44,10 @@
 		padding-bottom: 40px;
 
 		blockquote {
-			backdrop-filter: blur(50px);
 			max-width: 400px;
+			margin-bottom: 80px;
 			margin-left: auto;
+			backdrop-filter: blur(50px);
 		}
 
 		.sub {

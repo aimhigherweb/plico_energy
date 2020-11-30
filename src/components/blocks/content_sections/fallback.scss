@@ -108,10 +108,12 @@
 		}
 
 		.section {
-			&:not(:last-child):not(:nth-last-child(2)) {
-				margin-bottom: 50px;
-				padding-bottom: 50px;
-				border-bottom: 1px solid variables.$main;
+			&[class*='s_'] {
+				&.s_1 {
+					margin-bottom: 50px;
+					padding-bottom: 50px;
+					border-bottom: 1px solid variables.$main;
+				}
 			}
 
 			&.s_3 {

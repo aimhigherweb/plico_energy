@@ -6,25 +6,31 @@
 			&.quote {
 				display: grid;
 				grid-template-areas:
+					'. main main main . . . .'
 					'. main main main q q q q'
-					'. main main main q q q q'
+					'. . . . q q q q'
 					'. b1 b1 b1 q q q q'
 					'. b2 b2 b2 q q q q'
 					'. . . b3 b3 b3 b3 b3'
 					'. . . b3 b3 b3 b3 b3';
 				grid-template-columns: repeat(8, auto);
-				grid-template-rows: 50px 50px auto auto 50px auto;
+				grid-template-rows: auto 50px 50px auto auto 50px auto;
 
 				&:before {
 					position: static;
 					grid-column: 1 / -1;
-					grid-row: 2 / 6;
+					grid-row: 3 / 7;
 					width: 100vw;
 					margin-left: -40px;
 				}
 
 				.main {
 					grid-area: main;
+					margin-bottom: 50px;
+				}
+
+				h2 {
+					margin-top: 0;
 				}
 
 				.quote_block  {
@@ -226,7 +232,7 @@
 		.content_sections.block {
 			&.quote {
 				grid-template-columns: repeat(8, 1fr);
-				grid-template-rows: 50px 150px auto auto 50px auto;
+				grid-template-rows: auto 50px 150px auto auto 50px auto;
 				margin-top: 100px;
 
 				&:before {

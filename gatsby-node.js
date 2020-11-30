@@ -211,6 +211,46 @@ exports.onCreateNode = async ({
 			content.banner = banners;
 		}
 
+		if (node.field_component === `testimonials_page`) {
+			const intro = [],
+				featured_video = [],
+				content_box = [],
+				form_block = [];
+
+			if (content.intro && content.intro[0]) {
+				intro.push({
+					...content.intro[0],
+					content: processMarkdown(content.intro[0].content)
+				});
+			}
+
+			if (content.featured_video && content.featured_video[0]) {
+				featured_video.push({
+					...content.featured_video[0],
+					content: processMarkdown(content.featured_video[0].content)
+				});
+			}
+
+			if (content.content_box && content.content_box[0]) {
+				content_box.push({
+					...content.content_box[0],
+					content: processMarkdown(content.content_box[0].content)
+				});
+			}
+
+			if (content.form_block && content.form_block[0]) {
+				form_block.push({
+					...content.form_block[0],
+					content: processMarkdown(content.form_block[0].content)
+				});
+			}
+
+			content.intro = intro;
+			content.featured_video = featured_video;
+			content.content_box = content_box;
+			content.form_block = form_block;
+		}
+
 		if (node.field_component === `form`) {
 			const fields = [];
 

@@ -66,13 +66,9 @@ const FormLogic = ({ form }) => {
 
 	return (
 		<form
-			// onSubmit={(e) => e.preventDefault()}
 			className="custom"
 			name={`custom_${form.slug}`}
 			method="post"
-			// action={`${form.fields.content.success_page}/`}
-			// netlify
-			// netlify-honeypot="bot-field"
 			onSubmit={(e) => {
 				e.preventDefault();
 

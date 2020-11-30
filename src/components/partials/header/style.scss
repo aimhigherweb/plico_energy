@@ -261,12 +261,6 @@ body[class*='header_'] {
 }
 
 @media(min-width: 70em) {
-	header {
-		.logo {
-			// height: 10vw;
-		}
-	}
-
 	body[class*='header_'] {
 		&.header_graphic {
 			header {

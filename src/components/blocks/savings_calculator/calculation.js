@@ -5,7 +5,6 @@ const calculateSavings = (value) => {
 				bDiff = Math.abs(b - needle);
 
 			if (aDiff == bDiff) {
-			// Choose largest vs smallest (> vs <)
 				return a > b ? a : b;
 			}
 			return bDiff < aDiff ? b : a;

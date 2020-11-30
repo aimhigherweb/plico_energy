@@ -34,14 +34,6 @@ const Banner = ({
 			);
 		}
 
-		// if (component === `image_blob`) {
-		// 	return (
-		// 		<Animated className="banner_squiggle">
-		// 			<BannerSquiggle />
-		// 		</Animated>
-		// 	);
-		// }
-
 		return null;
 	};
 

@@ -292,31 +292,18 @@
 		}
 
 		&.illustration_top {
-			// margin-top: 400px;
-			// margin-bottom: 200px;
-
-			.curve {
-				// width: 2000px;
-			}
-
 			.image {
 				margin-left: 40px;
 			}
 
 			.illustration_top {
-				// top: 0;
 				top: -450px;
-				// bottom: auto;
-				// width: auto;
 				width: 1500px;
-				// transform: translateX(0);
 			}
 		}
 
 		&.illustration_bottom {
 			.illustration {
-				// right: -50%;
-				// bottom: 100px;
 				transform: translateX(8%);
 			}
 		}
@@ -429,7 +416,6 @@
 			.illustration {
 				right: -700px;
 				bottom: 20px;
-				// left: auto;
 				transform: translateX(0%);
 			}
 		}

@@ -4,8 +4,6 @@ import React from 'react';
 import Field from "..";
 import generateSlug from '../../../../utils/generateSlug';
 
-// import './style.scss';
-
 const FormPage = ({
 	fields, label, _uid, parent = ``, parents = [], values, fieldChanged, content, description
 }) => {

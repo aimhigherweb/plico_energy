@@ -46,8 +46,8 @@ const ContentSections = ({
 		>
 
 			<div className="main">
-				<h2>{heading}</h2>
-				<div dangerouslySetInnerHTML={{ __html: content }} />
+				{heading && <h2>{heading}</h2>}
+				{content && <div dangerouslySetInnerHTML={{ __html: content }} />}
 				{(illustration_selection && illustration_selection !== `none`)
 					&& <Animated className="illustration">
 						<Illustration />

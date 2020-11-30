@@ -90,7 +90,11 @@ const FormLogic = ({ form }) => {
 						})
 					})
 						.then(() => console.log(`success`))
-						.catch((error) => console.error(error));
+						.catch((error) => {
+							console.log(`whoops, somethign went wrong`);
+							console.log(`error`);
+							console.error(error);
+						});
 
 					console.log(`fetch finished, redirecting`);
 

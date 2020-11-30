@@ -74,9 +74,9 @@ const FormLogic = ({ form }) => {
 
 				if (step + 1 < totalSteps) {
 					console.log(`next step`);
+					e.preventDefault();
 					nextStep();
 				} else {
-					console.log(`submitting form`);
 					fetch(`/`, {
 						method: `POST`,
 						headers: {
@@ -89,16 +89,13 @@ const FormLogic = ({ form }) => {
 					})
 						.then(() => console.log(`success`))
 						.catch((error) => {
-							console.log(`whoops, somethign went wrong`);
-							console.log(`error`);
 							console.error(error);
 						});
-
-					console.log(`fetch finished, redirecting`);
 
 					// e.preventDefault();
 
 					window.location.replace(`${form.fields.content.success_page}/`);
+					// e.preventDefault();
 				}
 			}}
 		>

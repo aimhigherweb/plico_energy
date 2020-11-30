@@ -91,11 +91,13 @@ const FormLogic = ({ form }) => {
 						.then(() => {
 							console.log(`success`);
 							// e.preventDefault();
-							window.location.replace(`${form.fields.content.success_page}/`);
+							// window.location.replace(`${form.fields.content.success_page}/`);
 						})
 						.catch((error) => {
 							console.error(error);
 						});
+
+					e.preventDefault();
 
 					// e.preventDefault();
 

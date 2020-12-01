@@ -20,6 +20,8 @@
 		right: 0;
 		width: 80vw;
 		max-width: 400px;
+		max-height: 80vh;
+		overflow-y: auto;
 	}
 
 	&[open] {
@@ -55,11 +57,28 @@
 		display: block;
 		padding: 20px;
 		border-bottom: 1px solid rgba(variables.$secondary, 0.5);
+		background: rgba(variables.$secondary, 0.2);
 		color: currentColor;
 		font-size: 1.5em;
 		font-weight: 400;
 		text-align: center;
 		text-decoration: none;
+
+		&:hover, &:focus {
+			background: variables.$secondary;
+		}
+	}
+
+	.submenu {
+		a {
+			padding: 10px;
+			background: #ffffff;
+			font-size: 1.2em;
+
+			&:hover, &:focus {
+				background: variables.$secondary;
+			}
+		}
 	}
 
 	.search {
@@ -69,6 +88,7 @@
 
 @media(min-width: 50em) {
 	.main {
+		z-index: 50px;
 		flex-shrink: 0;
 		color: #ffffff;
 
@@ -82,6 +102,8 @@
 			align-items: center;
 			width: auto;
 			max-width: unset;
+			max-height: unset;
+			overflow-y: visible;
 		}
 
 		a {
@@ -101,6 +123,8 @@
 			border-radius: 2em;
 		}
 
+
+
 		li {
 
 			flex: 0 0 auto;
@@ -111,6 +135,43 @@
 				.cta {
 					border-radius: 2em;
 				}
+			}
+		}
+
+		li {
+			&:nth-child(2) {
+				.submenu {
+					// display: block;
+				}
+			}
+		}
+
+		.submenu {
+			display: none;
+			position: absolute;
+			z-index: 100px;
+
+			li {
+				border-radius: 0;
+				background: #ffffff;
+
+				&:first-child {
+					border-radius: 5px 5px 0 0;
+				}
+
+				&:last-child {
+					border-radius: 0 0 20px 20px;
+				}
+
+				&:hover {
+					background: variables.$primary;
+				}
+			}
+
+			a {
+				background: none;
+				color: variables.$secondary;
+				font-size: inherit;
 			}
 		}
 	}

@@ -4,6 +4,10 @@ body {
 			padding: 20px;
 		}
 	}
+
+	h1 {
+		padding: 20px;
+	}
 }
 
 @media(min-width: 40em) {
@@ -12,6 +16,10 @@ body {
 			main {
 				padding: 20px 40px;
 			}
+		}
+
+		h1 {
+			padding: 20px 40px;
 		}
 	}
 }
@@ -23,6 +31,11 @@ body {
 				padding: 50px 5vw 20px;
 			}
 		}
+
+		h1 {
+			padding: 50px 5vw 20px;
+			font-size: 2.5em;
+		}
 	}
 }
 
@@ -32,6 +45,11 @@ body {
 			main {
 				padding: 50px calc(50vw - 600px);
 			}
+		}
+
+		h1 {
+			padding: 50px calc(50vw - 600px);
+			font-size: 3em;
 		}
 	}
 }

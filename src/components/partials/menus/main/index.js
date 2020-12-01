@@ -17,6 +17,10 @@ const Menu = () => (
 							menu_items {
 								label
 								url
+								sub_menu {
+									label
+									url
+								}
 							}
 						}
 					}
@@ -49,6 +53,15 @@ const Menu = () => (
 						{menu.fields.content.menu_items.map((link) => (
 							<li key={JSON.stringify(link)}>
 								<A {...link}>{link.label}</A>
+								{link.sub_menu
+									&& <ul className="submenu">
+										{link.sub_menu.map((sub) => (
+											<li key={JSON.stringify(sub)}>
+												<A {...sub}>{sub.label}</A>
+											</li>
+										))}
+									</ul>
+								}
 							</li>
 						))}
 						<li className="search">

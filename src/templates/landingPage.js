@@ -8,14 +8,17 @@ import Layout from '../components/partials/layout';
 
 const LandingPage = ({ data }) => {
 	const {
+			name,
 			slug,
 			fields
 		} = data.storyblokEntry,
 		{ body, banner } = fields.content,
-		headerType = banner[0]?.media[0].component || `default`;
+		headerType = banner[0]?.media[0].component || `default`,
+		noBanner = !banner[0];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}` }}>
+			<h1 className={noBanner ? `landing` : `hidden`}>{name}</h1>
 			{banner[0] && <Banner {...banner[0]} />}
 			{body.map((block) => (
 				<Block

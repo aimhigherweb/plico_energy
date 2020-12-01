@@ -284,6 +284,14 @@
 				margin-left: 0;
 			}
 		}
+
+		&.media_right {
+			.image {
+				order: 1;
+				margin-right: 0;
+				margin-left: 40px;
+			}
+		}
 	}
 }
 
@@ -329,6 +337,12 @@
 			.image {
 				margin-bottom: 100px;
 				margin-left: 0;
+			}
+		}
+
+		&.media_right {
+			.image {
+				margin-left: 50px;
 			}
 		}
 	}

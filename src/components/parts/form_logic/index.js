@@ -96,7 +96,8 @@ const FormLogic = ({ form }) => {
 						},
 						body: encode({
 							'form-name': `custom_${form.slug}`,
-							...values
+							...values,
+							values: JSON.stringify(values)
 						})
 					})
 						.then(() => {

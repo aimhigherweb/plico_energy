@@ -105,6 +105,7 @@ const Form = ({ form }) => (
 					<form name={`custom_${formData.slug}`} netlify="true" netlify-honeypot="bot-field" onSubmit={(e) => { e.preventDefault(); }} data-netlify="true" hidden>
 						{/* <input type="hidden" name="form-name" value={`custom_${formData.slug}`} /> */}
 						{/* <input type="hidden" name="bot-field" /> */}
+						<input type="text" name="values" />
 						{Object.keys(formFields(form_fields)).map((field) => (
 							<input key={field} type="text" name={field} />
 						))}

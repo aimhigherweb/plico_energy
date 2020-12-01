@@ -18,18 +18,18 @@ const SystemConfiguration = ({
 			setPrice({});
 			setCost(false);
 			systemConfig(`relatedbatterykeys?InverterId=${e.target.value}`, setBatteries);
-			fieldChanged(`${parent}${generateSlug(label)}_inverters`, e.target.value);
+			fieldChanged(`${parent}${field_id}_inverters`, e.target.value);
 		},
 		selectBattery = (e) => {
 			setCost(false);
 			setPrice({});
 			setSystems(true);
 			systemConfig(`products/${e.target.value}?includepricing`, setPrice);
-			fieldChanged(`${parent}${generateSlug(label)}_batteries`, e.target.value);
+			fieldChanged(`${parent}${field_id}_batteries`, e.target.value);
 		},
 		selectSystems = (e) => {
 			setCost(pricing.weeklyFee * e.target.value);
-			fieldChanged(`${parent}${generateSlug(label)}_number-systems`, e.target.value);
+			fieldChanged(`${parent}${field_id}_number-systems`, e.target.value);
 		};
 
 	useEffect(() => {

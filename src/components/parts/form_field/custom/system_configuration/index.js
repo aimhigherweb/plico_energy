@@ -4,7 +4,7 @@ import generateSlug from '../../../../../utils/generateSlug';
 import systemConfig from '../../../../../utils/systemConfig';
 
 const SystemConfiguration = ({
-	_uid, label, parent, fieldChanged, values
+	_uid, label, parent, fieldChanged, values, field_id
 }) => {
 	const [inverters, setInverters] = useState([]),
 		[batteries, setBatteries] = useState([]),
@@ -46,7 +46,7 @@ const SystemConfiguration = ({
 					{inverters.length
 					&& <select
 						id={`inverters${_uid}`}
-						name={`${parent}${generateSlug(label)}_inverters`}
+						name={`${parent}${field_id}_inverters`}
 						onChange={(e) => selectInverter(e)}
 					>
 						<option>Please call me to discuss</option>
@@ -65,7 +65,7 @@ const SystemConfiguration = ({
 				<label htmlFor={`batteries${_uid}`}>Battery storage option</label>
 				<select
 					id={`batteries${_uid}`}
-					name={`${parent}${generateSlug(label)}_batteries`}
+					name={`${parent}${field_id}_batteries`}
 					onChange={(e) => selectBattery(e)}
 				>
 					<option default>Please call me to discuss</option>
@@ -83,7 +83,7 @@ const SystemConfiguration = ({
 				<label htmlFor={`number-systems${_uid}`}>Number of Systems required</label>
 				<select
 					id={`number-systems${_uid}`}
-					name={`${parent}${generateSlug(label)}_number-systems`}
+					name={`${parent}${field_id}_number-systems`}
 					onChange={(e) => selectSystems(e)}
 				>
 					<option default>Please call me to discuss</option>
@@ -99,7 +99,7 @@ const SystemConfiguration = ({
 				<input
 					type='text'
 					id={`weekly-cost${_uid}`}
-					name={`${parent}${generateSlug(label)}_weekly-cost`}
+					name={`${parent}${field_id}_weekly-cost`}
 					value={`$ ${cost}`}
 					readonly
 				/>
@@ -112,17 +112,17 @@ const SystemConfiguration = ({
 					<input
 						type="radio"
 						id={`agreement${_uid}_yes`}
-						name={`${parent}${generateSlug(label)}_agreement`}
+						name={`${parent}${field_id}_agreement`}
 						value="yes"
-						onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_agreement`, e.target.value))}
+						onChange={(e) => (fieldChanged(`${parent}${field_id}_agreement`, e.target.value))}
 					/>
 					<label htmlFor={`agreement${_uid}_yes`} >Yes</label>
 					<input
 						type="radio"
 						id={`agreement${_uid}_no`}
-						name={`${parent}${generateSlug(label)}_agreement`}
+						name={`${parent}${field_id}_agreement`}
 						value="no"
-						onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}_agreement`, e.target.value))}
+						onChange={(e) => (fieldChanged(`${parent}${field_id}_agreement`, e.target.value))}
 					/>
 					<label htmlFor={`agreement${_uid}_no`} >No</label>
 				</div>

@@ -5,15 +5,19 @@ import Field from "..";
 import generateSlug from '../../../../utils/generateSlug';
 
 const FormPage = ({
-	fields, label, _uid, parent = ``, parents = [], values, fieldChanged, content, description
+	fields, label, field_id = ``, _uid, parent = ``, parents = [], values, fieldChanged, content, description
 }) => {
 	if (label === ``) {
 		label = false;
 	}
 
-	if (label) {
-		parent = `${parent}${generateSlug(label)}_`;
-		parents.push(label);
+	if (field_id === ``) {
+		field_id = false;
+	}
+
+	if (field_id) {
+		parent = `${parent}${field_id}_`;
+		parents.push(field_id);
 	}
 
 	return (

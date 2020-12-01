@@ -7,7 +7,15 @@ import generateSlug from '../../../../utils/generateSlug';
 const Text = ({
 	type, name, id, placeholder, fieldChanged, value, classes
 }) => (
-	<input className={classes} type={type} name={name} id={id} placeholder={placeholder} onChange={(e) => (fieldChanged(name, e.target.value))} value={value} />
+	<input
+		className={classes}
+		type={type}
+		name={name}
+		id={id}
+		placeholder={placeholder}
+		onChange={(e) => (fieldChanged(name, e.target.value))}
+		value={value}
+	/>
 );
 
 const TextArea = ({
@@ -24,7 +32,7 @@ const TextArea = ({
 );
 
 const TextInput = ({
-	label, type, _uid, hidden_label, parent = ``, fieldChanged, values, description, classes
+	label, type, _uid, hidden_label, field_id, parent = ``, fieldChanged, values, description, classes
 }) => {
 	let placeholder = ``,
 		Component = Text;
@@ -41,7 +49,22 @@ const TextInput = ({
 		placeholder = `hello@domain.com`;
 	}
 
-	const value = values[`${parent}${generateSlug(label)}`];
+	const name = `${parent}${field_id}`,
+		structure = name.split(`_`);
+
+	let value;
+
+	if (structure.length >= 1 && values[structure[0]]) {
+		value = values[structure[0]];
+
+		if (structure.length >= 2 && (value[structure[1]] || value[structure[1]] === ``)) {
+			value = value[structure[1]];
+
+			if (structure.length >= 3 && (value[structure[2]] || value[structure[2]] === ``)) {
+				value = value[structure[2]];
+			}
+		}
+	}
 
 	return (
 		<Fragment>
@@ -55,7 +78,7 @@ const TextInput = ({
 			<Component
 				{...{
 					type,
-					name: `${parent}${generateSlug(label)}`,
+					name,
 					_uid,
 					placeholder,
 					fieldChanged,

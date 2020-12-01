@@ -1,13 +1,13 @@
 /* eslint-disable one-var */
 
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 
 import generateSlug from '../../../../utils/generateSlug';
 
 import './style.scss';
 
 const Radio = ({
-	name, options, type, parent, fieldChanged, value, classes
+	name, options, type, fieldChanged, value, classes
 }) => (
 	<fieldset className={classes}>
 		<div className="options">
@@ -18,12 +18,12 @@ const Radio = ({
 						<input
 							type={type}
 							onChange={(e) => (fieldChanged(name, e.target.value))}
-							id={`${parent}${name}${generateSlug(opt.label)}`}
-							name={`${parent}${name}`}
+							id={`${name}_${generateSlug(opt.label)}`}
+							name={name}
 							value={currentValue}
 							defaultChecked={value === currentValue}
 						/>
-						<label htmlFor={`${parent}${name}${generateSlug(opt.label)}`}>{opt.label}</label>
+						<label htmlFor={`${name}_${generateSlug(opt.label)}`}>{opt.label}</label>
 					</Fragment>
 				);
 			})}
@@ -48,7 +48,7 @@ const Select = ({
 );
 
 const Options = ({
-	label, type, _uid, hidden_label, options, parent = ``, fieldChanged, values, description, classes
+	label, type, _uid, field_id, hidden_label, options, parent = ``, fieldChanged, values, description, classes
 }) => {
 	let Component = Select,
 		placeholder = ``;
@@ -61,6 +61,23 @@ const Options = ({
 		placeholder = label;
 	}
 
+	const name = `${parent}${field_id}`,
+		structure = name.split(`_`);
+
+	let value;
+
+	if (structure.length >= 1 && values[structure[0]]) {
+		value = values[structure[0]];
+
+		if (structure.length >= 2 && (value[structure[1]] || value[structure[1]] === ``)) {
+			value = value[structure[1]];
+
+			if (structure.length >= 3 && (value[structure[2]] || value[structure[2]] === ``)) {
+				value = value[structure[2]];
+			}
+		}
+	}
+
 	return (
 		<Fragment>
 			<label htmlFor={_uid} className={hidden_label && `invisible`}>{label}</label>
@@ -71,10 +88,10 @@ const Options = ({
 						className={classes}
 						list={`list_${_uid}`}
 						id={_uid}
-						name={`${parent}${generateSlug(label)}`}
-						defaultValue={values[`${parent}${generateSlug(label)}`]}
-						onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}`, e.target.value))}
-						value={values[`${parent}${generateSlug(label)}`]}
+						name={name}
+						defaultValue={value}
+						onChange={(e) => (fieldChanged(name, e.target.value))}
+						value={value}
 					/>
 					<datalist
 						name={`list_${_uid}`}
@@ -90,10 +107,10 @@ const Options = ({
 			{type === `select`
 				&& <select
 					className={classes}
-					name={`${parent}${generateSlug(label)}`}
+					name={name}
 					id={_uid}
-					onChange={(e) => (fieldChanged(`${parent}${generateSlug(label)}`, e.target.value))}
-					value={values[`${parent}${generateSlug(label)}`]}
+					onChange={(e) => (fieldChanged(name, e.target.value))}
+					value={value}
 				>
 					<Component {...{
 						options,
@@ -104,14 +121,14 @@ const Options = ({
 			&& <Component {...{
 				label,
 				type,
-				_uid: type === `datalist` ? `list_${_uid}` : _uid,
-				name: `${parent}${generateSlug(label)}`,
+				_uid,
+				name,
 				placeholder,
 				options,
 				parent,
 				classes,
 				fieldChanged,
-				value: values[`${parent}${generateSlug(label)}`]
+				value
 			}} />
 			}
 		</Fragment>

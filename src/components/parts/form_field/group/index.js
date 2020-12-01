@@ -7,7 +7,7 @@ import generateSlug from '../../../../utils/generateSlug';
 import './style.scss';
 
 const FieldGroup = ({
-	fields, label, _uid, parent = ``, parents = [], fieldChanged, values
+	fields, label, field_id = ``, _uid, parent = ``, parents = [], fieldChanged, values
 }) => {
 	const hidden_label = label && true;
 
@@ -15,9 +15,13 @@ const FieldGroup = ({
 		label = false;
 	}
 
-	if (label) {
-		parent = `${parent}${generateSlug(label)}_`;
-		parents.push(label);
+	if (field_id === ``) {
+		field_id = false;
+	}
+
+	if (field_id) {
+		parent = `${parent}${field_id}_`;
+		parents.push(field_id);
 	}
 
 	return (

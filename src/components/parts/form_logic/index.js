@@ -13,20 +13,30 @@ const FormLogic = ({ form }) => {
 		[currentStepData, setCurrentStepData] = useState(formData[step]),
 		[values, setValues] = useState(existingData),
 		fieldChanged = (fieldId, value) => {
-			setValues((currentValues) => {
-				currentValues[fieldId] = value;
+			const structure = fieldId.split(`_`);
 
-				return currentValues;
-			});
+			if (structure) {
+				setValues((currentValues) => {
+					if (structure.length === 1) {
+						currentValues[structure[0]] = value;
+					} else if (structure.length === 2) {
+						currentValues[structure[0]][structure[1]] = value;
+					} else if (structure.length === 3) {
+						currentValues[structure[0]][structure[1]][structure[2]] = value;
+					}
 
-			if (typeof window !== `undefined`) {
-				window.localStorage.setItem(`formData_${form.slug}`, JSON.stringify(values));
-			}
+					return currentValues;
+				});
 
-			if (currentStepData.fields) {
-				setCurrentStepData((currentStepData) => ({ ...currentStepData }));
-			} else {
-				setCurrentStepData((currentStepData) => ([...currentStepData]));
+				if (typeof window !== `undefined`) {
+					window.localStorage.setItem(`formData_${form.slug}`, JSON.stringify(values));
+				}
+
+				if (currentStepData.fields) {
+					setCurrentStepData((currentStepData) => ({ ...currentStepData }));
+				} else {
+					setCurrentStepData((currentStepData) => ([...currentStepData]));
+				}
 			}
 		},
 		checkStep = (direction) => {

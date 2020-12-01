@@ -18,16 +18,16 @@ const TableBlock = ({
 				&& <thead>
 					<tr>
 						{table.thead.map(({ value }) => (
-							<th>{value}</th>
+							<th key={value}>{value}</th>
 						))}
 					</tr>
 				</thead>
 				}
 				<tbody>
 					{table.tbody.map(({ body }) => (
-						<tr>
+						<tr key={JSON.stringify(body)}>
 							{body.map(({ value }) => (
-								<td>{value}</td>
+								<td key={value}>{value}</td>
 							))}
 						</tr>
 					))}

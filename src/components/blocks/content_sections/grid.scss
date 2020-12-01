@@ -112,9 +112,12 @@
 					'b2 b2 b2 b2 img img img .'
 					'b2 b2 b2 b2 img img img .'
 					'. . . b3 b3 b3 b3 b3'
-					'. . . b3 b3 b3 b3 b3';
+					'. . . b3 b3 b3 b3 b3'
+					'b4 b4 b4 b4 . . . .'
+					'b4 b4 b4 b4 b5 b5 b5 b5'
+					'. . . . b5 b5 b5 b5';
 				grid-template-columns: repeat(8, auto);
-				grid-template-rows: repeat(6, auto);
+				grid-template-rows: repeat(9, auto);
 				align-content: center;
 
 				.section {
@@ -141,6 +144,14 @@
 						padding-right: 54px;
 						padding-bottom: 67px;
 						background-image: url('/img/blob_background_primary_3.png');
+					}
+
+					&.s_4 {
+						grid-area: b4;
+					}
+
+					&.s_5 {
+						grid-area: b5;
 					}
 
 					&.secondary {

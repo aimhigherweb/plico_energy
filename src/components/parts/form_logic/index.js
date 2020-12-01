@@ -154,7 +154,7 @@ const FormLogic = ({ form }) => {
 				)}
 				{step < totalSteps && (
 					<button
-						className={totalSteps > 1 && `multistep`}
+						className={totalSteps > 1 ? `multistep` : ``}
 						type="submit"
 					>
 						{step + 1 < totalSteps ? `Save and Continue` : form.fields.content.submit}

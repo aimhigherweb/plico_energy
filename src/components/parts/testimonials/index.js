@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
+import { getFixedGatsbyImage, getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
 import Animated from '../animated_svg';
@@ -75,7 +75,7 @@ const Testimonials = ({ testimonials, _uid }) => (
 											<Sun />
 										</Animated>
 										<Img
-											fixed={getFixedGatsbyImage(image.filename, { width: 200, height: 200 })}
+											fluid={getFluidGatsbyImage(image.filename, { maxWidth: 200, maxHeight: 200 })}
 											style={{
 												width: `200px`,
 												height: `200px`

@@ -3,6 +3,7 @@
 
 .content_block {
 	@include extends.list_reset;
+	z-index: 5;
 
 	h2 {
 		margin-top: 0;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
+import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
 import Block from "../../parts/block";
@@ -15,7 +15,7 @@ const LogoBlock = ({
 		<h2>{heading}</h2>
 		<ul className="logos">
 			{logos.map(({ filename }) => (
-				<li><Img fixed={getFixedGatsbyImage(filename, { width: 200 })} /></li>
+				<li key={filename}><Img fluid={getFluidGatsbyImage(filename, { maxWidth: 200 })} /></li>
 			))}
 		</ul>
 	</Block>

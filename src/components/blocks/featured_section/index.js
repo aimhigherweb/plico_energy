@@ -25,7 +25,7 @@ const FeaturedSections = ({ heading, content, sections }) => {
 	}
 
 	return (
-		<Block className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 4) && `small`} ${classes}`}>
+		<Block className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 6) && `small`} ${classes}`}>
 			<Curve className="curve" />
 			<h2 dangerouslySetInnerHTML={{ __html: heading }} />
 			<div dangerouslySetInnerHTML={{ __html: content }} />

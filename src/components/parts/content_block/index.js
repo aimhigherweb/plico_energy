@@ -16,7 +16,7 @@ const ContentBlock = ({
 			{cta && <CTA {...{ cta_button: cta }} />}
 		</div>
 
-		{image
+		{(image && image.filename && image.filename !== ``)
 			&& <Img
 				fluid={getFluidGatsbyImage(
 					image.filename,

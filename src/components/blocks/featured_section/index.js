@@ -4,21 +4,40 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import Block from "../../parts/block";
 import Curve from '../../../img/blob_video.svg';
 import ContentBlock from '../../parts/content_block';
+import NumberedBlock from '../../parts/numbered_block';
+import CollapsibleBlock from '../../parts/collapsible_block';
 
 import './style.scss';
 
-const FeaturedSections = ({ heading, content, sections }) => (
-	<Block className="featured_sections">
-		<Curve className="curve" />
-		<h2>{heading}</h2>
-		<div dangerouslySetInnerHTML={{ __html: content }} />
-		{sections.map((sect) => (
-			<ContentBlock
-				key={sections._uid}
-				{...sect }
-			/>
-		))}
-	</Block>
-);
+const FeaturedSections = ({ heading, content, sections }) => {
+	const images = sections.some((sect) => (sect.image && sect.image.filename && sect.image.filename == ``)),
+		blocks = sections.length;
+	let Component = ContentBlock;
+
+	if (sections[0].component == `numbered_content_block`) {
+		Component = NumberedBlock;
+	}
+
+	if (sections[0].component == `collapsible_content_block`) {
+		Component = CollapsibleBlock;
+	}
+
+	return (
+		<Block className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 4) && `small`}`}>
+			<Curve className="curve" />
+			<h2>{heading}</h2>
+			<div dangerouslySetInnerHTML={{ __html: content }} />
+			<div className="sects">
+				{sections.map((sect, index) => (
+					<Component
+						key={sect._uid}
+						{...{ ...sect, index } }
+					/>
+				))}
+			</div>
+
+		</Block>
+	);
+};
 
 export default FeaturedSections;

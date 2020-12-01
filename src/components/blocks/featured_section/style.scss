@@ -20,12 +20,36 @@
 			fill: variables.$primary;
 		}
 	}
+
+	&.blocks {
+		.sects {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+
+	&.small {
+		.curve {
+			display: none;
+		}
+	}
 }
 
 @media(min-width: 40em) {
 	.featured_sections {
 		.curve {
 			transform: translateX(-50%) translateY(200px);
+		}
+
+		&.blocks {
+			.sects {
+				.repeatable_content:not(.numbered) {
+					flex: 1 1 40%;
+					max-width: unset;
+					margin: 30px;
+				}
+			}
 		}
 	}
 }

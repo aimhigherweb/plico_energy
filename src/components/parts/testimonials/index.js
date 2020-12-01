@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
@@ -12,7 +12,7 @@ import Curve from '../../../img/blob_video.svg';
 
 import './style.scss';
 
-const Testimonials = ({ testimonials }) => (
+const Testimonials = ({ testimonials, _uid }) => (
 	<StaticQuery
 		query={graphql`
 			query {
@@ -44,6 +44,12 @@ const Testimonials = ({ testimonials }) => (
 		render={(data) => {
 			const quotes = data.testimonials.edges.filter(({ node }) => testimonials.includes(node.uuid));
 
+			// useEffect(() => {
+			// 	document.querySelectorAll(`.testimonials`).forEach((block) => {
+			// 		block.querySelector(`input`).checked = true;
+			// 	});
+			// });
+
 			return (
 				<div className="testimonials" style={{ '--testimonials': testimonials.length }}>
 					<Curve className="curve" />
@@ -54,8 +60,13 @@ const Testimonials = ({ testimonials }) => (
 
 						return (
 							<Fragment key={testimonial.node.name}>
-								<input type="radio" id={`quote-${index}`} name="testimonials" defaultChecked={index === 0} />
-								<label htmlFor={`quote-${index}`}>
+								<input
+									type="radio"
+									id={`quote-${testimonial.node.uuid}`}
+									name={`testimonials_${_uid}`}
+									defaultChecked={index === 0}
+								/>
+								<label htmlFor={`quote-${testimonial.node.uuid}`}>
 									<span>{name} Testimonial</span>
 								</label>
 								<blockquote>

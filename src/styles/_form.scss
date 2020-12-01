@@ -99,7 +99,7 @@ input {
 	}
 
 	&[type='checkbox'] {
-		&:checked, &[checked] {
+		&:checked {
 			+ label {
 				&:after {
 					content: '✓';

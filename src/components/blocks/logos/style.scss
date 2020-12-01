@@ -1,0 +1,27 @@
+.logo_block {
+	ul, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
+.logos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	li {
+		margin: 10px;
+	}
+
+	.gatsby-image-wrapper {
+		filter: grayscale(100);
+	}
+}
+
+@media(min-width: 85em) {
+	.logo_block {
+		padding: 0 calc(50vw - 600px);
+	}
+}

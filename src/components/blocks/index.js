@@ -12,6 +12,7 @@ import PricingBlock from './pricing';
 import ContentBox from './content_box';
 import CTABlock from './cta';
 import TableBlock from './table';
+import LogosBlock from './logos';
 
 const Block = ({
 	component, data
@@ -41,6 +42,8 @@ const Block = ({
 			return <CTABlock {...data} />;
 		case `table`:
 			return <TableBlock {...data} />;
+		case `logos`:
+			return <LogosBlock {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

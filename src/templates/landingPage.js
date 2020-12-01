@@ -57,10 +57,12 @@ export const pageQuery = graphql`
 						}
 					}
 					body {
+						_uid
 						component
 						heading
 						sub_heading
 						content
+						
 						cta_button {
 							cta_link
 							cta_text
@@ -114,6 +116,8 @@ export const pageQuery = graphql`
 							content
 							heading
 							component
+							collapsed_heading
+							collapsed_content
 							cta {
 								cta_link
 								cta_text
@@ -148,6 +152,9 @@ export const pageQuery = graphql`
 									value
 								}
 							}
+						}
+						logos {
+							filename
 						}
 					}
 				}

@@ -61,12 +61,24 @@
 				position: absolute;
 				right: -200vw;
 			}
+
+			&:first-of-type:last-of-type {
+				display: none;
+			}
 		}
 
 		&:checked {
 			+ label {
 				&:after {
+					content: '';
+					position: absolute;
+					left: 4px;
+					width: calc(1em - 4px);
+					height: calc(1em - 4px);
+					border-radius: 50%;
 					background: #ffffff;
+					font-weight: bold;
+					line-height: 1;
 				}
 
 				+ blockquote {

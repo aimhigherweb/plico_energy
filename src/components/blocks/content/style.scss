@@ -95,6 +95,14 @@
 		margin-bottom: 100px;
 	}
 
+	&.graphic {
+		svg {
+			path {
+				stroke: variables.$primary;
+			}
+		}
+	}
+
 	&.illustration_top {
 		margin-top: 300px;
 

@@ -13,6 +13,7 @@ import ContentBox from './content_box';
 import CTABlock from './cta';
 import TableBlock from './table';
 import LogosBlock from './logos';
+import FeaturedVideos from './featured_videos';
 
 const Block = ({
 	component, data
@@ -44,6 +45,8 @@ const Block = ({
 			return <TableBlock {...data} />;
 		case `logos`:
 			return <LogosBlock {...data} />;
+		case `featured_videos`:
+			return <FeaturedVideos {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

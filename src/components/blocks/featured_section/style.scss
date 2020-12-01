@@ -29,9 +29,16 @@
 		}
 	}
 
-	&.small {
+	&.small, &.collapsible_blocks {
 		.curve {
 			display: none;
+		}
+	}
+
+	&.collapsible {
+		.sects {
+			max-width: 800px;
+			margin: 0 auto;
 		}
 	}
 }
@@ -44,7 +51,7 @@
 
 		&.blocks {
 			.sects {
-				.repeatable_content:not(.numbered) {
+				.repeatable_content:not(.numbered):not(.collapsible) {
 					flex: 1 1 40%;
 					max-width: unset;
 					margin: 30px;
@@ -58,6 +65,14 @@
 	.featured_sections {
 		.curve {
 			transform: translateX(-50%) translateY(350px);
+		}
+
+		&.collapsible_blocks {
+			.sects {
+				display: flex;
+				flex-wrap: wrap;
+				max-width: unset;
+			}
 		}
 	}
 }

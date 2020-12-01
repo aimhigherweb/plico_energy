@@ -12,7 +12,8 @@ import './style.scss';
 const FeaturedSections = ({ heading, content, sections }) => {
 	const images = sections.some((sect) => (sect.image && sect.image.filename && sect.image.filename == ``)),
 		blocks = sections.length;
-	let Component = ContentBlock;
+	let Component = ContentBlock,
+		classes = ``;
 
 	if (sections[0].component == `numbered_content_block`) {
 		Component = NumberedBlock;
@@ -20,12 +21,13 @@ const FeaturedSections = ({ heading, content, sections }) => {
 
 	if (sections[0].component == `collapsible_content_block`) {
 		Component = CollapsibleBlock;
+		classes = `${classes} collapsible_blocks`;
 	}
 
 	return (
-		<Block className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 4) && `small`}`}>
+		<Block className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 4) && `small`} ${classes}`}>
 			<Curve className="curve" />
-			<h2>{heading}</h2>
+			<h2 dangerouslySetInnerHTML={{ __html: heading }} />
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 			<div className="sects">
 				{sections.map((sect, index) => (

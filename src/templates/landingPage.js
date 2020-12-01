@@ -156,6 +156,12 @@ export const pageQuery = graphql`
 						logos {
 							filename
 						}
+						videos {
+							image {
+								filename
+							}
+							video_url
+						}
 					}
 				}
 			}

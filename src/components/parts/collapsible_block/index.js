@@ -17,12 +17,12 @@ const CollapsibleBlock = ({
 	return (
 		<article className="repeatable_content collapsible" open={open}>
 			<button onClick={toggleContent}><span>Toggle Content</span></button>
-			<div className="open">
-				<h3>{heading}</h3>
+			<div className="front">
+				<h3 dangerouslySetInnerHTML={{ __html: heading }} />
 				<div dangerouslySetInnerHTML={{ __html: content }} />
 			</div>
-			<div className="closed">
-				<h3>{collapsed_heading}</h3>
+			<div className="back">
+				<h3 dangerouslySetInnerHTML={{ __html: collapsed_heading }} />
 				<div dangerouslySetInnerHTML={{ __html: collapsed_content }} />
 			</div>
 

@@ -1,18 +1,132 @@
+@use '../../../styles/variables.scss';
+
 .collapsible {
 	position: relative;
+	max-width: unset;
+	margin: 20px;
+	padding: 30px;
+	border: 3px solid variables.$primary;
+	border-radius: 20px;
+	background: variables.$primary;
+	color: #ffffff;
+
+	&:nth-child(2n) {
+		border-color: variables.$secondary;
+		background: variables.$secondary;
+	}
 
 	button {
 		position: absolute;
+		z-index: 5;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
+		width: 100%;
+		margin:0;
 		border: none;
 		background: none;
 
 		span {
 			position: absolute;
 			right: -200vw;
+		}
+	}
+
+	.back {
+		display: none;
+	}
+
+	&[open] {
+		background: #ffffff;
+
+		.back {
+			display: block;
+			color: variables.$primary;
+		}
+
+		.front {
+			display: none;
+		}
+	}
+
+	&:hover {
+		background: #ffffff;
+
+		.front {
+			color: variables.$primary;
+		}
+	}
+
+	@supports(grid-template-areas: '.') {
+		display: grid;
+		grid-template-rows: max-content;
+
+		.back, .front {
+			display: block;
+			grid-column: 1 / span 1;
+			grid-row: 1 / span 1;
+		}
+
+		.back {
+			opacity: 0;
+		}
+
+		&[open] {
+			.front {
+				display: block;
+				opacity: 0;
+			}
+
+			.back {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.collapsible {
+		width: 90%;
+		margin-right: auto;
+		margin-left: 0;
+
+		&:nth-child(2n) {
+			margin-right: 0;
+			margin-left: auto;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.collapsible {
+		flex: 1 1 40%;
+		margin: 10px;
+
+		&:nth-child(2n - 1):not(:last-child) {
+			border-radius: 20px 0 0 20px;
+		}
+
+		&:nth-child(2n) {
+			border-radius: 0 20px 20px 0;
+		}
+
+		&:nth-child(4n - 1) {
+			border-color: variables.$secondary;
+			background: variables.$secondary;
+
+			&:hover, &[open] {
+				background: #ffffff;
+			}
+		}
+
+		&:nth-child(4n) {
+			border-color: variables.$primary;
+			background: variables.$primary;
+
+			&:hover, &[open] {
+				background: #ffffff;
+			}
 		}
 	}
 }

@@ -2,13 +2,11 @@ import React, { Fragment } from 'react';
 
 import Countries from './countries_list';
 
-import generateSlug from '../../../../../utils/generateSlug';
-
 const TimeRange = ({
-	_uid, label, parent, values, fieldChanged, field_id
+	_uid, label, values, fieldChanged, field_id
 }) => {
-	const name = `${parent}${field_id}`,
-		structure = name.split(`_`);
+	const name = field_id,
+		structure = field_id.split(`_`);
 
 	let value;
 
@@ -29,19 +27,19 @@ const TimeRange = ({
 			<legend>{label}</legend>
 			<label htmlFor={`street_address_1${_uid}`}>Street Address 1</label>
 			<input
-				name={`${name}_street-address-1`}
+				name={`${name}_streetAddress1`}
 				id={`street_address_1${_uid}`}
 				type="text"
-				onChange={(e) => (fieldChanged(`${name}_street-address-1`, e.target.value))}
-				value={value[`street-address-1`]}
+				onChange={(e) => (fieldChanged(`${name}_streetAddress1`, e.target.value))}
+				value={value.streetAddress1}
 			/>
 			<label htmlFor={`street_address_2${_uid}`}>Street Address 2</label>
 			<input
 				name={`${name}_street-address-2`}
 				id={`street_address_2${_uid}`}
 				type="text"
-				onChange={(e) => (fieldChanged(`${name}_street-address-2`, e.target.value))}
-				value={value[`street-address-2`]}
+				onChange={(e) => (fieldChanged(`${name}_streetAddress2`, e.target.value))}
+				value={value.streetAddress2}
 			/>
 			<fieldset>
 				<div>

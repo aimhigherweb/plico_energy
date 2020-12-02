@@ -11,7 +11,7 @@ const FormLogic = ({ form }) => {
 		existingData = typeof window !== `undefined` && window.localStorage.getItem(`formData_${form.slug}`) ? JSON.parse(window.localStorage.getItem(`formData_${form.slug}`)) : {},
 		[step, setStep] = useState(0),
 		[currentStepData, setCurrentStepData] = useState(formData[step]),
-		[values, setValues] = useState(existingData),
+		[values, setValues] = useState({}),
 		fieldChanged = (fieldId, value) => {
 			const structure = fieldId.split(`_`);
 

@@ -48,7 +48,7 @@ const Select = ({
 );
 
 const Options = ({
-	label, type, _uid, field_id, hidden_label, options, parent = ``, fieldChanged, values, description, classes
+	label, type, _uid, field_id, hidden_label, options, fieldChanged, values, description, classes
 }) => {
 	let Component = Select,
 		placeholder = ``;
@@ -61,7 +61,7 @@ const Options = ({
 		placeholder = label;
 	}
 
-	const name = `${parent}${field_id}`,
+	const name = field_id,
 		structure = name.split(`_`);
 
 	let value;
@@ -125,7 +125,6 @@ const Options = ({
 				name,
 				placeholder,
 				options,
-				parent,
 				classes,
 				fieldChanged,
 				value

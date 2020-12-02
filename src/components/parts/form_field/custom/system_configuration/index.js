@@ -4,7 +4,7 @@ import generateSlug from '../../../../../utils/generateSlug';
 import systemConfig from '../../../../../utils/systemConfig';
 
 const SystemConfiguration = ({
-	_uid, label, parent, fieldChanged, values, field_id
+	_uid, label, fieldChanged, field_id
 }) => {
 	const [inverters, setInverters] = useState([]),
 		[batteries, setBatteries] = useState([]),
@@ -18,18 +18,19 @@ const SystemConfiguration = ({
 			setPrice({});
 			setCost(false);
 			systemConfig(`relatedbatterykeys?InverterId=${e.target.value}`, setBatteries);
-			fieldChanged(`${parent}${field_id}_inverters`, e.target.value);
+			fieldChanged(`${field_id}_inverterId`, e.target.value);
 		},
 		selectBattery = (e) => {
 			setCost(false);
 			setPrice({});
 			setSystems(true);
 			systemConfig(`products/${e.target.value}?includepricing`, setPrice);
-			fieldChanged(`${parent}${field_id}_batteries`, e.target.value);
+			fieldChanged(`${field_id}_batteryId`, e.target.value);
 		},
 		selectSystems = (e) => {
 			setCost(pricing.weeklyFee * e.target.value);
-			fieldChanged(`${parent}${field_id}_number-systems`, e.target.value);
+			fieldChanged(`${field_id}_numberOfSystems`, e.target.value);
+			fieldChanged(`${field_id}_weeklyCost`, pricing.weeklyFee * e.target.value);
 		};
 
 	useEffect(() => {
@@ -46,7 +47,7 @@ const SystemConfiguration = ({
 					{inverters.length
 					&& <select
 						id={`inverters${_uid}`}
-						name={`${parent}${field_id}_inverters`}
+						name={`${field_id}_inverterId`}
 						onChange={(e) => selectInverter(e)}
 					>
 						<option>Please call me to discuss</option>
@@ -65,7 +66,7 @@ const SystemConfiguration = ({
 				<label htmlFor={`batteries${_uid}`}>Battery storage option</label>
 				<select
 					id={`batteries${_uid}`}
-					name={`${parent}${field_id}_batteries`}
+					name={`${field_id}_batteryId`}
 					onChange={(e) => selectBattery(e)}
 				>
 					<option default>Please call me to discuss</option>
@@ -83,7 +84,7 @@ const SystemConfiguration = ({
 				<label htmlFor={`number-systems${_uid}`}>Number of Systems required</label>
 				<select
 					id={`number-systems${_uid}`}
-					name={`${parent}${field_id}_number-systems`}
+					name={`${field_id}_numberOfSystems`}
 					onChange={(e) => selectSystems(e)}
 				>
 					<option default>Please call me to discuss</option>
@@ -99,7 +100,7 @@ const SystemConfiguration = ({
 				<input
 					type='text'
 					id={`weekly-cost${_uid}`}
-					name={`${parent}${field_id}_weekly-cost`}
+					name={`${field_id}_weeklyCost`}
 					value={`$ ${cost}`}
 					readonly
 				/>
@@ -112,17 +113,17 @@ const SystemConfiguration = ({
 					<input
 						type="radio"
 						id={`agreement${_uid}_yes`}
-						name={`${parent}${field_id}_agreement`}
+						name={`${field_id}_agreement`}
 						value="yes"
-						onChange={(e) => (fieldChanged(`${parent}${field_id}_agreement`, e.target.value))}
+						onChange={(e) => (fieldChanged(`${field_id}_agreement`, e.target.value))}
 					/>
 					<label htmlFor={`agreement${_uid}_yes`} >Yes</label>
 					<input
 						type="radio"
 						id={`agreement${_uid}_no`}
-						name={`${parent}${field_id}_agreement`}
+						name={`${field_id}_agreement`}
 						value="no"
-						onChange={(e) => (fieldChanged(`${parent}${field_id}_agreement`, e.target.value))}
+						onChange={(e) => (fieldChanged(`${field_id}_agreement`, e.target.value))}
 					/>
 					<label htmlFor={`agreement${_uid}_no`} >No</label>
 				</div>

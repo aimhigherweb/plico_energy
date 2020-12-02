@@ -2,26 +2,16 @@ import React from 'react';
 
 // eslint-disable-next-line import/no-cycle
 import Field from "..";
-import generateSlug from '../../../../utils/generateSlug';
 
 import './style.scss';
 
 const FieldGroup = ({
-	fields, label, field_id = ``, _uid, parent = ``, parents = [], fieldChanged, values
+	fields, label, _uid, fieldChanged, values
 }) => {
 	const hidden_label = label && true;
 
 	if (label === ``) {
 		label = false;
-	}
-
-	if (field_id === ``) {
-		field_id = false;
-	}
-
-	if (field_id) {
-		parent = `${parent}${field_id}_`;
-		parents.push(field_id);
 	}
 
 	return (
@@ -36,8 +26,6 @@ const FieldGroup = ({
 							data: {
 								...field,
 								hidden_label,
-								parent,
-								parents,
 								fieldChanged,
 								classes: index % 2 !== 0 ? `second` : ``
 							},

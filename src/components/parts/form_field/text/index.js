@@ -32,7 +32,7 @@ const TextArea = ({
 );
 
 const TextInput = ({
-	label, type, _uid, hidden_label, field_id, parent = ``, fieldChanged, values, description, classes
+	label, type, _uid, hidden_label, field_id, fieldChanged, values, description, classes
 }) => {
 	let placeholder = ``,
 		Component = Text;
@@ -49,7 +49,7 @@ const TextInput = ({
 		placeholder = `hello@domain.com`;
 	}
 
-	const name = `${parent}${field_id}`,
+	const name = `${field_id}`,
 		structure = name.split(`_`);
 
 	let value;

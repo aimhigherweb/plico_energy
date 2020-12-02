@@ -14,6 +14,7 @@ import CTABlock from './cta';
 import TableBlock from './table';
 import LogosBlock from './logos';
 import FeaturedVideos from './featured_videos';
+import TeamProfiles from './team_profiles';
 
 const Block = ({
 	component, data
@@ -47,6 +48,8 @@ const Block = ({
 			return <LogosBlock {...data} />;
 		case `featured_videos`:
 			return <FeaturedVideos {...data} />;
+		case `team_profiles`:
+			return <TeamProfiles {...data} />;
 		default:
 			return <h2>{component}</h2>;
 	}

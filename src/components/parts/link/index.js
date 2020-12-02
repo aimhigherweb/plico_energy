@@ -9,7 +9,7 @@ const A = ({
 		return <a href={url} style={style} className={className} target="_blank">{children}</a>;
 	}
 
-	return <Link className={className} style={style} to={url}>{children}</Link>;
+	return <Link activeClassName='active' className={className} style={style} to={url}>{children}</Link>;
 };
 
 export default A;

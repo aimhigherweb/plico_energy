@@ -8,11 +8,17 @@ const FAQ = ({ data }) => {
 			name,
 			fields
 		} = data.storyblokEntry,
-		{ content } = fields.content,
+		{ content, meta } = fields.content,
 		categories = data.categories.edges;
 
 	return (
-		<Layout {...{ classes: `page faq` }}>
+		<Layout {...{
+			classes: `page faq`,
+			meta: {
+				...meta,
+				title: meta.title || `${name}`,
+			}
+		}}>
 			<h1 className="title">{name}</h1>
 			<div className="faq_content" dangerouslySetInnerHTML={{ __html: content }} />
 			<h2>Have a different question?</h2>
@@ -36,6 +42,16 @@ export const pageQuery = graphql`
 			fields {
 				content {
 					content
+					meta {
+						description
+						og_description
+						og_image
+						og_title
+						title
+						twitter_description
+						twitter_image
+						twitter_title
+					}
 				}
 			}
 		}

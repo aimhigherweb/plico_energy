@@ -18,9 +18,6 @@ const Header = () => (
 							logo {
 								filename
 							}
-							site_title
-							phone
-							email
 						}
 					}
 				}

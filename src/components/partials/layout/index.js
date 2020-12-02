@@ -13,10 +13,17 @@ const Layout = ({ children, meta, classes }) => (
 		<StaticQuery
 			query={graphql`
 					query {
-						site {
-							siteMetadata {
-								title
-								siteUrl
+						site: storyblokEntry(full_slug: {eq: "details"}) {
+							fields {
+								content {
+									site_url
+									site_title
+									meta {
+										description
+										og_image
+										title
+									}
+								}
 							}
 						}
 					}
@@ -28,7 +35,11 @@ const Layout = ({ children, meta, classes }) => (
 							class: classes
 						}}
 					/>
-					<Meta {...{ ...meta, ...data.site }} />
+					<Meta {...{
+						...data.site.fields.content,
+						...data.site.fields.content.meta,
+						...meta
+					}} />
 					<Header />
 					<main>{children}</main>
 					<Footer />
@@ -37,42 +48,34 @@ const Layout = ({ children, meta, classes }) => (
 		/>
 	),
 	Meta = ({
-		title, description, slug, image, siteMetadata
-	}) => {
-		slug = slug || ``;
-		title = title || siteMetadata.title;
-		description = description || siteMetadata.description;
+		title, description, og_description, og_image, og_title, twitter_description, twitter_image, twitter_title, slug = ``, site_title, site_url
+	}) => (
+		<Helmet>
+			<title>{title}</title>
+			<meta name="description" content={description} />
+			<meta name="author" content={site_title} />
+			<link rel="canonical" href={`${site_url}${slug}`} />
+			<base href="/" />
 
-		return (
-			<Helmet>
-				<title>{title}</title>
-				<meta name="description" content={description} />
-				<meta name="author" content={siteMetadata.title} />
-				<link rel="canonical" href={`${siteMetadata.siteUrl}${slug}`} />
-				<base href="/" />
+			<link rel="shortcut icon" href={Favicon} />
+			<link rel="icon" sizes="192x192" href={Favicon} />
+			<link rel="apple-touch-icon" href={Favicon} />
+			<meta name="theme-color" content="#18304c" />
+			<link rel="mask-icon" href={Favicon} color="#18304c" />
 
-				<link rel="shortcut icon" href={Favicon} />
-				<link rel="icon" sizes="192x192" href={Favicon} />
-				<link rel="apple-touch-icon" href={Favicon} />
-				<meta name="theme-color" content="#18304c" />
-				<link rel="mask-icon" href={Favicon} color="#18304c" />
+			{/* OpenGraph */}
+			<meta property="og:url" content={`${site_url}${slug}`} />
+			<meta property="og:title" content={og_title || title} />
+			<meta property="og:description" content={og_description || description} />
+			<meta property="og:type" content="website" />
+			<meta property="og:image" content={og_image} />
 
-				{/* Facebook */}
-				<meta property="og:url" content={`${siteMetadata.siteUrl}${slug}`} />
-				<meta property="og:title" content={title} />
-				<meta property="og:description" content={description} />
-				<meta property="og:type" content="website" />
-				{image && (
-					<meta
-						property="og:image"
-						content={`${siteMetadata.siteUrl}${image.publicURL}`}
-					/>
-				)}
-
-				{/* Twitter */}
-				<meta name="twitter:card" content="summary_large_image" />
-			</Helmet>
-		);
-	};
+			{/* Twitter */}
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:title" content={twitter_title || title} />
+			<meta name="twitter:description" content={twitter_description || description} />
+			<meta name="twitter:image" content={twitter_image || og_image} />
+		</Helmet>
+	);
 
 export default Layout;

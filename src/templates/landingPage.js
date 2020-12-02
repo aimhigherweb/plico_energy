@@ -12,12 +12,12 @@ const LandingPage = ({ data }) => {
 			slug,
 			fields
 		} = data.storyblokEntry,
-		{ body, banner } = fields.content,
+		{ body, banner, meta } = fields.content,
 		headerType = banner[0]?.media[0].component || `default`,
 		noBanner = !banner[0];
 
 	return (
-		<Layout {...{ classes: `${slug} header_${headerType}` }}>
+		<Layout {...{ classes: `${slug} header_${headerType}`, meta }}>
 			<h1 className={noBanner ? `landing` : `hidden`}>{name}</h1>
 			{banner[0] && <Banner {...banner[0]} />}
 			{body.map((block) => (
@@ -36,10 +36,19 @@ export const pageQuery = graphql`
 	query LandingPage($slug: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
-			field_og_image_string
 			slug
 			fields {
 				content {
+					meta {
+						description
+						og_description
+						og_image
+						og_title
+						title
+						twitter_description
+						twitter_image
+						twitter_title
+					}
 					banner {
 						main_quote
 						sub_quote
@@ -164,6 +173,15 @@ export const pageQuery = graphql`
 								filename
 							}
 							video_url
+						}
+						profiles {
+							role
+							name
+							bio
+							linkedin
+							image {
+								filename
+							}
 						}
 					}
 				}

@@ -28,7 +28,7 @@ header {
 	}
 
 	button {
-		--background: transparent;
+		--cta_background: transparent;
 
 		display: flex;
 		align-items: center;
@@ -44,8 +44,8 @@ header {
 		}
 
 		&:hover, &:focus {
-			--background: #{variables.$primary};
-			--text: #ffffff;
+			--cta_background: #{variables.$primary};
+			--cta_text: #ffffff;
 		}
 	}
 

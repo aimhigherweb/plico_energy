@@ -8,10 +8,10 @@ const Page = ({ data }) => {
 	const {
 			name
 		} = data.storyblokEntry,
-		{ content, form } = data.storyblokEntry.fields.content;
+		{ content, form, meta } = data.storyblokEntry.fields.content;
 
 	return (
-		<Layout {...{ classes: `page` }}>
+		<Layout {...{ classes: `page`, meta }}>
 			<h1>{name}</h1>
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 			{form && <Form form={form} />}
@@ -29,6 +29,16 @@ export const pageQuery = graphql`
 				content {
 					content
 					form
+					meta {
+						description
+						og_description
+						og_image
+						og_title
+						title
+						twitter_description
+						twitter_image
+						twitter_title
+					}
 				}
 			}
 		}

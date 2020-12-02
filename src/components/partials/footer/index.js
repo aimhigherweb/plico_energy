@@ -25,7 +25,6 @@ const Footer = () => (
 							logo {
 								filename
 							}
-							site_title
 							phone
 							email
 						}

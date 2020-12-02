@@ -1,0 +1,132 @@
+@use '../../../styles/variables.scss';
+
+.profile {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	max-width: 300px;
+	margin: 0 auto 20px;
+
+	.date, .tags {
+		display: inline-block;
+		margin-right: 20px;
+		color: #ffffff;
+		font-size: 0.8em;
+	}
+
+	.content {
+		width: 100%;
+		margin-bottom: 10px;
+		padding: 15px;
+		border-radius: 20px 20px 0 0;
+		background: variables.$secondary;
+	}
+
+	h3, .bio {
+		color: inherit;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.5em;
+		text-transform: uppercase;
+	}
+
+	.btn {
+		margin: 10px 0 0;
+		padding: 5px;
+		border: none;
+		background: none;
+		color: inherit;
+
+		svg {
+			width: 40px;
+			height: 40px;
+			fill: currentColor;
+		}
+
+		span {
+			position: absolute;
+			right: -200vw;
+		}
+
+		&:hover, &:focus {
+			color: #ffffff;
+		}
+	}
+
+	.gatsby-image-wrapper {
+		width: 100%;
+		background: variables.$grey_dark;
+	}
+
+	&:nth-child(2n) {
+		.content {
+			background: variables.$primary;
+			color: #ffffff;
+		}
+
+		.btn {
+			&:hover, &:focus {
+				color: variables.$secondary;
+			}
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.profile {
+		flex-wrap: nowrap;
+		max-width: 800px;
+		text-align: left;
+
+		.content {
+			width: 100%;
+			margin: 0 20px 0 0;
+			border-radius: 20px 0 0 20px;
+		}
+
+		.gatsby-image-wrapper {
+			width: 100%;
+		}
+
+		&:nth-child(2n) {
+			.gatsby-image-wrapper {
+				order: -1;
+			}
+
+			.content {
+				margin: 0 0 0 20px;
+				border-radius: 0 20px 20px 0;
+			}
+		}
+
+		.btn {
+			svg {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.profile {
+		.gatsby-image-wrapper {
+			width: 40vw;
+			max-width: 300px;
+		}
+
+		.content {
+			padding: 50px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.profile {
+		.content {
+			padding: 50px 80px;
+		}
+	}
+}

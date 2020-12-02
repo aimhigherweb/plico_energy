@@ -67,6 +67,10 @@
 		&:hover, &:focus {
 			background: variables.$secondary;
 		}
+
+		&.active {
+			color: variables.$primary;
+		}
 	}
 
 	.submenu {
@@ -144,23 +148,33 @@
 					// display: block;
 				}
 			}
+
+			&:hover, &:focus, &:focus-within {
+				.submenu {
+					display: block;
+				}
+			}
 		}
 
 		.submenu {
 			display: none;
 			position: absolute;
-			z-index: 100px;
+			z-index: 100;
 
 			li {
+				border-bottom: 1px solid variables.$secondary;
 				border-radius: 0;
 				background: #ffffff;
 
 				&:first-child {
-					border-radius: 5px 5px 0 0;
+					border-top-left-radius: 5px;
+					border-top-right-radius: 5px;
 				}
 
 				&:last-child {
-					border-radius: 0 0 20px 20px;
+					border-bottom: none;
+					border-bottom-right-radius: 10px;
+					border-bottom-left-radius: 10px;
 				}
 
 				&:hover {
@@ -172,6 +186,11 @@
 				background: none;
 				color: variables.$secondary;
 				font-size: inherit;
+
+				&:hover {
+					background: none;
+					color: #ffffff;
+				}
 			}
 		}
 	}

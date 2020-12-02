@@ -170,6 +170,14 @@ exports.onCreateNode = async ({
 		content.excerpt = createExcerpt(content.content);
 		content.content = processMarkdown(content.content);
 
+		if (content.meta) {
+			for (const meta in content.meta) {
+				if (content.meta[meta] == ``) {
+					content.meta[meta] = null;
+				}
+			  }
+		}
+
 		if (node.field_component === `landing_page`) {
 			const blocks = [],
 				banners = [];

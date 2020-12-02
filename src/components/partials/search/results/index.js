@@ -1,25 +1,22 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { connectHits } from 'react-instantsearch-dom';
+import { Hits, connectStateResults } from 'react-instantsearch-dom';
 
 import './style.scss';
 
-const Results = connectHits(({ hits }) => (
-		<ul className="search_results">
-			{hits.map((hit) => (
-				<Hit key={hit.objectID} {...hit} />
-			))}
-		</ul>
+const Results = connectStateResults(({ searchState }) => (
+		searchState && searchState.query ? (
+			<Hits className="search_results" hitComponent={PageResult} />
+		) : null
 	)),
 
-	Hit = ({
-		name, slug, component
-	}) => {
-		if ([`news`, `landing_page`, `pages`, `testimonials`, `faqs`].includes(component)) {
+	PageResult = ({ hit }) => {
+		console.log(hit);
+		if ([`news`, `landing_page`, `pages`, `testimonials`, `faqs`].includes(hit.component)) {
 			return (
 				<li>
-					<Link to={slug}>
-						{name}
+					<Link to={hit.slug}>
+						{hit.name}
 					</Link>
 				</li>
 			);

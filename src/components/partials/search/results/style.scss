@@ -1,8 +1,22 @@
 @use '../../../../styles/variables.scss';
 
-.search_results {
-	transition: opacity 1s steps(1, end) 5s;
-	opacity: 0;
-	color: variables.$main;
-	pointer-events: none;
+.search {
+	.search_results {
+		max-height: 70vh;
+		overflow-y: auto;
+		color: variables.$main;
+
+		li {
+			background: none;
+		}
+
+		a {
+			background: none;
+			text-align: left;
+
+			&:hover, &:focus {
+				background: none;
+			}
+		}
+	}
 }

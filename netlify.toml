@@ -3,19 +3,3 @@
   publish = "public/"
   command = "npm run build"
 
-[[plugins]]
-package = "netlify-plugin-checklinks"
-
-  [plugins.inputs]
-  recursive = true
-  pretty = true
-  skipPatterns = [
-    "mailto:",
-    "tel:"
-  ]
-  todoPatterns = [
-    "#",
-    "sw.js"
-  ]
-  checkExternal = true
-  followSourceMaps = false

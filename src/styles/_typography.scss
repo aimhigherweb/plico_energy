@@ -14,8 +14,20 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
+	position: relative;
 	color: variables.$primary;
 	font-family: variables.$font_heading;
+
+	&:hover {
+		.icon-link {
+			position: absolute;
+			left: -1.2ch;
+
+			&:before {
+				content: '#';
+			}
+		}
+	}
 }
 
 h1, h2, h3 {

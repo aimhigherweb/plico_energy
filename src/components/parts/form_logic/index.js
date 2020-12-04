@@ -106,8 +106,8 @@ const FormLogic = ({ form }) => {
 						})
 						.catch((error) => {
 							console.error(error);
+							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 							Sentry.captureException(error);
-							Sentry.captureMessage(`Something went wrong submitting the form`);
 						});
 
 					e.preventDefault();

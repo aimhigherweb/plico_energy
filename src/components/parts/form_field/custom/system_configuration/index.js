@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
-import generateSlug from '../../../../../utils/generateSlug';
 import systemConfig from '../../../../../utils/systemConfig';
 
 const SystemConfiguration = ({
-	_uid, label, fieldChanged, field_id
+	_uid, label, fieldChanged, field_id, values
 }) => {
 	const [inverters, setInverters] = useState([]),
 		[batteries, setBatteries] = useState([]),
@@ -17,14 +16,22 @@ const SystemConfiguration = ({
 			setSystems(false);
 			setPrice({});
 			setCost(false);
-			systemConfig(`relatedbatterykeys?InverterId=${e.target.value}`, setBatteries);
+			systemConfig({
+				query: `relatedbatterykeys?InverterId=${e.target.value}`,
+				setFunction: setBatteries,
+				values
+			});
 			fieldChanged(`${field_id}_inverterId`, e.target.value);
 		},
 		selectBattery = (e) => {
 			setCost(false);
 			setPrice({});
 			setSystems(true);
-			systemConfig(`products/${e.target.value}?includepricing`, setPrice);
+			systemConfig({
+				query: `products/${e.target.value}?includepricing`,
+				setFunction: setPrice,
+				values
+			});
 			fieldChanged(`${field_id}_batteryId`, e.target.value);
 		},
 		selectSystems = (e) => {
@@ -34,7 +41,12 @@ const SystemConfiguration = ({
 		};
 
 	useEffect(() => {
-		systemConfig(`inverters`, setInverters, setMessage);
+		systemConfig({
+			query: `inverters`,
+			setFunction: setInverters,
+			setMessage,
+			values
+		});
 	}, []);
 
 	return (

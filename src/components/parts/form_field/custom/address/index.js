@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import Countries from './countries_list';
 
-const TimeRange = ({
+const Address = ({
 	_uid, label, values, fieldChanged, field_id
 }) => {
 	const name = field_id,
@@ -86,7 +86,6 @@ const TimeRange = ({
 						id={`country${_uid}`}
 						list={`list${_uid}`}
 						type="text"
-						defaultValue="Australia"
 						onChange={(e) => (fieldChanged(`${name}_country`, e.target.value))}
 						value={value.country}
 						className='second'
@@ -98,4 +97,4 @@ const TimeRange = ({
 	);
 };
 
-export default TimeRange;
+export default Address;

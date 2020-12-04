@@ -89,7 +89,6 @@ const Options = ({
 						list={`list_${_uid}`}
 						id={_uid}
 						name={name}
-						defaultValue={value}
 						onChange={(e) => (fieldChanged(name, e.target.value))}
 						value={value}
 					/>

@@ -1,6 +1,8 @@
-const systemConfig = (path, setFunction, setMessage) => {
+const systemConfig = ({
+	query, setFunction, setMessage, values
+}) => {
 	console.log(`fetching data`);
-	return fetch(`https://sepricecatalog.azurewebsites.net/api/${path}`, {
+	return fetch(`https://sepricecatalog.azurewebsites.net/api/${query}`, {
 		method: `GET`,
 		mode: `cors`,
 		headers: {
@@ -18,8 +20,8 @@ const systemConfig = (path, setFunction, setMessage) => {
 			if (setMessage) {
 				setMessage(`Something went wrong fetching our system details, please try again later`);
 			}
+			Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 			Sentry.captureException(err);
-			Sentry.captureMessage(`Something went wrong fetching our system details, please try again later`);
 		});
 };
 

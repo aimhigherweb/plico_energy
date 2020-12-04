@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { getFixedGatsbyImage } from 'gatsby-storyblok-image';
+import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
 import Play from '../../../img/play.svg';
@@ -21,7 +21,7 @@ const Video = ({
 		<div className="video-embed">
 			<button onClick={(e) => { playVideo(videoId, e); }}>
 				<Play/>
-				{(image && image.filename) && <Img fixed={getFixedGatsbyImage(image.filename, { width: video_maxWidth, height: video_maxWidth * 0.5625 })} />}
+				{(image && image.filename) && <Img fluid={getFluidGatsbyImage(image.filename, { maxWidth: video_maxWidth, maxHeight: video_maxWidth * 0.5625 })} />}
 			</button>
 			<iframe
 				rel="preload"

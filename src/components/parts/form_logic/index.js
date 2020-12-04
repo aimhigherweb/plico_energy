@@ -83,14 +83,10 @@ const FormLogic = ({ form }) => {
 			name={`custom_${form.slug}`}
 			method="post"
 			onSubmit={(e) => {
-				console.log(`click next button`);
-
 				if (step + 1 < totalSteps) {
-					console.log(`next step`);
 					e.preventDefault();
 					nextStep();
 				} else {
-					console.log({ values });
 					fetch(`/`, {
 						method: `POST`,
 						headers: {
@@ -110,6 +106,8 @@ const FormLogic = ({ form }) => {
 						})
 						.catch((error) => {
 							console.error(error);
+							Sentry.captureException(error);
+							Sentry.captureMessage(`Something went wrong submitting the form`);
 						});
 
 					e.preventDefault();

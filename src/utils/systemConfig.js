@@ -18,7 +18,8 @@ const systemConfig = (path, setFunction, setMessage) => {
 			if (setMessage) {
 				setMessage(`Something went wrong fetching our system details, please try again later`);
 			}
-			console.error(err);
+			Sentry.captureException(err);
+			Sentry.captureMessage(`Something went wrong fetching our system details, please try again later`);
 		});
 };
 

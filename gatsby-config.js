@@ -55,6 +55,13 @@ module.exports = {
 			},
 		},
 		{
+			resolve: `@sentry/gatsby`,
+			options: {
+				dsn: process.env.GATSBY_SENTRY_DSN_URL,
+				sampleRate: 0.7,
+			}
+		},
+		{
 			resolve: `gatsby-plugin-netlify`,
 			options: {
 				headers: {

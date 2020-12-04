@@ -11,7 +11,7 @@ const FormLogic = ({ form }) => {
 		existingData = typeof window !== `undefined` && window.localStorage.getItem(`formData_${form.slug}`) ? JSON.parse(window.localStorage.getItem(`formData_${form.slug}`)) : {},
 		[step, setStep] = useState(0),
 		[currentStepData, setCurrentStepData] = useState(formData[step]),
-		[values, setValues] = useState({}),
+		[values, setValues] = useState(existingData),
 		fieldChanged = (fieldId, value) => {
 			const structure = fieldId.split(`_`);
 
@@ -23,6 +23,8 @@ const FormLogic = ({ form }) => {
 						currentValues[structure[0]][structure[1]] = value;
 					} else if (structure.length === 3) {
 						currentValues[structure[0]][structure[1]][structure[2]] = value;
+					} else if (structure.length === 4) {
+						currentValues[structure[0]][structure[1]][structure[2]][structure[3]] = value;
 					}
 
 					return currentValues;

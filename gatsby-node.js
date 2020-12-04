@@ -3,9 +3,13 @@ const path = require(`path`),
 	remarkHtml = require(`remark-html`),
 	remarkLint = require(`remark-preset-lint-recommended`),
 	strip = require(`strip-markdown`),
-	generateSlug = require(`./src/utils/generateSlug`);
+	generateSlug = require(`./src/utils/generateSlug`),
+	slug = require(`remark-slug`),
+	headings = require(`remark-autolink-headings`);
 
-const processMarkdown = (markdown) => remark().use(remarkLint).use(remarkHtml).processSync(markdown)
+const processMarkdown = (markdown) => remark().use(remarkLint).use(slug).use(headings)
+		.use(remarkHtml)
+		.processSync(markdown)
 		.toString(),
 	createExcerpt = (markdown) => remark().use(strip).processSync(markdown).toString()
 		.substring(0, 250);

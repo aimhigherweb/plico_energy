@@ -1,0 +1,14 @@
+@use '../variables.scss';
+@use '../extends.scss';
+
+.graphic_404 {
+	width: 90vw;
+	fill: variables.$primary;
+
+	.sun {
+		@include extends.flicker;
+		stroke-width: 20px;
+		stroke: variables.$primary;
+		fill: none;
+	}
+}

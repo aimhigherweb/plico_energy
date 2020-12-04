@@ -38,18 +38,37 @@ $glow_yellow: #ffcc00;
 $glow_orange: #ff7e00;
 $glow_outline: rgba(#ffffff, .4);
 $glow_shadow: rgba($glow_yellow, .5);
+$glow_filter: drop-shadow(-1px -1px 0 $glow_outline)
+	drop-shadow(1px -1px 0 $glow_outline)
+	drop-shadow(-1px 1px 0 $glow_outline)
+	drop-shadow(1px 1px 0 $glow_outline)
+	drop-shadow(0 0 3px $glow_orange)
+	drop-shadow(0 0 12px $glow_yellow)
+	drop-shadow(0 0 2px $glow_orange);
 
-@mixin glow {
+@mixin glow			{
 	path, line, ellipse, rect {
 		transition: filter 5s ease-in-out 5s;
-		filter:
-			drop-shadow(-1px -1px 0 $glow_outline)
-			drop-shadow(1px -1px 0 $glow_outline)
-			drop-shadow(-1px 1px 0 $glow_outline)
-			drop-shadow(1px 1px 0 $glow_outline)
-			drop-shadow(0 0 3px $glow_orange)
-			drop-shadow(0 0 12px $glow_yellow)
-			drop-shadow(0 0 2px $glow_orange);
+		filter: $glow_filter;
+	}
+}
+
+@mixin flicker {
+	path, line, ellipse, rect {
+		filter: none;
+		animation: glow_flicker 3s linear 5;
+	}
+}
+
+@keyframes glow_flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		opacity: 0.99;
+		filter: $glow_filter;
+	}
+
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity: 0.4;
+		filter: none;
 	}
 }
 

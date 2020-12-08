@@ -1,6 +1,6 @@
 @use '../../../styles/variables.scss';
 
-.testimonials {
+.testimonial_part {
 	display: flex;
 	position: relative;
 	flex-wrap: wrap;
@@ -170,7 +170,7 @@
 }
 
 @media(min-width: 40em) {
-	.testimonials {
+	.testimonial_part {
 		align-content: center;
 		align-items: center;
 		margin-top: 100px;
@@ -197,7 +197,7 @@
 	}
 
 	@supports(grid-template-areas: '.') {
-		.testimonials {
+		.testimonial_part {
 			blockquote {
 				grid-gap: 30px;
 				grid-template-areas: 'img .' 'img quote' 'img name' 'img .';
@@ -238,7 +238,7 @@
 }
 
 @media(min-width: 50em) {
-	.testimonials {
+	.testimonial_part {
 		.quote {
 			padding: 40px 60px;
 			font-size: 1.2em;
@@ -266,7 +266,7 @@
 }
 
 @media(min-width: 60em) {
-	.testimonials {
+	.testimonial_part {
 		margin-top: 150px;
 
 		.curve {

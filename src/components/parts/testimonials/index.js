@@ -48,7 +48,7 @@ const Testimonials = ({ testimonials, _uid }) => (
 			const quotes = data.testimonials.edges.filter(({ node }) => testimonials.includes(node.uuid));
 
 			return (
-				<div className="testimonials" style={{ '--testimonials': testimonials.length }}>
+				<div className="testimonial_part" style={{ '--testimonials': testimonials.length }}>
 					<Curve className="curve" />
 					{quotes.map((testimonial, index) => {
 						const {

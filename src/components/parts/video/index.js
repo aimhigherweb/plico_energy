@@ -20,7 +20,7 @@ const Video = ({
 		<div className="video-embed">
 			<button onClick={(e) => { playVideo(videoId, e); }}>
 				<Play/>
-				{featureImage
+				{image
 					&& <Img fluid={image.fluid} />
 				}
 			</button>

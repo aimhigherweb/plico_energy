@@ -124,7 +124,6 @@ export const pageQuery = graphql`
 									}
 								}
 							}
-							video_url
 						}
 						cta_button {
 							cta_link

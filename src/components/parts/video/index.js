@@ -13,13 +13,16 @@ const Video = ({
 		playVideo = (id, e) => {
 			ref.current.setAttribute(`src`, `https://player.vimeo.com/video/${videoId}?autoplay=1&autopause=0`);
 			e.currentTarget.classList.add(`hidden`);
-		};
+		},
+		image = featureImage.video || featureImage.childImageSharp;
 
 	return (
 		<div className="video-embed">
 			<button onClick={(e) => { playVideo(videoId, e); }}>
 				<Play/>
-				{featureImage && <Img fluid={featureImage.video.fluid} />}
+				{featureImage
+					&& <Img fluid={image.fluid} />
+				}
 			</button>
 			<iframe
 				rel="preload"

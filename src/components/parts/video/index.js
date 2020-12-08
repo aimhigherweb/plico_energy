@@ -14,7 +14,7 @@ const Video = ({
 			ref.current.setAttribute(`src`, `https://player.vimeo.com/video/${videoId}?autoplay=1&autopause=0`);
 			e.currentTarget.classList.add(`hidden`);
 		},
-		image = featureImage.video || featureImage.childImageSharp;
+		image = featureImage?.video || featureImage?.childImageSharp;
 
 	return (
 		<div className="video-embed">

@@ -10,7 +10,7 @@ const Post = ({ data }) => {
 			name,
 			fields
 		} = data.storyblokEntry,
-		{ content, feature_image, form } = fields.content;
+		{ content, featureImage, form } = fields.content;
 
 	return (
 		<Layout {...{ classes: `page news_article header_image` }}>
@@ -18,7 +18,7 @@ const Post = ({ data }) => {
 				{...{
 					main_quote: name,
 					media: [{
-						image: feature_image,
+						featureImage,
 						component: `image`,
 					}]
 				}}
@@ -39,8 +39,12 @@ export const pageQuery = graphql`
 			fields {
 				content {
 					content
-					feature_image {
-						filename
+					featureImage {
+						image: childImageSharp {
+							fluid(maxWidth: 3000) {
+								...GatsbyImageSharpFluid_withWebp
+							}
+						}
 					}
 					form
 				}

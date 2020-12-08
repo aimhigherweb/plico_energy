@@ -56,8 +56,25 @@ export const pageQuery = graphql`
 						content
 						media {
 							component
-							image {
-								filename
+							featureImage {
+								image: childImageSharp {
+									fluid(maxWidth: 500) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
+								graphic: childImageSharp {
+									fluid(maxWidth: 700) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
+								video: childImageSharp {
+									fluid(maxWidth: 1000) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
 							}
 						}
 					}
@@ -80,15 +97,23 @@ export const pageQuery = graphql`
 						}
 						media {
 							component
-							image {
-								filename
+							featureImage {
+								childImageSharp {
+									fluid(maxWidth: 1000) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
 							}
 							video_url
 						}
 					}
 					videos {
-						image {
-							filename
+						featureImage {
+							childImageSharp {
+								fluid(maxWidth: 500) {
+									...GatsbyImageSharpFluid_withWebp
+								}
+							}
 						}
 						video_url
 					}
@@ -103,8 +128,12 @@ export const pageQuery = graphql`
 								colour
 							}
 						}
-						image {
-							filename
+						featureImage {
+							childImageSharp {
+								fluid(maxWidth: 300) {
+									...GatsbyImageSharpFluid_withWebp
+								}
+							}
 						}
 					}
 					form_block {

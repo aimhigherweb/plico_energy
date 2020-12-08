@@ -101,9 +101,6 @@ export const pageQuery = graphql`
 						}
 						media {
 							component
-							image {
-								filename
-							}
 							featureImage {
 								url
 								image: childImageSharp {
@@ -130,9 +127,6 @@ export const pageQuery = graphql`
 							content
 							illustration
 							heading
-						}
-						image {
-							filename
 						}
 						testimonials
 						faqs
@@ -216,8 +210,12 @@ export const pageQuery = graphql`
 							}
 						}
 						videos {
-							image {
-								filename
+							featureImage {
+								childImageSharp {
+									fluid(maxWidth: 500) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
 							}
 							video_url
 						}

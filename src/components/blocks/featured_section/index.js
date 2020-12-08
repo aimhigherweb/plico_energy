@@ -10,7 +10,7 @@ import CollapsibleBlock from '../../parts/collapsible_block';
 import './style.scss';
 
 const FeaturedSections = ({ heading, content, sections }) => {
-	const images = sections.some((sect) => (sect.image && sect.image.filename && sect.image.filename == ``)),
+	const images = sections.some((sect) => (sect.featureImage)),
 		blocks = sections.length;
 	let Component = ContentBlock,
 		classes = ``;

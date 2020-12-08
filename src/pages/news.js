@@ -112,9 +112,6 @@ export const pageQuery = graphql`
 						sub_quote
 						media {
 							component
-							image {
-								filename
-							}
 							featureImage {
 								image: childImageSharp {
 									fluid(maxWidth: 3000) {
@@ -153,8 +150,12 @@ export const pageQuery = graphql`
 					tag_list
 					fields {
 						content {
-							feature_image {
-								filename
+							featureImage {
+								childImageSharp {
+									fluid(maxWidth: 300) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
 							}
 							excerpt
 						}

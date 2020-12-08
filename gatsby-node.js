@@ -528,7 +528,7 @@ exports.onCreateNode = async ({
 
 		if ([`faq`, `news`, `testimonials`].includes(node.field_component)) {
 			let dimensions = [300, 300 * 0.8],
-				image = content.feature_image?.filename;
+				image = content.feature_image && content.feature_image.filename;
 
 			if (!image || image == ``) {
 				image = `https://a.storyblok.com/f/96172/4000x2667/899dd3fb21/sun_in_jar.jpg`;

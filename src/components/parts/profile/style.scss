@@ -22,6 +22,12 @@
 		background: variables.$secondary;
 	}
 
+	.role {
+		margin: 0.5em 0 1em;
+		font-family: variables.$font_heading;
+		text-transform: lowercase;
+	}
+
 	h3, .bio {
 		color: inherit;
 	}

@@ -5,7 +5,9 @@ const path = require(`path`),
 	strip = require(`strip-markdown`),
 	generateSlug = require(`./src/utils/generateSlug`),
 	slug = require(`remark-slug`),
-	headings = require(`remark-autolink-headings`);
+	headings = require(`remark-autolink-headings`),
+	{ createRemoteFileNode } = require(`gatsby-source-filesystem`),
+	resizeImage = require(`./src/utils/resizeImage`);
 
 const processMarkdown = (markdown) => remark().use(remarkLint).use(slug).use(headings)
 		.use(remarkHtml)
@@ -164,14 +166,14 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 exports.onCreateNode = async ({
-	node, actions
+	node, actions, store, cache, createNodeId
 }) => {
-	const { createNodeField } = actions;
+	const { createNodeField, createNode } = actions;
 
 	if ([`StoryblokEntry`].includes(node.internal.type)) {
 		const content = JSON.parse(node.content);
 
-		content.excerpt = createExcerpt(content.content);
+		content.excerpt = `${createExcerpt(content.content)}...`;
 		content.content = processMarkdown(content.content);
 
 		if (content.meta) {
@@ -180,6 +182,68 @@ exports.onCreateNode = async ({
 					content.meta[meta] = null;
 				}
 			  }
+		}
+
+		if (content.banner) {
+			const banners = [];
+
+			content.banner.forEach(async (block) => {
+				const medias = [];
+				block.media.forEach(async (media) => {
+					let bannerImage = {},
+						fileNode;
+
+					const image = media.image.filename,
+						{ component } = media;
+
+					if (!RegExp(/\.svg$/).test(image)) {
+						let dimensions = [3000, 3000 * 0.49];
+
+						if (component === `video`) {
+							dimensions = [700, 700 * 0.5625];
+						} else if (component === `image_blob`) {
+							dimensions = [700, 700 * 0.84];
+						} else if (component === `graphic`) {
+							dimensions = [500, 500];
+						}
+
+						const url = resizeImage(image, dimensions);
+
+						fileNode = await createRemoteFileNode({
+							url,
+							parentNode: node.id,
+							createNode,
+							createNodeId,
+							cache,
+							store,
+						});
+					}
+
+					if (fileNode) {
+						bannerImage = { featureImage___NODE: fileNode.id };
+					}
+
+					medias.push({
+						...media,
+						...bannerImage
+					});
+				});
+
+				if (block.sub_quote) {
+					banners.push({
+						...block,
+						media: medias,
+						sub_quote: processMarkdown(block.sub_quote)
+					});
+				} else {
+					banners.push({
+						...block,
+						media: medias
+					});
+				}
+			});
+
+			content.banner = banners;
 		}
 
 		if (node.field_component === `landing_page`) {
@@ -198,7 +262,8 @@ exports.onCreateNode = async ({
 			});
 
 			content.body.forEach((block) => {
-				const blockContent = block;
+				const blockContent = block,
+					medias = [];
 				if (block.content) {
 					blockContent.content = processMarkdown(block.content);
 				}
@@ -207,12 +272,151 @@ exports.onCreateNode = async ({
 						plan.features = processMarkdown(plan.features);
 					});
 				}
-				if (block.media && block.media[0] && block.media[0].content) {
-					blockContent.media[0].content = processMarkdown(block.media[0].content);
+
+				if (block.media) {
+					block.media.forEach(async (media) => {
+						let mediaImage = {},
+							mediaContent = {},
+							fileNode,
+							image = false;
+
+						if (media && media.image && media.image.filename && media.image.filename !== ``) {
+							image = media.image.filename;
+						}
+
+						const { component } = media;
+
+						if (image) {
+							let dimensions = [500, 500 * 0.48];
+
+							if (component === `video`) {
+								dimensions = [700, 700 * 0.5625];
+							} else if (component === `graphic`) {
+								dimensions = [500, 500];
+							} else if (component === `image_blob`) {
+								dimensions = [500, 500 * 0.58];
+							}
+
+							const url = resizeImage(image, dimensions);
+
+							fileNode = await createRemoteFileNode({
+								url,
+								parentNode: node.id,
+								createNode,
+								createNodeId,
+								cache,
+								store,
+							});
+						}
+
+						if (fileNode) {
+							mediaImage = { featureImage___NODE: fileNode.id };
+						}
+
+						if (media.content) {
+							mediaContent = {
+								content: processMarkdown(media.content)
+							};
+						}
+
+						medias.push({
+							...media,
+							...mediaContent,
+							...mediaImage
+						});
+					});
+
+					blockContent.media = medias;
 				}
+
 				if (block.sections) {
-					block.sections.forEach((section) => {
+					block.sections.forEach(async (section) => {
+						let fileNode,
+							image = false;
+
+						if (section.image && section.image.filename && section.image.filename !== ``) {
+							image = section.image.filename;
+						}
+
+						if (image) {
+							const dimensions = [300, 300 * 0.8],
+								url = resizeImage(image, dimensions);
+
+							fileNode = await createRemoteFileNode({
+								url,
+								parentNode: node.id,
+								createNode,
+								createNodeId,
+								cache,
+								store,
+							});
+						}
+
+						if (fileNode) {
+							section.featureImage___NODE = fileNode.id;
+						}
+
 						section.content = processMarkdown(section.content);
+					});
+				}
+
+				if (block.profiles) {
+					block.profiles.forEach(async (profile) => {
+						let fileNode,
+							image = false;
+
+						if (profile.image && profile.image.filename && profile.image.filename !== ``) {
+							image = profile.image.filename;
+						}
+
+						if (image) {
+							const dimensions = [300, 400],
+								url = resizeImage(image, dimensions);
+
+							fileNode = await createRemoteFileNode({
+								url,
+								parentNode: node.id,
+								createNode,
+								createNodeId,
+								cache,
+								store,
+							});
+						}
+
+						if (fileNode) {
+							profile.featureImage___NODE = fileNode.id;
+						}
+
+						profile.bio = processMarkdown(profile.bio);
+					});
+				}
+
+				if (block.logos) {
+					block.logos.forEach(async (logo) => {
+						let fileNode,
+							image = false;
+
+						if (logo.filename && logo.filename !== ``) {
+							image = logo.filename;
+						}
+
+						if (image) {
+							const dimensions = [200, 0],
+								url = resizeImage(image, dimensions);
+
+							fileNode = await createRemoteFileNode({
+								url,
+								parentNode: node.id,
+								createNode,
+								createNodeId,
+								cache,
+								store,
+							});
+						}
+
+						if (fileNode) {
+							logo.featureImage___NODE = fileNode.id;
+						}
 					});
 				}
 
@@ -320,6 +524,33 @@ exports.onCreateNode = async ({
 				fields.push(fieldContent);
 			});
 			content.fields = fields;
+		}
+
+		if ([`faq`, `news`, `testimonials`].includes(node.field_component)) {
+			let dimensions = [300, 300 * 0.8],
+				image = content.feature_image?.filename;
+
+			if (!image || image == ``) {
+				image = `https://a.storyblok.com/f/96172/4000x2667/899dd3fb21/sun_in_jar.jpg`;
+			}
+
+			if (node.field_component === `testimonials`) {
+				dimensions = [200, 200];
+			}
+
+			const url = resizeImage(image, dimensions),
+				fileNode = await createRemoteFileNode({
+					url,
+					parentNode: node.id,
+					createNode,
+					createNodeId,
+					cache,
+					store,
+				});
+
+			if (fileNode) {
+				content.featureImage___NODE = fileNode.id;
+			}
 		}
 
 		createNodeField({

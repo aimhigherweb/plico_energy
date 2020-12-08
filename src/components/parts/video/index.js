@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
 import Play from '../../../img/play.svg';
@@ -7,21 +6,20 @@ import Play from '../../../img/play.svg';
 import './style.scss';
 
 const Video = ({
-	video_url, image
+	video_url, featureImage
 }) => {
 	const ref = useRef(null),
 	 videoId = video_url.match(/(?:http:|https:|)\/\/(?:player.|www.)?vimeo\.com\/(?:video\/|embed\/|watch\?\S*v=|v\/)?(\d*)/i)[1],
 		playVideo = (id, e) => {
 			ref.current.setAttribute(`src`, `https://player.vimeo.com/video/${videoId}?autoplay=1&autopause=0`);
 			e.currentTarget.classList.add(`hidden`);
-		},
-		video_maxWidth = 1000;
+		};
 
 	return (
 		<div className="video-embed">
 			<button onClick={(e) => { playVideo(videoId, e); }}>
 				<Play/>
-				{(image && image.filename) && <Img fluid={getFluidGatsbyImage(image.filename, { maxWidth: video_maxWidth, maxHeight: video_maxWidth * 0.5625 })} />}
+				{featureImage && <Img fluid={featureImage.video.fluid} />}
 			</button>
 			<iframe
 				rel="preload"

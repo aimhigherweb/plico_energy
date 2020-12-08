@@ -27,8 +27,12 @@ const FAQsBlock = ({
 							slug
 							fields {
 								content {
-									feature_image {
-										filename
+									featureImage {
+										childImageSharp {
+											fluid(maxWidth: 300) {
+												...GatsbyImageSharpFluid_withWebp
+											}
+										}
 									}
 									excerpt
 								}

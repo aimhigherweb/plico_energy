@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
-import { getFixedGatsbyImage, getFluidGatsbyImage } from 'gatsby-storyblok-image';
+import React, { Fragment } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import Animated from '../animated_svg';
@@ -28,8 +27,12 @@ const Testimonials = ({ testimonials, _uid }) => (
 							fields {
 								content {
 									location
-									image {
-										filename
+									featureImage {
+										childImageSharp {
+											fixed(width: 200) {
+												...GatsbyImageSharpFixed_withWebp
+											}
+										}
 									}
 									name
 									quote
@@ -44,18 +47,12 @@ const Testimonials = ({ testimonials, _uid }) => (
 		render={(data) => {
 			const quotes = data.testimonials.edges.filter(({ node }) => testimonials.includes(node.uuid));
 
-			// useEffect(() => {
-			// 	document.querySelectorAll(`.testimonials`).forEach((block) => {
-			// 		block.querySelector(`input`).checked = true;
-			// 	});
-			// });
-
 			return (
 				<div className="testimonials" style={{ '--testimonials': testimonials.length }}>
 					<Curve className="curve" />
 					{quotes.map((testimonial, index) => {
 						const {
-							name, quote, location, image
+							name, quote, location, featureImage
 						} = testimonial.node.fields.content;
 
 						return (
@@ -75,7 +72,7 @@ const Testimonials = ({ testimonials, _uid }) => (
 											<Sun />
 										</Animated>
 										<Img
-											fluid={getFluidGatsbyImage(image.filename, { maxWidth: 200, maxHeight: 200 })}
+											fixed={featureImage.childImageSharp.fixed}
 											style={{
 												width: `200px`,
 												height: `200px`

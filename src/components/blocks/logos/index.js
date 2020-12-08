@@ -14,8 +14,10 @@ const LogoBlock = ({
 	>
 		<h2>{heading}</h2>
 		<ul className="logos">
-			{logos.map(({ filename }) => (
-				<li key={filename}><Img fluid={getFluidGatsbyImage(filename, { maxWidth: 200 })} /></li>
+			{logos.map(({ featureImage }) => (
+				<li key={featureImage.childImageSharp.id}>
+					<Img fixed={featureImage.childImageSharp.fixed} />
+				</li>
 			))}
 		</ul>
 	</Block>

@@ -3,7 +3,13 @@ const resizeImage = (image, dimensions = [500, 0]) => {
 		storyblokUrl = `https://a.storyblok.com`,
 		imagePath = image.replace(storyblokUrl, ``);
 
-	return `${imageService}${dimensions[0]}x${dimensions[1]}${imagePath}`;
+	let newImage = `${imageService}${Math.round(dimensions[0])}x${Math.round(dimensions[1])}${imagePath}`;
+
+	if (RegExp(/\.svg$/).test(image)) {
+		newImage = image;
+	}
+
+	return newImage;
 };
 
 module.exports = resizeImage;

@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import CTA from '../cta';
 
 import './styles.scss';
 
 const Plan = ({
-	cta, description, features, name, price
+	cta, description, features, name, price, callout
 }) => (
-	<li className="plan">
+	<li className={`plan ${(callout && callout !== ``) && `callout`}`}>
+		<p className="callout">{callout}</p>
 		<h3>{name}</h3>
+
 		<p className="description">{description}</p>
 		<div className="features">
-			<p className="price">${price.split(`.`)[0]}<small>.{price.split(`.`)[1]}</small></p>
-			<small className="frequency">per week</small>
+			{(price && price !== ``)
+				&& <Fragment>
+					<p className="price">${price.split(`.`)[0]}<small>.{price.split(`.`)[1]}</small></p>
+					<small className="frequency">per week</small>
+				</Fragment>
+			}
 			<div dangerouslySetInnerHTML={{ __html: features }} />
 			{cta && <CTA cta_button={cta} />}
 		</div>

@@ -30,6 +30,12 @@ module.exports = {
 			}
 		},
 		{
+			resolve: `gatsby-transformer-sharp`
+		},
+		{
+			resolve: `gatsby-plugin-sharp`
+		},
+		{
 			resolve: `gatsby-source-storyblok`,
 			options: {
 				accessToken: process.env.STORYBLOK_TOKEN,

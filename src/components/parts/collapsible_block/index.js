@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
-import Img from 'gatsby-image';
-
-import CTA from "../cta";
 
 import './style.scss';
 

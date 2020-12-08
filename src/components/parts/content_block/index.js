@@ -1,5 +1,4 @@
 import React from 'react';
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 
 import CTA from "../cta";
@@ -7,7 +6,7 @@ import CTA from "../cta";
 import './style.scss';
 
 const ContentBlock = ({
-	heading, content, image, cta
+	heading, content, featureImage, cta
 }) => (
 	<article className="repeatable_content">
 		<div className="content">
@@ -16,15 +15,9 @@ const ContentBlock = ({
 			{cta && <CTA {...{ cta_button: cta }} />}
 		</div>
 
-		{(image && image.filename && image.filename !== ``)
+		{(featureImage)
 			&& <Img
-				fluid={getFluidGatsbyImage(
-					image.filename,
-					{
-						maxWidth: 300,
-						maxHeight: 300 * 0.8
-					}
-				)}
+				fluid={featureImage.childImageSharp.fluid}
 			/>
 		}
 

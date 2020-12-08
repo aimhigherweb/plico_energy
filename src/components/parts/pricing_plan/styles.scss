@@ -2,15 +2,22 @@
 
 .plan {
 	display: flex;
+	position: relative;
 	flex: 1 1 300px;
 	flex-direction: column;
 	flex-wrap: wrap;
 	max-width: 400px;
 	margin: 30px auto;
 	padding: 0 0 20px;
+	border-radius: 25px 25px 0 0;
 	background: variables.$grey;
 	list-style: none;
 	text-align: center;
+
+	&.callout {
+		border: 3px solid variables.$secondary;
+		border-top: none;
+	}
 
 	h3 {
 		width: 100%;
@@ -24,7 +31,7 @@
 
 	.description {
 		width: 100%;
-		margin: 0;
+		margin: 0 0 40px;
 		padding: 5px;
 		background: variables.$secondary;
 		color: #ffffff;
@@ -32,9 +39,23 @@
 		text-transform: lowercase;
 	}
 
+	.callout {
+		margin: 0;
+		padding: 0.5em 20px;
+		border-radius: 20px 20px 0 0;
+		background: variables.$secondary;
+		font-size: 2em;
+		font-weight: bold;
+
+		&:empty {
+			height: 0;
+			background: #ffffff;
+		}
+	}
+
 	.price {
 		width: 100%;
-		margin-top: 0.8em;
+		margin-top: 0;
 		margin-bottom: 0;
 		color: variables.$primary;
 		font-family: variables.$font_heading;
@@ -50,7 +71,7 @@
 
 	.frequency {
 		display: block;
-		margin: 0 0 50px;
+		margin: 0;
 		font-size: 1em;
 	}
 
@@ -63,7 +84,7 @@
 	}
 
 	ul {
-		margin: 0;
+		margin: 50px 0 0;
 		padding: 0 20px;
 		list-style: none;
 
@@ -79,10 +100,34 @@
 	}
 }
 
+@media(min-width: 40em) {
+	.plan {
+		flex: 1 1 250px;
+
+		.callout {
+			height: 2.5em;
+
+			&:empty {
+				height: 2.5em;
+			}
+		}
+	}
+}
+
 @media(min-width: 50em) {
 	.plan {
+		flex: 1 1 300px;
+
+		&.callout {
+			border-width: 5px;
+		}
+
 		h3 {
 			font-size: 2em;
+		}
+
+		.description {
+			margin-bottom: 70px;
 		}
 
 		.price {

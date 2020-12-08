@@ -58,6 +58,20 @@ export const pageQuery = graphql`
 							image {
 								filename
 							}
+							featureImage {
+								image: childImageSharp {
+									fluid(maxWidth: 3000) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
+								graphic: childImageSharp {
+									fluid(maxWidth: 700) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
+							}
 							video_url
 						}
 						cta_button {
@@ -91,6 +105,26 @@ export const pageQuery = graphql`
 							component
 							image {
 								filename
+							}
+							featureImage {
+								image: childImageSharp {
+									fluid(maxWidth: 500) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
+								graphic: childImageSharp {
+									fluid(maxWidth: 700) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
+								video: childImageSharp {
+									fluid(maxWidth: 1000) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
 							}
 							video_url
 							position
@@ -137,8 +171,12 @@ export const pageQuery = graphql`
 									colour
 								}
 							}
-							image {
-								filename
+							featureImage {
+								childImageSharp {
+									fluid(maxWidth: 300) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
 							}
 						}
 						disclaimer
@@ -151,6 +189,7 @@ export const pageQuery = graphql`
 								}
 							}
 							description
+							callout
 							features
 							name
 							price
@@ -166,7 +205,14 @@ export const pageQuery = graphql`
 							}
 						}
 						logos {
-							filename
+							featureImage {
+								childImageSharp {
+									fixed(width: 200) {
+										...GatsbyImageSharpFixed_withWebp
+									}
+									id
+								}
+							}
 						}
 						videos {
 							image {
@@ -179,8 +225,12 @@ export const pageQuery = graphql`
 							name
 							bio
 							linkedin
-							image {
-								filename
+							featureImage {
+								childImageSharp {
+									fluid(maxWidth: 300) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
 							}
 						}
 					}

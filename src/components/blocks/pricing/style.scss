@@ -2,7 +2,7 @@
 	line-height: 1.5;
 
 	.plans {
-		display: flex;
+
 		flex-wrap: wrap;
 		margin: 0 auto;
 		padding: 0;
@@ -17,6 +17,7 @@
 @media(min-width: 40em) {
 	.pricing_block {
 		.plans {
+			display: flex;
 			justify-content: center;
 		}
 

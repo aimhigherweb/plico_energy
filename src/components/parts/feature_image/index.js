@@ -1,5 +1,4 @@
 import React from 'react';
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image';
 import Img from 'gatsby-image';
 import SVG from 'react-inlinesvg';
 
@@ -10,22 +9,21 @@ import Quote from '../quote';
 import Fact from '../fact';
 
 const FeatureImage = ({
-	image, video_url, component, position, illustration, heading, content, width = 500, heightRatio = 0.49, banner
+	image, featureImage, video_url, component, position, illustration, heading, content, banner
 }) => {
 	let Media = null;
-
 	if (component === `video`) {
-		Media = <Video {...{ video_url, image }} />;
+		Media = <Video {...{ video_url, featureImage }} />;
 	} else if (component === `graphic`) {
 		Media = <SVG src={image.filename} />;
 	} else if (component === `image_blob`) {
 		if (banner) {
-			Media = <BannerBlob {...{ ...image, width }} />;
+			Media = <BannerBlob {...{ ...featureImage }} />;
 		} else {
-			Media = <ImageBlob {...{ ...image, width }} />;
+			Media = <ImageBlob {...{ ...featureImage }} />;
 		}
 	} else if (component === `image`) {
-		Media = <Img className={`align_${position} image`} fluid={getFluidGatsbyImage(image.filename, { maxWidth: width, maxHeight: heightRatio * width })} />;
+		Media = <Img className={`align_${position} image`} fluid={featureImage.image.fluid} />;
 	} else if (component === `quote`) {
 		Media = <Quote {...{ illustration, content }} />;
 	} else if (component === `fact`) {

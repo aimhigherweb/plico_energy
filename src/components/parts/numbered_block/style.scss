@@ -1,44 +1,51 @@
-.repeatable_content {
+@use '../../../styles/variables.scss';
+
+.article {
 	&.numbered {
-		.gatsby-image-wrapper {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			order: -1;
-			height: auto;
-			padding: 30px;
-			font-size: 5em;
-
-			p {
-				margin: 0;
-			}
+		.content {
+			background: variables.$secondary;
+			color: #ffffff;
 		}
-	}
-}
 
-@media(min-width: 30em) {
-	.repeatable_content {
-		&.numbered {
-			flex-wrap: nowrap;
-			max-width: unset;
+		&:nth-child(2n) {
+			.content {
+				background: variables.$primary;
 
-			.gatsby-image-wrapper {
-				width: auto;
-				padding-right: 50px;
-				padding-left: 50px;
+				a {
+					color: variables.$secondary;
+
+					&:hover, &:focus {
+						background: none;
+					}
+				}
 			}
 
-			&:nth-child(2n) {
-				.gatsby-image-wrapper {
-					order: 1;
+			&:hover {
+				.content {
+					background: variables.$primary;
+					color: #ffffff;
 				}
 			}
 		}
 	}
 }
 
+@media(min-width: 40em) {
+	.article {
+		&.numbered {
+			flex-wrap: nowrap;
+			max-width: unset;
+
+			.gatsby-image-wrapper {
+				width: 30vw;
+				max-width: 300px;
+			}
+		}
+	}
+}
+
 @media(min-width: 60em) {
-	.repeatable_content {
+	.article {
 		&.numbered {
 			.gatsby-image-wrapper {
 				width: 200px;

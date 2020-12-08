@@ -6,6 +6,8 @@
 	height: 90vw * (9/16);
 	max-height: 800px * (9/16);
 	margin: 20px auto;
+	overflow: hidden;
+	border-radius: 20px;
 
 	svg {
 		height: 50px;

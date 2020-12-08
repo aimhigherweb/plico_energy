@@ -115,6 +115,18 @@ export const pageQuery = graphql`
 							image {
 								filename
 							}
+							featureImage {
+								image: childImageSharp {
+									fluid(maxWidth: 3000) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
+								graphic: childImageSharp {
+									fluid(maxWidth: 700) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
+							}
 							video_url
 						}
 						cta_button {

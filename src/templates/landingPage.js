@@ -55,9 +55,6 @@ export const pageQuery = graphql`
 						additional_quote
 						media {
 							component
-							image {
-								filename
-							}
 							featureImage {
 								image: childImageSharp {
 									fluid(maxWidth: 3000) {
@@ -71,6 +68,7 @@ export const pageQuery = graphql`
 										src
 									}
 								}
+								url
 							}
 							video_url
 						}
@@ -107,6 +105,7 @@ export const pageQuery = graphql`
 								filename
 							}
 							featureImage {
+								url
 								image: childImageSharp {
 									fluid(maxWidth: 500) {
 										...GatsbyImageSharpFluid_withWebp
@@ -172,6 +171,7 @@ export const pageQuery = graphql`
 								}
 							}
 							featureImage {
+								url
 								childImageSharp {
 									fluid(maxWidth: 300) {
 										...GatsbyImageSharpFluid_withWebp
@@ -206,6 +206,7 @@ export const pageQuery = graphql`
 						}
 						logos {
 							featureImage {
+								url
 								childImageSharp {
 									fixed(width: 200) {
 										...GatsbyImageSharpFixed_withWebp
@@ -226,6 +227,7 @@ export const pageQuery = graphql`
 							bio
 							linkedin
 							featureImage {
+								url
 								childImageSharp {
 									fluid(maxWidth: 300) {
 										...GatsbyImageSharpFluid_withWebp

@@ -49,6 +49,10 @@
 		svg {
 			@include extends.glow;
 		}
+
+		img {
+			width: 100%;
+		}
 	}
 
 	&.graphic {

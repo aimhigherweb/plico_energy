@@ -196,7 +196,7 @@ exports.onCreateNode = async ({
 					const image = media.image.filename,
 						{ component } = media;
 
-					if (!RegExp(/\.svg$/).test(image)) {
+					if (image) {
 						let dimensions = [3000, 3000 * 0.49];
 
 						if (component === `video`) {

@@ -9,13 +9,18 @@ import Quote from '../quote';
 import Fact from '../fact';
 
 const FeatureImage = ({
-	image, featureImage, video_url, component, position, illustration, heading, content, banner
+	featureImage, video_url, component, position, illustration, heading, content, banner
 }) => {
 	let Media = null;
 	if (component === `video`) {
 		Media = <Video {...{ video_url, featureImage }} />;
 	} else if (component === `graphic`) {
-		Media = <SVG src={image.filename} />;
+		console.log(featureImage.childImageSharp || featureImage.graphic);
+		if (featureImage.childImageSharp || featureImage.graphic) {
+			Media = <Img fluid={featureImage.graphic.fluid || featureImage.childImageSharp.fluid} />;
+		} else {
+			Media = <SVG src={featureImage.url} />;
+		}
 	} else if (component === `image_blob`) {
 		if (banner) {
 			Media = <BannerBlob {...{ ...featureImage }} />;

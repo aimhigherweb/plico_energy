@@ -6,6 +6,7 @@ module.exports = {
 		siteUrl: `https://plicoenergy.com.au`
 	},
 	plugins: [
+		`gatsby-plugin-react-helmet`,
 		{
 			resolve: `gatsby-plugin-react-svg`,
 			options: {

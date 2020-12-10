@@ -13,7 +13,7 @@ svg.animated {
 		stroke-width: 10px;
 		stroke-linecap: round;
 		stroke: variables.$primary;
-		stroke-opacity: 0;
+		// stroke-opacity: 0;
 
 		@media(prefers-reduced-motion: reduce) {
 			stroke-opacity: 1;

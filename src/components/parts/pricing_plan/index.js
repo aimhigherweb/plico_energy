@@ -13,11 +13,14 @@ const Plan = ({
 
 		<p className="description">{description}</p>
 		<div className="features">
+			<p className="price">
+				{(price && price !== ``)
+					? `${price.split(`.`)[0]}<small>.${price.split(`.`)[1]}</small>`
+					: `TBC`
+				}
+			</p>
 			{(price && price !== ``)
-				&& <Fragment>
-					<p className="price">${price.split(`.`)[0]}<small>.{price.split(`.`)[1]}</small></p>
-					<small className="frequency">per week</small>
-				</Fragment>
+				&& <small className="frequency">per week</small>
 			}
 			<div dangerouslySetInnerHTML={{ __html: features }} />
 			{cta && <CTA cta_button={cta} />}

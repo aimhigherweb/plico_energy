@@ -114,7 +114,7 @@ const SystemConfiguration = ({
 					id={`weekly-cost${_uid}`}
 					name={`${field_id}_weeklyCost`}
 					value={`$ ${cost}`}
-					readonly
+					readOnly
 				/>
 			</Fragment>
 			}

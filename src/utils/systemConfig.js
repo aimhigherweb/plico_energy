@@ -11,6 +11,7 @@ const systemConfig = ({
 		}
 	}).then((res) => res.json())
 		.then((data) => {
+			console.log(data);
 			if (setMessage) {
 				setMessage(null);
 			}

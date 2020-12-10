@@ -8,6 +8,7 @@ const SystemConfiguration = ({
 	const [inverters, setInverters] = useState([]),
 		[batteries, setBatteries] = useState([]),
 		[systems, setSystems] = useState(false),
+		[numSystems, setNumSystems] = useState(false),
 		[pricing, setPrice] = useState({}),
 		[cost, setCost] = useState(false),
 		[message, setMessage] = useState(`Loading Options`),
@@ -23,21 +24,41 @@ const SystemConfiguration = ({
 			});
 			fieldChanged(`${field_id}_inverterId`, e.target.value);
 		},
-		selectBattery = (e) => {
-			setCost(false);
-			setPrice({});
-			setSystems(true);
-			systemConfig({
-				query: `products/${e.target.value}?includepricing`,
-				setFunction: setPrice,
-				values
-			});
-			fieldChanged(`${field_id}_productId`, e.target.value);
-		},
 		selectSystems = (e) => {
-			setCost(pricing.weeklyFee * e.target.value);
-			fieldChanged(`${field_id}_numberOfSystems`, e.target.value);
-			fieldChanged(`${field_id}_weeklyCost`, pricing.weeklyFee * e.target.value);
+			setNumSystems(parseInt(e));
+
+			if (pricing.weeklyFee) {
+				setCost(pricing.weeklyFee * e);
+				fieldChanged(`${field_id}_weeklyCost`, pricing.weeklyFee * e);
+			}
+
+			fieldChanged(`${field_id}_numberOfSystems`, e);
+		},
+		updatePrice = (data) => {
+			setPrice(data);
+
+			if (data.weeklyFee) {
+				setCost(data.weeklyFee * numSystems);
+				fieldChanged(`${field_id}_weeklyCost`, data.weeklyFee * numSystems);
+			}
+		},
+		selectBattery = (e) => {
+			if (numSystems) {
+				systemConfig({
+					query: `products/${e.target.value}?includepricing`,
+					setFunction: updatePrice,
+					values
+				});
+			} else {
+				systemConfig({
+					query: `products/${e.target.value}?includepricing`,
+					setFunction: setPrice,
+					values
+				});
+			}
+
+			setSystems(true);
+			fieldChanged(`${field_id}_productId`, e.target.value);
 		};
 
 	useEffect(() => {
@@ -97,7 +118,7 @@ const SystemConfiguration = ({
 				<select
 					id={`number-systems${_uid}`}
 					name={`${field_id}_numberOfSystems`}
-					onChange={(e) => selectSystems(e)}
+					onChange={(e) => selectSystems(e.target.value)}
 				>
 					<option default>Please call me to discuss</option>
 					<option value="1">1</option>
@@ -121,7 +142,7 @@ const SystemConfiguration = ({
 			{cost
 			&& 	<fieldset>
 				<legend>The information I have provided is true and correct to the best of my/our knowledge.</legend>
-				<div class="options">
+				<div className="options">
 					<input
 						type="radio"
 						id={`agreement${_uid}_yes`}

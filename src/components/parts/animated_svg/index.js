@@ -25,7 +25,7 @@ const Animated = ({ children, className, position }) => {
 	// };
 
 	return (
-		<div ref={ref} className={className}>
+		<div ref={ref} className={`animated_svg ${className}`}>
 			{/* {position === `top`
 				&& <span className="animated-offset">
 					<Waypoint onEnter={runAnimation}/>

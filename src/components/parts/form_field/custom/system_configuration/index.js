@@ -32,7 +32,7 @@ const SystemConfiguration = ({
 				setFunction: setPrice,
 				values
 			});
-			fieldChanged(`${field_id}_batteryId`, e.target.value);
+			fieldChanged(`${field_id}_productId`, e.target.value);
 		},
 		selectSystems = (e) => {
 			setCost(pricing.weeklyFee * e.target.value);
@@ -78,7 +78,7 @@ const SystemConfiguration = ({
 				<label htmlFor={`batteries${_uid}`}>Battery storage option</label>
 				<select
 					id={`batteries${_uid}`}
-					name={`${field_id}_batteryId`}
+					name={`${field_id}_productId`}
 					onChange={(e) => selectBattery(e)}
 				>
 					<option default>Please call me to discuss</option>

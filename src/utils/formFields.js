@@ -136,7 +136,7 @@ const customFields = (type, slug) => {
 	else if (type === `system_configuration`) {
 		fields = {
 				inverterId: ``,
-				batteryId: ``,
+				productId: ``,
 				'numberOfSystems': ``,
 				'weeklyCost': ``,
 				agreement: ``,

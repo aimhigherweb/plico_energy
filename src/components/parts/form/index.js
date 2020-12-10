@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import FormLogic from '../form_logic';
 
-import formFields from '../../../utils/formFields';
+import { staticFields } from '../../../utils/formFields';
 
 import './style.scss';
 
@@ -106,7 +106,7 @@ const Form = ({ form }) => (
 						{/* <input type="hidden" name="form-name" value={`custom_${formData.slug}`} /> */}
 						{/* <input type="hidden" name="bot-field" /> */}
 						<input type="text" name="values" />
-						{Object.keys(formFields(form_fields)).map((field) => (
+						{staticFields(form_fields).map((field) => (
 							<input key={field} type="text" name={field} />
 						))}
 					</form>

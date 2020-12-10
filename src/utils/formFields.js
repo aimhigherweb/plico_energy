@@ -1,7 +1,36 @@
 /* eslint-disable one-var */
 import React, {Fragment} from 'react';
 
-import generateSlug from './generateSlug';
+const customFields = (type, slug) => {
+	let fields = {};
+	if (type === `call_between_time`) {
+		fields = {
+				startTime: ``,
+				endTime: ``
+		};
+	}
+	else if (type === `address`) {
+		fields = {
+				'streetAddress1': ``,
+				'streetAddress2': ``,
+				suburb: ``,
+				state: `wa`,
+				postcode: ``,
+				country: `Australia`,
+		};
+	}
+	else if (type === `system_configuration`) {
+		fields = {
+				inverterId: ``,
+				productId: ``,
+				'numberOfSystems': ``,
+				'weeklyCost': ``,
+				agreement: ``,
+		};
+	}
+
+	return fields;
+};
 
 const formFields = (formData) => {
 	let fieldsObject = {};
@@ -115,38 +144,6 @@ const formFields = (formData) => {
 	return fieldsObject;
 };
 
-const customFields = (type, slug) => {
-	let fields = {};
-	if (type === `call_between_time`) {
-		fields = {
-				startTime: ``,
-				endTime: ``
-		};
-	}
-	else if (type === `address`) {
-		fields = {
-				'streetAddress1': ``,
-				'streetAddress2': ``,
-				suburb: ``,
-				state: `wa`,
-				postcode: ``,
-				country: `Australia`,
-		};
-	}
-	else if (type === `system_configuration`) {
-		fields = {
-				inverterId: ``,
-				productId: ``,
-				'numberOfSystems': ``,
-				'weeklyCost': ``,
-				agreement: ``,
-		};
-	}
-
-	return fields;
-};
-
-
 export const checkConditions = (values, conditional) => {
 	if (!conditional || conditional.field == ``) {
 		return true;
@@ -176,5 +173,98 @@ export const checkConditions = (values, conditional) => {
 	return false;
 
 };
+
+export const staticFields = (form_fields) => {
+	const fields = [],
+	fieldsObject = formFields(form_fields)
+
+	Object.keys(fieldsObject).forEach((sf1) => {
+		const f1 = fieldsObject[sf1];
+		if (typeof f1 !== `object`) {
+			fields.push(sf1)
+		}
+		else {
+			Object.keys(f1).forEach((sf2) => {
+				const f2 = f1[sf2];
+	
+				if (typeof f2 !== `object`) {
+					fields.push(`${sf1}_${sf2}`)
+				}
+				else {
+					Object.keys(f2).forEach((sf3) => {
+						const f3 = f2[sf3];
+						if (typeof f3 !== `object`) {
+							fields.push(`${sf1}_${sf2}_${sf3}`)
+						}
+						else {
+							Object.keys(f3).forEach((sf4) => {
+								const f4 = f3[sf4];
+								if (typeof f4 !== `object`) {
+									fields.push(`${sf1}_${sf2}_${sf3}_${sf4}`)
+								}
+							});
+						}
+					});
+				}	
+				
+			});
+		}
+	})
+
+	return fields
+}
+
+export const fieldData = (data) => {
+	let fields = {}
+
+	Object.keys(data).forEach((sf1) => {
+		const f1 = data[sf1];
+		if (typeof f1 !== `object`) {
+			fields = {
+				...fields,
+				[sf1]: f1
+			}
+		}
+		else {
+			Object.keys(f1).forEach((sf2) => {
+				const f2 = f1[sf2];
+	
+				if (typeof f2 !== `object`) {
+					fields = {
+						...fields,
+						[`${sf1}_${sf2}`]: f2
+					}
+				}
+				else {
+					Object.keys(f2).forEach((sf3) => {
+						const f3 = f2[sf3];
+						if (typeof f3 !== `object`) {
+							fields = {
+								...fields,
+								[`${sf1}_${sf2}_${sf3}`]: f3
+							}
+						}
+						else {
+							Object.keys(f3).forEach((sf4) => {
+								const f4 = f3[sf4];
+								if (typeof f4 !== `object`) {
+									fields = {
+										...fields,
+										[`${sf1}_${sf2}_${sf3}_${sf4}`]: f4
+									}
+								}
+							});
+						}
+					});
+				}	
+				
+			});
+		}
+	})
+
+	console.log(fields)
+
+	return fields
+}
 
 export default formFields;

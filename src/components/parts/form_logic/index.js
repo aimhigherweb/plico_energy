@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
-import formFields, { checkConditions } from '../../../utils/formFields';
+import formFields, { checkConditions, fieldData } from '../../../utils/formFields';
 import generateSlug from '../../../utils/generateSlug';
 
 import Field from '../form_field';
@@ -95,6 +95,7 @@ const FormLogic = ({ form }) => {
 						body: encode({
 							'form-name': `custom_${form.slug}`,
 							...values,
+							...fieldData(values),
 							values: JSON.stringify(values)
 						})
 					})

@@ -52,6 +52,10 @@ header {
 	.logo {
 		display: block;
 		height: 100px;
+
+		svg {
+			height: 100px;
+		}
 	}
 }
 
@@ -191,7 +195,10 @@ body[class*='header_'] {
 
 		.logo {
 			flex: 0 1 100px;
-			height: 100%;
+
+			svg {
+				height: 100%;
+			}
 		}
 
 		.curve {

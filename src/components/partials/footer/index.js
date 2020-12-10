@@ -22,8 +22,10 @@ const Footer = () => (
 				site: storyblokEntry(full_slug: {eq: "details"}) {
 					fields {
 						content {
-							logo {
-								filename
+							siteLogo {
+								childInlineSvg {
+									content
+								}
 							}
 							phone
 							email
@@ -37,8 +39,7 @@ const Footer = () => (
 			<footer>
 				<div className="container">
 					<Curve className="curve" />
-					<Link to="/" className="logo">
-						<SVG className="logo" src={site.fields.content.logo.filename} />
+					<Link className="logo" to="/" dangerouslySetInnerHTML={{ __html: site.fields.content.siteLogo.childInlineSvg.content }}>
 					</Link>
 					<Animated className="plug">
 						<Plug />

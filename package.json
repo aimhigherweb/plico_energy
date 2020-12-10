@@ -36,6 +36,7 @@
     "gatsby-source-filesystem": "^2.7.0",
     "gatsby-source-storyblok": "^1.2.0",
     "gatsby-storyblok-image": "^0.2.3",
+    "gatsby-transformer-inline-svg-v2": "^1.1.0",
     "gatsby-transformer-sharp": "^2.8.0",
     "lazy-line-painter": "^1.9.6",
     "react": "^17.0.1",

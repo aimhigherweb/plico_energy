@@ -15,8 +15,10 @@ const Header = () => (
 				site: storyblokEntry(full_slug: {eq: "details"}) {
 					fields {
 						content {
-							logo {
-								filename
+							siteLogo {
+								childInlineSvg {
+									content
+								}
 							}
 						}
 					}
@@ -26,7 +28,8 @@ const Header = () => (
 		render={({ site }) => (
 			<header>
 				<Curve className="curve" />
-				<Link className="logo" to="/"><SVG src={site.fields.content.logo.filename} /></Link>
+				<Link className="logo" to="/" dangerouslySetInnerHTML={{ __html: site.fields.content.siteLogo.childInlineSvg.content }}>
+				</Link>
 				<Menu />
 			</header>
 		)}

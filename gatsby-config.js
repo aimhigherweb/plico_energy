@@ -7,6 +7,7 @@ module.exports = {
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
+		`gatsby-transformer-inline-svg-v2`,
 		{
 			resolve: `gatsby-plugin-react-svg`,
 			options: {

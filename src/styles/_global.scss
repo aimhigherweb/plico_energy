@@ -21,11 +21,11 @@ html, body {
 }
 
 .logo {
-	.cls-1 {
+	[class*='cls-1'] {
 		fill: #ffffff;
 	}
 
-	.cls-2 {
+	[class*='cls-2'] {
 		fill: variables.$primary;
 	}
 }

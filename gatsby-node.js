@@ -540,6 +540,23 @@ exports.onCreateNode = async ({
 			}
 		}
 
+		if (node.full_slug === `details`) {
+			const image = content.logo && content.logo.filename,
+				url = resizeImage(image, [200, 0]),
+				fileNode = await createRemoteFileNode({
+					url,
+					parentNode: node.id,
+					createNode,
+					createNodeId,
+					cache,
+					store,
+				});
+
+			if (fileNode) {
+				content.siteLogo___NODE = fileNode.id;
+			}
+		}
+
 		createNodeField({
 			name: `content`,
 			node,

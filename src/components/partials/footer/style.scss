@@ -16,7 +16,10 @@ footer {
 
 	.logo {
 		display: none;
-		width: 200px;
+
+		svg {
+			width: 200px;
+		}
 	}
 
 	.curve {
@@ -116,10 +119,13 @@ footer {
 		.logo {
 			display: block;
 			align-self: center;
-			width: 20vw;
-			max-width: 200px;
-			height: auto;
 			margin: auto auto 30px 0;
+
+			svg {
+				width: 20vw;
+				max-width: 200px;
+				height: auto;
+			}
 		}
 
 		section {

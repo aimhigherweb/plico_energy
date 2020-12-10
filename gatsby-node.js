@@ -92,6 +92,10 @@ exports.createPages = ({ actions, graphql }) => {
 					slug = `/`;
 				}
 
+				if (RegExp(/templates/).test(page.node.full_slug)) {
+					return;
+				}
+
 				createPage({
 					path: slug,
 					component: path.resolve(`src/templates/landingPage.js`),
@@ -104,6 +108,11 @@ exports.createPages = ({ actions, graphql }) => {
 
 			data.news.edges.forEach((page) => {
 				const { slug } = page.node;
+
+				if (RegExp(/templates/).test(page.node.full_slug)) {
+					return;
+				}
+
 				createPage({
 					path: `/news/${slug}`,
 					component: path.resolve(`src/templates/post.js`),
@@ -116,6 +125,11 @@ exports.createPages = ({ actions, graphql }) => {
 
 			data.faqs.edges.forEach((page) => {
 				const { slug } = page.node;
+
+				if (RegExp(/templates/).test(page.node.full_slug)) {
+					return;
+				}
+
 				createPage({
 					path: `/faqs/${slug}`,
 					component: path.resolve(`src/templates/faq.js`),
@@ -128,6 +142,11 @@ exports.createPages = ({ actions, graphql }) => {
 
 			data.faq_categories.edges.forEach((page) => {
 				const { slug } = page.node;
+
+				if (RegExp(/templates/).test(page.node.full_slug)) {
+					return;
+				}
+
 				createPage({
 					path: `/faqs/${slug}`,
 					component: path.resolve(`src/templates/faq_category.js`),
@@ -142,6 +161,11 @@ exports.createPages = ({ actions, graphql }) => {
 
 			data.pages.edges.forEach((page) => {
 				const { slug } = page.node;
+
+				if (RegExp(/templates/).test(page.node.full_slug)) {
+					return;
+				}
+
 				createPage({
 					path: `/${slug}`,
 					component: path.resolve(`src/templates/page.js`),
@@ -153,6 +177,10 @@ exports.createPages = ({ actions, graphql }) => {
 			});
 
 			data.tags.edges.forEach((page) => {
+				if (RegExp(/templates/).test(page.node.full_slug)) {
+					return;
+				}
+
 				createPage({
 					path: `/news/${generateSlug(page.node.name)}`,
 					component: path.resolve(`src/templates/news_category.js`),

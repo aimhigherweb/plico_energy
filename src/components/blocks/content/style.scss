@@ -92,6 +92,14 @@
 		}
 	}
 
+	&.video {
+		&.next_featured_videos  {
+			&:not(.background) {
+				margin-bottom: 180px;
+			}
+		}
+	}
+
 	&.fact {
 		margin-bottom: 100px;
 	}
@@ -226,6 +234,25 @@
 				margin-top: 20px;
 				margin-bottom: 50px;
 			}
+
+			&.next_featured_videos  {
+				.video-embed {
+					width: 60vw;
+					max-width: 600px;
+					height: 60vw * (9/16);
+					max-height: 600px * (9/16);
+					margin: 50px 0 0;
+				}
+
+				.curve {
+					width: 1500px;
+					transform: translateX(-35%) translateY(-15%);
+				}
+
+				&:not(.background) {
+					margin-bottom: 100px;
+				}
+			}
 		}
 
 		&.illustration_top {
@@ -313,6 +340,18 @@
 			transform: scaleX(-1) rotate(-10deg) translateX(18%);
 		}
 
+		&.video {
+			&.next_featured_videos  {
+				.video-embed {
+					width: 60vw;
+					max-width: 600px;
+					height: 60vw * (9/16);
+					max-height: 600px * (9/16);
+					margin: 80px 0 0;
+				}
+			}
+		}
+
 		&.illustration_top {
 			.image {
 				margin-left: 40px;
@@ -389,6 +428,21 @@
 			}
 		}
 
+		&.video {
+			&.next_featured_videos  {
+				margin-top: 500px;
+
+				.curve {
+					width: 2000px;
+					transform: translateX(-50%) translateY(-300px);
+				}
+
+				&:not(.background) {
+					margin-bottom: 150px;
+				}
+			}
+		}
+
 		&.illustration_bottom {
 			.illustration {
 				right: -50%;
@@ -434,6 +488,21 @@
 			transform: scaleX(-1) rotate(-14deg) translateX(40%);
 		}
 
+		&.video {
+			&.next_featured_videos  {
+				margin-top: 500px;
+				padding: 0 5vw;
+
+				.video-embed {
+					width: 1000px;
+					max-width: 1000px;
+					height: 1000px * (9/16);
+					max-height: 1000px * (9/16);
+					margin-top: 20px;
+				}
+			}
+		}
+
 		&.illustration_top {
 			margin-top: 700px;
 
@@ -477,9 +546,46 @@
 	.content_block {
 		&.illustration_bottom {
 			.illustration {
-				right: auto;
+				right: calc(-1 * (400px + 10vw));
 				bottom: 0;
-				left: calc(10vw - 600px);
+			}
+
+			.video-embed {
+				margin-left: 0;
+			}
+		}
+
+		&.video {
+			&.next_featured_videos  {
+				width: 1200px;
+				margin-right: auto;
+				margin-left: auto;
+				padding: 0;
+
+				.video-embed {
+					margin-top: 80px;
+				}
+
+				.curve {
+					// width: 2000px;
+					// transform: translateX(-50%) translateY(-300px);
+				}
+
+				&.illustration_bottom {
+					.illustration {
+						right: calc(-1 * (590px + 10vw));
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 95em) {
+	.content_block {
+		&.illustration_bottom {
+			.illustration {
+				right: calc(-1 * (300px + 10vw));
 			}
 		}
 	}

@@ -9,7 +9,7 @@ import Illustration from '../../parts/illustration';
 import './style.scss';
 
 const Content = ({
-	heading, content, cta_button, media, illustration, background, sub_heading, background_colour
+	heading, content, cta_button, media, illustration, background, sub_heading, background_colour, nextBlock, previousBlock
 }) => {
 	let classes = `content_block`;
 
@@ -38,6 +38,7 @@ const Content = ({
 				"--backgroundFill": background_colour?.colour || `#18304c`,
 				"--headingColour": background_colour?.colour === `#00bbd4` ? `#18304c` : `#00bbd4`
 			}}
+			order={{ nextBlock, previousBlock }}
 		>
 			{background && <Background className="curve" />}
 			{illustration && <Illustration {...illustration[0]} />}

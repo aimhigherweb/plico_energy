@@ -16,7 +16,11 @@ const LogoBlock = ({
 		<ul className="logos">
 			{logos.map(({ featureImage }) => (
 				<li key={featureImage.childImageSharp.id}>
-					<Img fixed={featureImage.childImageSharp.fixed} />
+					<Img
+						fixed={featureImage.childImageSharp.fixed}
+						style={{ maxHeight: `150px` }}
+						imgStyle={{ objectFit: `contain` }}
+					/>
 				</li>
 			))}
 		</ul>

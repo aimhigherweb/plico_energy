@@ -6,11 +6,13 @@ import Video from '../../parts/video';
 import './style.scss';
 
 const FeaturedVideos = ({
-	videos
+	videos, heading, nextBlock, previousBlock
 }) => (
 	<Block
 		className='featured_videos'
+		order={{ nextBlock, previousBlock }}
 	>
+		{heading && <h2>{heading}</h2>}
 		<div className="videos">
 			{videos.map((video) => (
 				<Video key={video.video_url} {...video} />

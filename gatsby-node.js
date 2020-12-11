@@ -289,7 +289,7 @@ exports.onCreateNode = async ({
 				}
 			});
 
-			content.body.forEach((block) => {
+			content.body.forEach((block, index) => {
 				const blockContent = block,
 					medias = [];
 				if (block.content) {
@@ -475,7 +475,11 @@ exports.onCreateNode = async ({
 					});
 				}
 
-				blocks.push(blockContent);
+				blocks.push({
+					...blockContent,
+					nextBlock: content.body[index + 1]?.component,
+					previousBlock: content.body[index - 1]?.component
+				});
 			});
 
 			content.body = blocks;

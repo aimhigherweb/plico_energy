@@ -21,6 +21,13 @@
 		}
 	}
 
+	.sects {
+		background-image: var(--background_graphic);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+
 	&.blocks {
 		.sects {
 			display: flex;
@@ -32,6 +39,12 @@
 	&.small, &.collapsible_blocks {
 		.curve {
 			display: none;
+		}
+	}
+
+	&.background_graphic {
+		.repeatable_content {
+			background: rgba(#ffffff, 0.9);
 		}
 	}
 
@@ -61,6 +74,14 @@
 	}
 }
 
+@media(min-width: 50em) {
+	.featured_sections {
+		.sects {
+			background-size: 500px auto;
+		}
+	}
+}
+
 @media(min-width: 60em) {
 	.featured_sections {
 		.curve {
@@ -73,6 +94,10 @@
 				flex-wrap: wrap;
 				max-width: unset;
 			}
+		}
+
+		.sects {
+			background-size: 700px auto;
 		}
 	}
 }

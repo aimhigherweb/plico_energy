@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 import Block from "../../parts/block";
 import Curve from '../../../img/blob_video.svg';
@@ -9,11 +9,14 @@ import CollapsibleBlock from '../../parts/collapsible_block';
 
 import './style.scss';
 
-const FeaturedSections = ({ heading, content, sections }) => {
+const FeaturedSections = ({
+	heading, content, sections, image
+}) => {
 	const images = sections.some((sect) => (sect.featureImage)),
 		blocks = sections.length;
 	let Component = ContentBlock,
-		classes = ``;
+		classes = ``,
+		styles = {};
 
 	if (sections[0].component == `numbered_content_block`) {
 		Component = NumberedBlock;
@@ -24,8 +27,16 @@ const FeaturedSections = ({ heading, content, sections }) => {
 		classes = `${classes} collapsible_blocks`;
 	}
 
+	if (image && image.filename) {
+		styles[`--background_graphic`] = `url(${image.filename})`;
+		classes = `${classes} background_graphic`;
+	}
+
 	return (
-		<Block className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 6) && `small`} ${classes}`}>
+		<Block
+			className={`featured_sections ${(!images && blocks > 4) && `blocks`} ${(!images && blocks < 6) && `small`} ${classes}`}
+			styles={styles}
+		>
 			<Curve className="curve" />
 			<h2 dangerouslySetInnerHTML={{ __html: heading }} />
 			<div dangerouslySetInnerHTML={{ __html: content }} />
@@ -37,7 +48,6 @@ const FeaturedSections = ({ heading, content, sections }) => {
 					/>
 				))}
 			</div>
-
 		</Block>
 	);
 };

@@ -4,6 +4,12 @@
 	}
 }
 
+.content_block.video {
+	& + .featured_videos {
+		margin-top: -150px;
+	}
+}
+
 @media(min-width: 40em) {
 	.featured_videos {
 		.videos {
@@ -21,6 +27,27 @@
 			}
 		}
 	}
+
+	.content_block.video {
+		& + .featured_videos {
+			margin-top: -150px;
+
+			.videos {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				margin: 0 -20px;
+
+				.video-embed {
+					width: 43vw;
+					max-width: 400px;
+					height: 43vw * (9/16);
+					max-height: 400px * (9/16);
+					margin: 10px;
+				}
+			}
+		}
+	}
 }
 
 @media(min-width: 50em) {
@@ -32,6 +59,17 @@
 			.video-embed {
 				width: 43vw;
 				height: 43vw * (9/16);
+			}
+		}
+	}
+
+	.content_block.video {
+		& + .featured_videos {
+			margin-top: -80px;
+
+			.videos {
+				justify-content: space-between;
+				margin: 0 -10px;
 			}
 		}
 	}
@@ -49,6 +87,57 @@
 			}
 		}
 	}
+
+	.content_block.video {
+		& + .featured_videos {
+			margin-top: -80px;
+
+			.videos {
+				justify-content: flex-start;
+				min-width: 800px + 40px;
+				margin: 0 auto;
+				margin-left: -20px;
+
+				.video-embed {
+					width: 400px;
+					height: 400px * (9/16);
+					margin: 10px;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.content_block.video {
+		& + .featured_videos {
+			.videos {
+				margin-top: -120px;
+				margin-left: -20px;
+			}
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.content_block.video {
+		& + .featured_videos {
+			padding: 0 5vw;
+
+			.videos {
+				min-width: (590px * 2) + 40px;
+				margin-top: -130px;
+				margin-left: -10px;
+
+				.video-embed {
+					width: 590px;
+					max-width: 590px;
+					height: 590px * (9/16);
+					max-height: 590px * (9/16);
+				}
+			}
+		}
+	}
 }
 
 @media(min-width: 85em) {
@@ -61,6 +150,19 @@
 				max-width: 590px;
 				height: calc((50vw - (50vw - 600px) - 20px) * (9/16));
 				max-height: 590px * (9/16);
+			}
+		}
+	}
+}
+
+@media(min-width: 90em) {
+	.content_block.video {
+		& + .featured_videos {
+			.videos {
+				width: 1220px;
+				margin-right: auto;
+				margin-left: auto;
+				padding: 0;
 			}
 		}
 	}

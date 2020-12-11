@@ -15,6 +15,7 @@
 					'. . . b3 b3 b3 b3 b3';
 				grid-template-columns: repeat(8, auto);
 				grid-template-rows: auto 50px 50px auto auto 50px auto;
+				margin-top: 50px;
 
 				&:before {
 					position: static;
@@ -244,7 +245,7 @@
 			&.quote {
 				grid-template-columns: repeat(8, 1fr);
 				grid-template-rows: auto 50px 150px auto auto 50px auto;
-				margin-top: 100px;
+				margin-top: 50px;
 
 				&:before {
 					margin-left: -10vw;

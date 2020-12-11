@@ -82,7 +82,7 @@ body[class*='header_'] {
 
 	&.header_video {
 		header {
-			margin-bottom: 45px;
+			margin-bottom: 0;
 
 			.curve {
 				transform: translateX(-45%);

@@ -16,7 +16,7 @@ const LandingPage = ({ data }) => {
 		headerType = banner[0]?.media[0].component || `default`,
 		noBanner = !banner[0],
 
-		 block = body[5];
+		 block = body[0];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}`, meta }}>

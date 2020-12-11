@@ -29,7 +29,11 @@ const LandingPage = ({ data }) => {
 				/>
 			))} */}
 
-			<div style={{ minHeight: `1000px`, background: `lemonchiffon`, opacity: 0.5 }} />
+			<div style={{ background: `lemonchiffon`, opacity: 0.5, padding: `5px 0` }}>
+				<Block
+					{...{ component: block.component, data: block }}
+				/>
+			</div>
 
 		</Layout>
 	);

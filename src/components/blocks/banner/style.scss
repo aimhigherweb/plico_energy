@@ -387,7 +387,7 @@
 		&.image_blob {
 			flex-wrap: nowrap;
 			justify-content: flex-end;
-			margin-bottom: 200px;
+			margin-bottom: 400px;
 
 			blockquote {
 				width: 310px;
@@ -641,6 +641,7 @@
 
 		&.image_blob {
 			align-items: center;
+			margin-bottom: 200px;
 
 			blockquote {
 				flex-shrink: 0;

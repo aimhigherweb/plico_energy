@@ -15,7 +15,7 @@ const Plan = ({
 		<div className="features">
 			<p className="price">
 				{(price && price !== ``)
-					? `${price.split(`.`)[0]}<small>.${price.split(`.`)[1]}</small>`
+					? <Fragment>${price.split(`.`)[0]}<small>.{price.split(`.`)[1]}</small></Fragment>
 					: `TBC`
 				}
 			</p>

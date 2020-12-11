@@ -54,7 +54,9 @@ const ContentSections = ({
 					</Animated>
 				}
 			</div>
-			{media && <FeatureImage {...{ ...media[0], width: 500, heightRatio: 0.78 }} />}
+			{media && <FeatureImage {...{
+				...media[0], width: 500, heightRatio: 0.78, graphic: true
+			}} />}
 			{sections.map((sect, index) => <Section {...{ ...sect, index }} />)}
 
 		</Block>

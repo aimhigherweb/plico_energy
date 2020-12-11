@@ -9,7 +9,7 @@ import Quote from '../quote';
 import Fact from '../fact';
 
 const FeatureImage = ({
-	featureImage, video_url, component, position, illustration, heading, content, banner
+	featureImage, video_url, component, position, illustration, heading, content, banner, graphic
 }) => {
 	let Media = null;
 	if (component === `video`) {
@@ -28,7 +28,11 @@ const FeatureImage = ({
 			Media = <ImageBlob {...{ ...featureImage }} />;
 		}
 	} else if (component === `image`) {
-		Media = <Img className={`align_${position} image`} fluid={featureImage.image.fluid} />;
+		Media = <Img
+			className={`align_${position} image`}
+			fluid={featureImage.image.fluid}
+			imgStyle={{ objectFit: `contain` }}
+		/>;
 	} else if (component === `quote`) {
 		Media = <Quote {...{ illustration, content }} />;
 	} else if (component === `fact`) {

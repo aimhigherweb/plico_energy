@@ -14,18 +14,23 @@ const LandingPage = ({ data }) => {
 		} = data.storyblokEntry,
 		{ body, banner, meta } = fields.content,
 		headerType = banner[0]?.media[0].component || `default`,
-		noBanner = !banner[0];
+		noBanner = !banner[0],
+
+		 block = body[0];
 
 	return (
 		<Layout {...{ classes: `${slug} header_${headerType}`, meta }}>
 			<h1 className={noBanner ? `landing` : `hidden`}>{name}</h1>
-			{banner[0] && <Banner {...banner[0]} />}
-			{body.map((block) => (
+			 {banner[0] && <Banner {...banner[0]} />}
+			{/* {body.map((block) => (
 				<Block
 					key={JSON.stringify(block)}
 					{...{ component: block.component, data: block }}
 				/>
-			))}
+			))} */}
+
+			<div style={{ minHeight: `1000px`, background: `lemonchiffon`, opacity: 0.5 }} />
+
 		</Layout>
 	);
 };

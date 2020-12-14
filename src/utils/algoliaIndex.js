@@ -1,5 +1,4 @@
-const indexName = `pages`,
-	pageQuery = `{
+const pageQuery = `{
 		pages: allStoryblokEntry(
 			filter: {
 				field_component: {
@@ -11,10 +10,117 @@ const indexName = `pages`,
 				node {
 					name
 					id
-					content
-					full_slug
 					slug
 					field_component
+					fields {
+						content {
+							content
+							quote
+							name
+							location
+							banner {
+								main_quote
+								sub_quote
+								additional_quote
+								cta_button {
+									cta_text
+								}
+							}
+							body {
+								heading
+								sub_heading
+								content
+								cta_button {
+									cta_text
+								}
+								cta_text
+								media {
+									content
+								}
+								sections {
+									heading
+									content
+									collapsed_heading
+									collapsed_content
+									cta {
+										cta_text
+									}
+								}
+								plans {
+									cta {
+										cta_text
+									}
+									description
+									features
+									callout
+									name
+									price
+								}
+								table {
+									thead {
+										value
+									}
+									tbody {
+										body {
+											body {
+												value
+											}
+										}
+									}
+								}
+								profiles {
+									role
+									name
+									bio
+									linkedin
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}`,
+	faqQuery = `{
+		pages: allStoryblokEntry(
+			filter: {
+				field_component: {
+					in: ["faqs"]
+				}
+			}
+		) {
+			edges {
+				node {
+					name
+					id
+					slug
+					fields {
+						content {
+							content
+						}
+					}
+				}
+			}
+		}
+	}`,
+	newsQuery = `{
+		pages: allStoryblokEntry(
+			filter: {
+				field_component: {
+					in: ["news"]
+				}
+			}
+		) {
+			edges {
+				node {
+					name
+					id
+					slug
+					fields {
+						content {
+							content
+						}
+					}
 				}
 			}
 		}
@@ -22,7 +128,7 @@ const indexName = `pages`,
 
 function pageToAlgoliaRecord({
 	node: {
-		name, id, content, slug, field_component
+		name, id, slug, field_component, fields
 	}
 }) {
 	let path;
@@ -59,7 +165,7 @@ function pageToAlgoliaRecord({
 		objectID: id,
 		name,
 		slug: path,
-		...JSON.parse(content)
+		...fields
 	};
 }
 
@@ -67,8 +173,17 @@ const queries = [
 	{
 		query: pageQuery,
 		transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
-		indexName,
-		settings: { attributesToSnippet: [`excerpt:20`] },
+		indexName: `all`
+	},
+	{
+		query: newsQuery,
+		transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
+		indexName: `news`
+	},
+	{
+		query: faqQuery,
+		transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
+		indexName: `faq`
 	},
 ];
 

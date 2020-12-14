@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox } from 'react-instantsearch-dom';
+import { InstantSearch, SearchBox, Configure } from 'react-instantsearch-dom';
 
 import Results from './results';
 import Icon from '../../../img/search.svg';
@@ -24,7 +24,8 @@ const Search = () => {
 				<span>Toggle Search Form</span>
 			</button>
 			<div className="search-modal">
-				<InstantSearch searchClient={searchClient} indexName="pages">
+				<InstantSearch searchClient={searchClient} indexName="all">
+					<Configure hitsPerPage={10} />
 					<SearchBox />
 					<Results />
 				</InstantSearch>

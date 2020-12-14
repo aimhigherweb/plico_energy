@@ -94,7 +94,6 @@ export const pageQuery = graphql`
 						heading
 						sub_heading
 						content
-						
 						cta_button {
 							cta_link
 							cta_text

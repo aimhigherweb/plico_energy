@@ -1,0 +1,37 @@
+@use '../variables.scss';
+
+.page.search {
+	main {
+		min-height: 500px;
+
+		.search_results {
+			max-height: unset;
+
+			li {
+				list-style: none;
+
+				h2 {
+					a {
+						text-decoration: none;
+
+						&:hover, &:focus {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	form {
+		margin-left: 0;
+	}
+
+	.snippet {
+		display: block;
+	}
+
+	mark {
+		background: variables.$secondary;
+	}
+}

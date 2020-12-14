@@ -1,20 +1,8 @@
 const path = require(`path`),
-	remark = require(`remark`),
-	remarkHtml = require(`remark-html`),
-	remarkLint = require(`remark-preset-lint-recommended`),
-	strip = require(`strip-markdown`),
 	generateSlug = require(`./src/utils/generateSlug`),
-	slug = require(`remark-slug`),
-	headings = require(`remark-autolink-headings`),
 	{ createRemoteFileNode } = require(`gatsby-source-filesystem`),
-	resizeImage = require(`./src/utils/resizeImage`);
-
-const processMarkdown = (markdown) => remark().use(remarkLint).use(slug).use(headings)
-		.use(remarkHtml)
-		.processSync(markdown)
-		.toString(),
-	createExcerpt = (markdown) => remark().use(strip).processSync(markdown).toString()
-		.substring(0, 250);
+	resizeImage = require(`./src/utils/resizeImage`),
+	{ processMarkdown, createExcerpt } = require(`./src/utils/markdown`);
 
 exports.createPages = ({ actions, graphql }) => {
 	const { createPage } = actions;

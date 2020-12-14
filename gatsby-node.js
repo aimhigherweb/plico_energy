@@ -289,9 +289,10 @@ exports.onCreateNode = async ({
 				}
 			});
 
-			content.body.forEach((block, index) => {
+			content.body.forEach(async (block, index) => {
 				const blockContent = block,
 					medias = [];
+
 				if (block.content) {
 					blockContent.content = processMarkdown(block.content);
 				}
@@ -478,7 +479,7 @@ exports.onCreateNode = async ({
 				blocks.push({
 					...blockContent,
 					nextBlock: content.body[index + 1] && content.body[index + 1].component,
-					previousBlock: content.body[index - 1] && content.body[index - 1].component
+					previousBlock: content.body[index - 1] && content.body[index - 1].component,
 				});
 			});
 

@@ -20,6 +20,7 @@ const FeaturedSections = ({
 
 	if (sections[0].component == `numbered_content_block`) {
 		Component = NumberedBlock;
+		classes = `${classes} numbered_blocks`;
 	}
 
 	if (sections[0].component == `collapsible_content_block`) {

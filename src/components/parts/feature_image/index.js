@@ -31,7 +31,7 @@ const FeatureImage = ({
 		Media = <Img
 			className={`align_${position} image`}
 			fluid={featureImage.image.fluid}
-			imgStyle={{ objectFit: `contain` }}
+			imgStyle={{ objectFit: banner ? `cover` : `contain` }}
 		/>;
 	} else if (component === `quote`) {
 		Media = <Quote {...{ illustration, content }} />;

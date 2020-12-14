@@ -6778,6 +6778,13 @@ gatsby-plugin-google-fonts@^1.0.1:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.1.tgz#d71054f7bf207b9a8da227380369e18e6f4e0201"
   integrity sha512-p1NVkn27GUnDA5qHM+Z4cCcLCJIardzZXMon3640sT4xuL/AZJbsx3HEt2KY/5oZu0UXIkytkxzV2Da4rQeUIg==
 
+gatsby-plugin-google-tagmanager@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.7.0.tgz#82ccba309a0b8d335a72fd26f43f1c3221be5d39"
+  integrity sha512-eaNQU8aSt0BvRnv+niuRI+/vyRj1OLyFWmwKpjXRhH0uLnyIleNjzM95uteEkPUCOwjArCSd4ai6LBmT4PydmQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 gatsby-plugin-netlify@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify/-/gatsby-plugin-netlify-2.7.0.tgz#8458028e994b5013f053c73d177cad136669421e"

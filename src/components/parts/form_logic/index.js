@@ -85,8 +85,10 @@ const FormLogic = ({ form }) => {
 			onSubmit={(e) => {
 				if (step + 1 < totalSteps) {
 					e.preventDefault();
+					dataLayer.push({ event: `form-nextstep`, 'form-step': step + 1, form: form.slug });
 					nextStep();
 				} else {
+					dataLayer.push({ event: `form-submit`, form: form.slug });
 					fetch(`/`, {
 						method: `POST`,
 						headers: {

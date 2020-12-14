@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
-import { Hits, connectStateResults } from 'react-instantsearch-dom';
+import { Hits, connectStateResults, PoweredBy } from 'react-instantsearch-dom';
 
 import './style.scss';
 
@@ -9,6 +9,7 @@ const Results = connectStateResults(({ searchState }) => (
 			<Fragment>
 				<Hits className="search_results" hitComponent={PageResult} />
 				<Link className="see-more" to={`/search?q=${searchState.query}`}>See more results</Link>
+				<PoweredBy className="algolia" />
 			</Fragment>
 		) : null
 	)),

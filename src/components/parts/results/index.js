@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
-import { Hits, connectStateResults, connectHighlight } from 'react-instantsearch-dom';
+import {
+	Hits, connectStateResults, connectHighlight, Snippet as BoxSnippet
+} from 'react-instantsearch-dom';
 
 import resultsSnippet from '../../../utils/resultsSnippets';
 
@@ -13,106 +15,28 @@ const Results = connectStateResults(({ searchState }) => (
 	)),
 
 	PageResult = ({ hit }) => {
-		const sections = [
-			`name`,
-			`id`,
-			`slug`,
-			`field_component`,
-			{
-				fields: {
-					content: [`content`,
-						`quote`,
-						`name`,
-						`location`,
-						{
-							banner: [`main_quote`,
-								`sub_quote`,
-								`additional_quote`,
-								{
-									cta_button: [`cta_text`]
-								}
-							]
-						},
-						{
-							body: [`heading`,
-								`sub_heading`,
-								`content`,
-								{
-									cta_button: [`cta_text`]
-								},
-								`cta_text`,
-								{
-									media: [`content`]
-								},
-								{
-									sections: [`heading`,
-										`content`,
-										`collapsed_heading`,
-										`collapsed_content`,
-										{
-											cta: [`cta_text`]
-										}
-									]
-								},
-								{
-									plans: [{
-										cta: [`cta_text`]
-									},
-									`description`,
-									`features`,
-									`callout`,
-									`name`,
-									`price`
-									]
-								},
-								{
-									table: {
-										thead: [`value`],
-										tbody: {
-											body: [`value`]
-										}
-									}
-								},
-								{
-									profiles: [`role`,
-										`name`,
-										`bio`,
-										`linkedin`,
-									]
-								}
-							]
-						}
-					]
-				}
-			}
-		];
-
 		if ([`news`, `landing_page`, `pages`, `testimonials`, `faqs`].includes(hit.component)) {
 			return (
 				<li>
 
 					<h2><Link to={hit.slug}>{hit.name}</Link></h2>
 
-					<Snippet
-						attribute={`content.content`}
-						hit={hit}
-						tagName="mark"
-						nonHighlightedTagName="span"
-						className="snippet"
-					/>
+					<BoxSnippet hit={hit} attribute="content.content" />
+
+					{/* <Snippet hit={hit} /> */}
 				</li>
 			);
 		}
 		return null;
 	},
-	CustomSnippet = ({ highlight, attribute, hit }) => {
+	CustomSnippet = ({ highlight, attribute = `content.content`, hit }) => {
 		const parsedHit = highlight({
 			highlightProperty: `_snippetResult`,
 			attribute,
 			hit,
-		});
+		  });
 
-		return (
+		  return (
 			<p className="snippet">
 				{resultsSnippet(hit).map((snippet) => (
 					<Fragment>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox } from 'react-instantsearch-dom';
+import { InstantSearch, SearchBox, PoweredBy } from 'react-instantsearch-dom';
 import Results from '../components/parts/results';
 
 import '../styles/custom/search.scss';
@@ -48,13 +48,13 @@ const SearchPage = () => {
 			<InstantSearch
 				searchClient={searchClient}
 				indexName="all"
-				createURL={(searchState) => `?q=${searchState.query}`}
-				searchState={search}
-				onSearchStateChange={onSearchStateChange}
-
+				// createURL={(searchState) => `?q=${searchState.query}`}
+				// searchState={search}
+				// onSearchStateChange={onSearchStateChange}
 			>
-				<SearchBox searchAsYouType={false} />
+				<SearchBox />
 				<Results />
+				<PoweredBy />
 			</InstantSearch>
 		</Layout>
 	);

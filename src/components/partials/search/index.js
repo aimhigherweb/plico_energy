@@ -25,7 +25,7 @@ const Search = () => {
 			</button>
 			<div className="search-modal">
 				<InstantSearch searchClient={searchClient} indexName="all">
-					<Configure hitsPerPage={10} />
+					<Configure hitsPerPage={5} />
 					<SearchBox />
 					<Results />
 				</InstantSearch>

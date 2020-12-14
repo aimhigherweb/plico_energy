@@ -21,9 +21,9 @@ const Results = connectStateResults(({ searchState }) => (
 
 					<h2><Link to={hit.slug}>{hit.name}</Link></h2>
 
-					<BoxSnippet hit={hit} attribute="content.content" />
+					{/* <BoxSnippet hit={hit} attribute="content.content" /> */}
 
-					{/* <Snippet hit={hit} /> */}
+					<Snippet hit={hit} />
 				</li>
 			);
 		}

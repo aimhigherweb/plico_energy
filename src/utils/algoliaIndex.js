@@ -2,9 +2,9 @@ const pageQuery = `{
 		pages: allStoryblokEntry(
 			filter: {
 				field_component: {
-					in: ["news", "landing_page", "pages", "testimonials", "faqs", "faq_categories", "faq_page", "news_page"]
+					in: ["news", "landing_page", "page", "testimonials", "faq", "categories", "faq_page", "news_page"]
 				}
-				full_slug: {regex: "/landing-pages\\/(?!campaigns)/"}
+				full_slug: {regex: "/((landing-pages)|(news)|(testimonials)|(pages)|(faq_categories)|(custom-pages)|(faqs))\/(?!campaigns)/"}
 			}
 		) {
 			edges {

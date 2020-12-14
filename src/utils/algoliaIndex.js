@@ -62,9 +62,7 @@ const pageQuery = `{
 									}
 									tbody {
 										body {
-											body {
-												value
-											}
+											value
 										}
 									}
 								}

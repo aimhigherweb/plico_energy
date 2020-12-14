@@ -8,11 +8,31 @@
 			max-height: unset;
 
 			li {
+				position: relative;
+				padding: 10px;
+				border-radius: 10px;
 				list-style: none;
 
+				&:nth-child(2n) {
+					background: variables.$grey_light;
+				}
+
 				h2 {
+					position: static;
+					margin-top: 0;
+
 					a {
 						text-decoration: none;
+
+						&:before {
+							content: '';
+							position: absolute;
+							z-index: 1;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+						}
 
 						&:hover, &:focus {
 							text-decoration: underline;
@@ -29,9 +49,11 @@
 
 	.snippet {
 		display: block;
+		color: rgba(variables.$main, 0.7);
 	}
 
 	mark {
 		background: variables.$secondary;
+		color: #ffffff;
 	}
 }

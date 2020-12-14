@@ -11,6 +11,17 @@
 	border: 2px solid variables.$primary;
 	border-radius: 20px;
 	background: #ffffff;
+
+	.see-more {
+		background: none;
+		color: variables.$primary;
+		text-decoration: underline;
+
+		&:hover, &:focus {
+			background: none;
+			text-decoration: none;
+		}
+	}
 }
 
 .search {

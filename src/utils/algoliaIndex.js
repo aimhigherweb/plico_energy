@@ -163,6 +163,7 @@ function pageToAlgoliaRecord({
 		objectID: id,
 		name,
 		slug: path,
+		component: field_component,
 		...fields
 	};
 }

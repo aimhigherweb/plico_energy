@@ -2,8 +2,6 @@ import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 import { Hits, connectStateResults, connectHighlight } from 'react-instantsearch-dom';
 
-import { stripMarkdown } from "../../../utils/markdown";
-
 // import './style.scss';
 
 const Results = connectStateResults(({ searchState }) => (
@@ -16,6 +14,7 @@ const Results = connectStateResults(({ searchState }) => (
 		const sections = [`body.content`, `content`, `body.section.content`, `body.heading`, `body.sections.heading`, `body.sub_heading`];
 
 		if ([`news`, `landing_page`, `pages`, `testimonials`, `faqs`].includes(hit.component)) {
+			console.log(hit);
 			return (
 				<li>
 
@@ -43,9 +42,9 @@ const Results = connectStateResults(({ searchState }) => (
 			<p className="snippet">
 				{parsedHit.map(
 					(part, index) => (part.isHighlighted ? (
-						<mark key={index}>{stripMarkdown(part.value)}</mark>
+						<mark key={index}>{part.value}</mark>
 					) : (
-						<span key={index}>{stripMarkdown(part.value)}</span>
+						<span key={index}>{part.value}</span>
 					))
 				)}
 			</p>

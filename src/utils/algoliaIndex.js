@@ -4,6 +4,7 @@ const pageQuery = `{
 				field_component: {
 					in: ["news", "landing_page", "pages", "testimonials", "faqs", "faq_categories", "faq_page", "news_page"]
 				}
+				full_slug: {regex: "/landing-pages\\/(?!campaigns)/"}
 			}
 		) {
 			edges {

@@ -32,11 +32,15 @@ const Layout = ({ children, meta, classes }) => (
 				const { site_title, meta: siteMeta } = site.fields.content,
 					pageMeta = {};
 
-				Object.keys(meta).forEach((item) => {
-					if (meta[item]) {
-						pageMeta[item] = meta[item];
-					}
-				});
+				if (meta) {
+					pageMeta.title = `${meta.name} | ${site_title}`;
+
+					Object.keys(meta).forEach((item) => {
+						if (meta[item]) {
+							pageMeta[item] = meta[item];
+						}
+					});
+				}
 
 				return (
 					<Fragment>
@@ -48,7 +52,6 @@ const Layout = ({ children, meta, classes }) => (
 						<Meta {...{
 							...site.fields.content,
 							...siteMeta,
-							title: `${meta.name} | ${site_title}`,
 							...pageMeta
 						}} />
 						<Header />

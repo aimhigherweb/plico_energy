@@ -47,12 +47,7 @@ module.exports = {
 				contentObject: true
 			}
 		},
-		{
-			resolve: `gatsby-plugin-sitemap`,
-			options: {
-				output: `/sitemap.xml`,
-			}
-		},
+		`gatsby-plugin-advanced-sitemap`,
 		{
 			resolve: `gatsby-plugin-algolia`,
 			options: {

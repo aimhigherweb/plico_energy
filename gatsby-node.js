@@ -477,8 +477,8 @@ exports.onCreateNode = async ({
 
 				blocks.push({
 					...blockContent,
-					nextBlock: content.body[index + 1]?.component,
-					previousBlock: content.body[index - 1]?.component
+					nextBlock: content.body[index + 1] && content.body[index + 1].component,
+					previousBlock: content.body[index - 1] && content.body[index - 1].component
 				});
 			});
 

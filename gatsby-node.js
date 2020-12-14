@@ -321,7 +321,7 @@ exports.onCreateNode = async ({
 							if (component === `video`) {
 								dimensions = [700, 700 * 0.5625];
 							} else if (component === `graphic`) {
-								dimensions = [500, 500];
+								dimensions = [500, 0];
 							} else if (component === `image_blob`) {
 								dimensions = [500, 500 * 0.58];
 							}

@@ -15,9 +15,8 @@ const FeatureImage = ({
 	if (component === `video`) {
 		Media = <Video {...{ video_url, featureImage }} />;
 	} else if (component === `graphic`) {
-		console.log(featureImage.childImageSharp || featureImage.graphic);
 		if (featureImage.childImageSharp || featureImage.graphic) {
-			Media = <Img fluid={featureImage.graphic.fluid || featureImage.childImageSharp.fluid} />;
+			Media = <Img className={`align_${position} image`} fluid={featureImage.graphic.fluid || featureImage.childImageSharp.fluid} />;
 		} else {
 			Media = <SVG src={featureImage.url} />;
 		}

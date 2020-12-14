@@ -31,6 +31,10 @@
 			position: absolute;
 			right: -200vw;
 		}
+
+		&:hover, &:focus {
+			background: none;
+		}
 	}
 
 	.back {

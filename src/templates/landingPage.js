@@ -14,10 +14,15 @@ const LandingPage = ({ data }) => {
 		} = data.storyblokEntry,
 		{ body, banner, meta } = fields.content,
 		headerType = banner[0]?.media[0].component || `default`,
-		noBanner = !banner[0];
+		noBanner = !banner[0],
+		metadata = {
+			...meta,
+			name,
+			slug
+		};
 
 	return (
-		<Layout {...{ classes: `${slug}_page header_${headerType}`, meta }}>
+		<Layout {...{ classes: `${slug}_page header_${headerType}`, meta: metadata }}>
 			<h1 className={noBanner ? `landing` : `hidden`}>{name}</h1>
 			 {banner[0] && <Banner {...banner[0]} />}
 			{body.map((block) => (

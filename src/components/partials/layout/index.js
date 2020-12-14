@@ -28,23 +28,35 @@ const Layout = ({ children, meta, classes }) => (
 						}
 					}
 				`}
-			render={(data) => (
-				<Fragment>
-					<Helmet
-						bodyAttributes={{
-							class: classes
-						}}
-					/>
-					<Meta {...{
-						...data.site.fields.content,
-						...data.site.fields.content.meta,
-						...meta
-					}} />
-					<Header />
-					<main>{children}</main>
-					<Footer />
-				</Fragment>
-			)}
+			render={({ site }) => {
+				const { site_title, meta: siteMeta } = site.fields.content,
+					pageMeta = {};
+
+				Object.keys(meta).forEach((item) => {
+					if (meta[item]) {
+						pageMeta[item] = meta[item];
+					}
+				});
+
+				return (
+					<Fragment>
+						<Helmet
+							bodyAttributes={{
+								class: classes
+							}}
+						/>
+						<Meta {...{
+							...site.fields.content,
+							...siteMeta,
+							title: `${meta.name} | ${site_title}`,
+							...pageMeta
+						}} />
+						<Header />
+						<main>{children}</main>
+						<Footer />
+					</Fragment>
+				);
+			}}
 		/>
 	),
 	Meta = ({

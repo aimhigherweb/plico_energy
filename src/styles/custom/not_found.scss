@@ -1,14 +1,36 @@
 @use '../variables.scss';
 @use '../extends.scss';
 
-.graphic_404 {
-	width: 90vw;
-	fill: variables.$primary;
+.not_found {
+	h1 {
+		text-align: center;
+	}
+}
 
-	.sun {
-		@include extends.flicker;
-		stroke-width: 20px;
-		stroke: variables.$primary;
-		fill: none;
+@media(min-width: 50em) {
+	.not_found {
+		h1 {
+			margin-top: 1em;
+			font-size: 3em;
+		}
+
+		.content {
+			max-width: 900px;
+			margin: 0 auto;
+			line-height: 2em;
+			text-align: center;
+
+			p {
+				font-size: 1.5em;
+			}
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.not_found {
+		h1 {
+			font-size: 5em;
+		}
 	}
 }

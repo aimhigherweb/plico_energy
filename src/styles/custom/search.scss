@@ -56,4 +56,14 @@
 		background: variables.$secondary;
 		color: #ffffff;
 	}
+
+	.ais-PoweredBy {
+		display: flex;
+		margin-top: 30px;
+		opacity: 0.5;
+
+		a {
+			margin-left: 10px;
+		}
+	}
 }

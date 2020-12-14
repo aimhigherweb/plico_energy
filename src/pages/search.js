@@ -48,11 +48,11 @@ const SearchPage = () => {
 			<InstantSearch
 				searchClient={searchClient}
 				indexName="all"
-				// createURL={(searchState) => `?q=${searchState.query}`}
-				// searchState={search}
-				// onSearchStateChange={onSearchStateChange}
+				createURL={(searchState) => `?q=${searchState.query}`}
+				searchState={search}
+				onSearchStateChange={onSearchStateChange}
 			>
-				<SearchBox />
+				<SearchBox searchAsYouType={false} />
 				<Results />
 				<PoweredBy />
 			</InstantSearch>

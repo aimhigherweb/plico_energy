@@ -37,8 +37,6 @@ const SearchPage = () => {
 		onSearchStateChange = (updatedSearchState) => {
 			setSearchState(updatedSearchState);
 
-			console.log(updatedSearchState);
-
 			if (typeof window !== `undefined`) {
 				window.history.pushState({}, ``, `?q=${updatedSearchState.query}`);
 			}

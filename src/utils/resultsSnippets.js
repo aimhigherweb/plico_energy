@@ -8,12 +8,12 @@ const resultsSnippet = (hit) => {
 					}
 				} else if (typeof section === `object`) {
 					checkLevel(section);
-				} else {
-
 				}
 			});
 
-		checkLevel(hit._snippetResult);
+		if (hit._snippetResult && typeof hit._snippetResult === `object`) {
+			checkLevel(hit._snippetResult);
+		}
 
 		return snippets;
 	},

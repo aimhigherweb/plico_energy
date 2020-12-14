@@ -172,17 +172,20 @@ const queries = [
 	{
 		query: pageQuery,
 		transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
-		indexName: `all`
+		indexName: `all`,
+		settings: { attributesToSnippet: [`*:100`] }
 	},
 	{
 		query: newsQuery,
 		transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
-		indexName: `news`
+		indexName: `news`,
+		settings: { attributesToSnippet: [`*:100`] }
 	},
 	{
 		query: faqQuery,
 		transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
-		indexName: `faq`
+		indexName: `faq`,
+		settings: { attributesToSnippet: [`*:100`] }
 	},
 ];
 

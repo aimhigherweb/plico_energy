@@ -37,8 +37,17 @@
 		text-transform: uppercase;
 	}
 
-	.gatsby-image-wrapper {
+	.gatsby-image-wrapper, .svg {
 		width: 100%;
+	}
+
+	.svg {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 30px;
+		background: variables.$grey;
+		color: variables.$primary;
 	}
 
 	&:nth-child(2n) {
@@ -75,12 +84,12 @@
 			border-radius: 20px 0 0 20px;
 		}
 
-		.gatsby-image-wrapper {
+		.gatsby-image-wrapper, .svg {
 			width: 100%;
 		}
 
 		&:nth-child(2n) {
-			.gatsby-image-wrapper {
+			.gatsby-image-wrapper, .svg {
 				order: -1;
 			}
 
@@ -94,7 +103,7 @@
 
 @media(min-width: 50em) {
 	.article {
-		.gatsby-image-wrapper {
+		.gatsby-image-wrapper, .svg {
 			width: 40vw;
 			max-width: 300px;
 		}

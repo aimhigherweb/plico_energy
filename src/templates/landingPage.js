@@ -74,7 +74,9 @@ export const pageQuery = graphql`
 										src
 									}
 								}
-								url
+								svg: childInlineSvg {
+									content
+								}
 							}
 							video_url
 						}
@@ -101,6 +103,7 @@ export const pageQuery = graphql`
 								colour
 							}
 						}
+						sticky
 						cta_link
 						cta_text
 						cta_colour {
@@ -175,11 +178,13 @@ export const pageQuery = graphql`
 								}
 							}
 							featureImage {
-								url
 								childImageSharp {
 									fluid(maxWidth: 300) {
 										...GatsbyImageSharpFluid_withWebp
 									}
+								}
+								svg: childInlineSvg {
+									content
 								}
 							}
 						}

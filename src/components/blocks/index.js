@@ -40,7 +40,7 @@ const Block = ({
 			return <PricingBlock {...data} />;
 		case `content_box`:
 			return <ContentBox {...data} />;
-		case `cta_button`:
+		case `cta_block`:
 			return <CTABlock {...data} />;
 		case `table`:
 			return <TableBlock {...data} />;

@@ -18,7 +18,7 @@ const FeatureImage = ({
 		if (featureImage.childImageSharp || featureImage.graphic) {
 			Media = <Img className={`align_${position} image`} fluid={featureImage.graphic.fluid || featureImage.childImageSharp.fluid} imgStyle={{ objectFit: `contain` }} />;
 		} else {
-			Media = <SVG src={featureImage.url} />;
+			Media = <span className="svg" dangerouslySetInnerHTML={{ __html: featureImage.svg.content }} />;
 		}
 	} else if (component === `image_blob`) {
 		if (banner) {

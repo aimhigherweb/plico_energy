@@ -1,6 +1,5 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import SVG from 'react-inlinesvg';
 
 import Menu from '../menus/main';
 

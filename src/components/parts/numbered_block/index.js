@@ -15,9 +15,15 @@ const NumberedBlock = ({
 			{cta && <CTA {...{ cta_button: cta }} />}
 		</div>
 
-		{featureImage
+		{(featureImage && featureImage.childImageSharp)
 			&& <Img
 				fluid={featureImage.childImageSharp.fluid}
+			/>
+		}
+		{(featureImage && featureImage.svg)
+			&& <span
+				className="svg"
+				dangerouslySetInnerHTML={{ __html: featureImage.svg.content }}
 			/>
 		}
 

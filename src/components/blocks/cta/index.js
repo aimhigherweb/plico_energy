@@ -11,16 +11,13 @@ const CTABlock = ({
 }) => {
 	const ref = useRef(null),
 		ctaEnter = () => {
-			console.log(`enter`, ref);
 			const el = ref.current,
 				block = el.parentNode;
-			console.log(block);
 			if (block.classList.contains(`sticky`)) {
 				block.classList.remove(`sticky`);
 			}
 		},
 		ctaExit = () => {
-			console.log(`exit`, ref);
 			const el = ref.current,
 				block = el.parentNode;
 			if (!block.classList.contains(`sticky`)) {

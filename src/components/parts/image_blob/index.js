@@ -7,7 +7,7 @@ import Border from '../../../img/animations/blob_outline.svg';
 import './style.scss';
 
 const ImageBlob = ({ graphic }) => (
-	<div className="image">
+	<div className="image image_blob">
 		<svg viewBox="0 0 732 629">
 			<defs>
 				<clipPath id="clip_image" clipPathUnits="objectBoundingBox">

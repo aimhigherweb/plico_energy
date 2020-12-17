@@ -342,6 +342,10 @@
 			&.align-right {
 				margin-left: 50px;
 			}
+
+			&.image_blob {
+				max-height:unset;
+			}
 		}
 
 		.illustration {

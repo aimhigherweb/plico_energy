@@ -103,10 +103,6 @@ const FormLogic = ({ form }) => {
 					if (form.slug == `join`) {
 						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
 						headers = JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN);
-
-						if (typeof headers === `string`) {
-							headers = JSON.parse(headers);
-						}
 					}
 
 					const promises = [

@@ -83,9 +83,6 @@ const FormLogic = ({ form }) => {
 			name={`custom_${form.slug}`}
 			method="post"
 			onSubmit={(e) => {
-				console.log(process.env.GATSBY_FORM_HEADERS_JOIN);
-				console.log(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
-				console.log(typeof JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
 				if (step + 1 < totalSteps) {
 					e.preventDefault();
 					if (window.dataLayer) {

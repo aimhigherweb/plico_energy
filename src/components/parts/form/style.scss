@@ -1,3 +1,5 @@
+@use '../../../styles/variables.scss';
+
 form.custom {
 	button {
 		font-size: 1.2em;
@@ -21,5 +23,16 @@ form.custom {
 
 	.page {
 		width: 100%;
+	}
+
+	.progress {
+		path {
+			stroke-width: 2;
+			stroke: variables.$primary;
+
+			&.fill {
+				fill: url(#_ProgressGradient);
+			}
+		}
 	}
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
 import formFields, { checkConditions, fieldData } from '../../../utils/formFields';
-import generateSlug from '../../../utils/generateSlug';
+import Progress from '../form_progress';
 
 import Field from '../form_field';
 
@@ -85,10 +85,14 @@ const FormLogic = ({ form }) => {
 			onSubmit={(e) => {
 				if (step + 1 < totalSteps) {
 					e.preventDefault();
-					dataLayer.push({ event: `form-nextstep`, 'form-step': step + 1, form: form.slug });
+					if (window.dataLayer) {
+						dataLayer.push({ event: `form-nextstep`, 'form-step': step + 1, form: form.slug });
+					}
 					nextStep();
 				} else {
-					dataLayer.push({ event: `form-submit`, form: form.slug });
+					if (window.dataLayer) {
+						dataLayer.push({ event: `form-submit`, form: form.slug });
+					}
 					fetch(`/`, {
 						method: `POST`,
 						headers: {
@@ -121,6 +125,7 @@ const FormLogic = ({ form }) => {
 				}
 			}}
 		>
+			{form.fields.content.multi_page && <Progress progress={(step + 1) / totalSteps * 100} />}
 			<input type="hidden" name="form-name" value={`custom_${form.slug}`} />
 			{/* <input type="hidden" name="bot-field" /> */}
 			<Fragment>

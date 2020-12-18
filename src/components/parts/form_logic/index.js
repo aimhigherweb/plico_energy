@@ -102,6 +102,7 @@ const FormLogic = ({ form }) => {
 					console.log(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
 
 					if (form.slug == `join`) {
+						console.log(`form is join`);
 						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
 						headers = JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN);
 
@@ -137,6 +138,10 @@ const FormLogic = ({ form }) => {
 							})
 					];
 
+					console.log(`promises initial`, promises);
+
+					console.log(`before check`, webhook);
+
 					if (webhook) {
 						console.log(`webhook exists`);
 						console.log(webhook, headers);
@@ -159,7 +164,7 @@ const FormLogic = ({ form }) => {
 						}));
 					}
 
-					console.log(promises);
+					console.log(promises, webhook, headers);
 
 					Promise.all(promises).then(() => {
 						console.log(`done`);

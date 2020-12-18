@@ -94,7 +94,7 @@ const FormLogic = ({ form }) => {
 						dataLayer.push({ event: `form-submit`, form: form.slug });
 					}
 					console.log(process.env.GATSBY_FORM_WEBHOOK);
-					const netlify = 					Promise.all([
+					Promise.all([
 						fetch(process.env.GATSBY_FORM_WEBHOOK, {
 							method: `POST`,
 							headers: {
@@ -106,7 +106,7 @@ const FormLogic = ({ form }) => {
 								...fieldData(values),
 								values: JSON.stringify(values)
 							})
-						}).catch((error) => {
+						}).then(() => console.log(`success webhook`)).catch((error) => {
 							console.error(error);
 							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 							Sentry.captureException(error);

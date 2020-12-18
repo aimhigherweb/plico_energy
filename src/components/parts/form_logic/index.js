@@ -99,7 +99,13 @@ const FormLogic = ({ form }) => {
 
 					if (form.slug == `join`) {
 						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
-						headers = JSON.parse(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
+						headers = JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN);
+
+						if (typeof headers !== `Object`) {
+							console.log(`still not an object`);
+							console.log(typeof headers);
+							headers = JSON.parse(headers);
+						}
 					}
 
 					const promises = [
@@ -126,6 +132,7 @@ const FormLogic = ({ form }) => {
 					];
 
 					if (webhook) {
+						console.log(webhook, headers);
 						promises.unshift(fetch(webhook, {
 							method: `POST`,
 							headers: {

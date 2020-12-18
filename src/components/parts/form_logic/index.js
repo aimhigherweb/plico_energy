@@ -99,6 +99,7 @@ const FormLogic = ({ form }) => {
 
 					console.log(form.slug === `join`);
 					console.log(process.env.GATSBY_FORM_WEBHOOK_JOIN);
+					console.log(process.env.GATSBY_FORM_HEADERS_JOIN);
 					console.log(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
 
 					if (form.slug == `join`) {

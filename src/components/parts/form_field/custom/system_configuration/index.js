@@ -76,6 +76,12 @@ const SystemConfiguration = ({
 			{inverters.length > 0
 				&& <Fragment>
 					<h3>Inverter Selection</h3>
+					<p>You havve two options:</p>
+					<ul>
+						<li>An inverter suitable for single phase power (most homes) - 5kVa Redback SH5000 Gen 2.2 inverter</li>
+						<li>An inverter suitable for 3 phase homes and businesses = 10lVa Redback SH10000 3PH inverter</li>
+					</ul>
+					<p>Not sure? Select the option to request a call, or call the team on <a href="tel:1300175426">1300 175 426</a>.</p>
 					<label htmlFor={`inverters${_uid}`}>Inverter option</label>
 					{inverters.length
 					&& <select

@@ -93,6 +93,24 @@ const FormLogic = ({ form }) => {
 					if (window.dataLayer) {
 						dataLayer.push({ event: `form-submit`, form: form.slug });
 					}
+					fetch(process.env.GATSBY_FORM_WEBHOOK, {
+						method: `POST`,
+						headers: {
+							'Content-Type': `application/x-www-form-urlencoded`
+						},
+						body: encode({
+							'form-name': `custom_${form.slug}`,
+							...values,
+							...fieldData(values),
+							values: JSON.stringify(values)
+						})
+					})
+						.catch((error) => {
+							console.error(error);
+							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
+							Sentry.captureException(error);
+						});
+
 					fetch(`/`, {
 						method: `POST`,
 						headers: {
@@ -107,9 +125,7 @@ const FormLogic = ({ form }) => {
 					})
 						.then(() => {
 							console.log(`success`);
-							// e.preventDefault();
 							window.location.replace(`${form.fields.content.success_page}/`);
-							// window.navigate(`${form.fields.content.success_page}/`);
 						})
 						.catch((error) => {
 							console.error(error);

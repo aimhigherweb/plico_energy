@@ -57,13 +57,13 @@ module.exports = {
 				queries: require(`./src/utils/algoliaIndex`)
 			},
 		},
-		// {
-		// 	resolve: `@sentry/gatsby`,
-		// 	options: {
-		// 		dsn: process.env.GATSBY_SENTRY_DSN_URL,
-		// 		sampleRate: 0.7,
-		// 	}
-		// },
+		{
+			resolve: `@sentry/gatsby`,
+			options: {
+				dsn: process.env.GATSBY_SENTRY_DSN_URL,
+				sampleRate: 0.7,
+			}
+		},
 		{
 			resolve: `gatsby-plugin-google-tagmanager`,
 			options: {

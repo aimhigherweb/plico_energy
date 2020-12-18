@@ -83,6 +83,9 @@ const FormLogic = ({ form }) => {
 			name={`custom_${form.slug}`}
 			method="post"
 			onSubmit={(e) => {
+				console.log(process.env.GATSBY_FORM_HEADERS_JOIN);
+				console.log(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
+				console.log(typeof JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
 				if (step + 1 < totalSteps) {
 					e.preventDefault();
 					if (window.dataLayer) {
@@ -97,21 +100,11 @@ const FormLogic = ({ form }) => {
 					let webhook = false,
 						headers = {};
 
-					console.log(form.slug === `join`);
-					console.log(process.env.GATSBY_FORM_WEBHOOK_JOIN);
-					console.log(process.env.GATSBY_FORM_HEADERS_JOIN);
-					console.log(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
-
 					if (form.slug == `join`) {
-						console.log(`form is join`);
 						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
 						headers = JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN);
 
-						console.log(`set webhooks and headers`);
-
-						if (typeof headers !== `Object`) {
-							console.log(`still not an object`);
-							console.log(typeof headers);
+						if (typeof headers === `string`) {
 							headers = JSON.parse(headers);
 						}
 					}
@@ -139,13 +132,7 @@ const FormLogic = ({ form }) => {
 							})
 					];
 
-					console.log(`promises initial`, promises);
-
-					console.log(`before check`, webhook);
-
 					if (webhook) {
-						console.log(`webhook exists`);
-						console.log(webhook, headers);
 						promises.unshift(fetch(webhook, {
 							method: `POST`,
 							headers: {
@@ -165,10 +152,8 @@ const FormLogic = ({ form }) => {
 						}));
 					}
 
-					console.log(promises, webhook, headers);
-
 					Promise.all(promises).then(() => {
-						console.log(`done`);
+						console.log(`data sent`);
 						window.location.replace(`${form.fields.content.success_page}/`);
 					}).catch((error) => {
 						console.error(error);

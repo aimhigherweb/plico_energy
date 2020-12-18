@@ -93,24 +93,16 @@ const FormLogic = ({ form }) => {
 					if (window.dataLayer) {
 						dataLayer.push({ event: `form-submit`, form: form.slug });
 					}
-					console.log(process.env.GATSBY_FORM_WEBHOOK);
-					Promise.all([
-						fetch(process.env.GATSBY_FORM_WEBHOOK, {
-							method: `POST`,
-							headers: {
-								'Content-Type': `application/x-www-form-urlencoded`
-							},
-							body: encode({
-								'form-name': `custom_${form.slug}`,
-								...values,
-								...fieldData(values),
-								values: JSON.stringify(values)
-							})
-						}).then(() => console.log(`success webhook`)).catch((error) => {
-							console.error(error);
-							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
-							Sentry.captureException(error);
-						}),
+
+					let webhook = false,
+						headers = {};
+
+					if (form.slug == `join`) {
+						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
+						headers = JSON.parse(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
+					}
+
+					const promises = [
 						fetch(`/`, {
 							method: `POST`,
 							headers: {
@@ -131,7 +123,29 @@ const FormLogic = ({ form }) => {
 								Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 								Sentry.captureException(error);
 							})
-					]).then(() => {
+					];
+
+					if (webhook) {
+						promises.unshift(fetch(webhook, {
+							method: `POST`,
+							headers: {
+								'Content-Type': `application/x-www-form-urlencoded`,
+								...headers
+							},
+							body: encode({
+								'form-name': `custom_${form.slug}`,
+								...values,
+								...fieldData(values),
+								values: JSON.stringify(values)
+							})
+						}).then(() => console.log(`success webhook`)).catch((error) => {
+							console.error(error);
+							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
+							Sentry.captureException(error);
+						}));
+					}
+
+					Promise.all(promises).then(() => {
 						console.log(`done`);
 						window.location.replace(`${form.fields.content.success_page}/`);
 					}).catch((error) => {
@@ -141,10 +155,6 @@ const FormLogic = ({ form }) => {
 					});
 
 					e.preventDefault();
-
-					// e.preventDefault();
-
-					// e.preventDefault();
 				}
 			}}
 		>

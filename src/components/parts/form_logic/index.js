@@ -94,45 +94,49 @@ const FormLogic = ({ form }) => {
 						dataLayer.push({ event: `form-submit`, form: form.slug });
 					}
 					console.log(process.env.GATSBY_FORM_WEBHOOK);
-					fetch(process.env.GATSBY_FORM_WEBHOOK, {
-						method: `POST`,
-						headers: {
-							'Content-Type': `application/x-www-form-urlencoded`
-						},
-						body: encode({
-							'form-name': `custom_${form.slug}`,
-							...values,
-							...fieldData(values),
-							values: JSON.stringify(values)
-						})
-					})
-						.catch((error) => {
+					const netlify = 					Promise.all([
+						fetch(process.env.GATSBY_FORM_WEBHOOK, {
+							method: `POST`,
+							headers: {
+								'Content-Type': `application/x-www-form-urlencoded`
+							},
+							body: encode({
+								'form-name': `custom_${form.slug}`,
+								...values,
+								...fieldData(values),
+								values: JSON.stringify(values)
+							})
+						}).catch((error) => {
 							console.error(error);
 							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 							Sentry.captureException(error);
-						});
-
-					fetch(`/`, {
-						method: `POST`,
-						headers: {
-							'Content-Type': `application/x-www-form-urlencoded`
-						},
-						body: encode({
-							'form-name': `custom_${form.slug}`,
-							...values,
-							...fieldData(values),
-							values: JSON.stringify(values)
+						}),
+						fetch(`/`, {
+							method: `POST`,
+							headers: {
+								'Content-Type': `application/x-www-form-urlencoded`
+							},
+							body: encode({
+								'form-name': `custom_${form.slug}`,
+								...values,
+								...fieldData(values),
+								values: JSON.stringify(values)
+							})
 						})
-					})
-						.then(() => {
-							console.log(`success`);
-							window.location.replace(`${form.fields.content.success_page}/`);
-						})
-						.catch((error) => {
-							console.error(error);
-							Sentry.setContext(`formData`, { values: JSON.stringify(values) });
-							Sentry.captureException(error);
-						});
+							.then(() => {
+								console.log(`success`);
+								window.location.replace(`${form.fields.content.success_page}/`);
+							})
+							.catch((error) => {
+								console.error(error);
+								Sentry.setContext(`formData`, { values: JSON.stringify(values) });
+								Sentry.captureException(error);
+							})
+					]).then(console.log(`done`)).catch((error) => {
+						console.error(error);
+						Sentry.setContext(`formData`, { values: JSON.stringify(values) });
+						Sentry.captureException(error);
+					});
 
 					e.preventDefault();
 

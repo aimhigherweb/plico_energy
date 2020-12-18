@@ -125,14 +125,16 @@ const FormLogic = ({ form }) => {
 						})
 							.then(() => {
 								console.log(`success`);
-								window.location.replace(`${form.fields.content.success_page}/`);
 							})
 							.catch((error) => {
 								console.error(error);
 								Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 								Sentry.captureException(error);
 							})
-					]).then(console.log(`done`)).catch((error) => {
+					]).then(() => {
+						console.log(`done`);
+						window.location.replace(`${form.fields.content.success_page}/`);
+					}).catch((error) => {
 						console.error(error);
 						Sentry.setContext(`formData`, { values: JSON.stringify(values) });
 						Sentry.captureException(error);

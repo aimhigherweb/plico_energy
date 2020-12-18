@@ -74,6 +74,12 @@ export const pageQuery = graphql`
 										src
 									}
 								}
+								video: childImageSharp {
+									fluid(maxWidth: 700) {
+										...GatsbyImageSharpFluid_withWebp
+										src
+									}
+								}
 								svg: childInlineSvg {
 									content
 								}

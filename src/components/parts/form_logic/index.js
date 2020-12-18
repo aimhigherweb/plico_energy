@@ -97,9 +97,15 @@ const FormLogic = ({ form }) => {
 					let webhook = false,
 						headers = {};
 
+					console.log(form.slug === `join`);
+					console.log(process.env.GATSBY_FORM_WEBHOOK_JOIN);
+					console.log(JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN));
+
 					if (form.slug == `join`) {
 						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
 						headers = JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN);
+
+						console.log(`set webhooks and headers`);
 
 						if (typeof headers !== `Object`) {
 							console.log(`still not an object`);
@@ -132,6 +138,7 @@ const FormLogic = ({ form }) => {
 					];
 
 					if (webhook) {
+						console.log(`webhook exists`);
 						console.log(webhook, headers);
 						promises.unshift(fetch(webhook, {
 							method: `POST`,
@@ -151,6 +158,8 @@ const FormLogic = ({ form }) => {
 							Sentry.captureException(error);
 						}));
 					}
+
+					console.log(promises);
 
 					Promise.all(promises).then(() => {
 						console.log(`done`);

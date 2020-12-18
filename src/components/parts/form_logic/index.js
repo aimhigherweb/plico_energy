@@ -93,6 +93,7 @@ const FormLogic = ({ form }) => {
 					if (window.dataLayer) {
 						dataLayer.push({ event: `form-submit`, form: form.slug });
 					}
+					console.log(process.env.GATSBY_FORM_WEBHOOK);
 					fetch(process.env.GATSBY_FORM_WEBHOOK, {
 						method: `POST`,
 						headers: {

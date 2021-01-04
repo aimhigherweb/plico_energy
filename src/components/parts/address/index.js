@@ -31,7 +31,7 @@ const Address = () => (
 			return (
 				<address>
 					<p>{address_line_1}</p>
-					<p>{address_line_2}, <span>{address_suburb} {address_state}</span> {address_post_code}</p>
+					<p>{(address_line_2 && address_line_2 !== ``) && `${address_line_2},`} <span>{address_suburb} {address_state}</span> {address_post_code}</p>
 				</address>
 			);
 		}}

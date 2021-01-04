@@ -49,7 +49,6 @@ export const pageQuery = graphql`
 	query {
 		storyblokEntry(full_slug: {eq: "custom-pages/faqs"}) {
 			name
-			field_og_image_string
 			slug
 			fields {
 				content {

@@ -101,7 +101,6 @@ export const pageQuery = graphql`
 	query {
 		pageInfo: storyblokEntry(full_slug: {eq: "custom-pages/news"}) {
 			name
-			field_og_image_string
 			slug
 			fields {
 				content {

@@ -68,7 +68,7 @@
 			background: variables.$secondary;
 		}
 
-		&.active {
+		&.active:not(.cta) {
 			color: variables.$primary;
 		}
 	}

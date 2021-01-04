@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
+import * as config from 'gatsby-env-variables';
 import formFields, { checkConditions, fieldData } from '../../../utils/formFields';
 import Progress from '../form_progress';
 
@@ -7,6 +8,7 @@ import Field from '../form_field';
 
 const FormLogic = ({ form }) => {
 	const formData = form.fields.content.multi_page ? form.fields.content.fields : [form.fields.content.fields],
+		formName = form.slug.toUpperCase().replace(/-/g, ``),
 		totalSteps = formData.length,
 		existingData = typeof window !== `undefined` && window.localStorage.getItem(`formData_${form.slug}`) ? JSON.parse(window.localStorage.getItem(`formData_${form.slug}`)) : {},
 		[step, setStep] = useState(0),
@@ -94,36 +96,30 @@ const FormLogic = ({ form }) => {
 						dataLayer.push({ event: `form-submit`, form: form.slug });
 					}
 
-					let webhook = false,
-						headers = {};
-
-					if (form.slug == `join`) {
-						webhook = process.env.GATSBY_FORM_WEBHOOK_JOIN;
-						headers = JSON.parse(process.env.GATSBY_FORM_HEADERS_JOIN);
-					}
-
-					const promises = [
-						fetch(`/`, {
-							method: `POST`,
-							headers: {
-								'Content-Type': `application/x-www-form-urlencoded`
-							},
-							body: encode({
-								'form-name': `custom_${form.slug}`,
-								...values,
-								...fieldData(values),
-								values: JSON.stringify(values)
+					const webhook = config[`GATSBY_FORM_WEBHOOK_${formName}`],
+						headers = config[`GATSBY_FORM_HEADERS_${formName}`] ? JSON.parse(config[`GATSBY_FORM_HEADERS_${formName}`]) : {},
+						promises = [
+							fetch(`/`, {
+								method: `POST`,
+								headers: {
+									'Content-Type': `application/x-www-form-urlencoded`
+								},
+								body: encode({
+									'form-name': `custom_${form.slug}`,
+									...values,
+									...fieldData(values),
+									values: JSON.stringify(values)
+								})
 							})
-						})
-							.then(() => {
-								console.log(`success`);
-							})
-							.catch((error) => {
-								console.error(error);
-								Sentry.setContext(`formData`, { values: JSON.stringify(values) });
-								Sentry.captureException(error);
-							})
-					];
+								.then(() => {
+									console.log(`success`);
+								})
+								.catch((error) => {
+									console.error(error);
+									Sentry.setContext(`formData`, { values: JSON.stringify(values) });
+									Sentry.captureException(error);
+								})
+						];
 
 					if (webhook) {
 						promises.unshift(fetch(webhook, {

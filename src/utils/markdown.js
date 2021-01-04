@@ -8,7 +8,7 @@ const remark = require(`remark`),
 const processMarkdown = (markdown) => remark()
 		.use(remarkLint)
 		.use(slug)
-		.use(headings)
+		// .use(headings)
 		.use(remarkHtml)
 		.processSync(markdown)
 		.toString(),

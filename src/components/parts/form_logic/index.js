@@ -122,17 +122,18 @@ const FormLogic = ({ form }) => {
 						];
 
 					if (webhook) {
+						const valuesString = JSON.stringify(values);
 						promises.unshift(fetch(webhook, {
 							method: `POST`,
 							headers: {
-								'Content-Type': `application/x-www-form-urlencoded`,
+								'Content-Type': `application/json`,
 								...headers
 							},
-							body: encode({
+							body: JSON.stringify({
 								'form-name': `custom_${form.slug}`,
 								...values,
 								...fieldData(values),
-								values: JSON.stringify(values)
+								values: valuesString
 							})
 						}).then(() => console.log(`success webhook`)).catch((error) => {
 							console.error(error);

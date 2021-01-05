@@ -6,12 +6,18 @@ import Form from '../components/parts/form';
 
 const Page = ({ data }) => {
 	const {
-			name
+			name,
+			slug
 		} = data.storyblokEntry,
-		{ content, form, meta } = data.storyblokEntry.fields.content;
+		{ content, form, meta } = data.storyblokEntry.fields.content,
+		metadata = {
+			...meta,
+			name,
+			slug
+		};
 
 	return (
-		<Layout {...{ classes: `page`, meta }}>
+		<Layout {...{ classes: `page`, meta: metadata }}>
 			<h1>{name}</h1>
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 			{form && <Form form={form} />}
@@ -25,6 +31,7 @@ export const pageQuery = graphql`
 	query pageBySlug($slug: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
+			slug
 			fields {
 				content {
 					content

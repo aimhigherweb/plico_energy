@@ -6,18 +6,21 @@ import Layout from '../components/partials/layout';
 const FAQ = ({ data }) => {
 	const {
 			name,
-			fields
+			fields,
+			slug
 		} = data.storyblokEntry,
 		{ content, meta } = fields.content,
-		categories = data.categories.edges;
+		categories = data.categories.edges,
+		metadata = {
+			...meta,
+			name: `${name} | FAQs`,
+			slug: `/faqs/${slug}`
+		};
 
 	return (
 		<Layout {...{
 			classes: `page faq`,
-			meta: {
-				...meta,
-				title: meta.title || `${name}`,
-			}
+			meta: metadata
 		}}>
 			<h1 className="title">{name}</h1>
 			<div className="faq_content" dangerouslySetInnerHTML={{ __html: content }} />
@@ -39,6 +42,7 @@ export const pageQuery = graphql`
 	query faqBySlug($slug: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
+			slug
 			fields {
 				content {
 					content

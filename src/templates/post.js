@@ -8,12 +8,20 @@ import Form from '../components/parts/form';
 const Post = ({ data }) => {
 	const {
 			name,
-			fields
+			fields,
+			slug
 		} = data.storyblokEntry,
-		{ content, featureImage, form } = fields.content;
+		{
+			content, featureImage, form, meta
+		} = fields.content,
+		metadata = {
+			...meta,
+			name,
+			slug
+		};
 
 	return (
-		<Layout {...{ classes: `page news_article header_image` }}>
+		<Layout {...{ classes: `page news_article header_image`, meta: metadata }}>
 			<Banner
 				{...{
 					main_quote: name,
@@ -36,6 +44,7 @@ export const pageQuery = graphql`
 	query postBySlug($slug: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
+			slug
 			fields {
 				content {
 					content
@@ -47,6 +56,16 @@ export const pageQuery = graphql`
 						}
 					}
 					form
+					meta {
+						description
+						og_description
+						og_image
+						og_title
+						title
+						twitter_description
+						twitter_image
+						twitter_title
+					}
 				}
 			}
 		}

@@ -6,7 +6,7 @@ import '../styles/custom/not_found.scss';
 
 const FourOhFour = () => {
 	const meta = {
-		title: `404 - Page not Found`,
+		title: `404 - Page Not Found`,
 		description: `Looks like that page doesn't exist anymore or has moved.`
 	};
 

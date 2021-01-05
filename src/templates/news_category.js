@@ -19,6 +19,11 @@ const NewsPage = ({ data, pageContext }) => {
 			name
 		} = pageInfo,
 		news = articles.edges,
+		metadata = {
+			...fields.content.meta,
+			name: `${pageContext.tag} | ${name}`,
+			slug
+		},
 		setChunks = (array, length) => {
 			const chunks = [],
 				n = array.length;
@@ -40,7 +45,7 @@ const NewsPage = ({ data, pageContext }) => {
 		};
 
 	return (
-		<Layout {...{ classes: `news_page header_image` }}>
+		<Layout {...{ classes: `news_page header_image`, meta: metadata }}>
 			<Banner {...fields.content.banner[0]} />
 			<div className="intro">
 				<div>
@@ -105,6 +110,16 @@ export const pageQuery = graphql`
 				content {
 					heading
 					content
+					meta {
+						description
+						og_description
+						og_image
+						og_title
+						title
+						twitter_description
+						twitter_image
+						twitter_title
+					}
 					banner {
 						main_quote
 						sub_quote

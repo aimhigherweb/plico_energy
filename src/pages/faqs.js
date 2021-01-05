@@ -15,10 +15,15 @@ const FAQPage = ({ data }) => {
 			name
 		} = data.storyblokEntry,
 		categories = data.categories.edges,
-		{ featured_faqs } = fields.content;
+		{ featured_faqs, meta } = fields.content,
+		metadata = {
+			...meta,
+			name,
+			slug
+		};
 
 	return (
-		<Layout {...{ classes: `page faq` }}>
+		<Layout {...{ classes: `page faq`, meta: metadata }}>
 			<h1>{name}</h1>
 			<div className="featured_sections">
 				{categories.map(({ node }) => (
@@ -67,6 +72,16 @@ export const pageQuery = graphql`
 					fields {
 						content {
 							content
+							meta {
+								description
+								og_description
+								og_image
+								og_title
+								title
+								twitter_description
+								twitter_image
+								twitter_title
+							}
 						}
 					}
 				}

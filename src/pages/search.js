@@ -10,7 +10,8 @@ import Layout from '../components/partials/layout';
 const SearchPage = () => {
 	const meta = {
 			name: `Search`,
-			description: `Search for things on Plico`
+			description: `Search for things on Plico`,
+			slug: `/search`
 		},
 		searchClient = algoliasearch(
 			process.env.GATSBY_ALGOLIA_APP_ID,

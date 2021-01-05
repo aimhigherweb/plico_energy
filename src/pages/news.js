@@ -13,12 +13,18 @@ import '../styles/custom/news.scss';
 
 const NewsPage = ({ data }) => {
 	const { pageInfo, articles, tags } = data,
-	 {
+		{
 			slug,
 			fields,
 			name
 		} = pageInfo,
+		{ meta } = fields.content,
 		news = articles.edges,
+		metadata = {
+			...meta,
+			name,
+			slug
+		},
 		setChunks = (array, length) => {
 			const chunks = [],
 				n = array.length;
@@ -40,7 +46,7 @@ const NewsPage = ({ data }) => {
 		};
 
 	return (
-		<Layout {...{ classes: `news_page header_image` }}>
+		<Layout {...{ classes: `news_page header_image`, meta: metadata }}>
 			<Banner {...fields.content.banner[0]} />
 			<div className="intro">
 				<div>
@@ -106,6 +112,16 @@ export const pageQuery = graphql`
 				content {
 					heading
 					content
+					meta {
+						description
+						og_description
+						og_image
+						og_title
+						title
+						twitter_description
+						twitter_image
+						twitter_title
+					}
 					banner {
 						main_quote
 						sub_quote

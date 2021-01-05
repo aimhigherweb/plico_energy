@@ -6,13 +6,19 @@ import News from '../components/parts/news';
 
 const FAQCategory = ({ data }) => {
 	const {
-			name
+			name,
+			slug, fields
 		} = data.storyblokEntry,
 		faqs = data.faqs.edges,
-		categories = data.categories.edges;
+		categories = data.categories.edges,
+		meta = {
+			name,
+			slug,
+			description: fields.content.excerpt
+		};
 
 	return (
-		<Layout {...{ classes: `page faq category` }}>
+		<Layout {...{ classes: `page faq category`, meta }}>
 			<h1>{name} FAQs</h1>
 			<div className="faqs">
 				{faqs.map(({ node }) => (
@@ -52,6 +58,12 @@ export const pageQuery = graphql`
 	query faqCategoryBySlug($slug: String!, $categoryFilter: String!) {
 		storyblokEntry(full_slug: {eq: $slug}) {
 			name
+			slug
+			fields {
+				content {
+					excerpt
+				}
+			}
 		}
 		faqs: allStoryblokEntry(
 			filter: {

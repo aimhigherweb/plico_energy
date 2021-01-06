@@ -23,9 +23,8 @@ const customFields = (type, slug) => {
 		fields = {
 				inverterId: ``,
 				productId: ``,
-				'numberOfSystems': ``,
+				'numberOfSystems': `1`,
 				'weeklyCost': ``,
-				agreement: ``,
 		};
 	}
 

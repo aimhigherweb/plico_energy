@@ -8,7 +8,7 @@ const SystemConfiguration = ({
 	const [inverters, setInverters] = useState([]),
 		[batteries, setBatteries] = useState([]),
 		[systems, setSystems] = useState(false),
-		[numSystems, setNumSystems] = useState(false),
+		[numSystems, setNumSystems] = useState(1),
 		[pricing, setPrice] = useState({}),
 		[cost, setCost] = useState(false),
 		[message, setMessage] = useState(`Loading Options`),
@@ -25,6 +25,7 @@ const SystemConfiguration = ({
 			fieldChanged(`${field_id}_inverterId`, e.target.value);
 		},
 		selectSystems = (e) => {
+			console.log({ e, pricing });
 			setNumSystems(parseInt(e));
 
 			if (pricing.weeklyFee) {
@@ -57,6 +58,7 @@ const SystemConfiguration = ({
 				});
 			}
 
+			selectSystems(numSystems);
 			setSystems(true);
 			fieldChanged(`${field_id}_productId`, e.target.value);
 		};
@@ -69,6 +71,10 @@ const SystemConfiguration = ({
 			values
 		});
 	}, []);
+
+	useEffect(() => {
+		selectSystems(numSystems);
+	}, [pricing]);
 
 	return (
 		<Fragment>
@@ -126,8 +132,7 @@ const SystemConfiguration = ({
 					name={`${field_id}_numberOfSystems`}
 					onChange={(e) => selectSystems(e.target.value)}
 				>
-					<option default>Please call me to discuss</option>
-					<option value="1">1</option>
+					<option default value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 				</select>
@@ -144,29 +149,6 @@ const SystemConfiguration = ({
 					readOnly
 				/>
 			</Fragment>
-			}
-			{cost
-			&& 	<fieldset>
-				<legend>The information I have provided is true and correct to the best of my/our knowledge.</legend>
-				<div className="options">
-					<input
-						type="radio"
-						id={`agreement${_uid}_yes`}
-						name={`${field_id}_agreement`}
-						value="yes"
-						onChange={(e) => (fieldChanged(`${field_id}_agreement`, e.target.value))}
-					/>
-					<label htmlFor={`agreement${_uid}_yes`} >Yes</label>
-					<input
-						type="radio"
-						id={`agreement${_uid}_no`}
-						name={`${field_id}_agreement`}
-						value="no"
-						onChange={(e) => (fieldChanged(`${field_id}_agreement`, e.target.value))}
-					/>
-					<label htmlFor={`agreement${_uid}_no`} >No</label>
-				</div>
-			</fieldset>
 			}
 		</Fragment>
 	);
